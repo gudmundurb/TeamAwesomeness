@@ -8,6 +8,9 @@ namespace Sozial.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        /* steam */
+        public long? steamId;
     }
 
     public class ExternalLoginListViewModel

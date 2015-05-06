@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Sozial.Models;
+using Owin.Security.Providers.Steam;
 
 namespace Sozial
 {
@@ -62,7 +63,8 @@ namespace Sozial
             //{
             //    ClientId = "",
             //    ClientSecret = ""
-            //});
+            //})
+            app.UseSteamAuthentication("246FA7734A47CD2C1F24733C6E55BDB7");
         }
     }
 }
