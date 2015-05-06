@@ -27,5 +27,6 @@ namespace SozialProject.Models
 
         [Display(Name = "Game Genre:")]
         public string genre { get; set; }
+        //Don´t Touch mystuff
     }
 }
