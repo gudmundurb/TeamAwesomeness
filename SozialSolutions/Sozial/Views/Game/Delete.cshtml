@@ -1,0 +1,64 @@
+﻿@model SozialProject.Models.GameModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>GameModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameOfGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameOfGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aboutGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aboutGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gameCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gameCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isTopTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isTopTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

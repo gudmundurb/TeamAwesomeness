@@ -1,0 +1,58 @@
+﻿@model SozialProject.Models.GameModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GameModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameOfGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameOfGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aboutGame)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aboutGame)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gameCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gameCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isTopTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isTopTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GameID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
