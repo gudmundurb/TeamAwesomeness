@@ -24,7 +24,7 @@ namespace SozialProject.Models
         public string gameCompany { get; set; }
 
         public bool isTopTen { get; set; }  //using for testing purposes
-
+        
         [Display(Name = "Game Genre:")]
         public string genre { get; set; }
         //Don´t Touch mystuff
