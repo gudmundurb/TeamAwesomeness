@@ -37,6 +37,6 @@ namespace Sozial.Models
 
         public System.Data.Entity.DbSet<SozialProject.Models.GameModel> GameModels { get; set; }
 
-        public System.Data.Entity.DbSet<SozialProject.Models.ProfileModel> ProfileModels { get; set; }
+        public System.Data.Entity.DbSet<SozialProject.Models.UserModel> ProfileModels { get; set; }
     }
 }

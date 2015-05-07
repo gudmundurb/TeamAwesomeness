@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SozialProject.Models.ProfileModel>
+﻿@model IEnumerable<SozialProject.Models.UserModel>
 
 @{
     ViewBag.Title = "Index";
@@ -11,6 +11,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.steamId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.userName)
         </th>
@@ -25,6 +28,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.steamId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.userName)
         </td>

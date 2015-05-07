@@ -1,4 +1,4 @@
-﻿@model SozialProject.Models.ProfileModel
+﻿@model SozialProject.Models.UserModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,9 +7,17 @@
 <h2>Details</h2>
 
 <div>
-    <h4>ProfileModel</h4>
+    <h4>UserModel</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.steamId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.steamId)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.userName)
         </dt>
