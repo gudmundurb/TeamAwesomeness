@@ -45,7 +45,7 @@ namespace Sozial.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.News() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

@@ -15,14 +15,14 @@ namespace Sozial.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            //Shows about us
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult News()
         {
-            ViewBag.Message = "Your contact page.";
+            //Shows our news
 
             return View();
         }
