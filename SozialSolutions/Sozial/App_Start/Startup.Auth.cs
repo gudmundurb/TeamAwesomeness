@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Sozial.Models;
 using Owin.Security.Providers.Steam;
+using System.Configuration;
 
 namespace Sozial
 {
