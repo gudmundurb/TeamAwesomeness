@@ -9,12 +9,16 @@ using System.Web.Mvc;
 using Sozial.Models;
 using SozialProject.Models;
 using Sozial.Repositories;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
 namespace Sozial.Controllers
 {
     public class GameController : Controller
     {
+<<<<<<< HEAD
         private IGameRepo db = null;
         public GameController () 
         {
@@ -22,6 +26,15 @@ namespace Sozial.Controllers
         }
         //private ApplicationDbContext db = new ApplicationDbContext();
         
+=======
+        private IGameRepo db;
+
+        public GameController()
+        {
+            this.db = new GameRepo(new ApplicationDbContext());
+        }
+        /*
+>>>>>>> origin/master
         // GET: Game
         public ActionResult Index()
         {
@@ -133,6 +146,6 @@ namespace Sozial.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

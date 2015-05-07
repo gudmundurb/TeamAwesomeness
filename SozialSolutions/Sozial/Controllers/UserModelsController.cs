@@ -11,107 +11,107 @@ using SozialProject.Models;
 
 namespace Sozial.Controllers
 {
-    public class ProfileController : Controller
+    public class UserModelsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private SozialContext db = new SozialContext();
 
-        // GET: Profile
+        // GET: UserModels
         public ActionResult Index()
         {
-            return View(db.ProfileModels.ToList());
+            return View(db.UserModels.ToList());
         }
 
-        // GET: Profile/Details/5
+        // GET: UserModels/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProfileModel profileModel = db.ProfileModels.Find(id);
-            if (profileModel == null)
+            UserModel userModel = db.UserModels.Find(id);
+            if (userModel == null)
             {
                 return HttpNotFound();
             }
-            return View(profileModel);
+            return View(userModel);
         }
 
-        // GET: Profile/Create
+        // GET: UserModels/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Profile/Create
+        // POST: UserModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userID,userName,userProfilePic,userBannerPic")] ProfileModel profileModel)
+        public ActionResult Create([Bind(Include = "userID,steamId,userName,userProfilePic,userBannerPic")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {
-                db.ProfileModels.Add(profileModel);
+                db.UserModels.Add(userModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(profileModel);
+            return View(userModel);
         }
 
-        // GET: Profile/Edit/5
+        // GET: UserModels/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProfileModel profileModel = db.ProfileModels.Find(id);
-            if (profileModel == null)
+            UserModel userModel = db.UserModels.Find(id);
+            if (userModel == null)
             {
                 return HttpNotFound();
             }
-            return View(profileModel);
+            return View(userModel);
         }
 
-        // POST: Profile/Edit/5
+        // POST: UserModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userID,userName,userProfilePic,userBannerPic")] ProfileModel profileModel)
+        public ActionResult Edit([Bind(Include = "userID,steamId,userName,userProfilePic,userBannerPic")] UserModel userModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(profileModel).State = EntityState.Modified;
+                db.Entry(userModel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(profileModel);
+            return View(userModel);
         }
 
-        // GET: Profile/Delete/5
+        // GET: UserModels/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ProfileModel profileModel = db.ProfileModels.Find(id);
-            if (profileModel == null)
+            UserModel userModel = db.UserModels.Find(id);
+            if (userModel == null)
             {
                 return HttpNotFound();
             }
-            return View(profileModel);
+            return View(userModel);
         }
 
-        // POST: Profile/Delete/5
+        // POST: UserModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ProfileModel profileModel = db.ProfileModels.Find(id);
-            db.ProfileModels.Remove(profileModel);
+            UserModel userModel = db.UserModels.Find(id);
+            db.UserModels.Remove(userModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

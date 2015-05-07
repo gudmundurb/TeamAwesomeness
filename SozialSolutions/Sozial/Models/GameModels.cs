@@ -9,7 +9,7 @@ namespace SozialProject.Models
     public class GameModel
     {
         [Key]
-        public int GameID { get; set; }
+        public int gameID { get; set; }
 
         [Required(ErrorMessage = "The game needs a name")]
         [Display(Name = "Game name:")]
