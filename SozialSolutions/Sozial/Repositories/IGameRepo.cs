@@ -8,11 +8,11 @@ namespace Sozial.Repositories
 {
     public interface IGameRepo : IDisposable
     {
-        IEnumerable<Student> GetStudents();
-        Student GetStudentByID(int studentId);
-        void InsertStudent(Student student);
-        void DeleteStudent(int studentID);
-        void UpdateStudent(Student student);
+        IEnumerable<GameModel> GetGame();
+        GameModel GetGameByID(int gameID);
+        void InsertGame(GameModel game);
+        //void DeleteGame(int gameID);
+        void UpdateGame(GameModel game);
         void Save();
     }
 }
