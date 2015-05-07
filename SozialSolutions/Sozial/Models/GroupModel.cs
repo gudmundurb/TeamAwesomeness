@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
-
+using Sozial.Models;
 namespace SozialProject.Models
 {
     public class GroupModel
@@ -15,12 +15,12 @@ namespace SozialProject.Models
         private int creatorId { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "The group with no name already exists.")]
         [Display(Name = "Group Name")]
         public string groupName { get; set; }
 
 
-        [Required]
+        [Required(ErrorMessage = "What is your group all about?")]
         [Display(Name = "Group Description")]
         public string groupDescription { get; set; }
 
@@ -31,6 +31,8 @@ namespace SozialProject.Models
         [Display(Name = "Group Banner")]
         [Url]
         public string groupBanner { get; set; }
+
+        public virtual ICollection<ApplicationUser> Members { get; set; }
 
 
     }

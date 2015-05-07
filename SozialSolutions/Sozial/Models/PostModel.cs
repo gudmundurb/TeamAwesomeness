@@ -10,8 +10,9 @@ namespace SozialProject.Models
         [Key]
         public int postID { get; set; }
 
-        [Key]
+        //[Key]
         public int userID { get; set; } // the user that made the comment.
+        
 
         [Required]
         [Display(Name = "Comment text")]
