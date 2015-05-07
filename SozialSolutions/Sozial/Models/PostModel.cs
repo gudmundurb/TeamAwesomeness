@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using Sozial.Models;
 namespace SozialProject.Models
 {
     public class PostModel
@@ -10,12 +11,14 @@ namespace SozialProject.Models
         [Key]
         public int postID { get; set; }
 
-        //[Key]
-        public int userID { get; set; } // the user that made the comment.
         
+        public int userID { get; set; } // the user that made the comment.
 
-        [Required]
-        [Display(Name = "Comment text")]
-        public string commentText;
+
+        [Required(ErrorMessage = "You cant leave an empty comment. Have some manners!")]
+        [Display(Name = "Post Text")]
+        public string postText;
+
+        public virtual ICollection<CommentModel> comments { get; set; }
     }
 }

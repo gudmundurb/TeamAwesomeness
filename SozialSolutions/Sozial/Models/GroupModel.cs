@@ -33,6 +33,7 @@ namespace SozialProject.Models
         public string groupBanner { get; set; }
 
         public virtual ICollection<ApplicationUser> Members { get; set; }
+        public virtual ICollection<PostModel> Posts { get; set; } 
 
 
     }
