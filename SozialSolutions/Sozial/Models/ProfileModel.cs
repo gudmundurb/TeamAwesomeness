@@ -11,6 +11,9 @@ namespace SozialProject.Models
         [Key]
         public int userID { get; set; }
 
+        //[Key]
+        public string steamId { get; set; }
+
         [Required(ErrorMessage = "Give me a name")]
         [Display(Name = "Name of user")]
         public string userName { get; set; }

@@ -26,5 +26,11 @@ namespace Sozial.Controllers
 
             return View();
         }
+
+        public ActionResult View1()
+        {
+            ViewBag.Message = "check";
+            return View();
+        }
     }
 }

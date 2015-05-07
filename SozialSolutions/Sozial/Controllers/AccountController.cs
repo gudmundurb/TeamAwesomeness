@@ -343,7 +343,7 @@ namespace Sozial.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    long steamId = long.Parse(loginInfo.Login.ProviderKey.Replace("http://steamcommunity.com/openid/id/", ""));
+                    //string steamIdStr = loginInfo.Login.ProviderKey.Replace("http://steamcommunity.com/openid/id/", "");
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
@@ -368,7 +368,13 @@ namespace Sozial.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                if (info.Login.LoginProvider == "Steam")
+                {  } //TODO: Configure this to handle each variation of external logins we provide. currently only steam.
+                string steamsIdStr = info.Login.ProviderKey.Replace("http://steamcommunity.com/openid/id/", "");
+                var user = new ApplicationUser { UserName = info.DefaultUserName, Email = model.Email, steamId = steamsIdStr };
+                
+
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

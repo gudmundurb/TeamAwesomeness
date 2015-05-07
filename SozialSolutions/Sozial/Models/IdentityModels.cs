@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sozial.Models
 {
@@ -10,7 +11,7 @@ namespace Sozial.Models
     public class ApplicationUser : IdentityUser
     {
         /*steam*/
-        public long? steamId;
+        public string steamId { get; set; } 
         /*steam*/
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

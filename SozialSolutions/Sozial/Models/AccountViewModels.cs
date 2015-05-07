@@ -10,7 +10,7 @@ namespace Sozial.Models
         public string Email { get; set; }
 
         /* steam */
-        public long? steamId;
+        public string steamId;
     }
 
     public class ExternalLoginListViewModel
