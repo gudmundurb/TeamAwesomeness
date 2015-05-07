@@ -18,8 +18,8 @@ namespace Sozial.Models
         public SozialContext() : base("name=SozialContext")
         {
         }
-
+        /*  ------------------ dis has to be fixed. 
         public System.Data.Entity.DbSet<SozialProject.Models.UserModel> UserModels { get; set; }
-    
+        */
     }
 }

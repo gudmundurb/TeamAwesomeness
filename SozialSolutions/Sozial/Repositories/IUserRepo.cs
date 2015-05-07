@@ -9,10 +9,12 @@ namespace Sozial.Repositories
 {
     public interface IUserRepo
     {
+        /*
         IEnumerable<UserModel> getUser();
         UserModel getUserByID(int userID);
         void createAccount(UserModel user);
         void updateUserDetails(UserModel user);
         void Save();
+        */
     }
 }

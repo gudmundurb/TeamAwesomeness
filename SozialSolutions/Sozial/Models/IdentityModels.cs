@@ -43,7 +43,8 @@ namespace Sozial.Models
         }
 
         public System.Data.Entity.DbSet<SozialProject.Models.GameModel> GameModels { get; set; }
-
+        /* ------------ dis has to be fixed
         public System.Data.Entity.DbSet<SozialProject.Models.UserModel> ProfileModels { get; set; }
+        */
     }
 }

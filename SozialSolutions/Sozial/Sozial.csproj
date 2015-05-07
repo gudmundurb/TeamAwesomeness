@@ -178,7 +178,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\SozialContext.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GameRepo.cs" />
     <Compile Include="Repositories\IGameRepo.cs" />
