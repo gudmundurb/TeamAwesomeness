@@ -14,11 +14,11 @@ namespace Sozial.Controllers
     public class GameController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        IGameRepo dbGame;
         // GET: Game
         public ActionResult Index()
         {
-            return View(db.GameModels.ToList());
+            return View(dbGame.GameModels.ToList());
         }
 
         // GET: Game/Details/5
@@ -28,7 +28,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = dbGame.GameModels.Find(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -51,8 +51,8 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.GameModels.Add(gameModel);
-                db.SaveChanges();
+                dbGame.GameModels.Add(gameModel);
+                dbGame.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +66,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = dbGame.GameModels.Find(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -83,8 +83,8 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(gameModel).State = EntityState.Modified;
-                db.SaveChanges();
+                dbGame.Entry(gameModel).State = EntityState.Modified;
+                dbGame.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(gameModel);
@@ -97,7 +97,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = dbGame.GameModels.Find(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -110,9 +110,9 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GameModel gameModel = db.GameModels.Find(id);
-            db.GameModels.Remove(gameModel);
-            db.SaveChanges();
+            GameModel gameModel = dbGame.GameModels.Find(id);
+            dbGame.GameModels.Remove(gameModel);
+            dbGame.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +120,7 @@ namespace Sozial.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                dbGame.Dispose();
             }
             base.Dispose(disposing);
         }
