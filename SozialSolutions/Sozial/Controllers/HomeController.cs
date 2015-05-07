@@ -20,7 +20,7 @@ namespace Sozial.Controllers
             return View();
         }
 
-        public ActionResult News()
+        public ActionResult Contact()
         {
             //Shows our news
 
