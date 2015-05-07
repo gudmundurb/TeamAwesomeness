@@ -8,17 +8,24 @@ using System.Web;
 using System.Web.Mvc;
 using Sozial.Models;
 using SozialProject.Models;
+using Sozial.Repositories;
+
 
 namespace Sozial.Controllers
 {
     public class GameController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        private IGameRepo db = null;
+        public GameController () 
+        {
+            db = new GameRepo();     
+        }
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Game
         public ActionResult Index()
         {
-            return View(db.GameModels.ToList());
+            return View(db.GetGame());
         }
 
         // GET: Game/Details/5
@@ -28,7 +35,8 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            //GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = db.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -51,8 +59,9 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.GameModels.Add(gameModel);
-                db.SaveChanges();
+                db.InsertGame(gameModel);
+                //db.SaveChanges();
+                db.SaveGame();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +75,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = db.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -83,8 +92,10 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(gameModel).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(gameModel).State = EntityState.Modified;
+               // db.SaveChanges();
+                db.UpdateGame(gameModel);
+                db.SaveGame();
                 return RedirectToAction("Index");
             }
             return View(gameModel);
@@ -97,7 +108,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GameModels.Find(id);
+            GameModel gameModel = db.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -110,9 +121,8 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GameModel gameModel = db.GameModels.Find(id);
-            db.GameModels.Remove(gameModel);
-            db.SaveChanges();
+            db.DeleteGame(id);
+            db.SaveGame();
             return RedirectToAction("Index");
         }
 
