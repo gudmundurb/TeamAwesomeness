@@ -12,7 +12,7 @@ namespace Sozial.Repositories
 
         public void Save()
         {
-            context.SaveChanges();
+            //context.SaveChanges();
         }
         //Björn snertir þetta .. ég loka skjali ~geb
     }
