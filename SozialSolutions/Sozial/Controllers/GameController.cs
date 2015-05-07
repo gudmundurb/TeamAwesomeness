@@ -9,32 +9,21 @@ using System.Web.Mvc;
 using Sozial.Models;
 using SozialProject.Models;
 using Sozial.Repositories;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 namespace Sozial.Controllers
 {
     public class GameController : Controller
     {
-<<<<<<< HEAD
-        private IGameRepo db = null;
-        public GameController () 
-        {
-            db = new GameRepo();     
-        }
-        //private ApplicationDbContext db = new ApplicationDbContext();
+        private IGameRepo db = null; //new IGameRepo();
         
-=======
-        private IGameRepo db;
-
+        //private ApplicationDbContext db = new ApplicationDbContext();
+        //private IGameRepo db;
+        
         public GameController()
         {
             this.db = new GameRepo(new ApplicationDbContext());
         }
         /*
->>>>>>> origin/master
         // GET: Game
         public ActionResult Index()
         {

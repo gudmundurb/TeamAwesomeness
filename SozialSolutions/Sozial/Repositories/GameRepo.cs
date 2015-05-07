@@ -11,31 +11,17 @@ namespace Sozial.Repositories
     public class GameRepo : IGameRepo, IDisposable
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-<<<<<<< HEAD
-        /*
-=======
-
->>>>>>> origin/master
+        
         public GameRepo(ApplicationDbContext db)
         {
             this.db = db;
         }
-<<<<<<< HEAD
-        public GameRepo() { }
-         * */
-=======
-
->>>>>>> origin/master
         public IEnumerable<GameModel> GetGame()
         {
             return db.GameModels.ToList();
         }
 
-<<<<<<< HEAD
         public GameModel GetGameByID(int? gameID)
-=======
-        public GameModel GetGameByID(int gameID)
->>>>>>> origin/master
         {
             return db.GameModels.Find(gameID);
         }
@@ -79,10 +65,6 @@ namespace Sozial.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
-<<<<<<< HEAD
-            
-=======
->>>>>>> origin/master
         }
     }
 }
