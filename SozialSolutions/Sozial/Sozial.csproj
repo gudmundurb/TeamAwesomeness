@@ -183,11 +183,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GameRepo.cs" />
     <Compile Include="Repositories\IGameRepo.cs" />
-<<<<<<< HEAD
-=======
+
     <Compile Include="Repositories\IUserRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
->>>>>>> origin/master
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
