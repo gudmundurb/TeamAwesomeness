@@ -11,8 +11,8 @@ namespace Sozial.Repositories
         IEnumerable<GameModel> GetGame();
         GameModel GetGameByID(int gameID);
         void InsertGame(GameModel game);
-        //void DeleteGame(int gameID);
+        void DeleteGame(int gameID);
         void UpdateGame(GameModel game);
-        void Save();
+        void SaveGame();
     }
 }
