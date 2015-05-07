@@ -11,7 +11,7 @@ namespace SozialProject.Models
         [Key]
         private int groupId { get; set; }
 
-        [Key]
+
         private int creatorId { get; set; }
 
 
@@ -23,6 +23,14 @@ namespace SozialProject.Models
         [Required]
         [Display(Name = "Group Description")]
         public string groupDescription { get; set; }
+
+        [Display(Name = "Group Picture")]
+        [Url]
+        public string groupPicture { get; set; }
+
+        [Display(Name = "Group Banner")]
+        [Url]
+        public string groupBanner { get; set; }
 
 
     }
