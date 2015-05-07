@@ -27,5 +27,9 @@ namespace SozialProject.Models
         public PostModel userPost { get; set; }
 
         public GroupModel userGroup { get; set; }
+
+        public GameModel userGames { get; set; }
+
+        //Laura is working on this and related files.
     }
 }
