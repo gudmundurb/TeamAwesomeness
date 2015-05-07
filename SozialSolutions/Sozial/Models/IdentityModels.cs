@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Sozial.Models
 {
@@ -20,6 +21,9 @@ namespace Sozial.Models
         [Display(Name = "Profile banner")]
         public string userBannerPic { get; set; }
 
+        /* help police */
+        public virtual ICollection<ApplicationUser> friends { get; set; }
+        /* help police */
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

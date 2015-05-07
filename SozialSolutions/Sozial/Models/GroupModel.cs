@@ -11,8 +11,11 @@ namespace SozialProject.Models
         [Key]
         private int groupId { get; set; }
 
-
-        private int creatorId { get; set; }
+        //foreign key for creatorID
+        //public int userID { get; set; }
+        //
+        //[ForeignKey("creatorID")]
+        private int creatorID { get; set; }
 
 
         [Required(ErrorMessage = "The group with no name already exists.")]
