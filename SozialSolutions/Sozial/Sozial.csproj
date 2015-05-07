@@ -183,7 +183,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GameRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
