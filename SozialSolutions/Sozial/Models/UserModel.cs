@@ -30,6 +30,10 @@ namespace SozialProject.Models
 
         public GameModel userGame { get; set; }
 
+        public int likeCounter { get; set; }
+
+        public bool isLiked { get; set; }
+
         //Laura is working on this and related files.
     }
 }
