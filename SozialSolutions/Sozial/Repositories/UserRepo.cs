@@ -9,5 +9,11 @@ namespace Sozial.Repositories
     public class UserRepo
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        public void Save()
+        {
+            //context.SaveChanges();
+        }
     }
+   
 }
