@@ -23,7 +23,7 @@ namespace Sozial.Controllers
         {
             this.db = new GameRepo(new ApplicationDbContext());
         }
-        /*
+       
         // GET: Game
         public ActionResult Index()
         {
@@ -135,6 +135,6 @@ namespace Sozial.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }*/
+        }
     }
 }
