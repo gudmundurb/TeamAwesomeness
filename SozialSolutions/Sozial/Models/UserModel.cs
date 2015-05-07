@@ -12,7 +12,7 @@ namespace SozialProject.Models
         public int userID { get; set; }
 
         //[Key]
-        //public string steamId { get; set; }
+        public string steamId { get; set; }
 
         [Required(ErrorMessage = "You must create an username")]
         [Display(Name = "Username")]
@@ -28,7 +28,7 @@ namespace SozialProject.Models
 
         public GroupModel userGroup { get; set; }
 
-        public GameModel userGames { get; set; }
+        public GameModel userGame { get; set; }
 
         //Laura is working on this and related files.
     }
