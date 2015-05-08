@@ -8,6 +8,10 @@ namespace Sozial.Models
 {
     public class CommentModel
     {
+        public CommentModel()
+        {
+            createdDate = DateTime.Now;
+        }
         //constructor
         public CommentModel (string ApplicationUser, int postID)
         {
@@ -22,7 +26,10 @@ namespace Sozial.Models
         public int postID { get; set; }
 
 
-        private DateTime? createdDate;
+        private DateTime createdDate { get; set; }
+    
+    
+/*
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
         public DateTime CreatedDate
         {
@@ -30,7 +37,7 @@ namespace Sozial.Models
             set { createdDate = value; }
         }
 
-
+*/
         [Required(ErrorMessage = "You cannot leave an empty comment, jees.")]
         [Display(Name = "Comment text")]
         public string commentText { get; set; }
