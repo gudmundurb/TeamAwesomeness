@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using Sozial.Models;
 
 namespace Sozial.Models
 {
@@ -24,6 +25,13 @@ namespace Sozial.Models
         /* help police */
         public virtual ICollection<ApplicationUser> friends { get; set; }
         /* help police */
+
+        /* posts and comments by this user.*/
+        public virtual ICollection<CommentModel> madeComments { get; set; }
+        public virtual ICollection<PostModel> madePosts { get; set; }
+        /* likes*/
+        public virtual ICollection<CommentModel> likedComments { get; set; }
+        public virtual ICollection<PostModel> likedPosts { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -46,9 +54,9 @@ namespace Sozial.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<SozialProject.Models.GameModel> GameModels { get; set; }
+        public System.Data.Entity.DbSet<Sozial.Models.GameModel> GameModels { get; set; }
 
-        public System.Data.Entity.DbSet<SozialProject.Models.PostModel> PostModels { get; set; }
+        public System.Data.Entity.DbSet<Sozial.Models.PostModel> PostModels { get; set; }
 
         public System.Data.Entity.DbSet<Sozial.Models.CommentModel> CommentModels { get; set; }
         /* ------------ dis has to be fixed
