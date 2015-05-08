@@ -1,18 +1,12 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-
 
 <div class="row">
     <div class="col-md-12">
-        <h3>Picture</h3>
-        <div class="about-each-col">
-            <p>
-                Picture
-            </p>
-        </div>
+        <img src="@Url.Content("~/Content/Images/about-cover-photo.png")" />
     </div>
+    <h2 class="about-indent">About</h2>
     <div class="col-md-8">
         <h3>Why we are hip</h3>
         <div class="about-each-col">
@@ -24,7 +18,7 @@
     <div class="col-md-4">
         <img src="@Url.Content("~/Content/Images/s-sozial-320.png")" />
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 float-right">
         <h3>Why we are hip 2</h3>
         <div class="about-each-col">
             <p>
@@ -32,7 +26,7 @@
             </p>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 float-left">
         <img src="@Url.Content("~/Content/Images/s-sozial-320.png")" />
     </div>
 </div>

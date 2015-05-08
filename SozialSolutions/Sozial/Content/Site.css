@@ -34,3 +34,15 @@ textarea {
     padding: 0px;
     margin: 0px;
 }
+
+.col-md-4.float-left {
+    float: left;
+    clear: left;
+}
+.col-md-8.float-right {
+  float: right;
+}
+
+.about-indent {
+    padding-left: 15px;
+}
