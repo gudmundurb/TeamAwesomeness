@@ -7,13 +7,13 @@ namespace Sozial.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class sdasd : IMigrationMetadata
+    public sealed partial class flefle : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sdasd));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(flefle));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505081524443_sdasd"; }
+            get { return "201505082229266_flefle"; }
         }
         
         string IMigrationMetadata.Source

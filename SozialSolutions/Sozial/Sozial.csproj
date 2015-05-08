@@ -172,9 +172,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505081524443_sdasd.cs" />
-    <Compile Include="Migrations\201505081524443_sdasd.Designer.cs">
-      <DependentUpon>201505081524443_sdasd.cs</DependentUpon>
+    <Compile Include="Migrations\201505082229266_flefle.cs" />
+    <Compile Include="Migrations\201505082229266_flefle.Designer.cs">
+      <DependentUpon>201505082229266_flefle.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -283,8 +283,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505081524443_sdasd.resx">
-      <DependentUpon>201505081524443_sdasd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505082229266_flefle.resx">
+      <DependentUpon>201505082229266_flefle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
