@@ -23,7 +23,7 @@ namespace SozialProject.Models
 
         [Required(ErrorMessage = "No text for a post eh... that is interesting 'post' I would say :) !")]
         [Display(Name = "Post Text")]
-        public string postText;
+        public string text { get; set; }
 
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
 
