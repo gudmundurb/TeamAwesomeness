@@ -46,7 +46,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "postID,userID,text,imagePath")] PostModel postModel)
+        public ActionResult Create([Bind(Include = "postID,userID,text,imageUrl")] PostModel postModel)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "postID,userID,text,imagePath")] PostModel postModel)
+        public ActionResult Edit([Bind(Include = "postID,userID,text,imageUrl")] PostModel postModel)
         {
             if (ModelState.IsValid)
             {
