@@ -27,7 +27,14 @@
                     <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <li>@Html.ActionLink("Game", "Index", "Game")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.Partial("_LoggedInPartial")
+                }
+                else
+                {
+                    @Html.Partial("_LoginPartial")
+                }               
             </div>
         </div>
     </div>
@@ -43,4 +50,5 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>
