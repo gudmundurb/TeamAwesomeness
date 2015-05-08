@@ -8,6 +8,13 @@ namespace SozialProject.Models
 {
     public class GroupModel
     {
+        GroupModel(string userId, string groupNm, string groupDescr)
+        {
+            creatorID = userId;
+            groupName = groupName;
+            groupDescription = groupDescr;
+        }
+
         [Key]
         private int groupId { get; set; }
 
@@ -15,7 +22,7 @@ namespace SozialProject.Models
         //public int userID { get; set; }
         //
         //[ForeignKey("creatorID")]
-        private int creatorID { get; set; }
+        private string creatorID { get; set; }
 
 
         [Required(ErrorMessage = "The group with no name already exists.")]
@@ -28,11 +35,11 @@ namespace SozialProject.Models
         public string groupDescription { get; set; }
 
         [Display(Name = "Group Picture")]
-        [Url]
+        [Url(ErrorMessage = "Please Insert a valid Url.")]
         public string groupPicture { get; set; }
 
         [Display(Name = "Group Banner")]
-        [Url]
+        [Url(ErrorMessage = "Please Insert a valid Url.")]
         public string groupBanner { get; set; }
 
         public virtual ICollection<ApplicationUser> Members { get; set; }
