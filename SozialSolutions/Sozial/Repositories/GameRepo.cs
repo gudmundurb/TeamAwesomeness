@@ -1,5 +1,4 @@
 ﻿using Sozial.Models;
-using SozialProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -37,7 +36,7 @@ namespace Sozial.Repositories
             db.GameModels.Remove(game);
         }
 
-        public void UpdateGame(SozialProject.Models.GameModel game)
+        public void UpdateGame(Sozial.Models.GameModel game)
         {
             db.Entry(game).State = EntityState.Modified;
         }

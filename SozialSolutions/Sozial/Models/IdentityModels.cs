@@ -54,9 +54,9 @@ namespace Sozial.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<SozialProject.Models.GameModel> GameModels { get; set; }
+        public System.Data.Entity.DbSet<Sozial.Models.GameModel> GameModels { get; set; }
 
-        public System.Data.Entity.DbSet<SozialProject.Models.PostModel> PostModels { get; set; }
+        public System.Data.Entity.DbSet<Sozial.Models.PostModel> PostModels { get; set; }
 
         public System.Data.Entity.DbSet<Sozial.Models.CommentModel> CommentModels { get; set; }
         /* ------------ dis has to be fixed
