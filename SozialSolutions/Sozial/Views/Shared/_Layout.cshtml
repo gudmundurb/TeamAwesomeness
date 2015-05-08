@@ -31,8 +31,12 @@
                 {
                     @Html.Partial("_LoggedInPartial")
                 }
+                else if(Request.RawUrl == "/Account/ExternalLoginCallback"){
+                    <h1>WORKS</h1>
+                }
                 else
                 {
+                    
                     @Html.Partial("_LoginPartial")
                 }               
             </div>
