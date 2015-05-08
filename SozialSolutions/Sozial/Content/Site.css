@@ -7,6 +7,14 @@
     background-color: #111;
 }
 
+a {
+    color: #617087;
+}
+
+a:hover, a:active {
+    color: #CCC9DC;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

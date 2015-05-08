@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <meta name="description" content="The description of my page" />
+    <meta name="description" content="Sozial - Where Gamers Connect." />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,20 +25,22 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    @if (Request.IsAuthenticated) { 
                     <li>@Html.ActionLink("Game", "Index", "Game")</li>
+                    }
                 </ul>
                 @if (Request.IsAuthenticated)
                 {
                     @Html.Partial("_LoggedInPartial")
                 }
-                else if(Request.RawUrl == "/Account/ExternalLoginCallback"){
+                else if (Request.RawUrl == "/Account/ExternalLoginCallback")
+                {
                     <h1>WORKS</h1>
                 }
                 else
                 {
-                    
                     @Html.Partial("_LoginPartial")
-                }               
+                }
             </div>
         </div>
     </div>

@@ -258,6 +258,7 @@
     <Content Include="Views\UserModels\Edit.cshtml" />
     <Content Include="Views\UserModels\Index.cshtml" />
     <Content Include="Views\Shared\_LoggedInPartial.cshtml" />
+    <Content Include="Views\Shared\_LoggedInLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
