@@ -1,0 +1,15 @@
+﻿@model Sozial.Models.LoginViewModel
+@using Microsoft.AspNet.Identity
+<div class="input-group">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "navbar-right", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+        </div>
+        <input type="submit" value="Log in" class="btn btn-default" />
+    }
+</div>

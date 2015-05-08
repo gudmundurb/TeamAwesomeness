@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SozialProject.Models.GameModel>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nameOfGame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aboutGame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gameCompany)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isTopTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.genre)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameOfGame)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aboutGame)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gameCompany)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isTopTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.genre)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.gameID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.gameID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.gameID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <!--
+        I'd like to do a steam api call for a json object list containing all the games from them.
+    -->
