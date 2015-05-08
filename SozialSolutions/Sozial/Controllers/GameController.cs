@@ -26,6 +26,10 @@ namespace Sozial.Controllers
         // GET: Game
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("Account/Login");
+            }
             return View(db.GetGame());
         }
 
