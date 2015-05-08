@@ -192,9 +192,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\07t2mb2.gif" />
     <Content Include="Content\Images\about-cover-photo.png" />
     <Content Include="Content\Images\frontpage-cover-photo.png" />
-    <Content Include="Content\Images\s-sozial-320 %281%29.png" />
     <Content Include="Content\Images\tumblr_static_large.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
