@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Sozial.Models;
-namespace SozialProject.Models
+namespace Sozial.Models
 {
     public class PostModel
     {

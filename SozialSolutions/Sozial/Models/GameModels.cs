@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace SozialProject.Models
+namespace Sozial.Models
 {
     public class GameModel
     {

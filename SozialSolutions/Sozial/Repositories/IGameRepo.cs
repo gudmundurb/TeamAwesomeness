@@ -1,4 +1,4 @@
-﻿using SozialProject.Models;
+﻿using Sozial.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

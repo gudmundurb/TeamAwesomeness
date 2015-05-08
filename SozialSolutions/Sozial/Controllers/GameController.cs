@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sozial.Models;
-using SozialProject.Models;
 using Sozial.Repositories;
 
 namespace Sozial.Controllers
