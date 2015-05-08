@@ -23,7 +23,7 @@ namespace Sozial.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
-        public DateTime createDate { get; set; }
+        public DateTime showDate { get; set; }
 
 
         [Required(ErrorMessage = "You cannot leave an empty comment, jees.")]

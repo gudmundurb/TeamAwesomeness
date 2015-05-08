@@ -28,6 +28,8 @@ namespace SozialProject.Models
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
 
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
-        public DateTime createDate { get; set; }
+        public DateTime showDate { get; set; }
+
+        public string imageFile { get; set; }
     }
 }
