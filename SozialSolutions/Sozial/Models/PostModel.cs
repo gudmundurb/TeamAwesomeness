@@ -4,20 +4,20 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using Sozial.Models;
-namespace SozialProject.Models
+
+namespace Sozial.Models
 {
     public class PostModel
     {
         public PostModel()
         {
-            //userID = ;
-
+            createdDate = DateTime.Now;
         }
         //Constructor with a user id
         public PostModel(string ApplicationUser)
         {
             userID = ApplicationUser;
-
+            createdDate = DateTime.Now;
         }
 
         [Key]
@@ -32,15 +32,15 @@ namespace SozialProject.Models
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
 
 
-        private DateTime? createdDate;
-
+        private DateTime createdDate { get; set; }
+        /*
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
         public DateTime CreatedDate
         {
             get { return createdDate ?? DateTime.UtcNow; }
             set { createdDate = value; }
         }
-
-        public string imageFile { get; set; }
+        */
+        public string imagePath { get; set; }
     }
 }
