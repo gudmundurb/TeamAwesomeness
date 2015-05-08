@@ -8,17 +8,26 @@ namespace SozialProject.Models
 {
     public class PostModel
     {
+
+        //Constructor with a user id
+        public PostModel(string ApplicationUser)
+        {
+            userID = ApplicationUser;
+
+        }
+
         [Key]
         public int postID { get; set; }
+    
+        public string userID { get; set; } // the user that made the comment.
 
-        
-        public int userID { get; set; } // the user that made the comment.
-
-
-        [Required(ErrorMessage = "You cant leave an empty comment. Have some manners!")]
+        [Required(ErrorMessage = "No text for a post eh... that is interesting 'post' I would say :) !")]
         [Display(Name = "Post Text")]
         public string postText;
 
-        public virtual ICollection<CommentModel> comments { get; set; }
+        public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
+
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
+        public DateTime createDate { get; set; }
     }
 }
