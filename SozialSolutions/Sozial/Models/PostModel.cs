@@ -16,6 +16,7 @@ namespace Sozial.Models
         //Constructor with a user id
         public PostModel(string text)
         {
+            this.userID = userID;
             this.text = text;
             createdDate = DateTime.Now;
         }

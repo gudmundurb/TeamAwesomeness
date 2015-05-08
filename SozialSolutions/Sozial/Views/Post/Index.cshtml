@@ -38,6 +38,7 @@
             @Html.ActionLink("Edit", "Edit", new { id=item.postID }) |
             @Html.ActionLink("Details", "Details", new { id=item.postID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.postID })
+            @Html.ActionLink("Reply", "../CommentController/Create", new {id = item.postID })
         </td>
     </tr>
 }
