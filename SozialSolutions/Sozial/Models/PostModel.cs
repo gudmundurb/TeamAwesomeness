@@ -14,9 +14,9 @@ namespace Sozial.Models
             createdDate = DateTime.Now;
         }
         //Constructor with a user id
-        public PostModel(string ApplicationUser)
+        public PostModel(string text)
         {
-            userID = ApplicationUser;
+            this.text = text;
             createdDate = DateTime.Now;
         }
 
@@ -41,6 +41,9 @@ namespace Sozial.Models
             set { createdDate = value; }
         }
         */
-        public string imagePath { get; set; }
+        [Url(ErrorMessage="Has to be a link on the web")]
+        public string imageUrl { get; set; }
+
+        public int likeCount { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Sozial.Models
             createdDate = DateTime.Now;
         }
         //constructor
-        public CommentModel (string ApplicationUser, int postID)
+        public CommentModel (string text, int postID)
         {
-            authorID = ApplicationUser;
             this.postID = postID;
+            commentText = text;
         }
         [Key]
         public int commentID { get; set; }
@@ -38,7 +38,7 @@ namespace Sozial.Models
         }
 
 */
-        [Required(ErrorMessage = "You cannot leave an empty comment, jees.")]
+        [Required(ErrorMessage = "You cannot leave an empty comment!")]
         [Display(Name = "Comment text")]
         public string commentText { get; set; }
     }
