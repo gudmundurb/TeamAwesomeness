@@ -13,7 +13,7 @@ namespace Sozial.Controllers
 {
     public class GameController : Controller
     {
-        private IGameRepo db = null; //new IGameRepo();
+        private IGameRepo db =  null; //new IGameRepo();
         
         //private ApplicationDbContext db = new ApplicationDbContext();
         //private IGameRepo db;

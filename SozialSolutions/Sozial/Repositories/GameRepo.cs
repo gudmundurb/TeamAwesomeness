@@ -9,7 +9,7 @@ namespace Sozial.Repositories
 {
     public class GameRepo : IGameRepo, IDisposable
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = null; //new ApplicationDbContext();
         
         public GameRepo(ApplicationDbContext db)
         {
