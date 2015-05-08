@@ -8,7 +8,11 @@ namespace SozialProject.Models
 {
     public class PostModel
     {
+        public PostModel()
+        {
+            //userID = ;
 
+        }
         //Constructor with a user id
         public PostModel(string ApplicationUser)
         {
@@ -28,7 +32,7 @@ namespace SozialProject.Models
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
 
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
-        public DateTime showDate { get; set; }
+        public DateTime createDate { get; set; }
 
         public string imageFile { get; set; }
     }
