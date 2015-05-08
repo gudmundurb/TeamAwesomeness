@@ -165,13 +165,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CommentModelsController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505081524443_sdasd.cs" />
+    <Compile Include="Migrations\201505081524443_sdasd.Designer.cs">
+      <DependentUpon>201505081524443_sdasd.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="Models\GameModels.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +200,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Compile Include="Models\ImageViewModel.cs" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -257,16 +261,6 @@
     <Content Include="Views\UserModels\Edit.cshtml" />
     <Content Include="Views\UserModels\Index.cshtml" />
     <Content Include="Views\Shared\_LoggedInPartial.cshtml" />
-    <Content Include="Views\Post\Create.cshtml" />
-    <Content Include="Views\Post\Delete.cshtml" />
-    <Content Include="Views\Post\Details.cshtml" />
-    <Content Include="Views\Post\Edit.cshtml" />
-    <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\CommentModels\Create.cshtml" />
-    <Content Include="Views\CommentModels\Delete.cshtml" />
-    <Content Include="Views\CommentModels\Details.cshtml" />
-    <Content Include="Views\CommentModels\Edit.cshtml" />
-    <Content Include="Views\CommentModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -277,6 +271,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505081524443_sdasd.resx">
+      <DependentUpon>201505081524443_sdasd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

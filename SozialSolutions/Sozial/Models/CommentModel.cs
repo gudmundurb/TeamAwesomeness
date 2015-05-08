@@ -21,9 +21,14 @@ namespace Sozial.Models
 
         public int postID { get; set; }
 
-        [DataType(DataType.Date)]
+
+        private DateTime? createdDate;
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
-        public DateTime showDate { get; set; }
+        public DateTime CreatedDate
+        {
+            get { return createdDate ?? DateTime.UtcNow; }
+            set { createdDate = value; }
+        }
 
 
         [Required(ErrorMessage = "You cannot leave an empty comment, jees.")]
