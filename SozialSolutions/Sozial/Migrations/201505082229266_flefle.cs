@@ -3,7 +3,7 @@ namespace Sozial.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class sdasd : DbMigration
+    public partial class flefle : DbMigration
     {
         public override void Up()
         {
@@ -14,12 +14,17 @@ namespace Sozial.Migrations
                         commentID = c.Int(nullable: false, identity: true),
                         authorID = c.String(),
                         postID = c.Int(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
                         commentText = c.String(nullable: false),
+                        ApplicationUser_Id = c.String(maxLength: 128),
+                        ApplicationUser_Id1 = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.commentID)
                 .ForeignKey("dbo.PostModels", t => t.postID, cascadeDelete: true)
-                .Index(t => t.postID);
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id1)
+                .Index(t => t.postID)
+                .Index(t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id1);
             
             CreateTable(
                 "dbo.GameModels",
@@ -42,10 +47,16 @@ namespace Sozial.Migrations
                         postID = c.Int(nullable: false, identity: true),
                         userID = c.String(),
                         text = c.String(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        imageFile = c.String(),
+                        imageUrl = c.String(),
+                        likeCount = c.Int(nullable: false),
+                        ApplicationUser_Id = c.String(maxLength: 128),
+                        ApplicationUser_Id1 = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.postID);
+                .PrimaryKey(t => t.postID)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id1)
+                .Index(t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id1);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -126,7 +137,11 @@ namespace Sozial.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.PostModels", "ApplicationUser_Id1", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CommentModels", "ApplicationUser_Id1", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.PostModels", "ApplicationUser_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CommentModels", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUsers", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
@@ -138,6 +153,10 @@ namespace Sozial.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.PostModels", new[] { "ApplicationUser_Id1" });
+            DropIndex("dbo.PostModels", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.CommentModels", new[] { "ApplicationUser_Id1" });
+            DropIndex("dbo.CommentModels", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.CommentModels", new[] { "postID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
