@@ -40,6 +40,7 @@ namespace Sozial.Models
 */
         [Required(ErrorMessage = "You cannot leave an empty comment!")]
         [Display(Name = "Comment text")]
+        [DataType(DataType.MultilineText)]
         public string commentText { get; set; }
     }
 }
