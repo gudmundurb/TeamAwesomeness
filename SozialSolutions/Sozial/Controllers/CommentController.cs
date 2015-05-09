@@ -50,7 +50,8 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PostModels.Add(CommentModel.commentID);
+                commentModel.authorID = User.Identity.Name;
+                commentModel.postID = Int32.Parse(Request.Url.Segments[3]);
                 db.CommentModels.Add(commentModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
