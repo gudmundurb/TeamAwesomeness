@@ -55,7 +55,6 @@ namespace Sozial.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(postModel);
         }
 
