@@ -60,10 +60,16 @@ textarea {
     padding-left: 15px;
 }
 
+
+a.nav_logo {
+
+    max-width: 70%;
+}
+
 .custom-container {
 
     margin: 0 auto;
-    background-color: black;
+    background-color: #000;
     max-width: 2000px;
     width: 100%;
 }
@@ -135,13 +141,21 @@ textarea {
  
 }
 
-a.nav_logo {
+.steam_button {
 
-    max-width: 70%;
+    width: 114px;
+    height: 43px;
+    background-image: url(Images/sits_large_noborder.png);
+    background-repeat: no-repeat; 
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    border: none;
 }
 
-.myTextArea {
-    width: 400px;
-    min-width: 50%;
-    max-width: 70%;
+.h4-adjustments {
+    margin-bottom: 50px;
+}
+.vertical_line 
+{
+    border-right: thin solid #ffffff;
 }
