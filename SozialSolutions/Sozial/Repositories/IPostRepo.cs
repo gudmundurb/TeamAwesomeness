@@ -12,6 +12,6 @@ namespace Sozial.Repositories
         void InsertGame(GameModel game);
         void DeleteGame(int gameID);
         void UpdateGame(GameModel game);
-        void SaveGame();
+        void SaveGame(); // <- should each of the above functions not just call db.savechanges();
     }
 }
