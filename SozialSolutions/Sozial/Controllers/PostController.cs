@@ -7,17 +7,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sozial.Models;
+using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
     public class PostController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private IPostRepo postRepo =  null; //new IGameRepo();
+        
+        public PostController()
+        {
+            this.postRepo = new PostRepo(new ApplicationDbContext());
+        }
+
+        //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Post
         public ActionResult Index()
         {
-            return View(db.PostModels.ToList());
+            return View(postRepo.GetPost());
         }
 
         // GET: Post/Details/5
@@ -27,7 +35,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostModel postModel = db.PostModels.Find(id);
+            PostModel postModel = postRepo.GetPostByID(id);
             if (postModel == null)
             {
                 return HttpNotFound();
@@ -51,8 +59,8 @@ namespace Sozial.Controllers
             if (ModelState.IsValid)
             {
                 postModel.userID = User.Identity.Name;
-                db.PostModels.Add(postModel);
-                db.SaveChanges();
+                postRepo.InsertPost(postModel);
+                postRepo.SavePost();
                 return RedirectToAction("Index");
             }
             return View(postModel);
@@ -65,7 +73,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostModel postModel = db.PostModels.Find(id);
+            PostModel postModel = postRepo.GetPostByID(id);
             if (postModel == null)
             {
                 return HttpNotFound();
@@ -82,8 +90,9 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(postModel).State = EntityState.Modified;
-                db.SaveChanges();
+                postRepo.UpdatePost(postModel);
+
+                postRepo.SavePost();
                 return RedirectToAction("Index");
             }
             return View(postModel);
@@ -96,7 +105,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostModel postModel = db.PostModels.Find(id);
+            PostModel postModel = postRepo.GetPostByID(id);
             if (postModel == null)
             {
                 return HttpNotFound();
@@ -109,9 +118,9 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PostModel postModel = db.PostModels.Find(id);
-            db.PostModels.Remove(postModel);
-            db.SaveChanges();
+            PostModel postModel = postRepo.GetPostByID(id);
+            postRepo.DeletePost(id);
+            postRepo.SavePost();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +128,7 @@ namespace Sozial.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                postRepo.Dispose();
             }
             base.Dispose(disposing);
         }
