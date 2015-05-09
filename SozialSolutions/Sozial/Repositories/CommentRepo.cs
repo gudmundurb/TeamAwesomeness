@@ -23,8 +23,8 @@ namespace Sozial.Repositories
         public IEnumerable<CommentModel> getComments(int postID)
         {
             IEnumerable<CommentModel> coll = from comments in db.CommentModels
-                                              where comments.postID == postID
-                                              select comments;
+                                             where comments.postID == postID
+                                             select comments;
             return coll;
         }
 
@@ -40,7 +40,7 @@ namespace Sozial.Repositories
             PostModel post = db.PostModels.Find(newComment.postID);
             if (post == null)
             {
-                throw new Exception("Post returns null. post was either recently removed or there's an error. Sorry",
+                throw new Exception("Post returns null. post was either recently removed or there's an error. Sorry *-*  .",
                     new ArgumentNullException());
             }
             post.comments.Add(newComment);
