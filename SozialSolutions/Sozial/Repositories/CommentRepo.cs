@@ -32,13 +32,16 @@ namespace Sozial.Repositories
 
         public void insertComment(CommentModel newComment)
         {
-            /* TODO: IMPLEMENT BETTER TO WORK WITH POSTREPO
-            PostModel post = (from npost in db.PostModels
-                              where npost.postID == newComment.postID
-                              select npost).FirstOrDefault();
+            ///* TODO: IMPLEMENT BETTER TO WORK WITH POSTREPO
+            PostModel post = db.PostModels.Find(newComment.postID);
+            if (post == null) { 
+                throw new Exception("Post returns null. post was either recently removed or there's an error. Sorry" ,
+                    new ArgumentNullException() );  
+            }
             post.comments.Add(newComment);
-            PostRepo postrepo = new PostRepo();
-            postrepo.UpdateGame(post);*/
+            PostRepo postrepo = new PostRepo(db);
+            postrepo.UpdatePost(post);
+
             db.CommentModels.Add(newComment);
             db.SaveChanges();
         }
