@@ -29,6 +29,8 @@ namespace Sozial.Models
         public string genre { get; set; }
 
         [Url(ErrorMessage = "Has to be a link on the web")]
+        [Display(Name = "Image for the game: ")]
+
         public string imageUrl { get; set; }
         //Don´t Touch mystuff
     }
