@@ -38,11 +38,13 @@ namespace Sozial.Repositories
                 throw new Exception("Post returns null. post was either recently removed or there's an error. Sorry" ,
                     new ArgumentNullException() );  
             }
+            db.CommentModels.Add(newComment);
+
             post.comments.Add(newComment);
             PostRepo postrepo = new PostRepo(db);
             postrepo.UpdatePost(post);
 
-            db.CommentModels.Add(newComment);
+            
             db.SaveChanges();
         }
 
