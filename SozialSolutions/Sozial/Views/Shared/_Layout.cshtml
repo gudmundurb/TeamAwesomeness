@@ -36,13 +36,21 @@
                 }
                 else if (Request.RawUrl == "/Account/ExternalLoginCallback")
                 {
-                    <h1>WORKS</h1>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="@Url.Action("Login", "Account")">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                <span>Cancel</span>
+                            </a>
+                        </li>
+                    </ul>
                 }
-                else
+                else if(Request.RawUrl != "/Account/Login")
                 {
                     @Html.Partial("_LoginPartial")
                 }
             </div>
+
         </div>
     </div>
     @if (Request.RawUrl == "/")
