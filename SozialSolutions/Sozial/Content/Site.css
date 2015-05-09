@@ -63,8 +63,15 @@ textarea {
    bottom: 0;
 }
 .logo_motto_frontpage {
-    z-index: 100;
+
+    z-index: 30;
     position: absolute;
-    bottom: 30%;
-    right: 30px;
+    bottom: 25%;
+    left: 65%;
+
+}
+.logo_motto_frontpage img {
+
+
+    right: 0;
 }
