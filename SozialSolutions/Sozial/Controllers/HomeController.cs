@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Sozial.Controllers
+
 {
     public class HomeController : Controller
     {

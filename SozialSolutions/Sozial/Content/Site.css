@@ -136,11 +136,6 @@ textarea {
 }
 
 a.nav_logo {
-    background: url('Images/sozial_logo.png') no-repeat top left;
-    display: block;
-    margin-top: 13px;
-    margin-right: 10px;
-    width: 100px;
-    height: 24px;
-    text-indent: -9999px; /* hides the link text */
+
+    max-width: 70%;
 }

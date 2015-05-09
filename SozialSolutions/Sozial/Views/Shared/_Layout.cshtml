@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Sozial.is", "Index", "Home", new { area = "" }, new { @class = "nav_logo" })
+                @Html.Raw(@Ajax.ActionLink("Sozial.is", "Index", "Home", new AjaxOptions { UpdateTargetId = "dvTest" }).ToHtmlString().Replace("Sozial.is", "<img src=\"/Content/Images/sozial_logo.png\" class=\"navbar-brand\"\"nav_logo\"  ... />"))
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
