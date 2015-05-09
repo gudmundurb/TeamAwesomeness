@@ -50,6 +50,7 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
+                postModel.userID = User.Identity.Name;
                 db.PostModels.Add(postModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
