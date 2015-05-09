@@ -181,8 +181,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CommentRepo.cs" />
     <Compile Include="Repositories\GameRepo.cs" />
+    <Compile Include="Repositories\ICommentRepo.cs" />
     <Compile Include="Repositories\IGameRepo.cs" />
+    <Compile Include="Repositories\IPostRepo.cs" />
+    <Compile Include="Repositories\PostRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
