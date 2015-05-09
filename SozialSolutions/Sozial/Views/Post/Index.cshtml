@@ -40,6 +40,21 @@
             @Html.ActionLink("Delete", "Delete", new { id=item.postID }) |
             @Html.ActionLink("Reply", "../Comment/Create", new { id = item.postID })
         </td>
+        
+            @foreach (var comm in item.comments)
+            {
+                    
+                    <tr>
+                        <td>
+                            <p> NAME :</p>
+                            @Html.DisplayFor(modelItem => comm.authorID)
+                        </td>
+                        <td>
+                            <p> TEXT :</p>
+                            @Html.DisplayFor(modelItem => comm.commentText)
+                        </td>
+                    </tr>
+            }
     </tr>
 }
 
