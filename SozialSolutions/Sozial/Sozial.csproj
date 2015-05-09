@@ -191,7 +191,12 @@
     <Content Include="Content\Images\07t2mb2.gif" />
     <Content Include="Content\Images\about-cover-photo.png" />
     <Content Include="Content\Images\bg_greener.gif" />
+    <Content Include="Content\Images\frontBanner1.png" />
+    <Content Include="Content\Images\frontBanner2.png" />
+    <Content Include="Content\Images\frontBanner3.png" />
+    <Content Include="Content\Images\frontBanner4.png" />
     <Content Include="Content\Images\frontpage-cover-photo.png" />
+    <Content Include="Content\Images\logo_motto.png" />
     <Content Include="Content\Images\tumblr_static_large.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

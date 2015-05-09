@@ -58,3 +58,13 @@ textarea {
 .about-indent {
     padding-left: 15px;
 }
+
+.carousel-indicators {    
+   bottom: 0;
+}
+.logo_motto_frontpage {
+    z-index: 100;
+    position: absolute;
+    bottom: 30%;
+    right: 30px;
+}
