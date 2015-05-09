@@ -139,3 +139,9 @@ a.nav_logo {
 
     max-width: 70%;
 }
+
+.myTextArea {
+    width: 400px;
+    min-width: 50%;
+    max-width: 70%;
+}
