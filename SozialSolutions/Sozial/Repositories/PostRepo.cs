@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Sozial.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -10,37 +12,37 @@ namespace Sozial.Repositories
 
         private ApplicationDbContext db = null; //new ApplicationDbContext();
 
-        public GameRepo(ApplicationDbContext db)
+        public PostRepo(ApplicationDbContext db)
         {
             this.db = db;
         }
-        public IEnumerable<GameModel> GetGame()
+        public IEnumerable<PostModel> GetPost()
         {
-            return db.GameModels.ToList();
+            return db.PostModels.ToList();
         }
 
-        public GameModel GetGameByID(int? gameID)
+        public PostModel GetPostByID(int? postID)
         {
-            return db.GameModels.Find(gameID);
+            return db.PostModels.Find(postID);
         }
 
-        public void InsertGame(GameModel game)
+        public void InsertPost(PostModel post)
         {
-            db.GameModels.Add(game);
+            db.PostModels.Add(post);
         }
 
-        public void DeleteGame(int gameID)
+        public void DeletePost(int postID)
         {
-            GameModel game = db.GameModels.Find(gameID);
-            db.GameModels.Remove(game);
+            PostModel post = db.PostModels.Find(postID);
+            db.PostModels.Remove(post);
         }
 
-        public void UpdateGame(Sozial.Models.GameModel game)
+        public void UpdatePost(Sozial.Models.PostModel post)
         {
-            db.Entry(game).State = EntityState.Modified;
+            db.Entry(post).State = EntityState.Modified;
         }
 
-        public void SaveGame()
+        public void SavePost()
         {
             db.SaveChanges();
         }
