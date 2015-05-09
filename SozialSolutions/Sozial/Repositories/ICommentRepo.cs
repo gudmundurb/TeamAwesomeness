@@ -6,7 +6,7 @@ using Sozial.Models;
 
 namespace Sozial.Repositories
 {
-    public class ICommentRepo
+    public interface ICommentRepo : IDisposable
     {
         /*getters. */
         IEnumerable<CommentModel> getComments();
