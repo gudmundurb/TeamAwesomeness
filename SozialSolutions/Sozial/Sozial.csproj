@@ -196,7 +196,12 @@
     <Content Include="Content\Images\frontBanner3.png" />
     <Content Include="Content\Images\frontBanner4.png" />
     <Content Include="Content\Images\frontpage-cover-photo.png" />
+    <Content Include="Content\Images\halfPageBanner1.png" />
+    <Content Include="Content\Images\halfPageBanner2.png" />
+    <Content Include="Content\Images\halfPageBanner3.png" />
+    <Content Include="Content\Images\halfPageBanner4.png" />
     <Content Include="Content\Images\logo_motto.png" />
+    <Content Include="Content\Images\sozial_logo.png" />
     <Content Include="Content\Images\tumblr_static_large.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

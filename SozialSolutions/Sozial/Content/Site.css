@@ -5,6 +5,7 @@
     background-repeat: repeat;
     background-image: url('Images/bg_greener.gif');
     background-color: #242b2a;
+    height: 100%;
 }
 
 a {
@@ -59,19 +60,77 @@ textarea {
     padding-left: 15px;
 }
 
-.carousel-indicators {    
-   bottom: 0;
+.custom-container {
+
+    margin: 0 auto;
+    background-color: black;
+    max-width: 2000px;
+    width: 100%;
 }
+
+/*OVERWRITES FOR THE BOOSTRAP CAROUSEL*/
+
+.carousel-inner > .item {
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  position: absolute;
+  z-index: 0;
+  -webkit-transition: none;
+       -o-transition: none;
+          transition: none;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+          transform: translate3d(0, 0, 0) !important;
+}
+.carousel-inner > .item:first-of-type {
+  position: relative;
+}
+.carousel-inner > .active {
+  opacity: 1;
+  z-index: 3;
+}
+.carousel-inner > .next.left,
+.carousel-inner > .prev.right {
+  -webkit-transition: opacity 0.8s ease-in-out;
+       -o-transition: opacity 0.8s ease-in-out;
+          transition: opacity 0.8s ease-in-out;
+  opacity: 1;
+  left: 0;
+  z-index: 2;
+}
+.carousel-inner > .active.left,
+.carousel-inner > .active.right {
+  z-index: 1;
+}
+.carousel-control {
+  z-index: 4;
+}
+
+/*----------------------------*/
+
 .logo_motto_frontpage {
 
     z-index: 30;
     position: absolute;
     bottom: 25%;
-    left: 65%;
-
+    right: 45px;
+    width: 100%;
+ 
 }
+
 .logo_motto_frontpage img {
 
+    bottom: 25%;
+    right: 45px;
+    float: right;
+    max-width: 20%;
+    min-width: 10%;
+ 
+}
+.logo_motto_frontpage img::after {
 
-    right: 0;
+    clear: both;
+ 
 }
