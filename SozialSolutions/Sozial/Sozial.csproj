@@ -175,6 +175,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\FrontPageViewModel.cs" />
     <Compile Include="Models\GameModels.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
