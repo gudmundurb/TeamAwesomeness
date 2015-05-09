@@ -14,10 +14,12 @@ namespace Sozial.Controllers
     public class PostController : Controller
     {
         private IPostRepo postRepo =  null; //new IGameRepo();
+        private ICommentRepo commentRepo = null;
         
         public PostController()
         {
             this.postRepo = new PostRepo(new ApplicationDbContext());
+            this.commentRepo = new CommentRepo(new ApplicationDbContext());
         }
 
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -25,7 +27,17 @@ namespace Sozial.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            return View(postRepo.GetPost());
+            
+            IEnumerable<PostModel> postList = postRepo.GetPost();
+
+            foreach (PostModel post in postList)
+            {
+                IEnumerable<CommentModel> comments = commentRepo.getComments(post.postID);
+                post.comments = comments.ToList();
+                
+            }
+            
+            return View( postList );
         }
 
         // GET: Post/Details/5
