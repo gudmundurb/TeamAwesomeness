@@ -52,8 +52,8 @@
                     @Html.DisplayFor(modelItem => item.genre)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.imageUrl)
-                </td>
+                    <img src="@item.imageUrl" />
+                    @Html.DisplayFor(modelItem => item.imageUrl)></td>
 
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.gameID }) |
