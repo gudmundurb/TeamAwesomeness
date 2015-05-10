@@ -65,8 +65,6 @@ namespace Sozial.Controllers
             if (ModelState.IsValid)
             {
                 db.InsertGame(gameModel);
-                //db.SaveChanges();
-                db.SaveGame();
                 return RedirectToAction("Index");
             }
 
@@ -98,9 +96,7 @@ namespace Sozial.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(gameModel).State = EntityState.Modified;
-               // db.SaveChanges();
                 db.UpdateGame(gameModel);
-                db.SaveGame();
                 return RedirectToAction("Index");
             }
             return View(gameModel);
@@ -127,7 +123,6 @@ namespace Sozial.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             db.DeleteGame(id);
-            db.SaveGame();
             return RedirectToAction("Index");
         }
 
