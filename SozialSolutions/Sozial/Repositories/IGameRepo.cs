@@ -14,6 +14,5 @@ namespace Sozial.Repositories
         void InsertGame(GameModel game);
         void DeleteGame(int gameID);
         void UpdateGame(GameModel game);
-        void SaveGame();
     }
 }

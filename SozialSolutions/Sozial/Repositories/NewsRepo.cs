@@ -1,50 +1,50 @@
-﻿using Sozial.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using Sozial.Models;
 
 namespace Sozial.Repositories
 {
-    public class GameRepo : IGameRepo, IDisposable
+    public class NewsRepo : INewsRepo, IDisposable
     {
         private ApplicationDbContext db = null; //new ApplicationDbContext();
-        
-        public GameRepo(ApplicationDbContext db)
+
+        public NewsRepo(ApplicationDbContext db)
         {
             this.db = db;
         }
-        public IEnumerable<GameModel> GetGame()
+        public IEnumerable<NewsModel> GetNews()
         {
-            return db.GameModels.ToList();
+            return db.NewsModels.ToList();
         }
 
-        public GameModel GetGameByID(int? gameID)
+        public NewsModel GetNewsByID(int? newsID)
         {
-            return db.GameModels.Find(gameID);
+            return db.NewsModels.Find(newsID);
         }
 
-        public void InsertGame(GameModel game)
+        public void InsertNews(NewsModel news)
         {
-            db.GameModels.Add(game);
+            db.NewsModels.Add(news);
+        }
+
+        public void DeleteNews(int newsID)
+        {
+            NewsModel news = db.NewsModels.Find(newsID);
+            db.NewsModels.Remove(news);
+        }
+
+        public void UpdateNews(NewsModel news)
+        {
+            db.Entry(news).State = EntityState.Modified;
+        }
+
+        public void SaveNews()
+        {
             db.SaveChanges();
-
-        }
-
-        public void DeleteGame(int gameID)
-        {
-            GameModel game = db.GameModels.Find(gameID);
-            db.GameModels.Remove(game);
-            db.SaveChanges();
-
-        }
-
-        public void UpdateGame(Sozial.Models.GameModel game)
-        {
-            db.Entry(game).State = EntityState.Modified;
-            db.SaveChanges();
-
         }
 
         private bool disposed = false;

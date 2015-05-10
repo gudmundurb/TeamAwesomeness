@@ -7,122 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Sozial.Models;
-using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
-    public class GameController : Controller
+    public class GroupController : Controller
     {
-        private IGameRepo db =  null; //new IGameRepo();
-        
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        //private IGameRepo db;
-        
-        public GameController()
-        {
-            this.db = new GameRepo(new ApplicationDbContext());
-        }
-       
-        // GET: Game
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: Group
         public ActionResult Index()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return Redirect("Account/Login");
-            }
-            return View(db.GetGame());
+            return View(db.GroupModels.ToList());
         }
 
-        // GET: Game/Details/5
+        // GET: Group/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //GameModel gameModel = db.GameModels.Find(id);
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            GroupModel groupModel = db.GroupModels.Find(id);
+            if (groupModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(groupModel);
         }
 
-        // GET: Game/Create
+        // GET: Group/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Game/Create
+        // POST: Group/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre, imageUrl")] GameModel gameModel)
+        public ActionResult Create([Bind(Include = "groupID,likeCount,groupName,groupDescription,groupPicture,groupBanner")] GroupModel groupModel)
         {
             if (ModelState.IsValid)
             {
-                db.InsertGame(gameModel);
+                db.GroupModels.Add(groupModel);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(gameModel);
+            return View(groupModel);
         }
 
-        // GET: Game/Edit/5
+        // GET: Group/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            GroupModel groupModel = db.GroupModels.Find(id);
+            if (groupModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(groupModel);
         }
 
-        // POST: Game/Edit/5
+        // POST: Group/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre")] GameModel gameModel)
+        public ActionResult Edit([Bind(Include = "groupID,likeCount,groupName,groupDescription,groupPicture,groupBanner")] GroupModel groupModel)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(gameModel).State = EntityState.Modified;
-                db.UpdateGame(gameModel);
+                db.Entry(groupModel).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(gameModel);
+            return View(groupModel);
         }
 
-        // GET: Game/Delete/5
+        // GET: Group/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            GroupModel groupModel = db.GroupModels.Find(id);
+            if (groupModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(groupModel);
         }
 
-        // POST: Game/Delete/5
+        // POST: Group/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.DeleteGame(id);
+            GroupModel groupModel = db.GroupModels.Find(id);
+            db.GroupModels.Remove(groupModel);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

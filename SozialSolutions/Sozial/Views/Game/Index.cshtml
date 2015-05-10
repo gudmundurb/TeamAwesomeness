@@ -3,106 +3,63 @@
 @{
     ViewBag.Title = "All Games";
 }
-
-<h2>Games</h2>
-<hr/>
 <div class="container">
     <div class="row">
-        <ul class="thumbnails">
+        <div class="well">
+            <h2 class="title-adjustments">Games</h2>
+            <hr/ >
             <p>
                 @Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" })
             </p>
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        @if (String.IsNullOrEmpty(item.imageUrl))
-                        {
-                            <img src="http://placehold.it/320x200" alt="placeholder" class="img-responsive" />
-                        }
-                        else
-                        {
-                            <img src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.nameOfGame)" />
-                            <!--@Html.DisplayFor(modelItem => item.imageUrl)-->
-                        }
-                        <div class="caption">
-                            <h3>@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                    <a href="@Url.Action("Details","Game", new { id = item.gameID })" class="list-group-item active">
+
+                        <div class="media col-md-3">
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.imageUrl))
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                }
+                                else
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.nameOfGame)" />
+                                }
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
-                            <p>@Html.DisplayFor(modelItem => item.aboutGame)</p>
-                            <p>
-                                @Html.DisplayFor(modelItem => item.isTopTen)
-                                @Html.DisplayNameFor(model => model.isTopTen)                            
-                            </p>
-                            <p align="center">
-                                @Html.ActionLink("Details", "Details", new { id = item.gameID }, new { @class = "btn btn-default btn-block" })
-                                @Html.ActionLink("Edit", "Edit", new { id = item.gameID }, new { @class = "btn btn-default btn-block" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.gameID }, new { @class = "btn btn-danger btn-block" })
+                            <p class="list-group-item-text">
+                                @Html.DisplayFor(modelItem => item.aboutGame)
                             </p>
                         </div>
-                </div>
+                        <div class="col-md-3 text-center">
+                            <h2> 14240 <small> votes </small></h2>
+                            <button type="button" class="btn btn-default btn-lg btn-block"> Vote Now! </button>
+                            <div class="stars">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </div>
+                            <p> @Html.DisplayFor(modelItem => item.isTopTen)
+                            @Html.DisplayNameFor(model => model.isTopTen)</p>
+                        </div>
+                    </a>
+                }
             </div>
-            }
-        </ul>
+        </div>
     </div>
 </div>
-<!--<tr>
-    <th>
-        @Html.DisplayNameFor(model => model.nameOfGame)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.aboutGame)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.gameCompany)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.isTopTen)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.genre)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.imageUrl)
-    </th>
-    <th></th>
-</tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nameOfGame)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.aboutGame)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gameCompany)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isTopTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genre)
-        </td>
-        <td>
-            <img src="@item.imageUrl" />
-            @Html.DisplayFor(modelItem => item.imageUrl)
-        </td>
-
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.gameID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.gameID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.gameID })
-        </td>
-    </tr>
-}
-
-            </table>-->
 
 <!--
     I'd like to do a steam api call for a json object list containing all the games from them.
 -->
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/gameList.js"></script>
 <div id="steamList"></div>

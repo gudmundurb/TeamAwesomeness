@@ -11,118 +11,115 @@ using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
-    public class GameController : Controller
+    public class NewsController : Controller
     {
-        private IGameRepo db =  null; //new IGameRepo();
-        
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        //private IGameRepo db;
-        
-        public GameController()
+        private INewsRepo newsRepo = null; //new INewsRepo();
+
+        public NewsController()
         {
-            this.db = new GameRepo(new ApplicationDbContext());
-        }
-       
-        // GET: Game
-        public ActionResult Index()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return Redirect("Account/Login");
-            }
-            return View(db.GetGame());
+            this.newsRepo = new NewsRepo(new ApplicationDbContext());
         }
 
-        // GET: Game/Details/5
+        // GET: News
+        public ActionResult Index()
+        {
+            IEnumerable<NewsModel> newsList = newsRepo.GetNews();
+            return View( newsList );
+        }
+
+        // GET: News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            //GameModel gameModel = db.GameModels.Find(id);
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            NewsModel newsModel = newsRepo.GetNewsByID(id);
+            if (newsModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(newsModel);
         }
 
-        // GET: Game/Create
+        // GET: News/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Game/Create
+        // POST: News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre, imageUrl")] GameModel gameModel)
+        public ActionResult Create([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
         {
             if (ModelState.IsValid)
             {
-                db.InsertGame(gameModel);
+                newsModel.userID = User.Identity.Name;
+                newsRepo.InsertNews(newsModel);
+                newsRepo.SaveNews();
                 return RedirectToAction("Index");
             }
 
-            return View(gameModel);
+            return View(newsModel);
         }
 
-        // GET: Game/Edit/5
+        // GET: News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            NewsModel newsModel = newsRepo.GetNewsByID(id);
+            if (newsModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(newsModel);
         }
 
-        // POST: Game/Edit/5
+        // POST: News/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre")] GameModel gameModel)
+        public ActionResult Edit([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(gameModel).State = EntityState.Modified;
-                db.UpdateGame(gameModel);
+                newsRepo.UpdateNews(newsModel);
+                newsRepo.SaveNews();
                 return RedirectToAction("Index");
             }
-            return View(gameModel);
+            return View(newsModel);
         }
 
-        // GET: Game/Delete/5
+        // GET: News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
-            if (gameModel == null)
+            NewsModel newsModel = newsRepo.GetNewsByID(id);
+            if (newsModel == null)
             {
                 return HttpNotFound();
             }
-            return View(gameModel);
+            return View(newsModel);
         }
 
-        // POST: Game/Delete/5
+        // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.DeleteGame(id);
+            NewsModel newsModel = newsRepo.GetNewsByID(id);
+            newsRepo.DeleteNews(id);
+            newsRepo.SaveNews();
             return RedirectToAction("Index");
         }
 
@@ -130,7 +127,7 @@ namespace Sozial.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                newsRepo.Dispose();
             }
             base.Dispose(disposing);
         }
