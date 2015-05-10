@@ -72,7 +72,6 @@ namespace Sozial.Controllers
             {
                 postModel.userID = User.Identity.Name;
                 postRepo.InsertPost(postModel);
-                postRepo.SavePost();
                 return RedirectToAction("Index");
             }
             return View(postModel);
@@ -104,7 +103,6 @@ namespace Sozial.Controllers
             {
                 postRepo.UpdatePost(postModel);
 
-                postRepo.SavePost();
                 return RedirectToAction("Index");
             }
             return View(postModel);
@@ -132,7 +130,6 @@ namespace Sozial.Controllers
         {
             PostModel postModel = postRepo.GetPostByID(id);
             postRepo.DeletePost(id);
-            postRepo.SavePost();
             return RedirectToAction("Index");
         }
 

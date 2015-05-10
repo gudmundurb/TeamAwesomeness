@@ -1,47 +1,49 @@
-﻿using Sozial.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
+using Sozial.Models;
 
 namespace Sozial.Repositories
 {
-    public class PostRepo : IPostRepo, IDisposable
+    public class NewsRepo : INewsRepo, IDisposable
     {
-
         private ApplicationDbContext db = null; //new ApplicationDbContext();
 
-        public PostRepo(ApplicationDbContext db)
+        public NewsRepo(ApplicationDbContext db)
         {
             this.db = db;
         }
-        public IEnumerable<PostModel> GetPost()
+        public IEnumerable<NewsModel> GetNews()
         {
-            return db.PostModels.ToList();
+            return db.NewsModels.ToList();
         }
 
-        public PostModel GetPostByID(int? postID)
+        public NewsModel GetNewsByID(int? newsID)
         {
-            return db.PostModels.Find(postID);
+            return db.NewsModels.Find(newsID);
         }
 
-        public void InsertPost(PostModel post)
+        public void InsertNews(NewsModel news)
         {
-            db.PostModels.Add(post);
-            db.SaveChanges();
+            db.NewsModels.Add(news);
         }
 
-        public void DeletePost(int postID)
+        public void DeleteNews(int newsID)
         {
-            PostModel post = db.PostModels.Find(postID);
-            db.PostModels.Remove(post);
-            db.SaveChanges();
+            NewsModel news = db.NewsModels.Find(newsID);
+            db.NewsModels.Remove(news);
         }
 
-        public void UpdatePost(Sozial.Models.PostModel post)
+        public void UpdateNews(NewsModel news)
         {
-            db.Entry(post).State = EntityState.Modified;
+            db.Entry(news).State = EntityState.Modified;
+        }
+
+        public void SaveNews()
+        {
             db.SaveChanges();
         }
 
@@ -64,6 +66,5 @@ namespace Sozial.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        
     }
 }
