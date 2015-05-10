@@ -29,21 +29,19 @@ namespace Sozial.Repositories
         public void InsertPost(PostModel post)
         {
             db.PostModels.Add(post);
+            db.SaveChanges();
         }
 
         public void DeletePost(int postID)
         {
             PostModel post = db.PostModels.Find(postID);
             db.PostModels.Remove(post);
+            db.SaveChanges();
         }
 
         public void UpdatePost(Sozial.Models.PostModel post)
         {
             db.Entry(post).State = EntityState.Modified;
-        }
-
-        public void SavePost()
-        {
             db.SaveChanges();
         }
 
