@@ -14,6 +14,5 @@ namespace Sozial.Repositories
         void InsertPost(PostModel post);
         void DeletePost(int postID);
         void UpdatePost(PostModel post);
-        void SavePost(); // <- Should each function above not just call db.SaveChanges(); ?
     }
 }
