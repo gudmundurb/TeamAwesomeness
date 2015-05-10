@@ -208,7 +208,6 @@ a.nav_logo {
 .post-view {
     margin-bottom: 5px;
     padding: 5px;
-    background-color: #393939;
 }
 
 #one-post {
@@ -240,7 +239,6 @@ a.nav_logo {
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     border-radius: 12px;
-    
 }
 
 .comment-view {
@@ -264,24 +262,51 @@ a.nav_logo {
     list-style-type: none;
 }
 
-.create  {
+.create {
     background: #393939 no-repeat top left;
     display: block;
     width: 150px;
     height: 30px;
     outline: black;
-    position: relative;
-    vertical-align: top;
     padding: 6px;
     color: #CCC9DC;
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-    border: 0;
     border-bottom: 20px solid #393939;
     cursor: pointer;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     border-radius: 12px;
+}
+
+.col-md-12-border {
+    width: 100%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-md-6-border {
+    width: 50.00%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+    margin-bottom: 5px;
+    background-color: #393939;
+}
+
+.col-md-4-border {
+    width: 33.33333333333333%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+    margin-bottom: 5px;
+    background-color: #393939;
 }
 
 

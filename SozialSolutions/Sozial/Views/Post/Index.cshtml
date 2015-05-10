@@ -6,57 +6,58 @@
 
 <h2>Post</h2>
 <br />
-<p>
-    @Html.ActionLink("Create New Post", "Create", null, new { @class = "create" })
-</p>
-<br />
+<div class="col-md-12-border">
+    <p>
+        @Html.ActionLink("Create New Post", "Create", null, new { @class = "create" })
+    </p>
 
-@foreach (var item in Model)
-{
-    <div class="post-view">
-        <ul id="one-post">
-            <li>
-                <div class="one-post-name">
-                    User: &nbsp
-                    @Html.DisplayFor(modelItem => item.userID)
-                </div>
-            </li>
-            <li>
-                <div class="one-post-text">
-                    Post: &nbsp
-                    @Html.DisplayFor(modelItem => item.text)
-                </div>
-            </li>
-            <li>
-                <div class="one-post-url">
-                    Url: &nbsp
-                    @Html.DisplayFor(modelItem => item.imageUrl)
-                </div>
-            </li>
-            <li>
-                <div class="post-reply">
-                    <br>
-                    @Html.ActionLink("Reply", "../Comment/Create", new { id = item.postID })
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="comment-view">
-        @foreach (var comm in item.comments)
-        {
-            <ul id="one-comment">
+    @foreach (var item in Model)
+    {
+        <div class="post-view">
+            <ul id="one-post">
                 <li>
-                    <div class="one-comment-name">
-                        @Html.DisplayFor(modelItem => comm.authorID)
+                    <div class="col-md-4-border">
+                        <div class="one-post-name">
+                            User: &nbsp
+                            @Html.DisplayFor(modelItem => item.userID)
+                        </div>
+                        <div class="one-post-url">
+                            Url: &nbsp
+                            @Html.DisplayFor(modelItem => item.imageUrl)
+                        </div>
+                        <div class="post-reply">
+                            <br>
+                            @Html.ActionLink("Reply", "../Comment/Create", new { id = item.postID })
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <div class="one-comment-text">
-                        @Html.DisplayFor(modelItem => comm.commentText)
+                    <div class="col-md-6-border">
+                        <div class="one-post-text">
+                            Post: &nbsp
+                            @Html.DisplayFor(modelItem => item.text)
+                        </div>
                     </div>
                 </li>
             </ul>
-        }
-    </div>
-}
+        </div>
+
+        <div class="comment-view">
+            @foreach (var comm in item.comments)
+            {
+                <ul id="one-comment">
+                    <li>
+                        <div class="col-md-4-border">
+                            <div class="one-comment-name">
+                                @Html.DisplayFor(modelItem => comm.authorID)
+                            </div>
+                        </div>
+                        <div class="col-md-6-border">
+                            <div class="one-comment-text">
+                                @Html.DisplayFor(modelItem => comm.commentText)
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            }
+        </div>
+    }
+</div>
