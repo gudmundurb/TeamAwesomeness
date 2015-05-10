@@ -12,13 +12,11 @@ namespace Sozial.Repositories
         IEnumerable<CommentModel> getComments();
         IEnumerable<CommentModel> getComments(int postId);
 
-        /* creates */
+        /* C(r)UDs */
 
         void insertComment(CommentModel comment);
         void deleteComment(int commentID);
         void updateComment(CommentModel comment);
-
-
 
     }
 }

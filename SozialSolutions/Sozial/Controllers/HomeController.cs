@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace Sozial.Controllers
 
 {
@@ -17,7 +16,7 @@ namespace Sozial.Controllers
         public ActionResult About()
         {
             //Shows about us
-
+            //User;
             return View();
         }
 

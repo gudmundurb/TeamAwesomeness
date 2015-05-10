@@ -65,7 +65,7 @@ namespace Sozial
             //    ClientId = "",
             //    ClientSecret = ""
             //})
-            app.UseSteamAuthentication("246FA7734A47CD2C1F24733C6E55BDB7");
+            app.UseSteamAuthentication(ConfigurationManager.AppSettings["steamApiKey"]);
         }
     }
 }
