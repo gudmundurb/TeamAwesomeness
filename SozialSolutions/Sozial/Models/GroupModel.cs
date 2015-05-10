@@ -1,36 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
 using Sozial.Models;
+
 namespace Sozial.Models
 {
     public class GroupModel
     {
-        GroupModel(string userId, string groupNm, string groupDescr)
+        GroupModel()
         {
-            creatorID = userId;
-            groupName = groupName;
+            createdDate = DateTime.Now;
+        }
+        
+        GroupModel(string userID, string groupNm, string groupDescr)
+        {
+            creatorID = userID;
+            groupName =  groupNm;
             groupDescription = groupDescr;
             createdDate = DateTime.Now;
-
         }
-
+        
         [Key]
-        private int groupId { get; set; }
+        public int groupID { get; set; }
 
-        //foreign key for creatorID
-        //public int userID { get; set; }
-        //
         //[ForeignKey("creatorID")]
         private string creatorID { get; set; }
+        private DateTime createdDate { get; set; }
 
+        public int likeCount { get; set; }
 
         [Required(ErrorMessage = "The group with no name already exists.")]
         [Display(Name = "Group Name")]
         public string groupName { get; set; }
-
 
         [Required(ErrorMessage = "What is your group all about?")]
         [Display(Name = "Group Description")]
@@ -46,10 +49,5 @@ namespace Sozial.Models
 
         public virtual ICollection<ApplicationUser> Members { get; set; }
         public virtual ICollection<PostModel> Posts { get; set; }
-
-
-        private DateTime createdDate { get; set; }
-        public int likeCount { get; set; }
-
     }
 }
