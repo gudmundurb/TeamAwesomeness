@@ -66,6 +66,14 @@ a.nav_logo {
     max-width: 70%;
 }
 
+.about_cover {
+
+    margin-top: 5%;
+    background-image: url('Images/about_cover.png');
+    background-repeat: no-repeat;
+    max-width: 100%;
+}
+
 .custom-container {
 
     margin: 0 auto;
