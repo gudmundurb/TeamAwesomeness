@@ -1,5 +1,5 @@
 ﻿body {
-    color: #CCC9DC;
+    color: #ccc;
     padding-top: 50px;
     padding-bottom: 20px;
     background-repeat: repeat;
@@ -166,4 +166,39 @@ a.nav_logo {
 .vertical_line 
 {
     border-right: thin solid #ffffff;
+}
+.thumbnail {
+    border: solid thin #808080;
+    background-color: #222;
+    margin-bottom: 15px;
+}
+
+.thumbnail .btn-default {
+    background-color: #ccc;
+    border-color: #fff;
+}
+
+.thumbnail .btn-default:hover {
+    background-color: #ffffff;
+}
+.thumbnail .caption{
+    color: #ccc;
+}
+.thumbnail .caption h3 {
+    color: #2D7F7E;
+}
+.thumbnail .caption h4 {
+    color: #666;
+    
+}
+.btn-success {
+  color: #ffffff;
+  background-color: #2D7F7E;
+  border-color: #16403F;
+}
+
+.btn-success:hover {
+  color: #ffffff;
+  background-color: #2D7F7E;
+  border-color: #ccc;
 }
