@@ -54,7 +54,7 @@ namespace Sozial.Controllers
                 commentModel.postID = Int32.Parse(Request.Url.Segments[3]);
                 db.CommentModels.Add(commentModel);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Post/Index");
             }
 
             return View(commentModel);

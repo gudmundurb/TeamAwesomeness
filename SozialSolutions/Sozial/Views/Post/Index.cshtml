@@ -5,41 +5,58 @@
 }
 
 <h2>Post</h2>
-
+<br />
 <p>
-    @Html.ActionLink("Create New Post", "Create")
+    @Html.ActionLink("Create New Post", "Create", null, new { @class = "create" })
 </p>
+<br />
 
 @foreach (var item in Model)
 {
-    <ul>
-        <li>
-            User: &nbsp
-            @Html.DisplayFor(modelItem => item.userID)
-        </li>
-        <li>
-            Post: &nbsp
-            @Html.DisplayFor(modelItem => item.text)
-        </li>
-        <li>
-            @Html.DisplayFor(modelItem => item.imageUrl)
-        </li>
-        <li>
-            <br>
-            @Html.ActionLink("Reply", "../Comment/Create", new { id = item.postID })
-        </li>
-        <ul>
-            @foreach (var comm in item.comments)
-            {
-                <li>
-                    User: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    @Html.DisplayFor(modelItem => comm.authorID)
-                </li>
-                <li>
-                    Comment: &nbsp
-                    @Html.DisplayFor(modelItem => comm.commentText)
-                </li>
-            }
+    <div class="post-view">
+        <ul id="one-post">
+            <li>
+                <div class="one-post-name">
+                    User: &nbsp
+                    @Html.DisplayFor(modelItem => item.userID)
+                </div>
+            </li>
+            <li>
+                <div class="one-post-text">
+                    Post: &nbsp
+                    @Html.DisplayFor(modelItem => item.text)
+                </div>
+            </li>
+            <li>
+                <div class="one-post-url">
+                    Url: &nbsp
+                    @Html.DisplayFor(modelItem => item.imageUrl)
+                </div>
+            </li>
+            <li>
+                <div class="post-reply">
+                    <br>
+                    @Html.ActionLink("Reply", "../Comment/Create", new { id = item.postID })
+                </div>
+            </li>
         </ul>
-    </ul>
+    </div>
+
+    <div class="comment-view">
+        @foreach (var comm in item.comments)
+        {
+            <ul id="one-comment">
+                <li>
+                    <div class="one-comment-name">
+                        @Html.DisplayFor(modelItem => comm.authorID)
+                    </div>
+                </li>
+                <li>
+                    <div class="one-comment-text">
+                        @Html.DisplayFor(modelItem => comm.commentText)
+                    </div>
+                </li>
+            </ul>
+        }
+    </div>
 }
