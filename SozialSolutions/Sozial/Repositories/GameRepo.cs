@@ -28,22 +28,23 @@ namespace Sozial.Repositories
         public void InsertGame(GameModel game)
         {
             db.GameModels.Add(game);
+            db.SaveChanges();
+
         }
 
         public void DeleteGame(int gameID)
         {
             GameModel game = db.GameModels.Find(gameID);
             db.GameModels.Remove(game);
+            db.SaveChanges();
+
         }
 
         public void UpdateGame(Sozial.Models.GameModel game)
         {
             db.Entry(game).State = EntityState.Modified;
-        }
-
-        public void SaveGame()
-        {
             db.SaveChanges();
+
         }
 
         private bool disposed = false;
