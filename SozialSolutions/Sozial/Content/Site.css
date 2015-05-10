@@ -16,6 +16,10 @@ a:hover, a:active {
     color: #CCC9DC;
 }
 
+hr {
+
+    border-color:  #666;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -167,30 +171,7 @@ a.nav_logo {
 {
     border-right: thin solid #ffffff;
 }
-.thumbnail {
-    border: solid thin #808080;
-    background-color: #222;
-    margin-bottom: 15px;
-}
 
-.thumbnail .btn-default {
-    background-color: #ccc;
-    border-color: #fff;
-}
-
-.thumbnail .btn-default:hover {
-    background-color: #ffffff;
-}
-.thumbnail .caption{
-    color: #ccc;
-}
-.thumbnail .caption h3 {
-    color: #2D7F7E;
-}
-.thumbnail .caption h4 {
-    color: #666;
-    
-}
 .btn-success {
   color: #ffffff;
   background-color: #2D7F7E;
@@ -201,6 +182,54 @@ a.nav_logo {
   color: #ffffff;
   background-color: #2D7F7E;
   border-color: #ccc;
+}
+
+/*---- Group View ----*/
+a.list-group-item {
+    height: auto;
+    min-height: 220px;
+    
+}
+a.list-group-item.active small {
+    color: #393939;
+
+}
+.well {
+    background-color: rgba(68, 68, 68, 0.3);
+    border-color: #666;
+}
+a.list-group-item.active {
+    background-color: #ccc;
+    border-color: #aaa;
+    color: #666;
+    display: block;
+}
+
+a.list-group-item.active h4 {
+
+    color: #2D7F7E;
+    display: block;
+}
+
+
+a.list-group-item.active:hover, a.list-group-item.active:active {
+
+    background-color: #ddd;
+    border-color: #bbb;
+    color: #666;
+}
+.stars {
+    margin: 20px auto 1px;    
+}
+
+.img_resizer img {
+    max-height: 200px;
+    border: 1px solid #888;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
+}
+
 }
 
 /*Post view*/
