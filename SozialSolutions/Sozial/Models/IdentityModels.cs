@@ -59,6 +59,8 @@ namespace Sozial.Models
         public System.Data.Entity.DbSet<Sozial.Models.PostModel> PostModels { get; set; }
 
         public System.Data.Entity.DbSet<Sozial.Models.CommentModel> CommentModels { get; set; }
+
+        public System.Data.Entity.DbSet<Sozial.Models.NewsModel> NewsModels { get; set; }
         /* ------------ dis has to be fixed
         public System.Data.Entity.DbSet<SozialProject.Models.UserModel> ProfileModels { get; set; }
         */
