@@ -191,8 +191,10 @@
     <Compile Include="Repositories\IGameRepo.cs" />
     <Compile Include="Repositories\INewsRepo.cs" />
     <Compile Include="Repositories\IPostRepo.cs" />
+    <Compile Include="Repositories\IRelationshipRepo.cs" />
     <Compile Include="Repositories\NewsRepo.cs" />
     <Compile Include="Repositories\PostRepo.cs" />
+    <Compile Include="Repositories\RelationshipRepo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

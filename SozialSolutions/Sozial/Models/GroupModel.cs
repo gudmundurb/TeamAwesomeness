@@ -13,6 +13,8 @@ namespace Sozial.Models
             creatorID = userId;
             groupName = groupName;
             groupDescription = groupDescr;
+            createdDate = DateTime.Now;
+
         }
 
         [Key]
@@ -43,8 +45,11 @@ namespace Sozial.Models
         public string groupBanner { get; set; }
 
         public virtual ICollection<ApplicationUser> Members { get; set; }
-        public virtual ICollection<PostModel> Posts { get; set; } 
+        public virtual ICollection<PostModel> Posts { get; set; }
 
+
+        private DateTime createdDate { get; set; }
+        public int likeCount { get; set; }
 
     }
 }
