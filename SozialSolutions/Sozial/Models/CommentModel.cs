@@ -26,7 +26,7 @@ namespace Sozial.Models
         public int postID { get; set; }
 
 
-        private DateTime createdDate { get; set; }
+        public DateTime createdDate { get; set; }
     
     
 /*
