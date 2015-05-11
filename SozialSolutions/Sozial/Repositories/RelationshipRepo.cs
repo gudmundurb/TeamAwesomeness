@@ -21,56 +21,59 @@ namespace Sozial.Repositories
 
         public IEnumerable<ApplicationUser> getFriends(string username)
         {
-            ApplicationUser user = (from ApplicationUser item in db.Users
-                                  where item.UserName == username
-                                  select item).Single();
-            return user.friends;
+            //find all instances of relationship where username is present
+            IEnumerable<FriendshipModel> friends = (from FriendshipModel rel in db.FriendshipModels
+                                                    where rel.UsernameOne == username || rel.UsernameTwo == username
+                                                    select rel).ToList();
+
+            //create a list of usernames. excluding username.
+            List<string> usernmList = new List<string>();
+            foreach (FriendshipModel relationship in friends)
+            {
+                if (relationship.UsernameOne == username) { usernmList.Add(relationship.UsernameTwo);  }
+                else { usernmList.Add(relationship.UsernameOne); }
+            }
+            // create a list of users, and populate it with the users whose names are in usrnmlist
+            List<ApplicationUser> friendList = new List<ApplicationUser>();
+            foreach (string name in usernmList) { friendList.Add(getUser(name)); }
+            return friendList.ToList();
         }
 
+        ApplicationUser getUser(string name)
+        {
+            //not to be used outside of this repo.
+            return (from ApplicationUser user in db.Users
+                    where user.UserName == name
+                    select user).Single();
+        }
 
         public bool areFriends(string friend)
         {
-            //get current user //
             string myname = System.Web.HttpContext.Current.User.Identity.Name;
-            ApplicationUser user1 = (from ApplicationUser Iuser in db.Users
-                                     where Iuser.UserName == myname
-                                     select Iuser).Single();
+            //get myfriends
+            IEnumerable<FriendshipModel> myfriends = (from FriendshipModel entry in db.FriendshipModels
+                                                          where (entry.UsernameOne == myname || entry.UsernameTwo == myname)
+                                                          select entry).ToList();
+            // check if friend is in myfriends
 
-            //get speculative friend //
-            ApplicationUser user2 = (from ApplicationUser user in db.Users
-                                     where user.UserName == friend
-                                     select user).Single();
-
-            // check if their friendship is one sided or "if A is friend of B, but B is not friend of A" if so. throw an exception.
-            if (user2.friends.Contains(user1) ^ user1.friends.Contains(user2)) { throw new Exception("Oops, the friend-relationship between user1 and user2 is not mutual.");  } 
-            // cool . return without ambiguity if they're friends or not.
-            return (user1.friends.Contains(user2) && user2.friends.Contains(user1));
+            foreach(FriendshipModel friends in myfriends){
+                if (friends.UsernameOne == friend || friends.UsernameTwo == friend) { return true; }
+            }
+            return false;
 
         }
 
 
         public bool addFriend(string pot_friend)
         {
-            // return false if the users are already friends. note: this will throw an exception in areFriends if the friendship is not mutual. //
-            if ( areFriends(pot_friend) ) { return false; }
+            if (areFriends(pot_friend)) { return false; }
             else
             {
-                //get current user. //
                 string myname = System.Web.HttpContext.Current.User.Identity.Name;
-                ApplicationUser self = (from ApplicationUser user in db.Users
-                                        where user.UserName == myname
-                                        select user).Single();
-                //get potential friend //
-                ApplicationUser friend = (from ApplicationUser user in db.Users
-                                          where user.UserName == pot_friend
-                                          select user).Single();
-                // add each of the users in eachothers' friendslist //
-                self.friends.Add(friend);
-                friend.friends.Add(self);
-                //set state to modified in the database. //
-                db.Entry(self).State = EntityState.Modified;
-                db.Entry(friend).State = EntityState.Modified;
-                //save the changes //
+                FriendshipModel friendship = new FriendshipModel();
+                friendship.UsernameOne = myname;
+                friendship.UsernameTwo = pot_friend;
+                db.FriendshipModels.Add(friendship);
                 db.SaveChanges();
                 return true;
             }
@@ -83,26 +86,12 @@ namespace Sozial.Repositories
             if (!areFriends(exName)) { return false; }
             else
             {
-                //get myself
                 string myname = System.Web.HttpContext.Current.User.Identity.Name;
-                ApplicationUser self = (from ApplicationUser user in db.Users
-                                        where user.UserName == myname
-                                        select user).Single();
-
-                // get exfriend //
-                ApplicationUser exFriend = (from ApplicationUser user in db.Users
-                                            where user.UserName == exName
-                                            select user).Single();
-
-                //remove eachother from the friends lists!
-                self.friends.Remove(exFriend);
-                exFriend.friends.Remove(self);
-                // mark entitystate as modified in the db
-                db.Entry(self).State = EntityState.Modified;
-                db.Entry(exFriend).State = EntityState.Modified;
-                //save the changes to the database
+                FriendshipModel friendship = (from FriendshipModel rel in db.FriendshipModels
+                                              where (( rel.UsernameOne == myname && rel.UsernameTwo == exName) || (rel.UsernameOne == exName && rel.UsernameTwo == myname))
+                                              select rel).Single();
+                db.FriendshipModels.Remove(friendship);
                 db.SaveChanges();
-                //return true for success
                 return true;
             }
         }
