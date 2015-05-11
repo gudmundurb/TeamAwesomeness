@@ -11,6 +11,7 @@ namespace Sozial.Repositories
 
         IEnumerable<PostModel> GetPost();
         PostModel GetPostByID(int? postID);
+        IEnumerable<PostModel> GetByUserID(string userID);
         void InsertPost(PostModel post);
         void DeletePost(int postID);
         void UpdatePost(PostModel post);
