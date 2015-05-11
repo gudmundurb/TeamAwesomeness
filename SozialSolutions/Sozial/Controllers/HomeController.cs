@@ -18,18 +18,22 @@ namespace Sozial.Controllers
 
 
             //Repos created 
-            GroupRepo gRepo = new GroupRepo(db);
+            GroupRepo groupRepo = new GroupRepo(db);
             RelationshipRepo relRepo = new RelationshipRepo(db);
             PostRepo pRepo = new PostRepo(db);
             GameRepo gameRepo = new GameRepo(db);
+            NewsRepo newsRepo = new NewsRepo(db);
             //End of Repos
 
             
             FrontPageViewModel fp = new FrontPageViewModel();
 
+            //Get 5 most recent news created
+            fp.newestNews = newsRepo.getRecentNews(5).ToList();
+            //-------
 
             //Get most recent groups created
-            fp.newestGroups = gRepo.getRecentGroups(5).ToList();
+            fp.newestGroups = groupRepo.getRecentGroups(5).ToList();
             //end of get most recent groups created
 
 
@@ -45,7 +49,7 @@ namespace Sozial.Controllers
                 }
 
             }
-            fp.newestPosts = Posts.OrderBy(Poste => Poste.createdDate).Take(5).ToList();
+            fp.newestPosts = Posts.OrderByDescending(Poste => Poste.createdDate).Take(5).ToList();
             //End of Get 5 new posts from friends
 
 

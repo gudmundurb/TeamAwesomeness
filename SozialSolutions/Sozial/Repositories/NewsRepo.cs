@@ -21,6 +21,13 @@ namespace Sozial.Repositories
             return db.NewsModels.ToList();
         }
 
+        public IEnumerable<NewsModel> getRecentNews(int n)
+        {
+            return (from NewsModel news in db.NewsModels
+                    orderby news.createdDate descending
+                    select news).Take(n).ToList();
+        }
+
         public NewsModel GetNewsByID(int? newsID)
         {
             return db.NewsModels.Find(newsID);
