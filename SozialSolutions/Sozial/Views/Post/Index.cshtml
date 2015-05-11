@@ -17,86 +17,83 @@
                 {
                     <a class="list-group-item active">
                         <div class="col-md-3">
-                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.userID)</h3>
+                            <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.userID)</h4>
                             <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+
+
+
+                            <!--
+
+                            REPLY BUTTON IS NEEDED
+
+
+                            And an if statement if the text is an url for a picture
+
+
+                            -->
+
+
+
+
+
                         </div>
                         <div class="col-md-6">
                             <p class="list-group-item-text text_limit">
                                 @Html.DisplayFor(modelItem => item.text)
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
+
                         </div>
-                        
+
                         <div class="col-md-3 text-center">
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                         </div>
-                     <!--   <div class="media col-md-3">
-                            <figure class="pull-left img_resizer">
-                                @if (String.IsNullOrEmpty(item.imageUrl))
-                                {
-                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                }
-                                else
-                                {
-                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.userID)" />
-                                }
-                            </figure>
-                        </div> -->
+
+                        <!--   <div class="media col-md-3">
+                               <figure class="pull-left img_resizer">
+                                   @if (String.IsNullOrEmpty(item.imageUrl))
+                                   {
+                                       <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                   }
+                                   else
+                                   {
+                                       <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.userID)" />
+                                   }
+                               </figure>
+                           </div> -->
+                    </a>
                     </a>
                     <div class="list-group well">
-                        @foreach (var comm in item.comments)
+                        <div class="list-group well">
+                            @foreach (var comm in item.comments)
                         {
-                            <a class="list-post-item active">
-                                <div class="col-md-3">
-                                    <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => comm.authorID)</h3>
-                                    <p>@Html.DisplayFor(modelItem => comm.createdDate)</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p class="list-group-item-text text_limit">
-                                        @Html.DisplayFor(modelItem => comm.commentText)
-                                    </p>
-                                    <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                                    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-                                </div>
-                            </a>
+                                <a class="list-post-item active">
+                                    <div class="col-md-3">
+                                        <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => comm.authorID)</h3>
+                                        <p>@Html.DisplayFor(modelItem => comm.createdDate)</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="list-group-item-text text_limit">
+                                            @Html.DisplayFor(modelItem => comm.commentText)
+                                        </p>
+                                        <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
+                                    </div>
+                                    <div class="col-md-3 text-center">
+                                        <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                                        <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                                    </div>
+                                </a>
+                        }
+                        </div>
                         }
                     </div>
-                }
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/text_delimitator.js"></script>
-<script src="~/Scripts/gameList.js"></script>
-
-<!--
-        <div class="comment-view">
-
-            {
-                <ul id="one-comment">
-                    <li>
-                        <div class="col-md-4-border">
-                            <div class="one-comment-name">
-
-                            </div>
-                        </div>
-                        <div class="col-md-6-border">
-                            <div class="one-comment-text">
-
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            }
-        </div>
-    }
-</div>
--->
+                    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                    <script src="~/Scripts/text_delimitator.js"></script>
+                    <script src="~/Scripts/gameList.js"></script>
