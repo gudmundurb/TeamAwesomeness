@@ -18,5 +18,7 @@ namespace Sozial.Repositories
 
         // returns false if current user is not friends with username, true if unfriending was successful
         bool unFriend(string exFriend);
+
+        
     }
 }

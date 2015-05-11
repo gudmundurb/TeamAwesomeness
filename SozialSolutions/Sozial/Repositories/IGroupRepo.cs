@@ -8,11 +8,20 @@ namespace Sozial.Repositories
 {
     public interface IGroupRepo : IDisposable
     {
+        //gets all members of group id.
         IEnumerable<ApplicationUser> getMembers(int groupid);
 
+        //returns true if user is in group id.
         bool inGroup(int groupID);
+
+        //current user is inducted into group id
         bool joinGroup(int groupID);
+
+        // current user is removed from group id
         bool leaveGroup(int groupID);
+
+        // returns n recently created groups.
+        IEnumerable<GroupModel> getRecentGroups(int n);
         
     }
 }
