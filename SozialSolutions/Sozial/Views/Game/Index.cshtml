@@ -31,14 +31,17 @@
                         <div class="col-md-6">
                             <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
-                            <p class="list-group-item-text text_limit title-adjustments">
+                            <!--CHANGES FROM HERE ON-->
+                            <p class="list-group-item-text text_limit">
                                 @Html.DisplayFor(modelItem => item.aboutGame)
                             </p>
-                            <input type="button" title="Details" value="Details" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" class="btn btn-default btn-md" />
+                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" /></div>
                         </div>
-                        <div class="col-md-3 text-center">                            
-                            <input type="button" title="Edit" value="Edit" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'" class="btn btn-default btn-md btn-block" />
-                            <input type="button" title="Delete" value="Delete" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'" class="btn btn-danger btn-md btn-block" />
+                        <div class="col-md-3 text-center">
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
+                            <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                            <!--CHANGES DONE-->
                             <div class="stars">
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
