@@ -182,6 +182,7 @@
     <Compile Include="Models\FrontPageViewModel.cs" />
     <Compile Include="Models\GameModels.cs" />
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\GroupRelationshipModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NewsModel.cs" />
@@ -189,8 +190,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CommentRepo.cs" />
     <Compile Include="Repositories\GameRepo.cs" />
+    <Compile Include="Repositories\GroupRepo.cs" />
     <Compile Include="Repositories\ICommentRepo.cs" />
     <Compile Include="Repositories\IGameRepo.cs" />
+    <Compile Include="Repositories\IGroupRepo.cs" />
     <Compile Include="Repositories\INewsRepo.cs" />
     <Compile Include="Repositories\IPostRepo.cs" />
     <Compile Include="Repositories\IRelationshipRepo.cs" />
