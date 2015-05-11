@@ -29,7 +29,7 @@ hr {
 }
 .vertical_line 
 {
-    border-right: thin solid #ffffff;
+    border-right: thin solid #666;
 }
 
 /* Set padding to keep content from hitting the edges */
