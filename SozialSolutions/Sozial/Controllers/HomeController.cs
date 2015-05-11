@@ -50,7 +50,13 @@ namespace Sozial.Controllers
             return View(james_doohan.getFriends(User.Identity.Name).ToList() );
         }
 
-
+        public ActionResult unFriend(string exname)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo(db);
+            relRepo.unFriend(exname);
+            return RedirectToAction("myFriends");
+        }
 
         public ActionResult Contact()
         {
