@@ -35,6 +35,13 @@ namespace Sozial.Repositories
             return members.ToList();
         }
 
+        public IEnumerable<GroupModel> getRecentGroups(int n)
+        {
+            return (from GroupModel grp in db.GroupModels
+                    orderby grp.createdDate descending
+                    select grp).Take(n).ToList();
+        }
+
 
         ApplicationUser getUser(string username)
         {
