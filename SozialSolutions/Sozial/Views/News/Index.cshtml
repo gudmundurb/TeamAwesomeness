@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "News";
 }
-
 <div class="container">
     <div class="row">
         <div class="well">
@@ -16,7 +15,6 @@
                 @foreach (var item in Model)
                 {
                     <a class="list-group-item active">
-
                         <div class="media col-md-3">
                             <figure class="pull-left img_resizer">
                                 @if (String.IsNullOrEmpty(item.imageUrl))
@@ -31,23 +29,16 @@
                         </div>
                         <div class="col-md-6">
                             <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.title)</h3>
-                            <p>@Html.DisplayFor(modelItem => item.userID)</p>
                             <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
-                            <p class="list-group-item-text text_limit title-adjustments">
+                            <p class="list-group-item-text text_limit">
                                 @Html.DisplayFor(modelItem => item.text)
                             </p>
-                            <input type="button" title="Details" value="Details" onclick="location.href='@Url.Action("Read more", "News", new { id = item.newsID })'" class="btn btn-default btn-md" />
+                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "News", new { id = item.newsID })'" /></div>
                         </div>
                         <div class="col-md-3 text-center">
-                            <input type="button" title="Edit" value="Edit" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'" class="btn btn-default btn-md btn-block" />
-                            <input type="button" title="Delete" value="Delete" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'" class="btn btn-danger btn-md btn-block" />
-                            <div class="stars">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </div>
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
+                            <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                         </div>
                     </a>
                 }
@@ -55,6 +46,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/text_delimitator.js"></script>
