@@ -14,5 +14,7 @@ namespace Sozial.Repositories
         void DeleteNews(int newsID);
         void UpdateNews(NewsModel post);
         void SaveNews(); // <- Should each function above not just call db.SaveChanges(); ?
+        IEnumerable<NewsModel> getRecentNews(int n);
+
     }
 }

@@ -23,5 +23,7 @@ namespace Sozial.Models
         //5 top games are listed here
         // public List<GameModel> NewestUsers { get; set; }
         
+        //5 top news
+        public List<NewsModel> newestNews { get; set; }
     }
 }
