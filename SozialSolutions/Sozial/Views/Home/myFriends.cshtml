@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Sozial.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "myFriends";
+}
+
+<h2>myFriends</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.steamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userProfilePic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userBannerPic)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userProfilePic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userBannerPic)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
