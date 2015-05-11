@@ -55,9 +55,18 @@
                         @item.userID
                     </p>
                     <br />
-                    <p>
-                        @item.imageUrl
-                    </p>
+    <div class="media col-md-3">
+        <figure class="pull-left img_resizer">
+            @if (String.IsNullOrEmpty(item.imageUrl))
+            {
+                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+            }
+            else
+            {
+                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.newsID)" />
+            }
+        </figure>
+    </div>
                     <br />
                     <p>
                         @item.title
@@ -75,21 +84,34 @@
         <div class="col-md-6">
             <h3>Recent Posts</h3>
             <div class="frontpage-each-col">
-                   @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                   {
-                      <p>
-                           @item.userID
-                      </p>
-                <br />
-                       <p>
-                            @item.text
-                       </p>
-               <br />
-                       <p>------------</p>
-               <br />
-                   }
-            </div>
+                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                {
+                    <p>
+                        @item.userID
+                    </p>
+                    <br />
+                        <figure class="pull-left img_resizer">
+                            @if (String.IsNullOrEmpty(item.imageUrl))
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                            }
+                            else
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                            }
+                            </p>
+                            <br />
+                            <p>
+                                @item.text
+                            </p>
+                            <br />
+                            <p>------------</p>
+                            <br />
+                            }
+                        </figure>
         </div>
+        </div>
+
         <div class="col-md-6">
             <h3>Trending Games</h3>
             <div class="frontpage-each-col">
@@ -105,6 +127,17 @@
                 {
                     <p>
                         @item.groupName
+                    </p>
+                    <br />
+                    <p>
+                        @if (String.IsNullOrEmpty(item.groupPicture))
+                        {
+                            <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                        }
+                        else
+                        {
+                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupName)" />
+                        }
                     </p>
                     <br />
                     <p>
