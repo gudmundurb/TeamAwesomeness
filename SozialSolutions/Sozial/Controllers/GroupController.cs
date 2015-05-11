@@ -13,6 +13,7 @@ namespace Sozial.Controllers
     public class GroupController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        public Repositories.GroupRepo grpRepo = new Repositories.GroupRepo(new ApplicationDbContext());
 
         // GET: Group
         public ActionResult Index()
@@ -32,6 +33,7 @@ namespace Sozial.Controllers
             {
                 return HttpNotFound();
             }
+            groupModel.Members = grpRepo.getMembers(groupModel.groupID).ToList();
             return View(groupModel);
         }
 
@@ -114,6 +116,16 @@ namespace Sozial.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult joinGroup(int id)
+        {
+            grpRepo.joinGroup(id);
+            return RedirectToAction("Index");
+        }
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {

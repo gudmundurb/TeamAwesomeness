@@ -53,6 +53,12 @@ textarea {
 
 
 }
+
+
+
+
+
+
 /*---------ABOUT PAGE------------*/
 
 .about_cover {
@@ -85,37 +91,40 @@ textarea {
 }
 
 
+
+
+
+
+
 /*-------FRONT PAGE AND _LAYOUT-----*/
 
 a.nav_logo {
-
     max-width: 70%;
 }
 
 .logo_motto_frontpage {
-
     z-index: 30;
     position: absolute;
     bottom: 25%;
     right: 45px;
     width: 100%;
- 
 }
 
 .logo_motto_frontpage img {
-
     bottom: 25%;
     right: 45px;
     float: right;
     max-width: 20%;
     min-width: 10%;
- 
 }
 .logo_motto_frontpage img::after {
-
     clear: both;
- 
 }
+
+
+
+
+
 
 /*FRONT PAGE - OVERWRITES FOR THE BOOSTRAP CAROUSEL*/
 
@@ -133,13 +142,16 @@ a.nav_logo {
   -webkit-transform: translate3d(0, 0, 0) !important;
           transform: translate3d(0, 0, 0) !important;
 }
+
 .carousel-inner > .item:first-of-type {
   position: relative;
 }
+
 .carousel-inner > .active {
   opacity: 1;
   z-index: 3;
 }
+
 .carousel-inner > .next.left,
 .carousel-inner > .prev.right {
   -webkit-transition: opacity 0.8s ease-in-out;
@@ -149,13 +161,19 @@ a.nav_logo {
   left: 0;
   z-index: 2;
 }
+
 .carousel-inner > .active.left,
 .carousel-inner > .active.right {
   z-index: 1;
 }
+
 .carousel-control {
   z-index: 4;
 }
+
+
+
+
 
 /*-----REGISTER VIEW/LOGIN----*/
 
@@ -170,17 +188,42 @@ a.nav_logo {
     border: none;
 }
 
+
+
+
+
+
 /*---- LISTS OF ITEMS----*/
+
+a.list-post-item {
+    height: auto;
+    min-height: 100px;
+    width: 700px;  
+}
+
+a.list-post-item.active {
+    background-color: #dddddd;
+    border-color: #bbbbbb;
+    color: #666666;
+    display: block;
+}
+
+a.list-post-item.active:hover, a.list-post-item.active:active
+a.list-post-item.active:focus {
+    background-color: #d1d1d1;
+    border-color: #bbbbbb;
+    color: #666666;
+}
 
 a.list-group-item {
     height: auto;
     min-height: 220px;
-    
 }
+
 a.list-group-item.active small {
     color: #393939;
-
 }
+
 .well {
     background-color: rgba(68, 68, 68, 0.3);
     border-color: #666;
@@ -188,7 +231,6 @@ a.list-group-item.active small {
     -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
 }
-
 
 a.list-group-item.active {
     background-color: #ddd;
@@ -251,6 +293,12 @@ a.list-group-item.active:hover, a.list-group-item.active:active
   background-color: #2D7F7E;
   border-color: #ccc;
 }
+
+
+
+
+
+
 
 /*-----POST VIEW--------*/
 

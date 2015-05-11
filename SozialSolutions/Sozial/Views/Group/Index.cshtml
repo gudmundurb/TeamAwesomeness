@@ -43,6 +43,7 @@
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("../Group/joinGroup", "joinGroup", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Join</span>
                             <div class="stars">
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>

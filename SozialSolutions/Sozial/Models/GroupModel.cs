@@ -9,12 +9,12 @@ namespace Sozial.Models
 {
     public class GroupModel
     {
-        GroupModel()
+        public GroupModel()
         {
             createdDate = DateTime.Now;
         }
         
-        GroupModel(string userID, string groupNm, string groupDescr)
+        public GroupModel(string userID, string groupNm, string groupDescr)
         {
             creatorID = userID;
             groupName =  groupNm;
