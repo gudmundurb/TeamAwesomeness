@@ -43,6 +43,15 @@ namespace Sozial.Controllers
             return RedirectToAction("UserList");
         }
 
+        public ActionResult myFriends()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            Repositories.RelationshipRepo james_doohan = new Repositories.RelationshipRepo(db);
+            return View(james_doohan.getFriends(User.Identity.Name).ToList() );
+        }
+
+
+
         public ActionResult Contact()
         {
             //Shows our news
