@@ -7,14 +7,14 @@
     <div class="row">
         <div class="well">
             <h2 class="title-adjustments">Games</h2>
-            <hr/ >
+            <hr />
             <p>
                 @Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" })
             </p>
             <div class="list-group">
                 @foreach (var item in Model)
                 {
-                    <a href="@Url.Action("Details","Game", new { id = item.gameID })" class="list-group-item active">
+                    <a class="list-group-item active">
 
                         <div class="media col-md-3">
                             <figure class="pull-left img_resizer">
@@ -31,13 +31,14 @@
                         <div class="col-md-6">
                             <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
-                            <p class="list-group-item-text">
+                            <p class="list-group-item-text text_limit title-adjustments">
                                 @Html.DisplayFor(modelItem => item.aboutGame)
                             </p>
+                            <input type="button" title="Details" value="Details" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" class="btn btn-default btn-md" />
                         </div>
-                        <div class="col-md-3 text-center">
-                            <h2> 14240 <small> votes </small></h2>
-                            <button type="button" class="btn btn-default btn-lg btn-block"> Vote Now! </button>
+                        <div class="col-md-3 text-center">                            
+                            <input type="button" title="Edit" value="Edit" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'" class="btn btn-default btn-md btn-block" />
+                            <input type="button" title="Delete" value="Delete" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'" class="btn btn-danger btn-md btn-block" />
                             <div class="stars">
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star"></span>
@@ -45,8 +46,10 @@
                                 <span class="glyphicon glyphicon-star"></span>
                                 <span class="glyphicon glyphicon-star-empty"></span>
                             </div>
-                            <p> @Html.DisplayFor(modelItem => item.isTopTen)
-                            @Html.DisplayNameFor(model => model.isTopTen)</p>
+                            <p>
+                                @Html.DisplayFor(modelItem => item.isTopTen)
+                                @Html.DisplayNameFor(model => model.isTopTen)
+                            </p>
                         </div>
                     </a>
                 }
@@ -61,5 +64,6 @@
 -->
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/text_delimitator.js"></script>
 <script src="~/Scripts/gameList.js"></script>
-<div id="steamList"></div>
+<!--<div id="steamList"></div>-->
