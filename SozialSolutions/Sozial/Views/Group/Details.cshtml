@@ -43,7 +43,15 @@
         </dd>
 
     </dl>
+    <ol>
+    @foreach (Sozial.Models.ApplicationUser user in Model.Members)
+    {
+        <li> @user.UserName </li>
+    }
+</ol>
+
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.groupID }) |
     @Html.ActionLink("Back to List", "Index")

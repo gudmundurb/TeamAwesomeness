@@ -8,7 +8,7 @@ namespace Sozial.Repositories
 {
     public class GroupRepo : IGroupRepo, IDisposable
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db = null;
 
         public GroupRepo(ApplicationDbContext databaseContext)
         {
