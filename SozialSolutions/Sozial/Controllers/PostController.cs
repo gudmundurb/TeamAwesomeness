@@ -33,11 +33,11 @@ namespace Sozial.Controllers
             foreach (PostModel post in postList)
             {
                 IEnumerable<CommentModel> comments = commentRepo.getComments(post.postID);
+                
                 post.comments = comments.ToList();
                 
             }
-            
-            return View( postList );
+            return View(postList.OrderByDescending(x => x.createdDate));
         }
 
         // GET: Post/Details/5
