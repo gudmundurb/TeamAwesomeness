@@ -33,21 +33,9 @@
                 {
                     @Html.Partial("_LoggedInPartial")
                 }
-                else if (Request.RawUrl == "/Account/ExternalLoginCallback")
-                {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="@Url.Action("Login", "Account")">
-                                <i class="glyphicon glyphicon-remove"></i>
-                                <span>Cancel</span>
-                            </a>
-                        </li>
-                    </ul>
-                }
-                else if (Request.RawUrl == "/Home/userList"){ <h2>fuck off _LoginPartial let me work</h2> }
                 else if(Request.RawUrl != "/Account/Login")
                 {
-                    @Html.Partial("_LoginPartial")
+                    @Html.Partial("_LoginPartial", new Sozial.Models.LoginViewModel { })
                 }
             </div>
 
