@@ -1,51 +1,61 @@
 ﻿@model IEnumerable<Sozial.Models.NewsModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "News";
 }
 
-<h2>Index</h2>
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <h2 class="title-adjustments">News</h2>
+            <hr />
+            <p>
+                @Html.ActionLink("Add News", "Create", null, new { @class = "btn btn-success" })
+            </p>
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                    <a class="list-group-item active">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.userID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imageUrl)
-        </th>
-        <th></th>
-    </tr>
+                        <div class="media col-md-3">
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.imageUrl))
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                }
+                                else
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
+                                }
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.title)</h3>
+                            <p>@Html.DisplayFor(modelItem => item.userID)</p>
+                            <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+                            <p class="list-group-item-text text_limit title-adjustments">
+                                @Html.DisplayFor(modelItem => item.text)
+                            </p>
+                            <input type="button" title="Details" value="Details" onclick="location.href='@Url.Action("Read more", "News", new { id = item.newsID })'" class="btn btn-default btn-md" />
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <input type="button" title="Edit" value="Edit" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'" class="btn btn-default btn-md btn-block" />
+                            <input type="button" title="Delete" value="Delete" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'" class="btn btn-danger btn-md btn-block" />
+                            <div class="stars">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.userID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imageUrl)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.newsID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.newsID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.newsID })
-        </td>
-    </tr>
-}
-
-</table>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/text_delimitator.js"></script>
+<script src="~/Scripts/gameList.js"></script>

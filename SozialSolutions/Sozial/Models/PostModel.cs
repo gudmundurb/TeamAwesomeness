@@ -26,15 +26,12 @@ namespace Sozial.Models
     
         public string userID { get; set; } // the user that made the comment.
 
-
-        
         [Required(ErrorMessage = "No text for a post eh... that is interesting 'post' I would say :) !")]
         [Display(Name = "Post Text")]
         [DataType(DataType.MultilineText)]
         public string text { get; set; }
 
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
-
 
         public DateTime createdDate { get; set; }
         /*
