@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Sozial.Models;
+using Sozial.Repositories;
 namespace Sozial.Controllers
 
 {
@@ -11,7 +12,47 @@ namespace Sozial.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            //db connection created
+           ApplicationDbContext db = new ApplicationDbContext();
+            //.......
+
+
+            //Repos created 
+            GroupRepo gRepo = new GroupRepo(db);
+            RelationshipRepo relRepo = new RelationshipRepo(db);
+            PostRepo pRepo = new PostRepo(db);
+            GameRepo gameRepo = new GameRepo(db);
+            //End of Repos
+
+            
+            FrontPageViewModel fp = new FrontPageViewModel();
+
+
+            //Get most recent groups created
+            fp.newestGroups = gRepo.getRecentGroups(5).ToList();
+            //end of get most recent groups created
+
+
+            //Get 5 new posts from friends
+            IEnumerable<ApplicationUser> Friends = relRepo.getFriends(User.Identity.Name);
+            List<PostModel> Posts = new List<PostModel>();
+            foreach (ApplicationUser Friend in Friends)
+            {
+                IEnumerable<PostModel> temp = pRepo.GetByUserID(Friend.UserName);
+                foreach (PostModel post in temp)
+                {
+                    Posts.Add(post);
+                }
+
+            }
+            fp.newestPosts = Posts.OrderBy(Poste => Poste.createdDate).Take(5).ToList();
+            //End of Get 5 new posts from friends
+
+
+            //fp.newGroupPosts = db.GroupModels ..
+
+            //fp.newestGames = db.GameModels .. 
+            return View(fp);
         }
 
         public ActionResult About()

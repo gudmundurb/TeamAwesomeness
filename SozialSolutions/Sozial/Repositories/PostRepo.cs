@@ -39,6 +39,15 @@ namespace Sozial.Repositories
             db.SaveChanges();
         }
 
+        public IEnumerable<PostModel> GetByUserID(string userID)
+        {
+            return (from PostModel jim in db.PostModels
+                    where jim.userID == userID
+                    select jim).ToList();
+        }
+
+
+
         public void UpdatePost(Sozial.Models.PostModel post)
         {
             db.Entry(post).State = EntityState.Modified;
@@ -64,6 +73,8 @@ namespace Sozial.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+
         
     }
 }

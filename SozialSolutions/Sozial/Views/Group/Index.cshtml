@@ -1,57 +1,68 @@
 ﻿@model IEnumerable<Sozial.Models.GroupModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Groups";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.likeCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.groupName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.groupDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.groupPicture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.groupBanner)
-        </th>
-        <th></th>
-    </tr>
+<h2>Groups</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.likeCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.groupName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.groupDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.groupPicture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.groupBanner)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.groupID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.groupID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.groupID })
-        </td>
-    </tr>
-}
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <h2 class="title-adjustments">Groups</h2>
+            <hr />
+            <p>
+                @Html.ActionLink("Add New Group", "Create", null, new { @class = "btn btn-success" })
+            </p>
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                    <a class="list-group-item active">
+                        <div class="media col-md-3">
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.groupPicture))
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                }
+                                else
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupName)" />
+                                }
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.groupName)</h3>
+                            <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+                            <p class="list-group-item-text text_limit">
+                                @Html.DisplayFor(modelItem => item.groupDescription)
+                            </p>
+                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
+                            <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                            <div class="stars">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </div>
+                            <p>
+                                @Html.DisplayFor(modelItem => item.likeCount)
+                                @Html.DisplayNameFor(model => model.likeCount)
+                            </p>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
 
-</table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/text_delimitator.js"></script>
+<script src="~/Scripts/gameList.js"></script>

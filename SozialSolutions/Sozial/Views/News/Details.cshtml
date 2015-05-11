@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+
+    var image = @Model.imageUrl;
 }
 
 <h2>Details</h2>
@@ -10,6 +12,14 @@
     <h4>NewsModel</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userID)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.title)
         </dt>
@@ -31,7 +41,17 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.imageUrl)
+            <!--@Html.DisplayFor(model => model.imageUrl)-->
+            @{if (image != null)
+            {
+                <img src="@Url.Content(Model.imageUrl)" alt="Image" />
+            }
+
+            else
+            {
+                <p>No Image</p>
+            }
+            }
         </dd>
 
     </dl>
