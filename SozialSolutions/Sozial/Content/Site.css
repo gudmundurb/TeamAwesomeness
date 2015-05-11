@@ -1,4 +1,6 @@
-﻿body {
+﻿/*GENERAL CHANGES*/
+
+body {
     color: #ccc;
     padding-top: 50px;
     padding-bottom: 20px;
@@ -20,6 +22,16 @@ hr {
 
     border-color:  #666;
 }
+
+.title-adjustments {
+    margin-bottom: 5%;
+
+}
+.vertical_line 
+{
+    border-right: thin solid #ffffff;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -38,37 +50,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+
+
 }
-
-.frontpage-each-col {
-    border: 3px solid black;
-}
-
-.inline-login ul {
-
-    display: inline;
-    list-style-type: georgian;
-    padding: 0px;
-    margin: 0px;
-}
-
-.col-md-4.float-left {
-    float: left;
-    clear: left;
-}
-.col-md-8.float-right {
-  float: right;
-}
-
-.about-indent {
-    padding-left: 15px;
-}
-
-
-a.nav_logo {
-
-    max-width: 70%;
-}
+/*---------ABOUT PAGE------------*/
 
 .about_cover {
     background-image: url('Images/about_cover.png');
@@ -87,7 +72,52 @@ a.nav_logo {
     width: 100%;
 }
 
-/*OVERWRITES FOR THE BOOSTRAP CAROUSEL*/
+.frontpage-each-col {
+    border: 3px solid black;
+}
+
+.col-md-4.float-left {
+    float: left;
+    clear: left;
+}
+.col-md-8.float-right {
+  float: right;
+}
+
+
+/*-------FRONT PAGE AND _LAYOUT-----*/
+
+a.nav_logo {
+
+    max-width: 70%;
+}
+
+.logo_motto_frontpage {
+
+    z-index: 30;
+    position: absolute;
+    bottom: 25%;
+    right: 45px;
+    width: 100%;
+ 
+}
+
+.logo_motto_frontpage img {
+
+    bottom: 25%;
+    right: 45px;
+    float: right;
+    max-width: 20%;
+    min-width: 10%;
+ 
+}
+.logo_motto_frontpage img::after {
+
+    clear: both;
+ 
+}
+
+/*FRONT PAGE - OVERWRITES FOR THE BOOSTRAP CAROUSEL*/
 
 .carousel-inner > .item {
   opacity: 0;
@@ -127,32 +157,7 @@ a.nav_logo {
   z-index: 4;
 }
 
-/*----------------------------*/
-
-.logo_motto_frontpage {
-
-    z-index: 30;
-    position: absolute;
-    bottom: 25%;
-    right: 45px;
-    width: 100%;
- 
-}
-
-.logo_motto_frontpage img {
-
-    bottom: 25%;
-    right: 45px;
-    float: right;
-    max-width: 20%;
-    min-width: 10%;
- 
-}
-.logo_motto_frontpage img::after {
-
-    clear: both;
- 
-}
+/*-----REGISTER VIEW/LOGIN----*/
 
 .steam_button {
 
@@ -165,28 +170,8 @@ a.nav_logo {
     border: none;
 }
 
-.title-adjustments {
-    margin-bottom: 5%;
+/*---- LISTS OF ITEMS----*/
 
-}
-.vertical_line 
-{
-    border-right: thin solid #ffffff;
-}
-
-.btn-success {
-  color: #ffffff;
-  background-color: #2D7F7E;
-  border-color: #16403F;
-}
-
-.btn-success:hover {
-  color: #ffffff;
-  background-color: #2D7F7E;
-  border-color: #ccc;
-}
-
-/*---- Group View ----*/
 a.list-group-item {
     height: auto;
     min-height: 220px;
@@ -254,7 +239,20 @@ a.list-group-item.active:hover, a.list-group-item.active:active
 .btn-danger {
     padding: 4px;
 }
-/*Post view*/
+
+.btn-success {
+  color: #ffffff;
+  background-color: #2D7F7E;
+  border-color: #16403F;
+}
+
+.btn-success:hover, .btn-success:active {
+  color: #ffffff;
+  background-color: #2D7F7E;
+  border-color: #ccc;
+}
+
+/*-----POST VIEW--------*/
 
 .post-view {
     margin-bottom: 5px;
