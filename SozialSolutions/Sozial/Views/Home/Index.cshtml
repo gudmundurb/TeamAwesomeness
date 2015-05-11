@@ -90,16 +90,19 @@
                         @item.userID
                     </p>
                     <br />
-                        <figure class="pull-left img_resizer">
-                            @if (String.IsNullOrEmpty(item.imageUrl))
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                            else
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
-                            }
-                            </p>
+                <div class="media col-md-3">
+                    <figure class="pull-left img_resizer">
+                        @if (String.IsNullOrEmpty(item.imageUrl))
+                        {
+                            <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                        }
+                        else
+                        {
+                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                        }
+                    </figure>
+                </div>
+
                             <br />
                             <p>
                                 @item.text
@@ -108,7 +111,6 @@
                             <p>------------</p>
                             <br />
                             }
-                        </figure>
         </div>
         </div>
 
@@ -129,16 +131,18 @@
                         @item.groupName
                     </p>
                     <br />
-                    <p>
+                <div class="media col-md-3">
+                    <figure class="pull-left img_resizer">
                         @if (String.IsNullOrEmpty(item.groupPicture))
                         {
                             <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
                         }
                         else
                         {
-                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupName)" />
+                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" />
                         }
-                    </p>
+                    </figure>
+                </div>
                     <br />
                     <p>
                         @item.groupDescription
