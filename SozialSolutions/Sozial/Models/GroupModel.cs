@@ -27,7 +27,7 @@ namespace Sozial.Models
 
         //[ForeignKey("creatorID")]
         private string creatorID { get; set; }
-        private DateTime createdDate { get; set; }
+        public DateTime createdDate { get; set; }
 
         public int likeCount { get; set; }
 

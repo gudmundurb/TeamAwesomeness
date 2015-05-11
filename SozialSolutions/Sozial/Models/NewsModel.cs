@@ -35,7 +35,7 @@ namespace Sozial.Models
         [DataType(DataType.MultilineText)]
         public string text { get; set; }
 
-        private DateTime createdDate { get; set; }
+        public DateTime createdDate { get; set; }
         /*
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
         public DateTime CreatedDate
