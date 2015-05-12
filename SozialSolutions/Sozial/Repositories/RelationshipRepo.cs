@@ -17,7 +17,7 @@ namespace Sozial.Repositories
         {
             db = database;
         }
-
+        /* FRIENDS RELATIONSHIPS */
 
         public IEnumerable<ApplicationUser> getFriends(string username)
         {
@@ -94,6 +94,16 @@ namespace Sozial.Repositories
                 db.SaveChanges();
                 return true;
             }
+        }
+
+        /*  PROFILE POST STUFF */
+
+        public bool postToProfile(string username, int postID){
+            ProfilePostRelationModel newboy = new ProfilePostRelationModel();
+            newboy.UserId = username;
+            newboy.postId = postID;
+            db.SaveChanges();
+            return true;
         }
 
 

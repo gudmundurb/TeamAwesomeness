@@ -67,6 +67,10 @@ namespace Sozial.Models
         public System.Data.Entity.DbSet<Sozial.Models.FriendshipModel> FriendshipModels { get; set; }
 
         public System.Data.Entity.DbSet<Sozial.Models.GroupRelationshipModel> GroupRelationshipModels { get; set; }
+
+        public System.Data.Entity.DbSet<Sozial.Models.GroupPostRelationModel> GroupPostRelationModels { get; set; }
+
+        public System.Data.Entity.DbSet<Sozial.Models.ProfilePostRelationModel> ProfilePostRelationModels { get; set; }
         
     }
 }
