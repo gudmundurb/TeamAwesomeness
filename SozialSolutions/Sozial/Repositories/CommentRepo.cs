@@ -33,21 +33,20 @@ namespace Sozial.Repositories
         public void insertComment(CommentModel newComment)
         {
             ///* TODO: IMPLEMENT BETTER TO WORK WITH POSTREPO
-            
+            string myname = System.Web.HttpContext.Current.User.Identity.Name;
             db.CommentModels.Add(newComment);
+            db.SaveChanges();
 
-            // add the new comment to the appropriate posts' comment iCollection
-            PostModel post = db.PostModels.Find(newComment.postID);
-            if (post == null)
-            {
-                throw new Exception("Post returns null. post was either recently removed or there's an error. Sorry *-*  .",
-                    new ArgumentNullException());
-            }
-            post.comments.Add(newComment);
-            PostRepo postrepo = new PostRepo(db);
-            postrepo.UpdatePost(post);
-            // done.
-            
+            CommentModel comment = (from CommentModel comm in db.CommentModels
+                                    where comm.authorID == myname && comm.commentText == newComment.commentText
+                                    select comm).OrderByDescending(x => x.createdDate).First();
+
+            PostCommentRelationModel newReply = new PostCommentRelationModel();
+            newReply.commentId = comment.commentID;
+            newReply.postId = comment.postID;
+
+            db.PostCommentRelationModels.Add(newReply);
+
             db.SaveChanges();
         }
 

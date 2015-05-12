@@ -12,6 +12,13 @@ namespace Sozial.Models
         {
             createdDate = DateTime.Now;
         }
+        //the cow goes moo
+
+        public CommentModel(int postId)
+        {
+            this.postID = postId;
+        }
+
         //constructor
         public CommentModel (string text, int postID)
         {

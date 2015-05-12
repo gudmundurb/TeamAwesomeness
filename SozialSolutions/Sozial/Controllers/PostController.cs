@@ -24,6 +24,12 @@ namespace Sozial.Controllers
 
         //private ApplicationDbContext db = new ApplicationDbContext();
 
+
+
+
+
+
+
         // GET: Post
         public ActionResult Index()
         {
@@ -91,6 +97,20 @@ namespace Sozial.Controllers
             }
             return View(postModel);
         }
+
+        public string Reply(CommentModel comment)
+        {
+            comment.authorID = User.Identity.Name;
+            commentRepo.insertComment(comment);
+
+            
+            return "success";
+        }
+
+
+        
+
+
 
         // POST: Post/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

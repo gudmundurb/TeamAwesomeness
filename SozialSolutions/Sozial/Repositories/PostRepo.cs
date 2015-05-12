@@ -23,7 +23,15 @@ namespace Sozial.Repositories
 
         public PostModel GetPostByID(int? postID)
         {
-            return db.PostModels.Find(postID);
+
+            PostModel post = (from Sozial.Models.PostModel posts in db.PostModels
+                              where posts.postID == postID
+                              select posts).Single();
+
+            if (post != null) {
+                post.comments = getAllComments(post.postID).ToList(); 
+            }
+            return post;
         }
 
         public void InsertPost(PostModel post)
@@ -46,6 +54,14 @@ namespace Sozial.Repositories
                     select jim).ToList();
         }
 
+        public IEnumerable<CommentModel> getAllComments(int postID)
+        {
+            return (from CommentModel comment in db.CommentModels
+                    where comment.postID == postID
+                    select comment).ToList();
+        }
+
+
 
 
         public void UpdatePost(Sozial.Models.PostModel post)
@@ -54,6 +70,9 @@ namespace Sozial.Repositories
             db.SaveChanges();
         }
 
+
+
+        /* DISPOSE */
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)

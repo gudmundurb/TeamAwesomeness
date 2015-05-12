@@ -49,12 +49,13 @@
         <li> @user.UserName </li>
     }
 </ol>
-    <ol>
+    
         @foreach (Sozial.Models.PostModel post in Model.Posts)
         {
-            <li><p> @post.userID | @post.text </p> </li>
+            @Html.Partial("../Shared/_postPartial", post)
+            <br />
         }
-    </ol>
+    
 
 </div>
 
