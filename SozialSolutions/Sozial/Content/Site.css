@@ -19,7 +19,6 @@ a:hover, a:active {
 }
 
 hr {
-
     border-color:  #666;
 }
 
@@ -50,8 +49,6 @@ input,
 select,
 textarea {
     max-width: 280px;
-
-
 }
 
 
@@ -71,7 +68,6 @@ textarea {
 }
 
 .custom-container {
-
     margin: 0 auto;
     background-color: #000;
     max-width: 2000px;
@@ -126,7 +122,50 @@ a.nav_logo {
 
 
 
-/*FRONT PAGE - OVERWRITES FOR THE BOOSTRAP CAROUSEL*/
+
+/*-----------------------------------------FRONT PAGE---------*/
+
+.top-menu {
+    text-align: center;
+}
+
+.top-menu-button {
+    background: #393939 no-repeat top left;
+    width: 100px;
+    height: 30px;
+    outline: black;
+    padding: 5px;
+    margin: 3px;
+    color: #CCC9DC;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.homepage-news-title {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.homepage-news-name {
+    font-style: italic;
+}
+
+.homepage-posts-user {
+    margin-bottom: 50px;
+}
+
+.homepage-group-name {
+    margin-bottom: 50px;
+}
+
+
+
+/*------------------------------------------FRONT PAGE - OVERWRITES FOR THE BOOSTRAP CAROUSEL---------*/
 
 .carousel-inner > .item {
   opacity: 0;
