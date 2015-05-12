@@ -134,7 +134,9 @@ namespace Sozial.Controllers
         public ActionResult PostToGroup(GroupPostViewModel sunShine)
         {
             sunShine.newPost.userID = User.Identity.Name;
+            
             grpRepo.addPostToGroup(sunShine.newPost, sunShine.groupId);
+            
             return RedirectToAction("Details", new {id = sunShine.groupId });
         }
 

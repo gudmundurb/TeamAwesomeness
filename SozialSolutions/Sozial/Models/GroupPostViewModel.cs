@@ -9,5 +9,6 @@ namespace Sozial.Models
     {
         public int groupId { get; set; }
         public PostModel newPost { get; set; }
+        
     }
 }
