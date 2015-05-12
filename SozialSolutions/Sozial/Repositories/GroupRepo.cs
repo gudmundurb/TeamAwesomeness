@@ -133,7 +133,7 @@ namespace Sozial.Repositories
             else 
             {
                 PostRepo pRepo = new PostRepo(db);
-                IEnumerable<GroupPostRelationModel> rels = (from GroupPostRelationModel single in db.GroupRelationshipModels
+                IEnumerable<GroupPostRelationModel> rels = (from GroupPostRelationModel single in db.GroupPostRelationModels
                                                             where single.groupId == groupId
                                                             select single).ToList();
 
@@ -169,7 +169,12 @@ namespace Sozial.Repositories
         public bool addPostToGroup(PostModel post, int groupId)
         {
             db.PostModels.Add(post);
-            PostModel pModel = db.PostModels.Find(post);
+            db.SaveChanges();
+
+            PostModel pModel = (from PostModel posts in db.PostModels
+                                where (posts.text == post.text && posts.userID == post.userID)
+                                select posts).OrderByDescending(x => x.createdDate).First();
+
 
             GroupPostRelationModel model = new  GroupPostRelationModel();
             model.groupId = groupId;

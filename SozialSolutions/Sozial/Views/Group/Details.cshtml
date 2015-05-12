@@ -49,8 +49,16 @@
         <li> @user.UserName </li>
     }
 </ol>
+    <ol>
+        @foreach (Sozial.Models.PostModel post in Model.Posts)
+        {
+            <li><p> @post.userID | @post.text </p> </li>
+        }
+    </ol>
 
 </div>
+
+@Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.groupID }) |

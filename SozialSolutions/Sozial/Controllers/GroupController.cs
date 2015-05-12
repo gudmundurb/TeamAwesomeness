@@ -35,9 +35,13 @@ namespace Sozial.Controllers
                 return HttpNotFound();
             }
             groupModel.Members = grpRepo.getMembers(groupModel.groupID).ToList();
-            
+            groupModel.Posts = grpRepo.getAllPostsForGroup(groupModel.groupID).ToList();
+
             return View(groupModel);
         }
+
+        
+
 
         // GET: Group/Create
         public ActionResult Create()
@@ -125,6 +129,14 @@ namespace Sozial.Controllers
             return RedirectToAction("Index");
         }
 
+
+        [HttpPost]
+        public ActionResult PostToGroup(GroupPostViewModel sunShine)
+        {
+            sunShine.newPost.userID = User.Identity.Name;
+            grpRepo.addPostToGroup(sunShine.newPost, sunShine.groupId);
+            return RedirectToAction("Details", new {id = sunShine.groupId });
+        }
 
 
 
