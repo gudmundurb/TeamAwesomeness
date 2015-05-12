@@ -64,6 +64,10 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(String.IsNullOrEmpty(gameModel.imageUrl))
+                {
+                    gameModel.imageUrl = "A VALUE";
+                }
                 db.InsertGame(gameModel);
                 return RedirectToAction("Index");
             }

@@ -20,7 +20,9 @@
                             <figure class="pull-left img_resizer">
                                 @if (String.IsNullOrEmpty(item.imageUrl))
                                 {
+                                   
                                     <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                    @Html.HiddenFor(modelItem => item.imageUrl, new { id = "natureOfVisitField" })
                                 }
                                 else
                                 {

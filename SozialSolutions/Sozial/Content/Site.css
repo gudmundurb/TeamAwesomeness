@@ -294,12 +294,29 @@ a.list-group-item.active:hover, a.list-group-item.active:active
   border-color: #ccc;
 }
 
+/*----GAME DETAILS-----*/
 
+.modal-dialog { 
 
+    width: 60%;
+    max-width: 100%;
+    margin-top: 4%;
+    padding: 15px;
+    background-color: rgba(0,0,0,0);
+}
 
+.modal-content {
+    max-width: 100%;
+    min-width: 70%; 
+    background-color: rgba(100, 100, 100, 0.3);
+    border: solid 1px #464646;    
+}
 
-
-
+.modal-dialog img {
+       
+    max-width: 100%;       
+    margin: 0 auto;
+}
 /*-----POST VIEW--------*/
 
 .post-view {
