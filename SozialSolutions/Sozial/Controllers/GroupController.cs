@@ -34,9 +34,13 @@ namespace Sozial.Controllers
                 return HttpNotFound();
             }
             groupModel.Members = grpRepo.getMembers(groupModel.groupID).ToList();
-            
+            groupModel.Posts = grpRepo.getAllPostsForGroup(groupModel.groupID).ToList();
+
             return View(groupModel);
         }
+
+        
+
 
         // GET: Group/Create
         public ActionResult Create()
