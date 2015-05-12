@@ -305,7 +305,7 @@ a.list-group-item.active figure{
 a.list-group-item.active:hover, a.list-group-item.active:active
  a.list-group-item.active:focus {
 
-    background-color: rgba(57,57,57, 0.7);
+    background-color: rgba(57,57,57, 1);
     border-color: #666;
     color: #bbb;
 }

@@ -39,7 +39,7 @@
                                 </div>
                             </figure>                           
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
                             <h3>@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
                             <!--CHANGES FROM HERE ON-->
@@ -48,7 +48,7 @@
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" /></div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2 pull-left">
                             <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
                             <!--CHANGES DONE-->
