@@ -78,19 +78,6 @@ textarea {
     border: 3px solid black;
 }
 
-.col-md-4.float-left {
-    float: left;
-    clear: left;
-}
-.col-md-8.float-right {
-  float: right;
-}
-
-
-
-
-
-
 
 /*-------FRONT PAGE AND _LAYOUT-----*/
 
@@ -253,6 +240,7 @@ a.nav_logo {
     
    padding-top: 4px;
    padding-bottom: 4px;
+   background-color: #666;
 }
 
 
