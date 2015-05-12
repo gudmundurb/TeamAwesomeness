@@ -11,8 +11,7 @@ namespace Sozial.Models
         public IEnumerable<ApplicationUser> myFriends { get; set; }
         //List of my groups
         public IEnumerable<GroupModel> myGroups { get; set; }
-
-        //List of my games ?
-
+        //List of my favorite games
+        public IEnumerable<GameModel> myGames { get; set; }
     }
 }
