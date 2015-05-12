@@ -224,10 +224,10 @@
     <Content Include="Content\Images\halfPageBanner3.png" />
     <Content Include="Content\Images\halfPageBanner4.png" />
     <Content Include="Content\Images\logo_motto.png" />
-    <Content Include="Content\Images\s-sozial-320.png" />
     <Content Include="Content\Images\sits_large_noborder.png" />
     <Content Include="Content\Images\sits_small.png" />
     <Content Include="Content\Images\sozial_logo.png" />
+    <Content Include="Content\Images\steam_little.png" />
     <Content Include="Content\Images\triangles_%402X.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -291,7 +291,6 @@
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Shared\_LoggedInPartial.cshtml" />
-    <Content Include="Views\Shared\_LoggedInLayout.cshtml" />
     <Content Include="Views\Post\Create.cshtml" />
     <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\Post\Details.cshtml" />

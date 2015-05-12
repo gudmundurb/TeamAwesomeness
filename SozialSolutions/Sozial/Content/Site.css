@@ -52,7 +52,15 @@ textarea {
 }
 
 
+.cursor_change {
 
+    cursor: pointer;
+    background-color: #fff:
+}
+.cursor_change:hover img {
+
+   opacity: 0.5;
+}
 
 
 
@@ -77,19 +85,6 @@ textarea {
 .frontpage-each-col {
     border: 3px solid black;
 }
-
-.col-md-4.float-left {
-    float: left;
-    clear: left;
-}
-.col-md-8.float-right {
-  float: right;
-}
-
-
-
-
-
 
 
 /*-------FRONT PAGE AND _LAYOUT-----*/
@@ -227,29 +222,40 @@ a.nav_logo {
     border: none;
 }
 
+.steam_button_small {
 
+    width: 88px;
+    height: 33px;
+    background-image: url(Images/steam_little.png);
+    background-repeat: no-repeat; 
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-top: 8px;
+}
 
+.partial_login {
 
+    margin-top: 0.4%;
+}
+
+.partial_login input[type=text], input[type=password] {
+    
+    height: 30px;
+
+}
+.partial_login input[type=submit] {
+    
+   padding-top: 4px;
+   padding-bottom: 4px;
+}
 
 
 /*---- LISTS OF ITEMS----*/
 
-a.list-post-item {
-    height: auto;
-    min-height: 100px;
-    width: 700px;  
-}
-
-a.list-post-item.active {
-    background-color: #dddddd;
-    border-color: #bbbbbb;
-    color: #666666;
-    display: block;
-}
-
 a.list-post-item.active:hover, a.list-post-item.active:active
 a.list-post-item.active:focus {
-    background-color: #d1d1d1;
+   background-color: rgba(221, 221, 221, 0);
     border-color: #bbbbbb;
     color: #666666;
 }
@@ -260,7 +266,7 @@ a.list-group-item {
 }
 
 a.list-group-item.active small {
-    color: #393939;
+    color: #bbb;
 }
 
 .well {
@@ -277,16 +283,17 @@ a.list-group-item.active small {
 }
 
 a.list-group-item.active {
-    background-color: #ddd;
-    border-color: #bbb;
-    color: #666;
+    background-color: rgba(57,57,57, 1);
+    border-color: #666;
+    color: #bbb;
     display: block;
 }
 
 a.list-group-item.active .stars{
     
-    font-size: 15pt;
-    color: #666;
+    font-size: 14pt;
+    margin-top: 5px;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -298,9 +305,9 @@ a.list-group-item.active figure{
 a.list-group-item.active:hover, a.list-group-item.active:active
  a.list-group-item.active:focus {
 
-    background-color: #d1d1d1;
-    border-color: #bbb;
-    color: #666;
+    background-color: rgba(57,57,57, 0.7);
+    border-color: #666;
+    color: #bbb;
 }
 .stars {
     margin: 20px auto 1px;    

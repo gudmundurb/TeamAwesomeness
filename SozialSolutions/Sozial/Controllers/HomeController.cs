@@ -28,11 +28,11 @@ namespace Sozial.Controllers
             
             FrontPageViewModel fp = new FrontPageViewModel();
 
-            //Get 5 most recent news created
-            fp.newestNews = newsRepo.getRecentNews(5).ToList();
+            //Get 3 most recent news created
+            fp.newestNews = newsRepo.getRecentNews(3).ToList();
             //-------
 
-            //Get most recent groups created
+            //Get 5 most recent groups created
             fp.newestGroups = groupRepo.getRecentGroups(5).ToList();
             //end of get most recent groups created
 
