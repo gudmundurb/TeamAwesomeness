@@ -8,116 +8,89 @@
 }
 <div class="container">
     <div class="well">
-        <h3>@Html.DisplayFor(model => model.nameOfGame)</h3>
-        <h4>Details</h4>
+        <h2>@Html.DisplayFor(model => model.nameOfGame)</h2>
         <hr />
-        <div class="row">            
-            <div>
+        <div class="row game-cover">
                 <ul class="thumbails list-unstyled">
-                    <li class="col-md-3">
-                        <div class="thumbnail">
-                                @if (!String.IsNullOrEmpty(image))
-                                {
-                                    <img class="img-responsive" src="@Url.Content(Model.imageUrl)" alt="@Html.DisplayFor(model => model.nameOfGame) thumbnail" />
-                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">See full Image</button>
-
-                                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <img src="@Url.Content(Model.imageUrl)" class="img-responsive" />
-                                                </div>
+                    <li class="col-md-5">
+                        <div class="thumbnail well margin-top">
+                            @if (!String.IsNullOrEmpty(image))
+                            {
+                                <a href="" data-toggle="modal" data-target="#myModal">
+                                    <img class="img-responsive" src="@Url.Content(Model.imageUrl)" alt="@Html.DisplayFor(model => model.nameOfGame) thumbnail" data-toggle="modal" data-target="#myModal" />
+                                </a>
+                                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <img src="@Url.Content(Model.imageUrl)" class="img-responsive" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-                                                    <img src="@Url.Content(Model.imageUrl)" class="img-responsive">
-                                                </div>
-                                            </div>
+                                </div>
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="@Url.Content(Model.imageUrl)" class="img-responsive">
                                         </div>
                                     </div>
-                                }
-                                else
-                                {
-                                    <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                }
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                        }
+                    </div>
+                </li>
+                <li class="col-md-6 pull-right fill item-details">
+                    <div class="stars pull-right">
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>
+                    </div>
+                </li>
+             </ul>
+        </div>
+        <div class="row">
+            <ul class="thumbails list-unstyled">
+                <li class="col-md-5">
+                     <div class="well item-details">
+                         <h4>Company</h4>                         
+                         <p>@Html.DisplayFor(model => model.gameCompany)</p>
+                         <hr />
+                         <h4>Genre</h4>                        
+                         <p>@Html.DisplayFor(model => model.genre)</p>
+                         <hr />
+                         <h4>About</h4>
+                         <p>@Html.DisplayFor(model => model.aboutGame)</p>
+                     </div>
+                </li>
+                <li>
+                    <div class="col-md-7">
+                        <h4 class="title-adjustments">Write a Review</h4>
+                         <div class="widget-area pull-left">
+                            <form>
+                                <textarea placeholder="NEEEEEEEEEEEEEDS CONNECTION WITH THE DATABASE"></textarea>
+                                <div class="review-box stars pull-left">
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                    <i class="glyphicon glyphicon-star-empty"></i>
+                                </div>
+                                <button type="submit" class="btn btn-success pull-right">Review</button>
+                            </form>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                        <h4 class="title-adjustments">Review List</h4>
+                        <!--TODO!!!!!!!!!!!!-->
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>   
 </div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nameOfGame)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nameOfGame)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.aboutGame)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.aboutGame)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.gameCompany)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.gameCompany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.isTopTen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isTopTen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.genre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.genre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageUrl)
-        </dt>
-
-        <dd>
-            <!--@Html.DisplayFor(model => model.imageUrl)-->
-             @{if (image != null)
- {
-                        <img src="@Url.Content(Model.imageUrl)"
-                        <img src="@Url.Content(Model.imageUrl)" alt="Image" />
-               }
-                      else
-                      {
-                        <p>No Image</p>
-                      }
-}
-
-</div>
-
-</dd>
-
-</dl>
-
-
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.gameID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+  
