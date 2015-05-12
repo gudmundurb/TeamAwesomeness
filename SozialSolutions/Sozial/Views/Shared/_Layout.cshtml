@@ -39,8 +39,9 @@
                 }
                 else if(Request.RawUrl != "/Account/Login")
                 {
-                    @Html.Partial("_LoginPartial", new Sozial.Models.LoginViewModel { })
                     @Html.Partial("../Account/_ExternalLoginsListPartial", new Sozial.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                    @Html.Partial("_LoginPartial", new Sozial.Models.LoginViewModel { })
+                    
                 }
             </div>
 

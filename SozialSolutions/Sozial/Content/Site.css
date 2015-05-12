@@ -227,9 +227,33 @@ a.nav_logo {
     border: none;
 }
 
+.steam_button_small {
 
+    width: 88px;
+    height: 33px;
+    background-image: url(Images/steam_little.png);
+    background-repeat: no-repeat; 
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-top: 8px;
+}
 
+.partial_login {
 
+    margin-top: 0.4%;
+}
+
+.partial_login input[type=text], input[type=password] {
+    
+    height: 30px;
+
+}
+.partial_login input[type=submit] {
+    
+   padding-top: 4px;
+   padding-bottom: 4px;
+}
 
 
 /*---- LISTS OF ITEMS----*/
