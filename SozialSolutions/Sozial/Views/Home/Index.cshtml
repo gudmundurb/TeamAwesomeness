@@ -36,16 +36,25 @@
         </div>
     </div> <!-- Carousel -->
 </div>
-<!--<div class="long-pic">
-    <img src="@Url.Content("~/Content/Images/frontpage-cover-photo.png")" />
-</div>-->
+
 <div class="container body-content">
     <div class="row">
-        @Html.ActionLink("My friends", "../Home/myFriends")
-        @Html.ActionLink("My groups", "../Home/myGroups")
-        @Html.ActionLink("New game", "../Home/myGames")
-        @Html.ActionLink("New post", "../Post")
-
+        <div class="col-md-12">
+            <div class="top-menu">
+                <div class="top-menu-button">
+                    @Html.ActionLink("Myfriends", "../Home/myFriends")
+                </div>
+                <div class="top-menu-button">
+                    @Html.ActionLink("My groups", "../Home/myGroups")
+                </div>
+                <div class="top-menu-button">
+                    @Html.ActionLink("Games", "../Home/myGames")
+                </div>
+                <div class="top-menu-button">
+                    @Html.ActionLink("Post", "../Post")
+                </div>
+            </div>
+        </div>
         <div class="col-md-6">
             <h3>Latest News</h3>
             <div class="frontpage-each-col">
@@ -54,20 +63,19 @@
                     <p>
                         @item.userID
                     </p>
-                    <br />
-    <div class="media col-md-3">
-        <figure class="pull-left img_resizer">
-            @if (String.IsNullOrEmpty(item.imageUrl))
-            {               
-               <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-            }
-            else
-            {
-                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.newsID)" />
-            }
-        </figure>
-    </div>
-                    <br />
+                    <div class="media col-md-3">
+                        <figure class="pull-left img_resizer">
+                            @if (String.IsNullOrEmpty(item.imageUrl))
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                            }
+                            else
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.newsID)" />
+                            }
+                        </figure>
+                    </div>
+
                     <p>
                         @item.title
                     </p>
@@ -90,28 +98,28 @@
                         @item.userID
                     </p>
                     <br />
-                <div class="media col-md-3">
-                    <figure class="pull-left img_resizer">
-                        @if (String.IsNullOrEmpty(item.imageUrl))
-                        {
-                            <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                        }
-                        else
-                        {
-                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
-                        }
-                    </figure>
-                </div>
-
-                            <br />
-                            <p>
-                                @item.text
-                            </p>
-                            <br />
-                            <p>------------</p>
-                            <br />
+                    <div class="media col-md-3">
+                        <figure class="pull-left img_resizer">
+                            @if (String.IsNullOrEmpty(item.imageUrl))
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
                             }
-        </div>
+                            else
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                            }
+                        </figure>
+                    </div>
+
+                    <br />
+                    <p>
+                        @item.text
+                    </p>
+                    <br />
+                    <p>------------</p>
+                    <br />
+                }
+            </div>
         </div>
 
         <div class="col-md-6">
@@ -131,18 +139,18 @@
                         @item.groupName
                     </p>
                     <br />
-                <div class="media col-md-3">
-                    <figure class="pull-left img_resizer">
-                        @if (String.IsNullOrEmpty(item.groupPicture))
-                        {
-                            <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                        }
-                        else
-                        {
-                            <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
-                        }
-                    </figure>
-                </div>
+                    <div class="media col-md-3">
+                        <figure class="pull-left img_resizer">
+                            @if (String.IsNullOrEmpty(item.groupPicture))
+                            {
+                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                            }
+                            else
+                            {
+                                <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
+                            }
+                        </figure>
+                    </div>
                     <br />
                     <p>
                         @item.groupDescription
