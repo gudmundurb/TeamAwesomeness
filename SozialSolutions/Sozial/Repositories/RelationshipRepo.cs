@@ -98,7 +98,24 @@ namespace Sozial.Repositories
 
         /*  PROFILE POST STUFF */
 
-        public bool postToProfile(string username, int postID){
+        //public IEnumerable<PostModel>;
+
+        public IEnumerable<PostModel> getAllPostsForUser(string userID)
+        {
+            PostRepo pRepo = new PostRepo(db);
+            IEnumerable<ProfilePostRelationModel> rels = (from ProfilePostRelationModel single in db.ProfilePostRelationModels
+                                                          where single.UserId == userID
+                                                          select single).ToList();
+            List<PostModel> posts = new List<PostModel>();
+
+            foreach(ProfilePostRelationModel rel in rels){
+                posts.Add(pRepo.GetPostByID(rel.postId));
+            }
+            return posts.ToList();
+
+        }
+
+        public bool postToProfile(int postID, string username){
             ProfilePostRelationModel newboy = new ProfilePostRelationModel();
             newboy.UserId = username;
             newboy.postId = postID;
@@ -107,6 +124,16 @@ namespace Sozial.Repositories
         }
 
 
+        public bool removePostFromProfile(int postID)
+        {
+            ProfilePostRelationModel model = (from ProfilePostRelationModel single in db.ProfilePostRelationModels
+                                              where single.postId == postID
+                                              select single).SingleOrDefault();
+            db.ProfilePostRelationModels.Remove(model);
+            db.SaveChanges();
+            return true;
+
+        }
 
         /* DISPOSE */
         private bool disposed = false;
