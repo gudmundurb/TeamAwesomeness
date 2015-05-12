@@ -24,7 +24,9 @@ namespace Sozial.Controllers
         public ActionResult Index()
         {
             IEnumerable<NewsModel> newsList = newsRepo.GetNews();
-            return View( newsList );
+
+            
+            return View( newsList.OrderByDescending(x => x.createdDate) );
         }
 
         // GET: News/Details/5
