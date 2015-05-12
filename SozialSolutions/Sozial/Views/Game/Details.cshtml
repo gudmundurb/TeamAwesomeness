@@ -5,6 +5,11 @@
 
     var image = @Model.imageUrl;
 
+    var dateAndTime = DateTime.Now;
+    int year = dateAndTime.Year;
+    int month = dateAndTime.Month;
+    int day = dateAndTime.Day;
+
 }
 <div class="container">
     <div class="well">
@@ -13,6 +18,7 @@
         <div class="row game-cover">
                 <ul class="thumbails list-unstyled">
                     <li class="col-md-5">
+                        <!--GAME PICTURE AND POP UP-->
                         <div class="thumbnail well margin-top">
                             @if (!String.IsNullOrEmpty(image))
                             {
@@ -29,8 +35,8 @@
                                     </div>
                                 </div>
                             <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
+                                <div class="modal-dialog">                                    
+                                    <div class="modal-content">                                        
                                         <div class="modal-body">
                                             <img src="@Url.Content(Model.imageUrl)" class="img-responsive">
                                         </div>
@@ -43,36 +49,42 @@
                             <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
                         }
                     </div>
+                    <!--GAME PICTURE AND POP UP-->
+                    <!--OVERALL RATING-->
                 </li>
-                <li class="col-md-6 pull-right fill item-details">
-                    <div class="stars pull-right">
+                <li class="col-md-6 pull-right item-details">
+                    <div class="stars pull-right">                        
                         <i class="glyphicon glyphicon-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
                         <i class="glyphicon glyphicon-star"></i>
-                        <i class="glyphicon glyphicon-star-empty"></i>
+                        <i class="glyphicon glyphicon-star-empty"></i>                        
                     </div>
                 </li>
+                <!--OVERALL RATING-->
              </ul>
-        </div>
+        </div>        
         <div class="row">
             <ul class="thumbails list-unstyled">
+                <!--DETAILS-->
                 <li class="col-md-5">
-                     <div class="well item-details">
-                         <h4>Company</h4>                         
-                         <p>@Html.DisplayFor(model => model.gameCompany)</p>
-                         <hr />
-                         <h4>Genre</h4>                        
-                         <p>@Html.DisplayFor(model => model.genre)</p>
-                         <hr />
-                         <h4>About</h4>
-                         <p>@Html.DisplayFor(model => model.aboutGame)</p>
-                     </div>
+                    <div class="well item-details">
+                        <h4>Company</h4>
+                        <p>@Html.DisplayFor(model => model.gameCompany)</p>
+                        <hr />
+                        <h4>Genre</h4>
+                        <p>@Html.DisplayFor(model => model.genre)</p>
+                        <hr />
+                        <h4>About</h4>
+                        <p>@Html.DisplayFor(model => model.aboutGame)</p>
+                    </div>
                 </li>
                 <li>
+                <!--DETAILS-->
                     <div class="col-md-7">
+                        <!--POST REVIEW-->
                         <h4 class="title-adjustments">Write a Review</h4>
-                         <div class="widget-area pull-left">
+                        <div class="widget-area pull-left">
                             <form>
                                 <textarea placeholder="NEEEEEEEEEEEEEDS CONNECTION WITH THE DATABASE"></textarea>
                                 <div class="review-box stars pull-left">
@@ -85,8 +97,33 @@
                                 <button type="submit" class="btn btn-success pull-right">Review</button>
                             </form>
                         </div>
-                        <h4 class="title-adjustments">Review List</h4>
-                        <!--TODO!!!!!!!!!!!!-->
+                        <!--POST REVIEW-->
+                        <!--OTHER POSTS-->
+                        <h4 class="title-adjustments">Review List</h4>                        
+                        <div class="widget-area comment-section">
+                            <div class="col-sm-2 thumbnail">
+                                <img class="img-responsive img-rounded" src="http://placehold.it/100x100" alt="A placeholder" />
+                            </div>
+                            <a href="#" title="Username">Username</a>
+                            <small class="pull-right">@day/@month/@year</small>
+                                <div class="stars">
+                                    <p>
+                                        Rating: &nbsp; <i class="glyphicon glyphicon-star"></i>
+                                        <i class="glyphicon glyphicon-star"></i>
+                                        <i class="glyphicon glyphicon-star"></i>
+                                        <i class="glyphicon glyphicon-star"></i>
+                                        <i class="glyphicon glyphicon-star-empty"></i>
+                                    </p>
+                                </div>                                
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis porta justo,
+                                ac tristique purus sagittis vel. Cras a mi metus. Phasellus sodales ligula nisi, vitae sodales justo
+                                sodales quis. Suspendisse faucibus sodales tellus, quis consequat sapien ornare quis. Ut vel nibh purus.
+                                Nam sit amet felis quam. Aenean eget nunc eget mauris rutrum lacinia. Phasellus iaculis turpis erat.
+                                In eget dolor nec ipsum porttitor pulvinar eu ac tellus.
+                            </p>
+                        </div>
+                        <!--OTHER POSTS-->
                     </div>
                 </li>
             </ul>

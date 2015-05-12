@@ -14,31 +14,36 @@
             <div class="list-group">
                 @foreach (var item in Model)
                 {
-                    <a class="list-group-item active">
-                        <div class="media col-md-3">
-                            <figure class="pull-left img_resizer">
-                                @if (String.IsNullOrEmpty(item.imageUrl))
-                                {
-                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                }
-                                else
-                                {
+                    <a class="list-group-item active container">                                                   
+                        @if (!String.IsNullOrEmpty(item.imageUrl))
+                        {
+                            <div class="media col-md-3">
+                                <figure class="pull-left img_resizer">
                                     <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
-                                }
-                            </figure>
-                        </div>
-                        <div class="col-md-6">
-                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.title)</h3>
-                            <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
-                            <p class="list-group-item-text text_limit">
-                                @Html.DisplayFor(modelItem => item.text)
-                            </p>
-                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "News", new { id = item.newsID })'" /></div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
-                            <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.title)</h3>
+                                <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+                                <p class="list-group-item-text text_limit">
+                                    @Html.DisplayFor(modelItem => item.text)
+                                </p>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-9">
+                                <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.title)</h3>
+                                <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+                                <p class="list-group-item-text text_limit">
+                                    @Html.DisplayFor(modelItem => item.text)
+                                </p>
+                            </div>
+                        }
+                           
+                        <div class="col-md-3">
+                            <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                            <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>                        
                         </div>
                     </a>
                 }
@@ -49,5 +54,4 @@
 
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/text_delimitator.js"></script>
 <script src="~/Scripts/gameList.js"></script>

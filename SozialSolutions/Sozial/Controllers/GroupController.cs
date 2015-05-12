@@ -130,6 +130,12 @@ namespace Sozial.Controllers
         }
 
 
+    [HttpPost]
+        public ActionResult PostToGroup(GroupPostViewModel sunShine)
+        {
+            return View();
+        }
+
 
 
 

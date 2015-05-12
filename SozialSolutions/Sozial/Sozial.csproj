@@ -183,6 +183,7 @@
     <Compile Include="Models\GameModels.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\GroupPostRelationModel.cs" />
+    <Compile Include="Models\GroupPostViewModel.cs" />
     <Compile Include="Models\GroupRelationshipModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -210,13 +211,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\07t2mb2.gif" />
     <Content Include="Content\Images\about_cover.png" />
     <Content Include="Content\Images\bg_greener.gif" />
-    <Content Include="Content\Images\frontBanner1.png" />
-    <Content Include="Content\Images\frontBanner2.png" />
-    <Content Include="Content\Images\frontBanner3.png" />
-    <Content Include="Content\Images\frontBanner4.png" />
     <Content Include="Content\Images\halfPageBanner1.png" />
     <Content Include="Content\Images\halfPageBanner2.png" />
     <Content Include="Content\Images\halfPageBanner3.png" />
@@ -227,7 +223,6 @@
     <Content Include="Content\Images\sits_small.png" />
     <Content Include="Content\Images\sozial_logo.png" />
     <Content Include="Content\Images\triangles_%402X.png" />
-    <Content Include="Content\Images\tumblr_static_large.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -314,6 +309,7 @@
     <Content Include="Views\Home\UserList.cshtml" />
     <Content Include="Views\Home\myFriends.cshtml" />
     <Content Include="Views\Group\CreatePost.cshtml" />
+    <Content Include="Views\Group\_PostToGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
