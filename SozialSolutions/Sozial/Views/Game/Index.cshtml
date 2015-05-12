@@ -26,21 +26,20 @@
                                 }
                                 else
                                 {
-                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'">
+                                    <span  class="cursor_change" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'">
                                         <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.nameOfGame)" />
                                     </span>
                                 }
-                                <div class="stars">
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star"></i>
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                </div>
                             </figure>
-                            
+                            <div class="stars">
+                                <i class="glyphicon glyphicon-star"></i>
+                                <i class="glyphicon glyphicon-star"></i>
+                                <i class="glyphicon glyphicon-star"></i>
+                                <i class="glyphicon glyphicon-star"></i>
+                                <i class="glyphicon glyphicon-star-empty"></i>
+                            </div>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <h3>@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
                             <!--CHANGES FROM HERE ON-->
@@ -49,9 +48,10 @@
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" /></div>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <!--CHANGES DONE-->
                         </div>
                     </a>
