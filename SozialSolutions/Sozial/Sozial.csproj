@@ -227,6 +227,7 @@
     <Content Include="Content\Images\sits_large_noborder.png" />
     <Content Include="Content\Images\sits_small.png" />
     <Content Include="Content\Images\sozial_logo.png" />
+    <Content Include="Content\Images\triangles_%402X.png" />
     <Content Include="Content\Images\tumblr_static_large.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

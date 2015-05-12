@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,7 @@ using System.Web;
 namespace Sozial.Models
 {
     public class GameModel
-    {
+    {        
         [Key]
         public int gameID { get; set; }
 
@@ -30,7 +31,6 @@ namespace Sozial.Models
 
         [Url(ErrorMessage = "Has to be a link on the web")]
         [Display(Name = "Image for the game: ")]
-
         public string imageUrl { get; set; }
         //Don´t Touch mystuff
     }

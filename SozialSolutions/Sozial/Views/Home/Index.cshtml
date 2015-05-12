@@ -58,8 +58,8 @@
     <div class="media col-md-3">
         <figure class="pull-left img_resizer">
             @if (String.IsNullOrEmpty(item.imageUrl))
-            {
-                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+            {               
+               <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
             }
             else
             {
@@ -139,7 +139,7 @@
                         }
                         else
                         {
-                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" />
+                            <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
                         }
                     </figure>
                 </div>
