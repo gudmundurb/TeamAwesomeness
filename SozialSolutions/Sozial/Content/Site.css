@@ -246,22 +246,9 @@ a.nav_logo {
 
 /*---- LISTS OF ITEMS----*/
 
-a.list-post-item {
-    height: auto;
-    min-height: 100px;
-    width: 700px;  
-}
-
-a.list-post-item.active {
-    background-color: #dddddd;
-    border-color: #bbbbbb;
-    color: #666666;
-    display: block;
-}
-
 a.list-post-item.active:hover, a.list-post-item.active:active
 a.list-post-item.active:focus {
-    background-color: #d1d1d1;
+   background-color: rgba(221, 221, 221, 0);
     border-color: #bbbbbb;
     color: #666666;
 }
@@ -272,7 +259,7 @@ a.list-group-item {
 }
 
 a.list-group-item.active small {
-    color: #393939;
+    color: #bbb;
 }
 
 .well {
@@ -289,16 +276,16 @@ a.list-group-item.active small {
 }
 
 a.list-group-item.active {
-    background-color: #ddd;
-    border-color: #bbb;
-    color: #666;
+    background-color: rgba(57,57,57, 1);
+    border-color: #666;
+    color: #bbb;
     display: block;
 }
 
 a.list-group-item.active .stars{
     
     font-size: 15pt;
-    color: #666;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -306,13 +293,17 @@ a.list-group-item.active figure{
    
     min-width: 40%;
 }
+a.list-group-item-heading 
+{
+
+}
 
 a.list-group-item.active:hover, a.list-group-item.active:active
  a.list-group-item.active:focus {
 
-    background-color: #d1d1d1;
-    border-color: #bbb;
-    color: #666;
+    background-color: rgba(57,57,57, 0.7);
+    border-color: #666;
+    color: #bbb;
 }
 .stars {
     margin: 20px auto 1px;    

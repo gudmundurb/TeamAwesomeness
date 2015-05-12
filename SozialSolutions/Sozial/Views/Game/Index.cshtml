@@ -41,7 +41,7 @@
                             <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
                             <!--CHANGES FROM HERE ON-->
-                            <p class="list-group-item-text text_limit">
+                            <p class="text_limit">
                                 @Html.DisplayFor(modelItem => item.aboutGame)
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" /></div>
