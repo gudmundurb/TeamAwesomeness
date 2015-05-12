@@ -183,6 +183,7 @@
     <Compile Include="Models\GameModels.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\GroupPostRelationModel.cs" />
+    <Compile Include="Models\GroupPostViewModel.cs" />
     <Compile Include="Models\GroupRelationshipModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -308,6 +309,7 @@
     <Content Include="Views\Home\UserList.cshtml" />
     <Content Include="Views\Home\myFriends.cshtml" />
     <Content Include="Views\Group\CreatePost.cshtml" />
+    <Content Include="Views\Group\_PostToGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

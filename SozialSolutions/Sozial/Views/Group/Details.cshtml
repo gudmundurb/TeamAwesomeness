@@ -52,6 +52,8 @@
 
 </div>
 
+@Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.groupID }) |
     @Html.ActionLink("Post", "/CreatePost", new { id = Model.groupID }) |
