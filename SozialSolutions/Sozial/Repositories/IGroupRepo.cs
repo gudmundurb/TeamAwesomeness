@@ -22,6 +22,14 @@ namespace Sozial.Repositories
 
         // returns n recently created groups.
         IEnumerable<GroupModel> getRecentGroups(int n);
+
+        /* posts */
+
+        IEnumerable<PostModel> getAllPostsForGroup(int groupId);
+
+        bool addPostToGroup(int postId, int groupId);
+        bool removePostFromGroup(int postid);
+        
         
     }
 }

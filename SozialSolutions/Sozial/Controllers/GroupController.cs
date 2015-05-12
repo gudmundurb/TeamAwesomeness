@@ -34,6 +34,7 @@ namespace Sozial.Controllers
                 return HttpNotFound();
             }
             groupModel.Members = grpRepo.getMembers(groupModel.groupID).ToList();
+            
             return View(groupModel);
         }
 

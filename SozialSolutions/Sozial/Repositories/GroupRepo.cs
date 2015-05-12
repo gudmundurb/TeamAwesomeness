@@ -121,7 +121,49 @@ namespace Sozial.Repositories
                 return true;
             }
         }
+        /* STUFFF */
 
+        public IEnumerable<PostModel> getAllPostsForGroup(int groupId)
+        {
+            List<PostModel> posts = new List<PostModel>();
+            if(!realGroup(groupId))
+            {
+                return posts.ToList();
+            }
+            else 
+            {
+                PostRepo pRepo = new PostRepo(db);
+                IEnumerable<GroupPostRelationModel> rels = (from GroupPostRelationModel single in db.GroupRelationshipModels
+                                                            where single.groupId == groupId
+                                                            select single).ToList();
+
+                foreach (GroupPostRelationModel model in rels)
+                {
+                    posts.Add(pRepo.GetPostByID(model.postId));
+                }
+                return posts.ToList();
+            }
+        }
+
+        public bool removePostFromGroup(int postId)
+        {
+            GroupPostRelationModel model = (from GroupPostRelationModel single in db.GroupPostRelationModels
+                                            where single.postId == postId
+                                            select single).Single();
+            db.GroupPostRelationModels.Remove(model);
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool addPostToGroup(int postId, int groupId)
+        {
+            GroupPostRelationModel model = new  GroupPostRelationModel();
+            model.postId = postId;
+            model.groupId = groupId;
+            db.GroupPostRelationModels.Add(model);
+            db.SaveChanges();
+            return true;
+        }
 
         /* dispose stuff */
         private bool disposed = false;
