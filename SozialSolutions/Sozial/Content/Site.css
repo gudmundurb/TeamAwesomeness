@@ -283,6 +283,18 @@ a.list-group-item.active {
     display: block;
 }
 
+a.list-group-item.active .stars{
+    
+    font-size: 15pt;
+    color: #666;
+    text-align: center;
+}
+
+a.list-group-item.active figure{
+   
+    min-width: 40%;
+}
+
 a.list-group-item.active:hover, a.list-group-item.active:active
  a.list-group-item.active:focus {
 
@@ -322,6 +334,7 @@ a.list-group-item.active:hover, a.list-group-item.active:active
   
 .btn-danger {
     padding: 4px;
+    margin-top: 1px;
 }
 
 .btn-success {
