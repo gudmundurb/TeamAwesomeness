@@ -55,116 +55,174 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <h3>Latest News</h3>
-            <div class="frontpage-each-col">
-                @foreach (Sozial.Models.NewsModel item in Model.newestNews)
-                {
-                    <p>
-                        @item.userID
-                    </p>
-                    <div class="media col-md-3">
-                        <figure class="pull-left img_resizer">
-                            @if (String.IsNullOrEmpty(item.imageUrl))
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                            else
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.newsID)" />
-                            }
-                        </figure>
-                    </div>
 
-                    <p>
-                        @item.title
-                    </p>
-                    <br />
-                    <p>
-                        @item.text
-                    </p>
-                    <br />
-                    <p>------------</p>
-                    <br />
-                }
-            </div>
-        </div>
-        <div class="col-md-6">
-            <h3>Recent Posts</h3>
-            <div class="frontpage-each-col">
-                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                {
-                    <p>
-                        @item.userID
-                    </p>
-                    <br />
-                    <div class="media col-md-3">
-                        <figure class="pull-left img_resizer">
-                            @if (String.IsNullOrEmpty(item.imageUrl))
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                            else
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
-                            }
-                        </figure>
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="well">
+                            <div class="list-group">
+                                <h2 class="title-adjustments">Latest News</h2>
+                                <div>
+                                    @foreach (Sozial.Models.NewsModel item in Model.newestNews)
+                                    {
+                                        <div class="well">
+                                            <div class="media col-md-12">
+                                                <figure class="pull-left img_resizer">
+                                                    @if (String.IsNullOrEmpty(item.imageUrl))
+                                                    {
+                                                        <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.newsID)" />
+                                                    }
+                                                </figure>
+                                            </div>
+                                            <div class="homepage-news-title">
+                                                <h4>
+                                                    @item.title
+                                                </h4>
+                                            </div>
+                                            <div>
+                                                <p>
+                                                    @item.text
+                                                </p>
+                                            </div>
+                                            <div class="homepage-news-name">
+                                                <p>
+                                                    - @item.userID
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <br />
-                    <p>
-                        @item.text
-                    </p>
-                    <br />
-                    <p>------------</p>
-                    <br />
-                }
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-6">
-            <h3>Trending Games</h3>
-            <div class="frontpage-each-col">
-                <p>
-                    Lorem ipsum
-                </p>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <h3>Recruitment Bulletin</h3>
-            <div class="frontpage-each-col">
-                @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
-                {
-                    <p>
-                        @item.groupName
-                    </p>
-                    <br />
-                    <div class="media col-md-3">
-                        <figure class="pull-left img_resizer">
-                            @if (String.IsNullOrEmpty(item.groupPicture))
-                            {
-                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                            else
-                            {
-                                <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
-                            }
-                        </figure>
+
+
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="well">
+                            <div class="list-group">
+                                <h2 class="title-adjustments">Recent Posts</h2>
+                                <div>
+                                    @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                                    {
+                                        <div class="well">
+                                            <div class="col-md-12">
+                                                <div class="media col-md-3">
+                                                    <figure class="pull-left img_resizer">
+                                                        @if (String.IsNullOrEmpty(item.imageUrl))
+                                                        {
+                                                            <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                                        }
+                                                        else
+                                                        {
+                                                            <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                                                        }
+                                                    </figure>
+                                                </div>
+                                                <div class="homepage-posts-user">
+                                                    <h4>
+                                                        @item.userID
+                                                    </h4>
+                                                </div>
+                                                <div>
+                                                    <p>
+                                                        @item.text
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <br />
-                    <p>
-                        @item.groupDescription
-                    </p>
-                    <br />
-                    <p>------------</p>
-                    <br />
-                }
+                </div>
             </div>
         </div>
+
+
+
+
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="well">
+                            <div class="list-group">
+                                <h2 class="title-adjustments">Trending Games</h2>
+                                <div>
+                                    <p>
+                                        Lorem ipsum
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="well">
+                            <div class="list-group">
+                                <h2 class="title-adjustments">Recruitment Bulletin</h2>
+                                <div>
+                                    @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
+                                    {
+                                        <div class="well">
+                                            <div class="media col-md-3">
+                                                <figure class="pull-left img_resizer">
+                                                    @if (String.IsNullOrEmpty(item.groupPicture))
+                                                    {
+                                                        <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
+                                                    }
+                                                </figure>
+                                            </div>
+                                            <div class="homepage-group-name">
+                                                <h4>
+                                                    @item.groupName
+                                                </h4>
+                                            </div>
+                                            <div>
+                                                <p>
+                                                    @item.groupDescription
+                                                </p>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Sozial.is</p>
-        </footer>
     </div>
 </div>
 
