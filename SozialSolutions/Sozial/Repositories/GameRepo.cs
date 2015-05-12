@@ -29,7 +29,6 @@ namespace Sozial.Repositories
         {
             db.GameModels.Add(game);
             db.SaveChanges();
-
         }
 
         public void DeleteGame(int gameID)

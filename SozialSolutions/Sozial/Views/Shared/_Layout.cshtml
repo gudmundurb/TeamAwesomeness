@@ -1,77 +1,71 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sozial - @ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <meta name="description" content="Sozial - Where Gamers Connect." />
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.Raw(@Ajax.ActionLink("Sozial.is", "Index", "Home", new AjaxOptions { UpdateTargetId = "dvTest" }).ToHtmlString().Replace("Sozial.is", "<img src=\"/Content/Images/sozial_logo.png\" class=\"navbar-brand\"\"nav_logo\"  ... />"))
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("News", "Index", "News")</li>                    
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sozial - @ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <meta name="description" content="Sozial - Where Gamers Connect." />
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.Raw(@Ajax.ActionLink("Sozial.is", "Index", "Home", new AjaxOptions { UpdateTargetId = "dvTest" }).ToHtmlString().Replace("Sozial.is", "<img src=\"/Content/Images/sozial_logo.png\" class=\"navbar-brand\"\"nav_logo\"  ... />"))
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("News", "Index", "News")</li>                    
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Games", "Index", "Game")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        }
+                    </ul>
+
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Games", "Index", "Game")</li>
+                        @Html.Partial("_LoggedInPartial")
                     }
-                    else
+                    else if(Request.RawUrl != "/Account/Login")
                     {
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                    }
-                </ul>
-
-                @if (Request.IsAuthenticated)
-                {
-                    @Html.Partial("_LoggedInPartial")
-                }
-                else if(Request.RawUrl != "/Account/Login")
-                {
-                    @Html.Partial("../Account/_ExternalLoginsListPartial", new Sozial.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                    @Html.Partial("_LoginPartial", new Sozial.Models.LoginViewModel { })
+                        @Html.Partial("../Account/_ExternalLoginsListPartial", new Sozial.Models.ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                        @Html.Partial("_LoginPartial", new Sozial.Models.LoginViewModel { })
                     
-                }
+                    }
+                </div>
+
             </div>
-
         </div>
-    </div>
-    @if (Request.RawUrl == "/")
-    {
-        @RenderBody()
-    }
-    else
-    {
-        <div class="container body-content">
+        @if (Request.RawUrl == "/")
+        {
             @RenderBody()
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Sozial.is</p>
-            </footer>
-        </div>
-    }
+        }
+        else
+        {
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Sozial.is</p>
+                </footer>
+            </div>
+        }
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-
-
-
-
-
-
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 
 </html>

@@ -6,65 +6,36 @@
 
 <h2>Details</h2>
 
+
 <div>
-    <h4>GroupModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.groupName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.groupName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.groupDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.groupDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.groupPicture)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.groupPicture)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.groupBanner)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.groupBanner)
-        </dd>
-
-    </dl>
-    <ol>
-    @foreach (Sozial.Models.ApplicationUser user in Model.Members)
-    {
-        <li> @user.UserName </li>
-    }
-    </ol>  
-
-    @foreach (Sozial.Models.PostModel post in Model.Posts)
-    {
-        @Html.Partial("../Shared/_postPartial", post)
-        <br />
-
-    }
-    
-
+    <div class="well">
+        @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
+    </div>
+    <div class=" well">
+            @foreach (Sozial.Models.ApplicationUser user in Model.Members)
+            {
+                <div>
+                    <p>
+                        @user.UserName
+                    </p>
+                </div>
+                <div class="well">
+                    @foreach (Sozial.Models.PostModel post in Model.Posts)
+                    {
+                        @Html.Partial("../Shared/_postPartial", post)
+                    }
+                </div>
+            }
+    </div>
+   
 </div>
 
-@Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
 
+<!--
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.groupID }) |
     @Html.ActionLink("Post", "/CreatePost", new { id = Model.groupID }) |
 
     @Html.ActionLink("Back to List", "Index")
 </p>
+    --> 
