@@ -154,7 +154,8 @@ namespace Sozial.Repositories
             db.SaveChanges();
             return true;
         }
-
+        
+        /*
         public bool addPostToGroup(int postId, int groupId)
         {
             GroupPostRelationModel model = new  GroupPostRelationModel();
@@ -164,6 +165,21 @@ namespace Sozial.Repositories
             db.SaveChanges();
             return true;
         }
+        */
+        public bool addPostToGroup(PostModel post, int groupId)
+        {
+            db.PostModels.Add(post);
+            PostModel pModel = db.PostModels.Find(post);
+
+            GroupPostRelationModel model = new  GroupPostRelationModel();
+            model.groupId = groupId;
+            model.postId = pModel.postID;
+
+            db.GroupPostRelationModels.Add(model);
+            db.SaveChanges();
+            return true;
+        }
+
 
         /* dispose stuff */
         private bool disposed = false;

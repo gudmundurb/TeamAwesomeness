@@ -146,9 +146,22 @@ a.nav_logo {
     border-radius: 6px;
 }
 
+.homepage-news-title {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
 
+.homepage-news-name {
+    font-style: italic;
+}
 
+.homepage-posts-user {
+    margin-bottom: 50px;
+}
 
+.homepage-group-name {
+    margin-bottom: 50px;
+}
 
 
 

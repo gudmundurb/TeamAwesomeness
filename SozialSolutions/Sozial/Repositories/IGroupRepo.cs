@@ -27,7 +27,7 @@ namespace Sozial.Repositories
 
         IEnumerable<PostModel> getAllPostsForGroup(int groupId);
 
-        bool addPostToGroup(int postId, int groupId);
+        bool addPostToGroup(PostModel post, int groupId);
         bool removePostFromGroup(int postid);
         
         
