@@ -33,5 +33,6 @@ namespace Sozial.Models
         [Display(Name = "Image for the game: ")]
         public string imageUrl { get; set; }
         //Don´t Touch mystuff
+        public IEnumerable<ReviewModel> gameReview;
     }
 }
