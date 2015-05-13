@@ -35,4 +35,32 @@ namespace Sozial.Models
         //Don´t Touch mystuff
         public IEnumerable<ReviewModel> gameReview;
     }
+    /*
+    public class ReviewModel
+    {
+        [Key]
+        public int reviewId { get; set; }
+        public DateTime dateCreated { get; set; }
+        public string userId { get; set; }
+        public string text { get; set; }
+
+        public RatingModel gameRating { get; set; }
+        public int likeCount { get; set; }
+    }
+
+    public class RatingModel
+    {
+        [Key]
+        public int ratingId { get; set; }
+
+        public int gameID { get; set; }
+
+        public string Username { get; set; }
+
+        public int rating { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+    }
+    */
+
 }
