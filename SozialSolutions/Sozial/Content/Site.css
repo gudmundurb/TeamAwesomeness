@@ -109,8 +109,19 @@ a.nav_logo {
 
 .front-page-item
 {
-    font-size: 10pt;
-    margin-left: 0.4%;
+    font-size: 10pt;   
+}
+
+.front-page-item .row
+{
+     margin-left: 0.4%;
+}
+
+.front-page-item .well 
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
 }
 
 .front-page-item .img_resizer
@@ -168,24 +179,6 @@ a.nav_logo {
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
-
-.homepage-news-title {
-    margin-top: 10px;
-    margin-bottom: 50px;
-}
-
-.homepage-news-name {
-    font-style: italic;
-}
-
-.homepage-posts-user {
-    margin-bottom: 50px;
-}
-
-.homepage-group-name {
-    margin-bottom: 50px;
-}
-
 
 
 /*------------------------------------------FRONT PAGE - OVERWRITES FOR THE BOOSTRAP CAROUSEL---------*/

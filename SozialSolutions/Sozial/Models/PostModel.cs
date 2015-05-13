@@ -42,9 +42,11 @@ namespace Sozial.Models
             set { createdDate = value; }
         }
         */
-        [Url(ErrorMessage="Has to be a link on the web")]
+        [Url(ErrorMessage="You can currently only write the images' URL")]
         public string imageUrl { get; set; }
 
         public int likeCount { get; set; }
+
+        public virtual string userPicture { get; set; }
     }
 }
