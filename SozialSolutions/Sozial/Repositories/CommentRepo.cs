@@ -30,6 +30,7 @@ namespace Sozial.Repositories
 
         /* setters */
 
+
         public void insertComment(CommentModel newComment)
         {
             ///* TODO: IMPLEMENT BETTER TO WORK WITH POSTREPO
@@ -52,6 +53,15 @@ namespace Sozial.Repositories
 
         public void deleteComment(int delId)
         {
+            IEnumerable<PostCommentRelationModel> rels = (from PostCommentRelationModel model in db.PostCommentRelationModels
+                                                          where model.commentId == delId
+                                                          select model).ToList();
+
+            foreach (PostCommentRelationModel item in rels)
+            {
+                db.PostCommentRelationModels.Remove(item);
+            }
+
             CommentModel comment = db.CommentModels.Find(delId);
             db.CommentModels.Remove(comment);
             db.SaveChanges();

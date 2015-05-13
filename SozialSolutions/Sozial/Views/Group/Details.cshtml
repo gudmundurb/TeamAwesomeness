@@ -4,14 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
+
+<h2>Details</h2>
 
 <div>
     <div class="well">
         @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
     </div>
-    <div class=" well">
+    <div class="well">
             @foreach (Sozial.Models.ApplicationUser user in Model.Members)
             {
                 <div>
