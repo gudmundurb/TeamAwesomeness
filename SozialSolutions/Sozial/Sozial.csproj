@@ -175,13 +175,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505131820369_Sunshine.cs" />
-    <Compile Include="Migrations\201505131820369_Sunshine.Designer.cs">
-      <DependentUpon>201505131820369_Sunshine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommentModel.cs" />
+    <Compile Include="Models\FavouriteRelationModel.cs" />
     <Compile Include="Models\FriendshipModel.cs" />
     <Compile Include="Models\FrontPageViewModel.cs" />
     <Compile Include="Models\GameModels.cs" />
@@ -321,6 +318,7 @@
     <Content Include="Views\Shared\_replyToPostPartial.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Home\_postToProfilePartial.cshtml" />
+    <Content Include="Views\Shared\_miniGameViewPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,11 +330,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505131820369_Sunshine.resx">
-      <DependentUpon>201505131820369_Sunshine.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

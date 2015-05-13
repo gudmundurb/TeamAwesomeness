@@ -23,6 +23,7 @@ namespace Sozial.Repositories
         public GameModel GetGameByID(int? gameID)
         {
             return db.GameModels.Find(gameID);
+            /* add code here to get reviews. */ 
         }
 
         public void InsertGame(GameModel game)
@@ -46,6 +47,23 @@ namespace Sozial.Repositories
 
         }
 
+
+        /* FAVEGAME */
+        public IEnumerable<GameModel> getFaveGamesForUser(string username) {
+            IEnumerable<int> gameIds = (from FavouriteRelationModel faves in db.FavouriteRelationModel
+                                        where faves.username == username
+                                        select faves.gameId).ToList();
+            List<GameModel> userFaves = new List<GameModel>();
+            foreach (int i in gameIds)
+            {
+                userFaves.Add(GetGameByID(i));
+            }
+            return userFaves.ToList();
+        }
+
+        
+
+        /* DISPOSE */
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)

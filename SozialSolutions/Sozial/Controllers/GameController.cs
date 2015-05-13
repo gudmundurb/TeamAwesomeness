@@ -49,6 +49,24 @@ namespace Sozial.Controllers
             return View(gameModel);
         }
 
+
+        public ActionResult addGameToFave(int id)
+        {
+            RelationshipRepo relrepo = new RelationshipRepo(new ApplicationDbContext());
+            relrepo.addGameToFavourites(id);
+            return RedirectToAction("Index");
+        }
+
+
+        public ActionResult removeGameFromFave(int id)
+        {
+            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
+            relRepo.removeFromFavourites(id);
+            return RedirectToAction("../Home/Profile");
+        }
+
+
+
         // GET: Game/Create
         public ActionResult Create()
         {
