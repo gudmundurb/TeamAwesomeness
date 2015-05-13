@@ -65,6 +65,20 @@ namespace Sozial.Controllers
             //User;
             return View();
         }
+        /* >>>>>>>>> postToProfilePLS */
+
+        public ActionResult postToProfile(PostToProfileViewModel sunshine)
+        {
+            RelationshipRepo gRepo = new RelationshipRepo(new ApplicationDbContext());
+
+            sunshine.newPost.userID = User.Identity.Name;
+            gRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
+            
+
+            return View();
+        }
+
+
 
         public ActionResult UserList()
         {
@@ -122,9 +136,9 @@ namespace Sozial.Controllers
         }
 
         */
-        public ActionResult profile(string userId)
+        public ActionResult profile(string username)
         {
-            string userName = userId;
+            string userName = username;
             if (userName == null)
             {
                 userName = User.Identity.Name;
@@ -162,6 +176,9 @@ namespace Sozial.Controllers
             profileModel.newestPosts = posts.OrderByDescending(x => x.createdDate).Take(10).ToList();
 
             profileModel.profileOwner = relRepo.getUser(userName);
+
+            
+            //profileModel.profilePosts = relRepo.getAllProfilePosts(userName);
 
 
             return View(profileModel);

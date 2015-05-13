@@ -17,7 +17,7 @@
         {
             <div>
                 <p>
-                    @user.UserName
+                   @Html.ActionLink(user.UserName, "../Home/Profile", new {username = user.UserName})
                 </p>
             </div>
         }

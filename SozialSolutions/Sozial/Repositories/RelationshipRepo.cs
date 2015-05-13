@@ -19,6 +19,26 @@ namespace Sozial.Repositories
         }
         /* FRIENDS RELATIONSHIPS */
 
+
+        public IEnumerable<PostModel> getAllProfilePosts(string profileOwner)
+        {
+
+            IEnumerable<int> postIds = (from ProfilePostRelationModel rel in db.ProfilePostRelationModels
+                                        where rel.UserId == profileOwner
+                                        select rel.postId).ToList(); 
+
+            List<PostModel> posts = new List<PostModel>();
+            PostRepo pRepo = new PostRepo(db);
+
+            foreach (int i in postIds)
+            {
+                posts.Add(pRepo.GetPostByID(i));
+            }
+            return posts.ToList();
+        }
+
+
+
         public IEnumerable<ApplicationUser> getFriends(string username)
         {
             //find all instances of relationship where username is present
@@ -118,10 +138,21 @@ namespace Sozial.Repositories
 
         }
 
-        public bool postToProfile(int postID, string username){
-            ProfilePostRelationModel newboy = new ProfilePostRelationModel();
-            newboy.UserId = username;
-            newboy.postId = postID;
+        public bool postToProfile(PostModel post, string username){
+
+            db.PostModels.Add(post);
+            db.SaveChanges();
+
+            int PostId = (from PostModel fPost in db.PostModels
+                          where fPost.userID == post.userID && fPost.createdDate == post.createdDate && fPost.text == post.text
+                          select fPost).OrderByDescending(x => x.createdDate).Single().postID;
+
+
+            ProfilePostRelationModel newBoy = new ProfilePostRelationModel();
+            newBoy.postId = PostId;
+            newBoy.UserId = username;
+
+            db.ProfilePostRelationModels.Add(newBoy);
             db.SaveChanges();
             return true;
         }
@@ -129,11 +160,11 @@ namespace Sozial.Repositories
 
         public bool removePostFromProfile(int postID)
         {
-            ProfilePostRelationModel model = (from ProfilePostRelationModel single in db.ProfilePostRelationModels
-                                              where single.postId == postID
-                                              select single).SingleOrDefault();
-            db.ProfilePostRelationModels.Remove(model);
-            db.SaveChanges();
+
+            /* MAY CAUSE ERROR CHECK OUT NOW */
+            PostRepo pRepo = new PostRepo(db);
+            pRepo.DeletePost(postID);
+
             return true;
 
         }

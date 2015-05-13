@@ -191,6 +191,7 @@
     <Compile Include="Models\PostCommentRelationModel.cs" />
     <Compile Include="Models\PostModel.cs" />
     <Compile Include="Models\postReplyViewModel.cs" />
+    <Compile Include="Models\PostToProfileViewModel.cs" />
     <Compile Include="Models\ProfilePostRelation.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
@@ -314,6 +315,7 @@
     <Content Include="Views\Shared\_postPartial.cshtml" />
     <Content Include="Views\Shared\_replyToPostPartial.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Home\_postToProfilePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

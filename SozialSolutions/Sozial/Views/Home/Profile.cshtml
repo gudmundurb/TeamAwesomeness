@@ -29,7 +29,7 @@
             @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
             {
             <dd style ="color: red;">
-                 @item.UserName
+                 @Html.ActionLink(item.UserName, "Profile", new {username = item.UserName})
             </dd>
             }
        
@@ -70,9 +70,9 @@
             </dl>
 
 
-
                 
    </div>
+    @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName , newPost = new Sozial.Models.PostModel() })
     <p>
         @Html.ActionLink("Back to List", "Index")
     </p>
