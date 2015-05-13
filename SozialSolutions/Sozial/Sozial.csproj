@@ -313,6 +313,7 @@
     <Content Include="Views\Group\_PostToGroup.cshtml" />
     <Content Include="Views\Shared\_postPartial.cshtml" />
     <Content Include="Views\Shared\_replyToPostPartial.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

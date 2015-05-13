@@ -184,6 +184,33 @@ namespace Sozial.Repositories
             db.SaveChanges();
             return true;
         }
+        GroupModel getGroupById(int id)
+        {
+            return (from GroupModel grp in db.GroupModels
+                    where grp.groupID == id
+                    select grp).Single();
+        }
+
+
+
+        public IEnumerable<GroupModel> getUserGroup(string userId)
+        {
+            IEnumerable<int> groupId = (from GroupRelationshipModel single in db.GroupRelationshipModels
+                                        where single.Username == userId
+                                        select single.GroupID).ToList();
+            
+            List<GroupModel> groups = new List<GroupModel>();
+
+            foreach (int id in groupId)
+            {
+                GroupModel temp = getGroupById(id);
+                temp.Posts = getAllPostsForGroup(temp.groupID).ToList();
+                temp.Members = getMembers(temp.groupID).ToList();
+                groups.Add(temp);
+                
+            }
+            return groups.ToList();
+        }
 
 
         /* dispose stuff */

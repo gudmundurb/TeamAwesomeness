@@ -116,16 +116,56 @@ namespace Sozial.Controllers
             return View();
         }
 
-        public ActionResult MyProfilePage(string userId)
+      /*  public ActionResult profile()
         {
+            return View(profile(User.Identity.Name));
+        }
+
+        */
+        public ActionResult profile(string userId)
+        {
+            string userName = userId;
+            if (userName == null)
+            {
+                userName = User.Identity.Name;
+            }
+
+           //not allowed to be in controller!!!!! 
             ApplicationDbContext db = new ApplicationDbContext();
 
+            ProfileViewModel profileModel = new ProfileViewModel();
 
-            GameRepo gameRepo = new GameRepo(db);
             //this is to get all my friends for profile page
             RelationshipRepo relRepo = new RelationshipRepo(db);
+            profileModel.myFriends = relRepo.getFriends(userName).ToList();
+
+            //this is to get all my groups for profile page
+            GroupRepo gRepo = new GroupRepo(db);
+            profileModel.myGroups = gRepo.getUserGroup(userName).ToList();
             
-            return null;
+            //this is to get all my posts AND my friends posts then I will take 10 new posts
+            List<PostModel> posts = new List<PostModel>();
+            foreach (ApplicationUser friend in profileModel.myFriends)
+            {
+                IEnumerable<PostModel> temp = relRepo.getAllPostsForUser(friend.UserName);
+                foreach (PostModel model in temp)
+                {
+                    posts.Add(model);
+                }
+
+            }
+            IEnumerable<PostModel> tempo = relRepo.getAllPostsForUser(userName);
+            foreach (PostModel model in tempo)
+            {
+                posts.Add(model);
+            }
+            profileModel.newestPosts = posts.OrderByDescending(x => x.createdDate).Take(10).ToList();
+
+
+
+
+
+            return View(profileModel);
         }
     }
 }

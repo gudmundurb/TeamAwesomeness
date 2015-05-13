@@ -1,0 +1,39 @@
+﻿@model Sozial.Models.ProfileViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    <div>
+        <h4>ProfileViewModel</h4>
+        <hr />
+
+        <h3>My Friends: </h3>
+        <dl class="dl-horizontal">
+            
+            @foreach (var item in Model.myFriends)
+            {
+            <dd style ="color: red;">
+                <p>test</p>
+                 @item.UserName
+            </dd>
+            }
+
+
+</dl>
+
+                
+   </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
