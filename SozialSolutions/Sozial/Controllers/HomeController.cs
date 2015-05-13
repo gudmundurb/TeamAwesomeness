@@ -161,8 +161,7 @@ namespace Sozial.Controllers
             }
             profileModel.newestPosts = posts.OrderByDescending(x => x.createdDate).Take(10).ToList();
 
-
-
+            profileModel.profileOwner = relRepo.getUser(userName);
 
 
             return View(profileModel);

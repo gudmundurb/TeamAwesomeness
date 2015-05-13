@@ -19,5 +19,7 @@ namespace Sozial.Models
 
         //10 most recent group posts -done
         public List<PostModel> newGroupPosts { get; set; }
+
+        public ApplicationUser profileOwner { get; set; }
     }
 }

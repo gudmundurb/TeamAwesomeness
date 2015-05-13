@@ -24,6 +24,8 @@ namespace Sozial.Repositories
 
         bool postToProfile(int post, string user);
         bool removePostFromProfile(int postID);
+        ApplicationUser getUser(string name);
+
         
     }
 }

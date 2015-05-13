@@ -13,22 +13,63 @@
 </head>
 <body>
     <div>
+        <h1>@Model.profileOwner.UserName </h1>
+        @Model.profileOwner.userProfilePic
+
+    </div>
+
+
+    <div>
         <h4>ProfileViewModel</h4>
         <hr />
 
         <h3>My Friends: </h3>
         <dl class="dl-horizontal">
             
-            @foreach (var item in Model.myFriends)
+            @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
             {
             <dd style ="color: red;">
-                <p>test</p>
                  @item.UserName
             </dd>
             }
+       
+        </dl>
+        <h3>My Groups: </h3>
+            <dl class="dl-horizontal">
+
+                @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                {
+                    <dd style="color: red;">
+                        @item.groupName
+                    </dd>
+                    <dd>
+                        @item.groupPicture
+                    </dd>
+                }
+            </dl>
+        <h3>My newsFeed: </h3>
+
+            <dl class="dl-horizontal">
+                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                {
+                    
+                    <dd>
+                        @item.createdDate
+                    </dd>
+                    <dd>
+                        @item.imageUrl
+                    </dd>
+                    <dd>
+                        @item.userID
+                    </dd>
+                    <dd>
+                        @item.text
+                    </dd>
+                }
+
+            </dl>
 
 
-</dl>
 
                 
    </div>

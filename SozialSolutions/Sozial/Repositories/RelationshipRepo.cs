@@ -39,7 +39,7 @@ namespace Sozial.Repositories
             return friendList.ToList();
         }
 
-        ApplicationUser getUser(string name)
+        public ApplicationUser getUser(string name)
         {
             //not to be used outside of this repo.
             return (from ApplicationUser user in db.Users
@@ -103,15 +103,18 @@ namespace Sozial.Repositories
         public IEnumerable<PostModel> getAllPostsForUser(string userID)
         {
             PostRepo pRepo = new PostRepo(db);
-            IEnumerable<ProfilePostRelationModel> rels = (from ProfilePostRelationModel single in db.ProfilePostRelationModels
-                                                          where single.UserId == userID
-                                                          select single).ToList();
-            List<PostModel> posts = new List<PostModel>();
+            IEnumerable<PostModel> posts = (from PostModel post in db.PostModels
+                                            where post.userID == userID
+                                            select post).ToList();
 
-            foreach(ProfilePostRelationModel rel in rels){
-                posts.Add(pRepo.GetPostByID(rel.postId));
+            foreach (PostModel item in posts)
+            {
+                item.comments = pRepo.getAllComments(item.postID).ToList();
             }
-            return posts.ToList();
+
+
+
+            return posts;
 
         }
 

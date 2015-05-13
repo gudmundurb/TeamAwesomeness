@@ -89,7 +89,7 @@ namespace Sozial.Repositories
         {
             return (from CommentModel comment in db.CommentModels
                     where comment.postID == postID
-                    select comment).ToList();
+                    select comment).OrderByDescending(x => x.createdDate).ToList();
         }
 
 
