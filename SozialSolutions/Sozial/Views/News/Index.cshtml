@@ -18,8 +18,8 @@
                         @if (!String.IsNullOrEmpty(item.imageUrl))
                         {
                             <div class="media col-md-3">
-                                <figure class="pull-left img_resizer">
-                                    <img class="media-object img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
+                                <figure class="pull-left img_resizer margin-top">
+                                    <img class="media-object img-responsive" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
                                 </figure>
                             </div>
                             <div class="col-md-6">

@@ -47,7 +47,7 @@
 
             </div>
         </div>
-        @if (Request.RawUrl == "/")
+        @if (Request.RawUrl == "/" || Request.RawUrl == "/Home/Index")
         {
             @RenderBody()
         }
