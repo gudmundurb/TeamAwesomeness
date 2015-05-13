@@ -40,6 +40,8 @@ namespace Sozial.Models
             // Add custom user claims here
             return userIdentity;
         }
+        //this is a list of favorite games that this user has favorited
+        public IEnumerable<GameModel> favoriteGames { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

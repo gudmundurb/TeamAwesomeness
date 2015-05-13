@@ -6,27 +6,28 @@
 
 
 
-<h2>Details</h2>
+<h2 class="title-adjustments">Post List</h2>
 
 <div>
     <div class="well">
         @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
     </div>
     <div class="well">
-            @foreach (Sozial.Models.ApplicationUser user in Model.Members)
+        @foreach (Sozial.Models.ApplicationUser user in Model.Members)
+        {
+            <div>
+                <p>
+                    @user.UserName
+                </p>
+            </div>
+        }
+        <div class="well">
+            @foreach (Sozial.Models.PostModel post in Model.Posts)
             {
-                <div>
-                    <p>
-                        @user.UserName
-                    </p>
-                </div>
-                <div class="well">
-                    @foreach (Sozial.Models.PostModel post in Model.Posts)
-                    {
-                        @Html.Partial("../Shared/_postPartial", post)
-                    }
-                </div>
+                @Html.Partial("../Shared/_postPartial", post)
             }
+        </div>
+
     </div>
    
 </div>

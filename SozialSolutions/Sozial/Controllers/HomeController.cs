@@ -14,7 +14,7 @@ namespace Sozial.Controllers
         {
             //db connection created
            ApplicationDbContext db = new ApplicationDbContext();
-            //.......
+            //.......not supposed to be in controller
 
 
             //Repos created 
@@ -114,6 +114,57 @@ namespace Sozial.Controllers
         {
             ViewBag.Message = "check";
             return View();
+        }
+
+      /*  public ActionResult profile()
+        {
+            return View(profile(User.Identity.Name));
+        }
+
+        */
+        public ActionResult profile(string userId)
+        {
+            string userName = userId;
+            if (userName == null)
+            {
+                userName = User.Identity.Name;
+            }
+
+           //not allowed to be in controller!!!!! 
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            ProfileViewModel profileModel = new ProfileViewModel();
+
+            //this is to get all my friends for profile page
+            RelationshipRepo relRepo = new RelationshipRepo(db);
+            profileModel.myFriends = relRepo.getFriends(userName).ToList();
+
+            //this is to get all my groups for profile page
+            GroupRepo gRepo = new GroupRepo(db);
+            profileModel.myGroups = gRepo.getUserGroup(userName).ToList();
+            
+            //this is to get all my posts AND my friends posts then I will take 10 new posts
+            List<PostModel> posts = new List<PostModel>();
+            foreach (ApplicationUser friend in profileModel.myFriends)
+            {
+                IEnumerable<PostModel> temp = relRepo.getAllPostsForUser(friend.UserName);
+                foreach (PostModel model in temp)
+                {
+                    posts.Add(model);
+                }
+
+            }
+            IEnumerable<PostModel> tempo = relRepo.getAllPostsForUser(userName);
+            foreach (PostModel model in tempo)
+            {
+                posts.Add(model);
+            }
+            profileModel.newestPosts = posts.OrderByDescending(x => x.createdDate).Take(10).ToList();
+
+            profileModel.profileOwner = relRepo.getUser(userName);
+
+
+            return View(profileModel);
         }
     }
 }

@@ -29,7 +29,10 @@ namespace Sozial.Repositories
 
         bool addPostToGroup(PostModel post, int groupId);
         bool removePostFromGroup(int postid);
+
+        IEnumerable<GroupModel> getUserGroup(string userId);
         
+
         
     }
 }

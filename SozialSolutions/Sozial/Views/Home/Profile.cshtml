@@ -1,0 +1,80 @@
+﻿@model Sozial.Models.ProfileViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    <div>
+        <h1>@Model.profileOwner.UserName </h1>
+        @Model.profileOwner.userProfilePic
+
+    </div>
+
+
+    <div>
+        <h4>ProfileViewModel</h4>
+        <hr />
+
+        <h3>My Friends: </h3>
+        <dl class="dl-horizontal">
+            
+            @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
+            {
+            <dd style ="color: red;">
+                 @item.UserName
+            </dd>
+            }
+       
+        </dl>
+        <h3>My Groups: </h3>
+            <dl class="dl-horizontal">
+
+                @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                {
+                    <dd style="color: red;">
+                        @item.groupName
+                    </dd>
+                    <dd>
+                        @item.groupPicture
+                    </dd>
+                }
+            </dl>
+        <h3>My newsFeed: </h3>
+
+            <dl class="dl-horizontal">
+                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                {
+                    
+                    <dd>
+                        @item.createdDate
+                    </dd>
+                    <dd>
+                        @item.imageUrl
+                    </dd>
+                    <dd>
+                        @item.userID
+                    </dd>
+                    <dd>
+                        @item.text
+                    </dd>
+                }
+
+            </dl>
+
+
+
+                
+   </div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

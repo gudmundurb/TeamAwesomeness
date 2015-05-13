@@ -68,6 +68,10 @@ namespace Sozial.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [Display(Name = "Username")]
+        public string userName { get; set; }
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

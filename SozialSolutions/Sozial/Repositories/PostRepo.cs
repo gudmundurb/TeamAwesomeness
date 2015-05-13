@@ -30,7 +30,7 @@ namespace Sozial.Repositories
                               select posts).Single();
 
             if (post != null) {
-                post.comments = getAllComments(post.postID).ToList(); 
+                post.comments = getAllComments(post.postID).OrderByDescending(x => x.createdDate).ToList(); 
             }
             return post;
         }
@@ -89,7 +89,7 @@ namespace Sozial.Repositories
         {
             return (from CommentModel comment in db.CommentModels
                     where comment.postID == postID
-                    select comment).ToList();
+                    select comment).OrderByDescending(x => x.createdDate).ToList();
         }
 
 
