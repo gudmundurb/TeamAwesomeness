@@ -75,6 +75,8 @@ namespace Sozial.Models
         public System.Data.Entity.DbSet<Sozial.Models.ProfilePostRelationModel> ProfilePostRelationModels { get; set; }
 
         public System.Data.Entity.DbSet<Sozial.Models.PostCommentRelationModel> PostCommentRelationModels { get; set; }
+
+        public System.Data.Entity.DbSet<Sozial.Models.FavouriteRelationModel> FavouriteRelationModel { get; set; }
         
     }
 }

@@ -26,6 +26,10 @@ namespace Sozial.Repositories
         bool removePostFromProfile(int postID);
         ApplicationUser getUser(string name);
 
+
+        /*gameFAVES */ 
+        bool addGameToFavourites(int gameId);
+        bool removeFromFavourites(int gameId);
         
     }
 }

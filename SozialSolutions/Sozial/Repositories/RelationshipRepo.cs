@@ -169,7 +169,52 @@ namespace Sozial.Repositories
 
         }
 
-        /* DISPOSE */
+        /* GAME FAVES */
+
+        public bool addGameToFavourites(int gameId)
+        {
+            if (isFave(gameId))
+            {
+                return false;
+            }
+            string myname = System.Web.HttpContext.Current.User.Identity.Name;
+            FavouriteRelationModel james = new FavouriteRelationModel();
+            james.gameId = gameId;
+            james.username = myname;
+            db.FavouriteRelationModel.Add(james);
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool removeFromFavourites(int gameId)
+        {
+            if(!isFave(gameId))
+            {
+                return false;
+            }
+            string myname = System.Web.HttpContext.Current.User.Identity.Name;
+            FavouriteRelationModel delRel = (from FavouriteRelationModel model in db.FavouriteRelationModel
+                                             where model.gameId == gameId && model.username == myname
+                                             select model).Single();
+
+            db.FavouriteRelationModel.Remove(delRel);
+            db.SaveChanges();
+            return true;
+        }
+
+
+        bool isFave(int gameId)
+        {
+            string myname = System.Web.HttpContext.Current.User.Identity.Name;
+            FavouriteRelationModel check = (from FavouriteRelationModel model in db.FavouriteRelationModel
+                                            where model.username == myname && model.gameId == gameId
+                                            select model).SingleOrDefault();
+
+            return (check != null);
+        }
+
+
+        /*------------------- DISPOSE */
         private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)

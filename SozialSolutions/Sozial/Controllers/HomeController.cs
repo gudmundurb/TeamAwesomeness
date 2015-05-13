@@ -179,6 +179,9 @@ namespace Sozial.Controllers
             
             profileModel.profilePosts = relRepo.getAllProfilePosts(userName).ToList();
 
+            GameRepo gameRep = new GameRepo(new ApplicationDbContext());
+
+            profileModel.myGames = gameRep.getFaveGamesForUser(userName).ToList();
 
             return View(profileModel);
         }
