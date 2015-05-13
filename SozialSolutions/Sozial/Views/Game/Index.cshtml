@@ -42,7 +42,6 @@
                         <div class="col-md-7">
                             <h3>@Html.DisplayFor(modelItem => item.nameOfGame)</h3>
                             <h4>@Html.DisplayFor(modelItem => item.genre)</h4>
-                            <!--CHANGES FROM HERE ON-->
                             <p class="text_limit">
                                 @Html.DisplayFor(modelItem => item.aboutGame)
                             </p>
@@ -51,7 +50,6 @@
                         <div class="col-md-2 pull-left">
                             <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                            <!--CHANGES DONE-->
                         </div>
                     </a>
                 }
