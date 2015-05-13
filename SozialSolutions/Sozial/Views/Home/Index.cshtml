@@ -126,7 +126,7 @@
                         <a href="@Url.Action("Profile", "Home", new { @item.userID })" title="Username">@item.userID</a>
                         <em><small class="pull-right">@item.createdDate.Day/@item.createdDate.Month/@item.createdDate.Year</small></em>
                         <p class="text_limit">@item.text</p>
-                        <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Profile", "Home", new { @item.userID })'" /></div>
+                        <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Profile", "Home", new { id = item.userID })'" /></div>
                     </div>
                 }
             </div>
@@ -145,27 +145,29 @@
             <div class="col-md-6 list-group">
                 @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
                 {
-                    <div class="widget-area comment-section container">
-                        <div class="col-sm-1 thumbnail">
-                            @if (String.IsNullOrEmpty(item.groupPicture))
-                            {
-                                <img class="img-responsive img-rounded" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                            else
-                            {
-                                <a href="../Group/Details/@item.groupID"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
-                            }
-                        </div>                   
-                        <div class="homepage-group-name">
+                    <div class="group_item">
+                        <div class="widget-area comment-section container">
+                            <div class="col-sm-1 thumbnail">
+                                @if (String.IsNullOrEmpty(item.groupPicture))
+                                {
+                                    <img class="img-responsive img-rounded" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
+                                }
+                            </div>
                             <h4>
-                                @item.groupName
+                                <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
                             </h4>
+                            <div>
+                                <p class="text_limit">
+                                    @item.groupDescription
+                                </p>
+                                <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
+                            </div>
                         </div>
-                        <div>
-                            <p>
-                                @item.groupDescription
-                            </p>
-                        </div>
+                        <div class="group_cover"></div>
                     </div>
                 }
             </div>

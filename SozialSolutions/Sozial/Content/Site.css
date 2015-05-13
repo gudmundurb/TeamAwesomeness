@@ -152,24 +152,33 @@ a.nav_logo {
     -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    border-radius: 0;
 }
 
 .front-page-item .comment-section
 {
-    font-size: 8pt;
+    font-size: 10pt;
     -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
-    border: none;
-}
-
-.front-page-item .widget-area {
-
     border: solid 1px #666;
 }
+
 .front-page-item .comment-section a
 {
    font-size: 12pt;
+}
+
+
+.group_cover {
+
+    background-image: url(Images/group_bg_1.png);
+    height: 30px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-bottom: 10px;
+    border: solid 1px #666;
+    border-top: none;
 }
 
 
