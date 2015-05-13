@@ -73,9 +73,9 @@ namespace Sozial.Controllers
 
             sunshine.newPost.userID = User.Identity.Name;
             gRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
-            
 
-            return View();
+
+            return RedirectToAction("Profile", new { username = sunshine.profileOwner});
         }
 
 
@@ -176,9 +176,8 @@ namespace Sozial.Controllers
             profileModel.newestPosts = posts.OrderByDescending(x => x.createdDate).Take(10).ToList();
 
             profileModel.profileOwner = relRepo.getUser(userName);
-
             
-            //profileModel.profilePosts = relRepo.getAllProfilePosts(userName);
+            profileModel.profilePosts = relRepo.getAllProfilePosts(userName).ToList();
 
 
             return View(profileModel);

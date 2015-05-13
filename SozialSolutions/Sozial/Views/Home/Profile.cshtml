@@ -18,6 +18,18 @@
 
     </div>
 
+    <h2> profile posts</h2>
+    <div>
+        @foreach (Sozial.Models.PostModel post in Model.profilePosts)
+        {
+            @Html.Partial("../Shared/_postPartial", post)
+        }
+    </div>
+    <h2> profile posts</h2>
+
+
+
+
 
     <div>
         <h4>ProfileViewModel</h4>
@@ -53,18 +65,7 @@
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
                     
-                    <dd>
-                        @item.createdDate
-                    </dd>
-                    <dd>
-                        @item.imageUrl
-                    </dd>
-                    <dd>
-                        @item.userID
-                    </dd>
-                    <dd>
-                        @item.text
-                    </dd>
+                    @Html.Partial("../Shared/_postPartial", item)
                 }
 
             </dl>
