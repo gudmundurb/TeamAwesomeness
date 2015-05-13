@@ -21,6 +21,7 @@ namespace Sozial.Repositories
             return db.PostModels.ToList();
         }
 
+
         public PostModel GetPostByID(int? postID)
         {
 
@@ -34,6 +35,7 @@ namespace Sozial.Repositories
             return post;
         }
 
+
         public void InsertPost(PostModel post)
         {
             db.PostModels.Add(post);
@@ -43,8 +45,37 @@ namespace Sozial.Repositories
         public void DeletePost(int postID)
         {
             PostModel post = db.PostModels.Find(postID);
+
+
+            ProfilePostRelationModel profRel = (from ProfilePostRelationModel Pmodel in db.ProfilePostRelationModels
+                                                where Pmodel.postId == postID
+                                                select Pmodel).SingleOrDefault();
+
+            GroupPostRelationModel grpRel = (from GroupPostRelationModel Gmodel in db.GroupPostRelationModels
+                                                where Gmodel.postId == postID
+                                                select Gmodel).SingleOrDefault();
+
+                /* DELETE ANY RELATIONS */
+            if (profRel != null)
+            {
+                db.ProfilePostRelationModels.Remove(profRel);
+            }
+            if (grpRel != null)
+            {
+                db.GroupPostRelationModels.Remove(grpRel);
+            }
+
+
+            IEnumerable<CommentModel> delComments = getAllComments(postID);
+            CommentRepo commrepo = new CommentRepo(db);
+            foreach (CommentModel model in delComments)
+            {
+                commrepo.deleteComment(model.commentID);
+            }
+
             db.PostModels.Remove(post);
             db.SaveChanges();
+
         }
 
         public IEnumerable<PostModel> GetByUserID(string userID)
@@ -62,7 +93,7 @@ namespace Sozial.Repositories
         }
 
 
-
+        
 
         public void UpdatePost(Sozial.Models.PostModel post)
         {
