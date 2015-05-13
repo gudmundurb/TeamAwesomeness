@@ -22,7 +22,7 @@ namespace Sozial.Repositories
         /* profilepost stuff */
         IEnumerable<PostModel> getAllPostsForUser(string user);
 
-        bool postToProfile(int post, string user);
+        bool postToProfile(PostModel post, string profileOwner);
         bool removePostFromProfile(int postID);
         ApplicationUser getUser(string name);
 

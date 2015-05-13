@@ -18,6 +18,18 @@
 
     </div>
 
+    <h2> profile posts</h2>
+    <div>
+        @foreach (Sozial.Models.PostModel post in Model.profilePosts)
+        {
+            @Html.Partial("../Shared/_postPartial", post)
+        }
+    </div>
+    <h2> profile posts</h2>
+
+
+
+
 
     <div>
         <h4>ProfileViewModel</h4>
@@ -29,7 +41,7 @@
             @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
             {
             <dd style ="color: red;">
-                 @item.UserName
+                 @Html.ActionLink(item.UserName, "Profile", new {username = item.UserName})
             </dd>
             }
        
@@ -53,26 +65,15 @@
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
                     
-                    <dd>
-                        @item.createdDate
-                    </dd>
-                    <dd>
-                        @item.imageUrl
-                    </dd>
-                    <dd>
-                        @item.userID
-                    </dd>
-                    <dd>
-                        @item.text
-                    </dd>
+                    @Html.Partial("../Shared/_postPartial", item)
                 }
 
             </dl>
 
 
-
                 
    </div>
+    @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName , newPost = new Sozial.Models.PostModel() })
     <p>
         @Html.ActionLink("Back to List", "Index")
     </p>
