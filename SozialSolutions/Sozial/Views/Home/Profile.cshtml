@@ -1,7 +1,7 @@
 ﻿@model Sozial.Models.ProfileViewModel
 
 @{
-    Layout = null;
+    ViewBag.Title = "My Profile";
 }
 
 <!DOCTYPE html>
@@ -12,70 +12,156 @@
     <title>Profile</title>
 </head>
 <body>
-    <div>
-        <h1>@Model.profileOwner.UserName </h1>
-        @Model.profileOwner.userProfilePic
+    <div class="container">
+        <div class="well">
+            <h2>@Model.profileOwner.UserName</h2> 
+            <hr />
+            <div class="row game-cover">
+                <ul class="thumbails list-unstyled">
+                    <li class="col-md-5">
+                        <!--GAME PICTURE AND POP UP-->
+         <!--
+                THERE SHOULD BE A PICTURE THINGY HERE, SEE GAME DETAILS
+            -->
+                        <!--GAME PICTURE AND POP UP-->
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="thumbails list-unstyled">
+                    <!--FRIENDSLIST-->
+                    <li class="col-md-5">
+                        <h4 class="title-adjustments">Friends</h4>
+                        <div class="widget-area comment-section">
+                            <dl>
+                                @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
+                                {
+                                    <dd class="well">
+                                        @Html.ActionLink(item.UserName, "Profile", new { username = item.UserName })
+                                    </dd>
+                                }
+                            </dl>
+                        </div>
+                        <!--FRIENDSLIST-->
+                        <!--GROUPS-->
+                        <h4 class="title-adjustments">Groups</h4>
+                        <div class="widget-area comment-section">
+                            <dl class="well">
 
+                                @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                                {
+                                    <dd style="color: red;">
+                                        @item.groupName
+                                    </dd>
+                                    <dd>
+
+
+                                        <!--
+
+                    NEED TO IMPLEMENT PICTURE ???  SEE VIEWS-> POST-> INDEX
+
+                    -->
+                                        @item.groupPicture
+                                    </dd>
+                                }
+                            </dl>
+                        </div>
+                        <!--GROUPS-->
+                    </li>
+                    <li>
+                        <div class="col-md-7">
+                            <!--POSTS-->
+                            <h4 class="title-adjustments">Write a Post</h4>
+                            @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
+                            <!--POSTS-->
+                            <!--REPLY TO POST-->
+                            
+                            <div class="widget-area pull-left">
+                                <div>
+                                    @foreach (Sozial.Models.PostModel post in Model.profilePosts)
+                                    {
+                                        @Html.Partial("../Shared/_postPartial", post)
+                                    }
+                                </div>
+                            </div>
+                            <!--REPLY TO POST-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <h2> profile posts</h2>
-    <div>
-        @foreach (Sozial.Models.PostModel post in Model.profilePosts)
-        {
-            @Html.Partial("../Shared/_postPartial", post)
-        }
-    </div>
-    <h2> profile posts</h2>
+@*
+    <!--
+        <div>
+            <h1>@Model.profileOwner.UserName </h1>
+            @Model.profileOwner.userProfilePic
 
+        </div>
 
-
-
-
-    <div>
-        <h4>ProfileViewModel</h4>
-        <hr />
-
-        <h3>My Friends: </h3>
-        <dl class="dl-horizontal">
-            
-            @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
+        <h2> profile posts</h2>
+        <div>
+            @foreach (Sozial.Models.PostModel post in Model.profilePosts)
             {
-            <dd style ="color: red;">
-                 @Html.ActionLink(item.UserName, "Profile", new {username = item.UserName})
-            </dd>
+                @Html.Partial("../Shared/_postPartial", post)
             }
-       
-        </dl>
-        <h3>My Groups: </h3>
+        </div>
+        <h2> profile posts</h2>
+
+
+
+
+
+        <div>
+            <h4>ProfileViewModel</h4>
+            <hr />
+
+            <h3>My Friends: </h3>
             <dl class="dl-horizontal">
 
-                @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
                 {
-                    <dd style="color: red;">
-                        @item.groupName
-                    </dd>
-                    <dd>
-                        @item.groupPicture
-                    </dd>
-                }
-            </dl>
-        <h3>My newsFeed: </h3>
-
-            <dl class="dl-horizontal">
-                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                {
-                    
-                    @Html.Partial("../Shared/_postPartial", item)
+                <dd style ="color: red;">
+                     @Html.ActionLink(item.UserName, "Profile", new {username = item.UserName})
+                </dd>
                 }
 
             </dl>
+            <h3>My Groups: </h3>
+                <dl class="dl-horizontal">
+
+                    @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                    {
+                        <dd style="color: red;">
+                            @item.groupName
+                        </dd>
+                        <dd>
+                            @item.groupPicture
+                        </dd>
+                    }
+                </dl>
+            <h3>My newsFeed: </h3>
+
+                <dl class="dl-horizontal">
+                    @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                    {
+
+                        @Html.Partial("../Shared/_postPartial", item)
+                    }
+
+                </dl>
 
 
-                
-   </div>
-    @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName , newPost = new Sozial.Models.PostModel() })
-    <p>
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+       </div>
+        @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName , newPost = new Sozial.Models.PostModel() })
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        -->
+*@
 </body>
 </html>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
