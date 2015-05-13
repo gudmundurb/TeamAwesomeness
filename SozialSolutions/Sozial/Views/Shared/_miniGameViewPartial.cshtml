@@ -1,59 +1,24 @@
 ﻿@model Sozial.Models.GameModel
 
-<div>
-    <h4>GameModel</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nameOfGame)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nameOfGame)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.aboutGame)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.aboutGame)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.gameCompany)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.gameCompany)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.isTopTen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.isTopTen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.genre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.genre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.imageUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.imageUrl)
-        </dd>
-
-    </dl>
+<div class="widget-area comment-section">
+    <div>
+        <dl class="well">
+            <dd>
+                <h2>
+                    @Html.DisplayFor(model => model.nameOfGame)
+                </h2>
+            </dd>
+            <dd>
+                <h4>
+                    @Html.DisplayFor(model => model.genre)
+                </h4>
+            </dd>
+            <dd>
+                @Html.DisplayFor(model => model.imageUrl)
+            </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Unfavorite", "../Game/removeGameFromFave", new { id = Model.gameID })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Unfave", "../Game/removeGameFromFave", new { id = Model.gameID })
-</p>

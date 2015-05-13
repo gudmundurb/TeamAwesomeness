@@ -21,10 +21,7 @@
                     <li class="col-md-5">
                         <!--GAME PICTURE AND POP UP-->
                     
-                            @foreach(Sozial.Models.GameModel game in Model.myGames)
-                            {
-                                @Html.Partial("../Shared/_miniGameViewPartial", game)
-                            }
+                            
             
                         <!--GAME PICTURE AND POP UP-->
                     </li>
@@ -70,6 +67,24 @@
                             </dl>
                         </div>
                         <!--GROUPS-->
+
+                        <h4 class="title-adjustments">Games</h4>
+                        <div>
+                            <dl>
+                                @foreach (Sozial.Models.GameModel game in Model.myGames)
+                                {
+                                    <dd>
+                                        @Html.Partial("../Shared/_miniGameViewPartial", game)
+                                    </dd>
+                                }
+                            </dl>
+                        </div>
+
+
+
+
+
+
                     </li>
                     <li>
                         <div class="col-md-7">
