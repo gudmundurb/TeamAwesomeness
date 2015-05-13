@@ -10,9 +10,13 @@ namespace Sozial.Models
     {
         [Key]
         public int ratingId { get; set; }
-        public int MovieId { get; set; }
+
+        public int gameID { get; set; }
+
         public string Username { get; set; }
+
         public int rating { get; set; }
+
         public DateTime CreatedDate { get; set; }
     }
 }
