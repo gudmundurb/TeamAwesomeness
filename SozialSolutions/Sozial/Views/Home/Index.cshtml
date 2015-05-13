@@ -5,7 +5,7 @@
     ViewBag.Title = "Home Page";
 }
 
-
+<!-- Carousel -->
 <div class="carousel-custom-container">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -34,9 +34,9 @@
         <div class="logo_motto_frontpage img-responsive">
             <img src="@Url.Content("~/Content/Images/logo_motto.png")" />
         </div>
-    </div> <!-- Carousel -->
+    </div> 
 </div>
-
+<!-- Carousel -->
 <div class="container">
     <div class="navbar text-center">
         <ul class="list-inline list-unstyled">
@@ -55,18 +55,25 @@
             </li>
         </ul>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Latest News</h3>
+        </div>
+        <div class="col-md-6">
+            <h3>Newest Posts</h3>
+        </div>
+    </div>
     <div class="row front-page-item">
-        <h3>Latest News</h3>
         <div class="col-md-6 list-group pull-left">
             @foreach (Sozial.Models.NewsModel item in Model.newestNews)
             {
                 <a class="list-group-item active container">
+                    <em><small class="pull-right">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small></em>
+                    <h4>@Html.DisplayFor(modelItem => item.title)</h4>
+                    <hr class="no-margin" />
                     @if (String.IsNullOrEmpty(item.imageUrl))
                     {
-                        <div class="col-md-9">
-                            <small class="pull-right title-adjustments">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small>
-                            <h4>@Html.DisplayFor(modelItem => item.title)</h4>
-                            <hr />
+                        <div>
                             <p class="title-adjustments text_limit">
                                 @Html.DisplayFor(modelItem => item.text)
                             </p>
@@ -75,116 +82,54 @@
                     }
                     else
                     {
-                        <div class="media col-md-2">
-                            <figure class="pull-left thumbnail img-responsive" >
-                                <img class="media-object img-responsive" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
+                        <div class="col-md-3">
+                            <figure class="img_resizer title-adjustments">
+                                <img class="media-object img-responsive pull-left" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
                             </figure>
                         </div>
-                            <small class="pull-right title-adjustments">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small>
-                            <h4>@Html.DisplayFor(modelItem => item.title)</h4>
-                            <hr />
-                            <p class="title-adjustments text_limit">
+                        <div class="col-md-9">
+                            <p class="text_limit">
                                 @Html.DisplayFor(modelItem => item.text)
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Index", "News")'" /></div>
+                        </div>
                     }
+                </a>
+            }
+        </div>
+        <div class="col-md-6 list-group pull-right well">
+            @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+            {
+                <a class="list-group-item active container">
+                    <div class="col-md-6">
+                        <div class="media col-md-3">
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.imageUrl))
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                }
+                                else
+                                {
+                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                                }
+                            </figure>
+                        </div>
+                        <div class="homepage-posts-user">
+                            <h4>
+                                @item.userID
+                            </h4>
+                        </div>
+                        <div>
+                            <p>
+                                @item.text
+                            </p>
+                        </div>
+                    </div>
                 </a>
             }
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col-md-6">
-    <div class="container">
-        <div class="row">
-            <div class="well">
-                <div class="list-group">
-                    <h2 class="title-adjustments">Recent Posts</h2>
-                    <div>
-                        @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                        {
-                            <div class="well">
-                                <div class="col-md-12">
-                                    <div class="media col-md-3">
-                                        <figure class="pull-left img_resizer">
-                                            @if (String.IsNullOrEmpty(item.imageUrl))
-                                            {
-                                                <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                            }
-                                            else
-                                            {
-                                                <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.postID)" />
-                                            }
-                                        </figure>
-                                    </div>
-                                    <div class="homepage-posts-user">
-                                        <h4>
-                                            @item.userID
-                                        </h4>
-                                    </div>
-                                    <div>
-                                        <p>
-                                            @item.text
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        </div>
-
-
-
-
 <div class="col-md-12">
     <div class="col-md-6">
         <div class="container">

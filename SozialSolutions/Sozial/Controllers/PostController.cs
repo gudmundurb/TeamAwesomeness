@@ -24,12 +24,6 @@ namespace Sozial.Controllers
 
         //private ApplicationDbContext db = new ApplicationDbContext();
 
-
-
-
-
-
-
         // GET: Post
         public ActionResult Index()
         {

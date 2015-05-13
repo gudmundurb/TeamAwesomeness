@@ -113,19 +113,43 @@ a.nav_logo {
 }
 
 .front-page-item .img_resizer
-{
-     max-height: 90px;
+{     
+     padding-right: 30px;
+     margin-right: 100px;
 }
+
+.front-page-item .img_resizer img {
+
+    max-height: 100px;
+    max-width: 120px;
+}
+
+ .front-page-item .col-md-9
+ {
+     margin-left: 0;
+     padding-right: 0;
+ }
 
 .front-page-item a.list-group-item {
-    height: auto;
-    min-height: 90px;
-}
-/*-----------------------------------------FRONT PAGE---------*/
 
-.top-menu {
-    text-align: center;
+    height: auto;
 }
+
+.no-margin {
+
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+.front-page-item a.list-group-item.active {
+
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    border: none;
+}
+
+/*-----------------------------------------FRONT PAGE---------*/
 
 .top-menu-button {
     background: #393939 no-repeat top left;
@@ -262,11 +286,6 @@ a.list-post-item.active:focus {
    background-color: rgba(221, 221, 221, 0);
     border-color: #bbbbbb;
     color: #666666;
-}
-
-frolist-group-item {
-    height: auto;
-    min-height: 220px;
 }
 
 a.list-group-item.active small {
