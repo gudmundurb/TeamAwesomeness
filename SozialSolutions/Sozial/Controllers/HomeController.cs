@@ -14,7 +14,7 @@ namespace Sozial.Controllers
         {
             //db connection created
            ApplicationDbContext db = new ApplicationDbContext();
-            //.......
+            //.......not supposed to be in controller
 
 
             //Repos created 
@@ -114,6 +114,18 @@ namespace Sozial.Controllers
         {
             ViewBag.Message = "check";
             return View();
+        }
+
+        public ActionResult MyProfilePage(string userId)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+
+            GameRepo gameRepo = new GameRepo(db);
+            //this is to get all my friends for profile page
+            RelationshipRepo relRepo = new RelationshipRepo(db);
+            
+            return null;
         }
     }
 }
