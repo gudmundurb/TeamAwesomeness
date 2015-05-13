@@ -136,12 +136,6 @@ a.nav_logo {
     max-width: 120px;
 }
 
- .front-page-item .col-md-9
- {
-     margin-left: 0;
-     padding-right: 0;
- }
-
 .front-page-item a.list-group-item {
 
     height: auto;
@@ -158,15 +152,21 @@ a.nav_logo {
     -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
     box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
-    border: none;
 }
 
 .front-page-item .comment-section
 {
-    font-size: 10pt;
+    font-size: 8pt;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.7);
+    border: none;
 }
 
+.front-page-item .widget-area {
 
+    border: solid 1px #666;
+}
 .front-page-item .comment-section a
 {
    font-size: 12pt;
