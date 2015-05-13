@@ -210,7 +210,7 @@ namespace Sozial.Repositories
                                             where model.username == myname && model.gameId == gameId
                                             select model).SingleOrDefault();
 
-            return (check == null);
+            return (check != null);
         }
 
 

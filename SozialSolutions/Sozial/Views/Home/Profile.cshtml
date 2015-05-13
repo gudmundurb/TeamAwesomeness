@@ -20,9 +20,12 @@
                 <ul class="thumbails list-unstyled">
                     <li class="col-md-5">
                         <!--GAME PICTURE AND POP UP-->
-         <!--
-                THERE SHOULD BE A PICTURE THINGY HERE, SEE GAME DETAILS
-            -->
+                    
+                            @foreach(Sozial.Models.GameModel game in Model.myGames)
+                            {
+                                @Html.Partial("../Shared/_miniGameViewPartial", game)
+                            }
+            
                         <!--GAME PICTURE AND POP UP-->
                     </li>
                 </ul>
@@ -91,6 +94,8 @@
             </div>
         </div>
     </div>
+        
+    
 
 @*
     <!--
@@ -109,7 +114,7 @@
         </div>
         <h2> profile posts</h2>
 
-
+        
 
 
 
