@@ -75,40 +75,23 @@
             <div class="col-md-6 list-group">
                 @foreach (Sozial.Models.NewsModel item in Model.newestNews)
                 {
-                    <a class="list-group-item active container">
+                    <a href="/News" class="list-group-item active container">
                         <em><small class="pull-right">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small></em>
                         <h4>@Html.DisplayFor(modelItem => item.title)</h4>
                         <hr class="no-margin" />
-                        @if (String.IsNullOrEmpty(item.imageUrl))
-                        {
                             <div>
                                 <p class="title-adjustments text_limit">
                                     @Html.DisplayFor(modelItem => item.text)
                                 </p>
                                 <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Index", "News")'" /></div>
                             </div>
-                        }
-                        else
-                        {
-                            <div class="col-md-3">
-                                <figure class="img_resizer title-adjustments">
-                                    <img class="media-object img-responsive pull-left" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
-                                </figure>
-                            </div>
-                            <div class="col-md-9">
-                                <p class="text_limit">
-                                    @Html.DisplayFor(modelItem => item.text)
-                                </p>
-                                <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Index", "News")'" /></div>
-                            </div>
-                        }
-                    </a>
+                     </a>
                 }
             </div>
             <div class="col-md-6 list-group">
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
-                    <div class="widget-area comment-section">
+                    <div class="widget-area comment-section container">
                         <div class="col-sm-2 thumbnail">
                             @if (String.IsNullOrEmpty(item.imageUrl))
                             {
@@ -120,11 +103,11 @@
                             }
 
                         </div>
-                        ?UserId=ShieldGuy
                         <a href="@Url.Action("Profile", "Home", new { @item.userID })" title="Username">@item.userID</a>
                         <em><small class="pull-right">@item.createdDate.Day/@item.createdDate.Month/@item.createdDate.Year</small></em>
+                        <p class="text_limit">@item.text</p>
                     </div>
-                    <p>@item.text</p>
+                    
                 }
             </div>
         </div>

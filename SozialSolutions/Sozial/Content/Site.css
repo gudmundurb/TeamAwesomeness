@@ -161,6 +161,18 @@ a.nav_logo {
     border: none;
 }
 
+.front-page-item .comment-section
+{
+    font-size: 10pt;
+}
+
+
+.front-page-item .comment-section a
+{
+   font-size: 12pt;
+}
+
+
 /*-----------------------------------------FRONT PAGE---------*/
 
 .top-menu-button {
