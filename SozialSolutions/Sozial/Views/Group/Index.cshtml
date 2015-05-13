@@ -18,23 +18,28 @@
             <div class="list-group">
                 @foreach (var item in Model)
                 {
-                    <a class="list-group-item active">
+                    <a class="list-group-item active container">
+
                         <div class="media col-md-3">
                             <figure class="pull-left img_resizer">
                                 @if (String.IsNullOrEmpty(item.groupPicture))
                                 {
-                                    <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                    </span>
                                 }
                                 else
                                 {
-                                    <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupName)" />
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupName)" />
+                                    </span>
                                 }
                             </figure>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.groupName)</h3>
+                            <h3>@Html.DisplayFor(modelItem => item.groupName)</h3>
                             <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
-                            <p class="list-group-item-text text_limit">
+                            <p class="text_limit">
                                 @Html.DisplayFor(modelItem => item.groupDescription)
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
@@ -44,13 +49,6 @@
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("../Group/joinGroup", "joinGroup", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Join</span>
-                            <div class="stars">
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </div>
                             <p>
                                 @Html.DisplayFor(modelItem => item.likeCount)
                                 @Html.DisplayNameFor(model => model.likeCount)

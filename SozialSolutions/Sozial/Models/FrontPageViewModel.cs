@@ -25,5 +25,7 @@ namespace Sozial.Models
         
         //5 top news
         public List<NewsModel> newestNews { get; set; }
+
+        public ApplicationUser currentUser { get; set; }
     }
 }

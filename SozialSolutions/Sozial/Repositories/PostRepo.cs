@@ -24,11 +24,12 @@ namespace Sozial.Repositories
 
         public PostModel GetPostByID(int? postID)
         {
-
+            Repositories.RelationshipRepo relRepo = new RelationshipRepo(db);
             PostModel post = (from Sozial.Models.PostModel posts in db.PostModels
                               where posts.postID == postID
                               select posts).Single();
 
+            post.userPicture = relRepo.getUser(post.userID).userProfilePic;
             if (post != null) {
                 post.comments = getAllComments(post.postID).OrderByDescending(x => x.createdDate).ToList(); 
             }

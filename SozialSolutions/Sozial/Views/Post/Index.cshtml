@@ -15,11 +15,24 @@
             <div class="list-group">
                 @foreach (var item in Model)
                 {
-                    <a class="list-group-item active">
+                    <a class="list-group-item active container">
                         <div class="col-md-3">
-                            <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => item.userID)</h4>
-                            <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.imageUrl))
+                                {
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.userID)" />
+                                    </span>
+                                }
+                                
 
+                            </figure>
 
 
                             <!--
@@ -31,54 +44,52 @@
 
 
                             -->
-
-
-
-
-
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-7">
+                            <h4>@Html.DisplayFor(modelItem => item.userID)</h4>
+                            <p>@Html.DisplayFor(modelItem => item.createdDate)</p>
                             <p class="list-group-item-text text_limit">
                                 @Html.DisplayFor(modelItem => item.text)
                             </p>
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
-
                         </div>
 
-                        <div class="col-md-3 text-center">
+                        <div class="col-md-2 text-center">
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                         </div>
-
-                        <!--   <div class="media col-md-3">
-                               <figure class="pull-left img_resizer">
-                                   @if (String.IsNullOrEmpty(item.imageUrl))
-                                   {
-                                       <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                   }
-                                   else
-                                   {
-                                       <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.userID)" />
-                                   }
-                               </figure>
-                           </div> -->
                     </a>
                     <div class="list-group well">
                         @foreach (var comm in item.comments)
                         {
-                            <a class="list-post-item active">
+                            
+                            <!--This below should be here but its not working-->
+                            
+                            <!--
+                            <div class="widget-area pull-left">
+                                <form>
+                                    <div>
+                                        @Html.EditorFor(model => comm.commentText, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => comm.commentText, "", new { @class = "text-danger" })
+                                    </div>
+                                    <input type="submit" value="Reply to post" class="btn btn-success pull-right" />
+                                </form>
+                            </div>
+                            
+                            -->
+                            <a class="list-post-item active container">
                                 <div class="col-md-3">
-                                    <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => comm.authorID)</h4>
+                                    <h4>@Html.DisplayFor(modelItem => comm.authorID)</h4>
                                     <p>@Html.DisplayFor(modelItem => comm.createdDate)</p>
                                 </div>
-                                <div class="col-md-6">
-                                    <p class="list-group-item-text text_limit">
+                                <div class="col-md-7">
+                                    <p class="text_limit">
                                         @Html.DisplayFor(modelItem => comm.commentText)
                                     </p>
                                     <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
                                 </div>
-                                <div class="col-md-3 text-center">
+                                <div class="col-md-2 text-center">
                                     <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
                                     <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                                 </div>
