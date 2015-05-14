@@ -18,7 +18,7 @@ namespace Sozial.Models
         public List<GroupModel> newestGroups { get;set;}
 
         //5 new games are listed here
-        public List<GameModel> newestGames { get; set; }
+        public List<GameModel> hottestGames { get; set; }
 
         //5 top games are listed here
         // public List<GameModel> NewestUsers { get; set; }

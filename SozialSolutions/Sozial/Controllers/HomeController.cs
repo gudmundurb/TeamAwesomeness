@@ -52,7 +52,7 @@ namespace Sozial.Controllers
             fp.newestPosts = Posts.OrderByDescending(Poste => Poste.createdDate).Take(5).ToList();
             //End of Get 5 new posts from friends
             GameRepo gRepo = new GameRepo(db);
-            fp.newestGames = gRepo.getHottestGames(3).ToList();
+            fp.hottestGames = gRepo.getHottestGames(3).ToList();
             //fp.newGroupPosts = db.GroupModels ..
 
             //fp.newestGames = db.GameModels .. 
