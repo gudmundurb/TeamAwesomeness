@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="well">
+        <div class="well col-md-8">
             <h2 class="title-adjustments">Posts</h2>
             <hr />
             <p>
@@ -30,20 +30,20 @@
                                         <img class="media-object img-rounded img-responsive thumbnails" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.userID)" />
                                     </span>
                                 }
-                                
+
 
                             </figure>
 
 
                             <!--
 
-                            REPLY BUTTON IS NEEDED
+                        REPLY BUTTON IS NEEDED
 
 
-                            And an if statement if the text is an url for a picture
+                        And an if statement if the text is an url for a picture
 
 
-                            -->
+                        -->
                         </div>
                         <div class="col-md-7">
                             <h4>@Html.DisplayFor(modelItem => item.userID)</h4>
@@ -56,13 +56,14 @@
 
                         <div class="col-md-2 text-center">
                             <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
                             <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                         </div>
                     </a>
-                    <div class="list-group well">
+                    <div class="list-group well container">
                         @foreach (var comm in item.comments)
                         {
+
+                            
                             
                             <!--This below should be here but its not working-->
                             
@@ -76,24 +77,26 @@
                                     <input type="submit" value="Reply to post" class="btn btn-success pull-right" />
                                 </form>
                             </div>
-                            
+
                             -->
-                            <a class="list-post-item active container">
-                                <div class="col-md-3">
-                                    <h4>@Html.DisplayFor(modelItem => comm.authorID)</h4>
-                                    <p>@Html.DisplayFor(modelItem => comm.createdDate)</p>
-                                </div>
-                                <div class="col-md-7">
-                                    <p class="text_limit">
-                                        @Html.DisplayFor(modelItem => comm.commentText)
-                                    </p>
-                                    <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
-                                </div>
-                                <div class="col-md-2 text-center">
-                                    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                                    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-                                </div>
-                            </a>
+                            <div class="well">
+                                <a class="list-post-item active container">
+                                    <div class="col-md-3">
+                                        <h4>@Html.DisplayFor(modelItem => comm.authorID)</h4>
+                                        <p>@Html.DisplayFor(modelItem => comm.createdDate)</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p class="text_limit">
+                                            @Html.DisplayFor(modelItem => comm.commentText)
+                                        </p>
+                                        <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                                        <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                                    </div>
+                                </a>
+                            </div>
                         }
                     </div>
                 }
