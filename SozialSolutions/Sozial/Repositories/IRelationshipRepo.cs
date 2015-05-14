@@ -7,6 +7,9 @@ namespace Sozial.Repositories
 {
     public interface IRelationshipRepo : IDisposable
     {
+        //deteremines if a username represents a user in our database
+        bool realUser(string username);
+
         // gets a list of users from usernames' friendslist.
         IEnumerable<ApplicationUser> getFriends(string username);
 

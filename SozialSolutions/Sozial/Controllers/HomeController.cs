@@ -140,19 +140,22 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult profile(string username)
         {
+            //not allowed to be in controller!!!!! 
+            ApplicationDbContext db = new ApplicationDbContext();
+            RelationshipRepo relRepo = new RelationshipRepo(db);
+
             string userName = username;
-            if (userName == null)
+            if (userName == null || !relRepo.realUser(userName))
             {
                 userName = User.Identity.Name;
             }
 
-           //not allowed to be in controller!!!!! 
-            ApplicationDbContext db = new ApplicationDbContext();
+           
 
             ProfileViewModel profileModel = new ProfileViewModel();
 
             //this is to get all my friends for profile page
-            RelationshipRepo relRepo = new RelationshipRepo(db);
+
             profileModel.myFriends = relRepo.getFriends(userName).ToList();
 
             //this is to get all my groups for profile page

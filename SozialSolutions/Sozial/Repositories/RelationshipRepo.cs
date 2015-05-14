@@ -17,6 +17,19 @@ namespace Sozial.Repositories
         {
             db = database;
         }
+
+
+        public bool realUser(string username)
+        {
+            ApplicationUser user = (from ApplicationUser users in db.Users
+                                   where users.UserName == username
+                                   select users).SingleOrDefault();
+            return(user != null);
+        }
+
+
+
+
         /* FRIENDS RELATIONSHIPS */
 
 
