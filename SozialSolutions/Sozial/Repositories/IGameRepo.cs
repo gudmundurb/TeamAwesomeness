@@ -15,4 +15,13 @@ namespace Sozial.Repositories
         void DeleteGame(int gameID);
         void UpdateGame(GameModel game);
     }
+
+    public interface IReviewRepo : IDisposable
+    {
+        IEnumerable<ReviewModel> GetReview();
+        ReviewModel GetReviewById(int? reviewId);
+        void InsertReview(ReviewModel review);
+        void DeleteReview(int reviewId);
+        void UpdateReview(ReviewModel review);
+    }
 }

@@ -105,4 +105,95 @@ namespace Sozial.Repositories
             GC.SuppressFinalize(this);
         }
     }
+
+
+
+
+
+
+
+    public class ReviewRepo : IReviewRepo, IDisposable
+    {
+        private ApplicationDbContext db = null; //new ApplicationDbContext();
+
+        public ReviewRepo(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+
+        /*
+         * 
+        IEnumerable<ReviewModel> GetReview();
+        ReviewModel GetReviewyID(int? reviewId);
+        void InsertReview(ReviewModel review);
+        void DeleteReview(int reviewId);
+        void UpdateReview(ReviewModel review);
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+        */
+        
+        
+
+        public IEnumerable<ReviewModel> GetReview()
+        {
+            return db.ReviewModel.ToList();
+        }
+
+        public ReviewModel GetReviewById(int? gameID)
+        {
+            return db.ReviewModel.Find(gameID);
+            // add code here to get reviews. 
+        }
+       
+       public void InsertReview(ReviewModel review)
+       {
+           db.ReviewModel.Add(review);
+           db.SaveChanges();
+       }
+
+       public void DeleteReview(int reviewId)
+       {
+           ReviewModel review = db.ReviewModel.Find(reviewId);
+           db.ReviewModel.Remove(review);
+           db.SaveChanges();
+       }
+
+       public void UpdateReview(ReviewModel review)
+       {
+           db.Entry(review).State = EntityState.Modified;
+           db.SaveChanges();
+
+       }
+
+
+
+
+
+        
+        // DISPOSE 
+       private bool disposed = false;
+
+       protected virtual void Dispose(bool disposing)
+       {
+           if (!this.disposed)
+           {
+               if (disposing)
+               {
+                   db.Dispose();
+               }
+           }
+           this.disposed = true;
+       }
+
+       public void Dispose()
+       {
+           Dispose(true);
+           GC.SuppressFinalize(this);
+       }
+   
+    }
 }
