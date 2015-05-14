@@ -28,9 +28,8 @@ namespace Sozial.Models
 
         [Required(ErrorMessage = "No text for a post eh... that is interesting 'post' I would say! :)")]
         [Display(Name = "Post Text")]
-        [DataType(DataType.MultilineText)]
         public string text { get; set; }
-
+        //[DataType(DataType.MultilineText)]
         public ICollection<CommentModel> comments { get; set; } //this instead of many to many relations
 
         public DateTime createdDate { get; set; }

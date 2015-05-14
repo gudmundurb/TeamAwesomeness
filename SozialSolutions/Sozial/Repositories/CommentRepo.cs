@@ -35,6 +35,10 @@ namespace Sozial.Repositories
         {
             ///* TODO: IMPLEMENT BETTER TO WORK WITH POSTREPO
             string myname = System.Web.HttpContext.Current.User.Identity.Name;
+            if(newComment.commentText == null)
+            {
+                return; 
+            }
             db.CommentModels.Add(newComment);
             db.SaveChanges();
 

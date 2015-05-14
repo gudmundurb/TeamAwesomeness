@@ -16,6 +16,8 @@ namespace Sozial.Models
 
         public string userId { get; set; }
 
+
+        [Required(ErrorMessage="Your review must have text.")]
         public string text { get; set; }
 
         //public IEnumerable<PostModel> reviewPost;

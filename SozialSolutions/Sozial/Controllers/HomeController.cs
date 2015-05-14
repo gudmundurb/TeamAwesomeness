@@ -78,6 +78,22 @@ namespace Sozial.Controllers
             return RedirectToAction("Profile", new { username = sunshine.profileOwner});
         }
 
+        [Authorize]
+        public ActionResult search()
+        {
+            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
+            return View(relRepo.getAllUsers());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult search(string username)
+        {
+            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
+            return View(relRepo.searchFor(username));
+        }
+
+
 
         [Authorize]
         public ActionResult UserList()

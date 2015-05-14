@@ -29,7 +29,8 @@ namespace Sozial.Repositories
         bool removePostFromProfile(int postID);
         ApplicationUser getUser(string name);
 
-
+        IEnumerable<ApplicationUser> getAllUsers();
+        IEnumerable<ApplicationUser> searchFor(string username);
         /*gameFAVES */ 
         bool addGameToFavourites(int gameId);
         bool removeFromFavourites(int gameId);

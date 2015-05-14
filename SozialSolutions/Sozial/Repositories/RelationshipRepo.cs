@@ -27,6 +27,18 @@ namespace Sozial.Repositories
             return(user != null);
         }
 
+        public IEnumerable<ApplicationUser> getAllUsers()
+        {
+            return db.Users.ToList();
+        }
+
+        public IEnumerable<ApplicationUser> searchFor(string username)
+        {
+            return (from ApplicationUser user in db.Users
+                    where user.UserName.Contains(username)
+                    select user).ToList();
+        }
+
 
 
 
