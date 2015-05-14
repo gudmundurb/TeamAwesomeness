@@ -4,50 +4,106 @@
     ViewBag.Title = "UserList";
 }
 
-<h2>UserList</h2>
+<div class="container">
+    <div class="row">
+        <div class="well">
+            <h2 class="title-adjustments">Games</h2>
+            <hr />
+            <p>
+                @Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" })
+            </p>
+            <div class="list-group">
+                @foreach (var item in Model)
+                {
+                    <a class="list-group-item active container">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.steamId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.userProfilePic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.userBannerPic)
-        </th>
-        <th></th>
-    </tr>
+                        <div class="media col-md-2">
+                            <figure class="pull-left img_resizer">
+                                @if (String.IsNullOrEmpty(item.userProfilePic))
+                                {
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Game", new { id = item.UserName })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="cursor_change" onclick="location.href='@Url.Action("Details", "Game", new { id = item.UserName })'">
+                                        <img class="media-object img-rounded img-responsive thumbnails" src="@item.userProfilePic" alt="@Html.DisplayFor(modelItem => item.UserName)" />
+                                    </span>
+                                }
+                            </figure>
+                        </div>
+                        <div class="col-md-7">
+                            <h3>@Html.DisplayFor(modelItem => item.UserName)</h3>
+                        </div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userProfilePic)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.userBannerPic)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            @Html.ActionLink("Add Friend", "add", new { name = item.UserName })
-        </td>
-    </tr>
-    foreach (var usero in item.friends)
-    {
+
+
+
+                        <!--LAGA ADD FALLIÐ, ÞAÐ ER NIÐRI 'A SIÐUNNI-->
+
+                        <div class="col-md-3 pull-left">
+                            <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Add Friend", "add", new { name = item.UserName })'"><i class="glyphicon glyphicon-star"></i>Add friend</span>
+                        </div>
+                    </a>
+                    <div class="well">
+                        @foreach (var usero in item.friends)
+                        {
+   <!--SETJA KLASA HÉR-->                       <div style="color: red; font-size: 20px;"> 
+                                @usero.UserName
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
         <tr>
-            <td></td>
-            <td style="color: red;">@usero.UserName</td>
+            <th>
+                @Html.DisplayNameFor(model => model.steamId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userProfilePic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userBannerPic)
+            </th>
+            <th></th>
         </tr>
-    }
-}
 
-</table>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userProfilePic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userBannerPic)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Add Friend", "add", new { name = item.UserName })
+            </td>
+        </tr>
+        foreach (var usero in item.friends)
+        {
+            <tr>
+                <td></td>
+                <td style="color: red;">@usero.UserName</td>
+            </tr>
+        }
+    }
+
+    </table>
+*@
