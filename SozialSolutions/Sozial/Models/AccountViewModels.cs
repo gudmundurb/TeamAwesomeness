@@ -65,6 +65,22 @@ namespace Sozial.Models
         public bool RememberMe { get; set; }
     }
 
+    public class AccountCustomizeViewModel
+    {
+        [Url]
+        [Display(Name="Your profile Picture.")]
+        public string ProfilePicture { get; set; }
+
+        [Url]
+        [Display(Name="Your Banner Picture.")]
+        public string profileBanner { get; set; }
+
+    }
+
+
+
+
+
     public class RegisterViewModel
     {
         [Required]
@@ -75,6 +91,14 @@ namespace Sozial.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Url]
+        [Display(Name = "Your Profile Picture")]
+        public string profileBanner { get; set; }
+
+        [Url]
+        [Display(Name = "Profile Banner")]
+        public string profilePicture { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

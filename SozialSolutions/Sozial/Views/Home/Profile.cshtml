@@ -8,10 +8,24 @@
 
 <html>
 <head>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Profile</title>
 </head>
 <body>
+    @if (User.Identity.Name == Model.profileOwner.UserName)
+    { 
+        
+        <script src="~/Scripts/showCustomization.js"></script>
+            
+            <div id="editPartial">
+                @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic})
+            </div>
+        <script>
+                $("#editPartial").hide();
+        </script>
+        <button onclick="functio()">Edit Profile</button>
+    }
     <div class="container">
         <div class="well">
             <h2>@Model.profileOwner.UserName</h2> 
@@ -21,10 +35,7 @@
                     <li class="col-md-5">
                         <!--GAME PICTURE AND POP UP-->
                     
-                            @foreach(Sozial.Models.GameModel game in Model.myGames)
-                            {
-                                @Html.Partial("../Shared/_miniGameViewPartial", game)
-                            }
+                            
             
                         <!--GAME PICTURE AND POP UP-->
                     </li>
@@ -70,15 +81,27 @@
                             </dl>
                         </div>
                         <!--GROUPS-->
+
+                        <h4 class="title-adjustments">Games</h4>
+                        <div>
+                            <dl>
+                                @foreach (Sozial.Models.GameModel game in Model.myGames)
+                                {
+                                    <dd>
+                                        @Html.Partial("../Shared/_miniGameViewPartial", game)
+                                    </dd>
+                                }
+                            </dl>
+                        </div>
                     </li>
                     <li>
                         <div class="col-md-7">
                             <!--POSTS-->
-                            <h4 class="title-adjustments">Write a Post</h4>
                             @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
                             <!--POSTS-->
+
+
                             <!--REPLY TO POST-->
-                            
                             <div class="widget-area pull-left">
                                 <div>
                                     @foreach (Sozial.Models.PostModel post in Model.profilePosts)

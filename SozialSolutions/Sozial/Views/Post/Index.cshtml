@@ -90,8 +90,8 @@
                                     <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = item.postID })'" /></div>
                                 </div>
                                 <div class="col-md-2 text-center">
-                                    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                                    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                                    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                                    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Comment", new { id = item.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                                 </div>
                             </a>
                         }

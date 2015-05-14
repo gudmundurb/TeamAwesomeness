@@ -1,23 +1,24 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function() {
+
     $('#myCarousel').carousel({
-        interval: 4000
+        interval: 6000
     });
 
-    var clickEvent = false;
-    $('#myCarousel').on('click', '.nav a', function () {
-        clickEvent = true;
-        $('.nav li').removeClass('active');
-        $(this).parent().addClass('active');
-    }).on('slid.bs.carousel', function (e) {
-        if (!clickEvent) {
-            var count = $('.nav').children().length - 1;
-            var current = $('.nav li.active');
-            current.removeClass('active').next().addClass('active');
-            var id = parseInt(current.data('slide-to'));
-            if (count == id) {
-                $('.nav li').first().addClass('active');
-            }
-        }
-        clickEvent = false;
+    // handles the carousel thumbnails
+    $('[id^=carousel-selector-]').click(function () {
+        var id_selector = $(this).attr("id");
+        var id = id_selector.substr(id_selector.length - 1);
+        id = parseInt(id);
+        $('#myCarousel').carousel(id);
+        $('[id^=carousel-selector-]').removeClass('selected');
+        $(this).addClass('selected');
+    });
+
+    // when the carousel slides, auto update
+    $('#myCarousel').on('slid', function (e) {
+        var id = $('.item.active').data('slide-number');
+        id = parseInt(id);
+        $('[id^=carousel-selector-]').removeClass('selected');
+        $('[id^=carousel-selector-' + id + ']').addClass('selected');
     });
 });

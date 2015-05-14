@@ -5,17 +5,16 @@
     ViewBag.Title = "Home Page";
 }
 
-<!-- Carousel -->
+<!-- Carousel 1-->
 <div class="carousel-custom-container">
     <div class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
+        <!--<ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-        </ol>
-
+        </ol>-->
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
@@ -33,6 +32,16 @@
         </div>
         <div class="logo_motto_frontpage img-responsive">
             <img src="@Url.Content("~/Content/Images/logo_motto.png")" />
+        </div>
+        <div class="register-banner well img-responsive">
+            <button>REGISTER TODAY</button>
+            <ul style="color: red; font-weight:bold;" class="list-inline">
+                <li>
+                    Newest Games Link to Front Page
+                </li>
+                <li> User Profile Pic on Front Page</li>
+                <li>  Add Recruitment Message to Group</li>
+            </ul>
         </div>
     </div>
 </div>
@@ -63,18 +72,10 @@
                 <li style="color: red; font-weight: bold;">TO BE REMOVED</li>
             </ul>
         </div>
-        <!--TITLES-->
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Latest News</h3>
-            </div>
-            <div class="col-md-6">
-                <h3>Newest Posts</h3>
-            </div>
-        </div>
         <!--NEWS-->
-        <div class="row front-page-item">
+        <div class="row front-page-item title-adjustments">
             <div class="col-md-6 list-group">
+                <h3>Latest News</h3>
                 @foreach (Sozial.Models.NewsModel item in Model.newestNews)
                 {
                     <a class="list-group-item active container">
@@ -109,6 +110,7 @@
             </div>
             <!--NEWEST POSTS-->
             <div class="col-md-6">
+                <h3>Newest Posts</h3>
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
                     <div class="widget-area comment-section container">
@@ -132,19 +134,10 @@
                 }
             </div>
         </div>
-        <!--TITLES-->
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Recruitment Bullentin</h3>
-                <span style="color: red; font-size: 14pt"><p>ADD RECRUITMENT MSG</p></span>
-            </div>
-            <div class="col-md-6">
-                <h3>Trending Games</h3>
-            </div>
-        </div>
         <!--BULLETIN-->
         <div class="row front-page-item">
-            <div class="col-md-6">
+            <div class="col-md-6 title-adjustments">
+                <h3>Recruitment Bullentin</h3>
                 @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
                 {
                     <div class="widget-area comment-section container">
@@ -173,37 +166,58 @@
             </div>
             <!--GAMES-->
             <div class="col-md-6">
+                <h3>Trending Games</h3>
                 @*foreach(Sozial.Models.GameModel item in Model.newestGames)
-                {
+                    {
 
-                }*@
-                <div>                    
-                    <div class="container">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Wrapper for slides -->
+                    }*@
+                <!-- main slider carousel -->
+                <div id="slider">
+                    <div id="carousel-bounding-box">
+                        <div id="myCarousel" class="carousel slide">
+                            <!-- main slider carousel items -->
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="img-responsive img-rounded" src="http://www.vadejuegos.com/imagenes/2012/05/20/diablo3an820-re.jpg" alt="placehold.it/350x250">
-                                    <div class="carousel-caption">
-                                        <h3>Headline</h3>                                        
-                                    </div>
-                                </div><!-- End Item -->
+                                <div class="active item" data-slide-number="0">
+                                    <img src="http://placehold.it/1200x480&amp;text=one" class="img-responsive img-rounded cursor_change">
+                                </div>
+                                <div class="item" data-slide-to="1">
+                                    <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
+                                </div>
+                                <div class="item" data-slide-number="2">
+                                    <img src="http://placehold.it/1200x480&amp;text=three" class="img-responsive">
+                                </div>
                             </div>
-                            <ul class="nav nav-pills nav-justified">                                
-                                <li class="col-md-1" data-target="#myCarousel" data-slide-to="0">
-                                    <a href="#">
-                                        Projects<small>Lorem ipsum dolor sit</small>
-                                        <img class="thumbnail img-rounded" src="http://www.vadejuegos.com/imagenes/2012/05/20/diablo3an820-re.jpg" alt="placehold.it/350x250">
-                                    </a>
-                                </li>
-                                <li data-target="#myCarousel" data-slide-to="1" class="active"><a href="#"></a></li>
-                                <li data-target="#myCarousel" data-slide-to="2"><a href="#">Portfolio<small>Lorem ipsum dolor sit</small></a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
+                <!--/main slider carousel-->
+                <!-- thumb navigation carousel -->
+                <div class="well">
+                    <div class="col-md-12" id="slider-thumbs">
+                        <!-- thumb navigation carousel items -->
+                        <ul class="list-inline text-center">
+                            <li>
+                                <a id="carousel-selector-0" class="selected">
+                                    <img src="http://placehold.it/80x60&amp;text=one" class="img-responsive cursor_change img-rounded">
+                                </a>
+                            </li>
+                            <li>
+                                <a id="carousel-selector-1">
+                                    <img src="http://placehold.it/80x60&amp;text=two" class="img-responsive cursor_change">
+                                </a>
+                            </li>
+                            <li>
+                                <a id="carousel-selector-2">
+                                    <img src="http://placehold.it/80x60&amp;text=three" class="img-responsive cursor_change">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
             </div>
-        </div>        
+        </div>
     </div>
 </div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

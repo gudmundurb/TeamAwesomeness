@@ -1,5 +1,6 @@
 ﻿using Sozial.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Sozial.Repositories
     public class GameRepo : IGameRepo, IDisposable
     {
         private ApplicationDbContext db = null; //new ApplicationDbContext();
-        
+
         public GameRepo(ApplicationDbContext db)
         {
             this.db = db;

@@ -8,9 +8,7 @@
     {
         maxSize = 200;
     }
-
     $('#readMore').hide();
-
     $('.text_limit').each(function ()
     {
         if ($(this).text().length > maxSize)
