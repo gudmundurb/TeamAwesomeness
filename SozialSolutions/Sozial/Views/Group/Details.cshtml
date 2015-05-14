@@ -3,41 +3,76 @@
 @{
     ViewBag.Title = "Details";
 }
-
-
-
-<h2 class="title-adjustments">Post List</h2>
-
-<div>
+<div class="container">
     <div class="well">
-        @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
-    </div>
-    <div class="well">
-        @foreach (Sozial.Models.ApplicationUser user in Model.Members)
-        {
-            <div>
-                <p>
-                   @Html.ActionLink(user.UserName, "../Home/Profile", new {username = user.UserName})
-                </p>
-            </div>
-        }
-        <div class="well">
-            @foreach (Sozial.Models.PostModel post in Model.Posts)
-            {
-                @Html.Partial("../Shared/_postPartial", post)
-            }
+        <h2 class="title-adjustments">@Model.groupName</h2>
+        <hr />
+        <div class="row game-cover">
+            <ul class="thumbails list-unstyled">
+                <li class="col-md-5">
+                    <!--GROUP PICTURE AND POP UP-->
+                    <div class="thumbnail well margin-top">
+                        @if (!String.IsNullOrEmpty(Model.groupPicture))
+                        {
+                            <a href="" data-toggle="modal" data-target="#myModal">
+                                <img class="img-responsive" src="@Url.Content(Model.groupPicture)" alt="@Html.DisplayFor(model => model.groupName) thumbnail" data-toggle="modal" data-target="#myModal" />
+                            </a>
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="@Url.Content(Model.groupPicture)" class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="@Url.Content(Model.groupPicture)" class="img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                        }
+                    </div>
+                    <!--GOUP PICTURE AND POP UP-->
+                </li>
+            </ul>
         </div>
-
+        <div class="row">
+            <ul class="thumbails list-unstyled">
+                <!--DETAILS-->
+                <li class="col-md-5">
+                    <div class="well item-details">
+                        <h4>Group Members</h4>
+                        @foreach (Sozial.Models.ApplicationUser user in Model.Members)
+                        {
+                            <p>
+                                <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
+                            </p>
+                        }
+                    </div>
+                </li>
+                <li>
+                    <div class="col-md-7">
+                        <h4 class="title-adjustments">Write a Post</h4>
+                        <div class="widget-area pull-left">
+                            @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
+                        </div>
+                    </div>
+                    <h4 class="title-adjustments">All Posts</h4>
+                    @foreach (Sozial.Models.PostModel post in Model.Posts)
+                    {
+                        @Html.Partial("../Shared/_postPartial", post)
+                    }
+                </li>
+            </ul>
+        </div>
     </div>
-   
 </div>
-
-
-<!--
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.groupID }) |
-    @Html.ActionLink("Post", "/CreatePost", new { id = Model.groupID }) |
-
-    @Html.ActionLink("Back to List", "Index")
-</p>
-    --> 

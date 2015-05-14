@@ -256,6 +256,7 @@
     <Content Include="Scripts\showCustomization.js" />
     <Content Include="Scripts\stars_ratings.js" />
     <Content Include="Scripts\text_delimitator.js" />
+    <Content Include="Scripts\toggle.js" />
     <Content Include="Scripts\trending_games_carousel.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

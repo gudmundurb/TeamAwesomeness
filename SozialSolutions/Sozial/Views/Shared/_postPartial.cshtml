@@ -1,85 +1,78 @@
 ﻿@model Sozial.Models.PostModel
 
-@{
-    var dateAndTime = DateTime.Now;
-    int year = dateAndTime.Year;
-    int month = dateAndTime.Month;
-    int day = dateAndTime.Day;
-}
-
-<!--
-<div class="col-md-6">
-    <h2>DING</h2>
-    <p class="list-group-item-text text_limit">
-        @Html.DisplayFor(modelItem => Model.text)
-    </p>
-</div>
-<div class="col-md-3 text-center">
-    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Details", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>
-    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-</div>
-    -->
-
-<div class="widget-area comment-section">
-    <div class="col-md-12">
-        <div class="col-sm-2 thumbnail">
-            <img class="img-responsive img-rounded" src="http://placehold.it/100x100" alt="A placeholder" />
-        </div>
-        <div class="col-md-8">
-            <a href="#" title="Username">@Html.DisplayFor(modelItem => Model.userID)</a>
-            <small class="pull-right">@day/@month/@year</small>
-        </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(modelItem => Model.text)
-        </div>
-
-        <div class="col-md-3 text-center">
-            @if (Model.userID == User.Identity.Name) { 
-                <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+<div class="posts">
+    <div class="widget-area">
+        <div class="comment-section">
+            <div class="col-md-1 thumbnail">
+                @if (String.IsNullOrEmpty(Model.userPicture))
+                {
+                    <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                }
+                else
+                {
+                    <img src="@Url.Content(Model.userPicture)" class="img-responsive" alt="@Model.userID picture" />
+                }
+            </div>
+            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>
+            <div class="pull-right">
+                <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
+                <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
+            </div>
+            <p>
+                @Html.DisplayFor(modelItem => Model.text)
+            </p>
+            @if (!String.IsNullOrEmpty(Model.imageUrl))
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="@Url.Content(Model.imageUrl)" class="img-responsive" alt="@Model.userID picture" />
+                    </div>
+                </div>
             }
+            <div class="row">
+                <em>
+                    <small class="col-md-12 pull-right">
+                        created on @Model.createdDate.Day/@Model.createdDate.Month/@Model.createdDate.Year
+                    </small>
+                </em>
+            </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <hr />
+        <!-- REPLY HERE -->
+        <div class="col-md-12">
+            @Html.Partial("../Shared/_replyToPostPartial", new Sozial.Models.CommentModel(@Model.postID))
+        </div>
+        <!-- REPLY HERE -->
+    </div>
+</div>
+<a id="toggleMe" class="btn btn-success btn-sm  pull-right">See All Comments</a>
+<div class="comments" id="toToggle">
+    <div class="widget-area comment-section">
+        @if (Model.comments != null)
+        {
+            foreach (Sozial.Models.CommentModel comm in Model.comments)
+            {
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <div class="img_resizer thumbnail">                            
+                            <img src="@Url.Content(Model.userPicture)" />
+                        </div>                        
+                    </div>
+                    <div class="col-md-2">
+                        <a href="@Url.Action("Profile", "Home", new { comm.authorID })" title="Username">@comm.authorID</a>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            @Html.DisplayFor(modelItiem => comm.commentText)
+                        </p>
+                    </div>
+                </div>
+                <hr class="row" />
+            }
+        }
     </div>
 </div>
 
-
-<!-- REPLY HERE -->
-@Html.Partial("../Shared/_replyToPostPartial", new Sozial.Models.CommentModel(@Model.postID))
-
-<!-- REPLY HERE -->
-<br />
-
-@if (Model.comments != null)
-{
-    foreach (Sozial.Models.CommentModel comm in Model.comments)
-    {
-        <div class="col-md-12">
-            <a class="list-post-item active">
-                <div class="col-md-3">
-                    <h4 class="list-group-item-heading">@Html.DisplayFor(modelItem => comm.authorID)</h4>
-                    <small>@day/@month/@year</small>
-                </div>
-
-                <div class="col-md-6">
-                    <p class="list-group-item-text text_limit">
-                        @Html.DisplayFor(modelItem => comm.commentText)
-                    </p>
-                    <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Post", new { id = Model.postID })'" /></div>
-                </div>
-
-                <div class="col-md-3 text-center">
-                    @if (comm.authorID == User.Identity.Name) { 
-                    <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Comment", new { id = Model.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                    <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Comment", new { id = Model.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-                    }
-                </div>
-            </a>
-        </div>
-    }
-}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/toggle.js"></script>
