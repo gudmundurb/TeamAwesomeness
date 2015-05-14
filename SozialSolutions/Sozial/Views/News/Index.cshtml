@@ -10,7 +10,7 @@
             <hr />
             <p>
                 @if (Request.IsAuthenticated) {
-                @Html.ActionLink("Add News", "Create", null, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Add News", "Create", null, new { @class = "btn btn-success" })
                 }
             </p>
             <div class="list-group">
@@ -24,7 +24,7 @@
                                     <img class="media-object img-responsive" src="@item.imageUrl" alt="@Html.DisplayFor(modelItem => item.title)" />
                                 </figure>
                             </div>
-                            <div class="col-md-6">
+                             <div class="@(User.Identity.IsAuthenticated ? "col-md-6" : "col-md-9")">
                                 <em><small class="pull-right title-adjustments">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small></em>
                                 <h3>@Html.DisplayFor(modelItem => item.title)</h3>
                                 <hr />
@@ -35,7 +35,7 @@
                         }
                         else
                         {
-                            <div class="col-md-9">
+                            <div class="@(User.Identity.IsAuthenticated ? "col-md-9" : "col-md-12")">
                                 <em><small class="pull-right title-adjustments">@Html.DisplayFor(modelItem => item.createdDate.Day)/@Html.DisplayFor(modelItem => item.createdDate.Month)/@Html.DisplayFor(modelItem => item.createdDate.Year)</small></em>
                                 <h3>@Html.DisplayFor(modelItem => item.title)</h3>
                                 <hr />
@@ -43,13 +43,15 @@
                                     @Html.DisplayFor(modelItem => item.text)
                                 </p>
                             </div>
+                        }                        
+                        @if (Request.IsAuthenticated)
+                        {
+                            <div class="col-md-3">
+                                <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
+                                <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            </div>
                         }
-                        <div class="col-md-3">
-                            @if (Request.IsAuthenticated) { 
-                            <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-                            <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-                            }
-                                </div>
+                        
                     </a>
                 }
             </div>
