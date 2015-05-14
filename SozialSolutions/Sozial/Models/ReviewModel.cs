@@ -7,6 +7,7 @@ namespace Sozial.Models
 {
     public class ReviewModel
     {
+        public int previewId { get; set; }
         public DateTime  dateCreated { get; set; }
         public string userId { get; set; }
         public string text { get; set; }
