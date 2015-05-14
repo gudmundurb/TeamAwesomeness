@@ -93,13 +93,13 @@ namespace Sozial.Controllers
             }
             return View(postModel);
         }
+
         [Authorize]
         public ActionResult Reply(CommentModel comment)
         {
             comment.authorID = User.Identity.Name;
             commentRepo.insertComment(comment);
 
-            
             return Redirect("../Home/Profile");
         }
 

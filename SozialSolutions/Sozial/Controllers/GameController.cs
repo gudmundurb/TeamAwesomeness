@@ -172,6 +172,7 @@ namespace Sozial.Controllers
             this.db = new ReviewRepo(new ApplicationDbContext());
         }
 
+
         // GET: Review
         public ActionResult Index()
         {
@@ -181,6 +182,7 @@ namespace Sozial.Controllers
             }
             return View(db.GetReview());
         }
+
 
         // GET: Review/Details/5
         public ActionResult Details(int? id)
@@ -222,6 +224,7 @@ namespace Sozial.Controllers
             return View();
         }
 
+
         // POST: Game/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -239,6 +242,7 @@ namespace Sozial.Controllers
             return RedirectToAction("../Game/Details/" + sunshine.gameId.ToString());
         }
 
+
         // GET: Game/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -253,6 +257,7 @@ namespace Sozial.Controllers
             }
             return View(reviewModel);
         }
+
 
         // POST: Game/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -269,6 +274,7 @@ namespace Sozial.Controllers
             }
             return View(reviewModel);
         }
+
 
         // GET: Game/Delete/5
         public ActionResult Delete(int? id)
@@ -293,16 +299,5 @@ namespace Sozial.Controllers
             db.DeleteReview(id);
             return RedirectToAction("Index");
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
-
-
 }
