@@ -67,7 +67,7 @@ namespace Sozial.Models
     public class AccountCustomizeViewModel
     {
         [Url]
-        [Display(Name="Your profile Picture.")]
+        [Display(Name="Profile Picture")]
         public string ProfilePicture { get; set; }
 
         [Url]
