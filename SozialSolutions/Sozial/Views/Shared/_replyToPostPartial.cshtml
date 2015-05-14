@@ -1,6 +1,6 @@
 ﻿@model Sozial.Models.CommentModel
 
-@using (Html.BeginForm("Reply", "Post"))
+@using (Html.BeginForm("Reply", "Post", new { path = HttpContext.Current.Request.RawUrl}))
 {
     @Html.AntiForgeryToken()
     <form>
