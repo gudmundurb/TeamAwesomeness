@@ -48,6 +48,27 @@ namespace Sozial.Repositories
 
         }
 
+        public IEnumerable<GameModel> getHottestGames(int n)
+        {
+            IEnumerable<int> gameIDs = (from FavouriteRelationModel rel in db.FavouriteRelationModel
+                                        select rel.gameId).ToList();
+
+            List<GameModel> games = new List<GameModel>();
+
+            if (gameIDs == null) { return null; }
+            //enter the linq
+            var q = from int s in gameIDs
+                    group s by s into g
+                    orderby g.Count() descending
+                    select g.Key;
+
+            foreach (int i in q)
+            {
+                games.Add(GetGameByID(i));
+            }
+            return games.Take(n).ToList();
+        }
+
 
         /* FAVEGAME */
         public IEnumerable<GameModel> getFaveGamesForUser(string username) {
@@ -84,5 +105,96 @@ namespace Sozial.Repositories
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+    }
+
+
+
+
+
+
+
+    public class ReviewRepo : IReviewRepo, IDisposable
+    {
+        private ApplicationDbContext db = null; //new ApplicationDbContext();
+
+        public ReviewRepo(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+
+        /*
+         * 
+        IEnumerable<ReviewModel> GetReview();
+        ReviewModel GetReviewyID(int? reviewId);
+        void InsertReview(ReviewModel review);
+        void DeleteReview(int reviewId);
+        void UpdateReview(ReviewModel review);
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+        */
+        
+        
+
+        public IEnumerable<ReviewModel> GetReview()
+        {
+            return db.ReviewModel.ToList();
+        }
+
+        public ReviewModel GetReviewById(int? gameID)
+        {
+            return db.ReviewModel.Find(gameID);
+            // add code here to get reviews. 
+        }
+       
+       public void InsertReview(ReviewModel review)
+       {
+           db.ReviewModel.Add(review);
+           db.SaveChanges();
+       }
+
+       public void DeleteReview(int reviewId)
+       {
+           ReviewModel review = db.ReviewModel.Find(reviewId);
+           db.ReviewModel.Remove(review);
+           db.SaveChanges();
+       }
+
+       public void UpdateReview(ReviewModel review)
+       {
+           db.Entry(review).State = EntityState.Modified;
+           db.SaveChanges();
+
+       }
+
+
+
+
+
+        
+        // DISPOSE 
+       private bool disposed = false;
+
+       protected virtual void Dispose(bool disposing)
+       {
+           if (!this.disposed)
+           {
+               if (disposing)
+               {
+                   db.Dispose();
+               }
+           }
+           this.disposed = true;
+       }
+
+       public void Dispose()
+       {
+           Dispose(true);
+           GC.SuppressFinalize(this);
+       }
+   
     }
 }

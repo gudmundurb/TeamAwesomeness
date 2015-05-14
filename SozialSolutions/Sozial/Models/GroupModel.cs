@@ -49,5 +49,7 @@ namespace Sozial.Models
 
         public virtual ICollection<ApplicationUser> Members { get; set; }
         public virtual ICollection<PostModel> Posts { get; set; }
+
+        public bool isRecruiting { get; set; }
     }
 }
