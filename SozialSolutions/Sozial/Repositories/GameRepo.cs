@@ -47,6 +47,27 @@ namespace Sozial.Repositories
 
         }
 
+        public IEnumerable<GameModel> getHottestGames(int n)
+        {
+            IEnumerable<int> gameIDs = (from FavouriteRelationModel rel in db.FavouriteRelationModel
+                                        select rel.gameId).ToList();
+
+            List<GameModel> games = new List<GameModel>();
+
+            if (gameIDs == null) { return null; }
+            //enter the linq
+            var q = from int s in gameIDs
+                    group s by s into g
+                    orderby g.Count() descending
+                    select g.Key;
+
+            foreach (int i in q)
+            {
+                games.Add(GetGameByID(i));
+            }
+            return games.Take(n).ToList();
+        }
+
 
         /* FAVEGAME */
         public IEnumerable<GameModel> getFaveGamesForUser(string username) {
