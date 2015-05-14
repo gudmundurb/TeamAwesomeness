@@ -57,10 +57,10 @@ namespace Sozial.Repositories
 
             if (gameIDs == null) { return null; }
             //enter the linq
-            var q = from int s in gameIDs
-                    group s by s into g
-                    orderby g.Count() descending
-                    select g.Key;
+            IEnumerable<int> q = from int s in gameIDs
+                                 group s by s into g
+                                 orderby g.Count() descending
+                                 select g.Key;
 
             foreach (int i in q)
             {
@@ -165,13 +165,11 @@ namespace Sozial.Repositories
 
        public void UpdateReview(ReviewModel review)
        {
+           
            db.Entry(review).State = EntityState.Modified;
            db.SaveChanges();
 
        }
-
-
-
 
 
         

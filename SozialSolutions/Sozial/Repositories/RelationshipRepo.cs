@@ -83,6 +83,11 @@ namespace Sozial.Repositories
         public bool areFriends(string friend)
         {
             string myname = System.Web.HttpContext.Current.User.Identity.Name;
+            //you are your own friend.
+            if (friend == myname) 
+            {
+                return true; 
+            }
             //get myfriends
             IEnumerable<FriendshipModel> myfriends = (from FriendshipModel entry in db.FriendshipModels
                                                           where (entry.UsernameOne == myname || entry.UsernameTwo == myname)
@@ -152,6 +157,10 @@ namespace Sozial.Repositories
         }
 
         public bool postToProfile(PostModel post, string username){
+            if(post.text == null)
+            {
+                return false;
+            }
 
             db.PostModels.Add(post);
             db.SaveChanges();

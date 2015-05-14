@@ -95,7 +95,7 @@
                             }
                             else
                             {
-                                <!--MUST ADD USER PICTURE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+                                <!--MUST ADD USER PICTURE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     JESUS CHRIST DONT YELL AT ME YOU'RE MAKING A SCENE-->
                                 <img class="img-responsive img-rounded" src="@Url.Content(item.imageUrl)" alt="@Html.DisplayFor(modelItem => item.postID)" />
                             }
 
@@ -156,16 +156,34 @@
                     <div id="carousel-bounding-box">
                         <div id="myCarousel" class="carousel slide">
                             <!-- main slider carousel items -->
+
+
                             <div class="carousel-inner">
-                                <div class="active item" data-slide-number="0">
-                                    <img src="http://placehold.it/1200x480&amp;text=one" class="img-responsive img-rounded cursor_change">
-                                </div>
-                                <div class="item" data-slide-to="1">
-                                    <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
-                                </div>
-                                <div class="item" data-slide-number="2">
-                                    <img src="http://placehold.it/1200x480&amp;text=three" class="img-responsive">
-                                </div>
+                               
+                                @for (int index = 0; index < Model.hottestGames.Count(); index++)
+                                {
+                                    <div class="active item" data-slide-number="@index">
+                                        @if (Model.hottestGames[index].imageUrl == null)
+                                        {
+                                            <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
+                                        }
+                                        else
+                                        {
+                                            <img src="@Model.hottestGames[index - 1].imageUrl" class="img-responsive img-rounded cursor_change">
+                                        }   
+                                    </div> 
+                                }
+                                
+                                @*
+    <div class="item" data-slide-to="1">
+        <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
+    </div>
+
+    <div class="item" data-slide-number="2">
+        <img src="http://placehold.it/1200x480&amp;text=three" class="img-responsive">
+    </div>
+*@
+
                             </div>
                         </div>
                     </div>
@@ -176,21 +194,35 @@
                     <div class="col-md-12" id="slider-thumbs">
                         <!-- thumb navigation carousel items -->
                         <ul class="list-inline text-center">
-                            <li>
-                                <a id="carousel-selector-0" class="selected">
-                                    <img src="http://placehold.it/80x60&amp;text=one" class="img-responsive cursor_change img-rounded">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="carousel-selector-1">
-                                    <img src="http://placehold.it/80x60&amp;text=two" class="img-responsive cursor_change">
-                                </a>
-                            </li>
-                            <li>
-                                <a id="carousel-selector-2">
-                                    <img src="http://placehold.it/80x60&amp;text=three" class="img-responsive cursor_change">
-                                </a>
-                            </li>
+
+                            @for (int index = 0; index < Model.hottestGames.Count(); index++)
+                            {
+                                <li>
+                                    <a id="carousel-selector-@index" class="selected">
+                                        @if (Model.hottestGames[index].imageUrl == null) 
+                                        { 
+                                            <img src="http://placehold.it/80x60&amp;text=one" class="img-responsive cursor_change img-rounded">
+                                        }
+                                        else
+                                        {
+                                            <img src="@Model.hottestGames[index].imageUrl" class="img-responsive cursor_change img-rounded">
+                                        }
+                                        
+                                    </a>
+                                </li>
+                            }
+                            @*
+    <li>
+        <a id="carousel-selector-1">
+            <img src="http://placehold.it/80x60&amp;text=two" class="img-responsive cursor_change">
+        </a>
+    </li>
+    <li>
+        <a id="carousel-selector-2">
+            <img src="http://placehold.it/80x60&amp;text=three" class="img-responsive cursor_change">
+        </a>
+    </li>*@
+
                         </ul>
                     </div>
                 </div>

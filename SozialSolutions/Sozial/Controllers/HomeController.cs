@@ -138,19 +138,24 @@ namespace Sozial.Controllers
         */
         //need authorization !! 
         [Authorize]
-        public ActionResult profile(string username)
+        public ActionResult profile(string userName)
         {
             //not allowed to be in controller!!!!! 
             ApplicationDbContext db = new ApplicationDbContext();
             RelationshipRepo relRepo = new RelationshipRepo(db);
 
-            string userName = username;
+            
+            //If username is not passed. or if the user is not real redirect to own profile.
             if (userName == null || !relRepo.realUser(userName))
             {
                 userName = User.Identity.Name;
             }
 
-           
+            //if user is not friend, And username is not the users' own name,  Redirect to own profile.
+            if (!relRepo.areFriends(userName))
+            {
+                userName = User.Identity.Name;
+            }
 
             ProfileViewModel profileModel = new ProfileViewModel();
 
