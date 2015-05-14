@@ -8,10 +8,24 @@
 
 <html>
 <head>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Profile</title>
 </head>
 <body>
+    @if (User.Identity.Name == Model.profileOwner.UserName)
+    { 
+        
+        <script src="~/Scripts/showCustomization.js"></script>
+            
+            <div id="editPartial">
+                @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic})
+            </div>
+        <script>
+                $("#editPartial").hide();
+        </script>
+        <button onclick="functio()">Edit Profile</button>
+    }
     <div class="container">
         <div class="well">
             <h2>@Model.profileOwner.UserName</h2> 

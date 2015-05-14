@@ -189,7 +189,7 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.userName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.userName, Email = model.Email, userProfilePic = model.profilePicture, userBannerPic = model.profileBanner};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -407,6 +407,8 @@ namespace Sozial.Controllers
                     return View("ExternalLoginFailure");
                 }
 
+                /* STEAM STUFF HERE */
+
                 if (info.Login.LoginProvider == "Steam")
                 {  } //TODO: Configure this to handle each variation of external logins we provide. currently only steam.
                 string steamsIdStr = info.Login.ProviderKey.Replace("http://steamcommunity.com/openid/id/", "");
@@ -428,6 +430,34 @@ namespace Sozial.Controllers
 
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
+        }
+
+        /* custom */ 
+        //
+        //GET: /Account/Customize
+        public ActionResult Customize()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            AccountCustomizeViewModel model = new AccountCustomizeViewModel();
+            model.profileBanner = user.userBannerPic;
+            model.ProfilePicture = user.userProfilePic;
+            return View(model);
+        }
+        
+
+        //
+        //POST: /Account/Customize
+        [HttpPost]
+        public ActionResult Customize(AccountCustomizeViewModel model)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            user.userProfilePic = model.ProfilePicture;
+            user.userBannerPic = model.profileBanner;
+            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("../Home/Profile");
         }
 
         //
