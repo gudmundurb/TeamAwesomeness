@@ -10,6 +10,9 @@ using Sozial.Models;
 
 namespace Sozial.Controllers
 {
+
+    //need authorization !! 
+   [Authorize]
     public class CommentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

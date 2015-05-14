@@ -6,7 +6,7 @@
 }
 
 <!-- Carousel 1-->
-<div class="carousel-custom-container">
+<div class="carousel-custom-container title-adjustments">
     <div class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <!--<ol class="carousel-indicators">
@@ -33,45 +33,16 @@
         <div class="logo_motto_frontpage img-responsive">
             <img src="@Url.Content("~/Content/Images/logo_motto.png")" />
         </div>
-        <div class="register-banner well img-responsive">
-            <button>REGISTER TODAY</button>
-            <ul style="color: red; font-weight:bold;" class="list-inline">
-                <li>
-                    Newest Games Link to Front Page
-                </li>
-                <li> User Profile Pic on Front Page</li>
-                <li>  Add Recruitment Message to Group</li>
-            </ul>
+        <div class="register-banner well container">
+            <p class="text-center">Get Your Game On!</p>
+            <p class="text-center"><a href="@Url.Action("Register", "Account")" class="btn btn-sample">Register Today</a></p>
         </div>
     </div>
 </div>
 <!-- Carousel -->
-<div class="container front-page-item">
+<div class="container front-page-item">    
     <div class="well">
-        <div class="navbar text-center">
-            <ul class="list-inline list-unstyled">
-                <li style="color: red; font-weight: bold;">TO BE REMOVED</li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("Friends", "myFriends", "Home")
-                </li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("Groups", "Index", "Group")
-                </li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("Games", "Index", "Game")
-                </li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("Post", "../Post")
-                </li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("All Users", "Userlist", "Home")
-                </li>
-                <li class="top-menu-button">
-                    @Html.ActionLink("Profile", "Profile", "Home")
-                </li>
-                <li style="color: red; font-weight: bold;">TO BE REMOVED</li>
-            </ul>
-        </div>
+        <div class="title-adjustments"></div>
         <!--NEWS-->
         <div class="row front-page-item title-adjustments">
             <div class="col-md-6 list-group">
@@ -111,6 +82,9 @@
             <!--NEWEST POSTS-->
             <div class="col-md-6">
                 <h3>Newest Posts</h3>
+                <ul class="list-inline list-unstyled">
+                    <li style="color: #ff0000; font-weight: bold;">NEEDS USER PROFILE PICTURE!</li>
+                </ul>
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
                     <div class="widget-area comment-section container">
@@ -138,6 +112,9 @@
         <div class="row front-page-item">
             <div class="col-md-6 title-adjustments">
                 <h3>Recruitment Bullentin</h3>
+                <ul class="list-inline list-unstyled">
+                    <li style="color: #ff6a00; font-weight: bold;">NEEDS RECRUITMENT MESSAGE</li>
+                </ul>
                 @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
                 {
                     <div class="widget-area comment-section container">
@@ -167,6 +144,9 @@
             <!--GAMES-->
             <div class="col-md-6">
                 <h3>Trending Games</h3>
+                 <ul class="list-inline list-unstyled">
+                    <li style="color: red; font-weight: bold;">NEEDS NEWEST GAME CONNECTION</li>
+                </ul>
                 @*foreach(Sozial.Models.GameModel item in Model.newestGames)
                     {
 
@@ -217,6 +197,30 @@
 
 
             </div>
+        </div>
+        <div class="navbar text-center">
+            <ul class="list-inline list-unstyled">
+                <li style="color: red; font-weight: bold;">TO BE REMOVED</li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("Friends", "myFriends", "Home")
+                </li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("Groups", "Index", "Group")
+                </li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("Games", "Index", "Game")
+                </li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("Post", "../Post")
+                </li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("All Users", "Userlist", "Home")
+                </li>
+                <li class="top-menu-button">
+                    @Html.ActionLink("Profile", "Profile", "Home")
+                </li>
+                <li style="color: red; font-weight: bold;">TO BE REMOVED</li>
+            </ul>
         </div>
     </div>
 </div>

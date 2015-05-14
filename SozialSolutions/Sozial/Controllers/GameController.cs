@@ -11,6 +11,8 @@ using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
+
+    [Authorize]
     public class GameController : Controller
     {
         private IGameRepo db =  null; //new IGameRepo();
