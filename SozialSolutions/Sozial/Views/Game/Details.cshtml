@@ -83,6 +83,7 @@
                 <!--DETAILS-->
                     <div class="col-md-7">
                         <!--POST REVIEW-->
+                        <!--
                         <h4 class="title-adjustments">Write a Review</h4>
                         <div class="widget-area pull-left">
                             <form>
@@ -97,31 +98,32 @@
                                 <button type="submit" class="btn btn-success pull-right">Review</button>
                             </form>
                         </div>
+                            -->
+                        @Html.Partial("../Review/_reviewGamePartial", new Sozial.Models.ReviewEnvelope() { gameId = Model.gameID, review = new Sozial.Models.ReviewModel() })
                         <!--POST REVIEW-->
                         <!--OTHER POSTS-->
                         <h4 class="title-adjustments">Review List</h4>                        
                         <div class="widget-area comment-section">
-                            <div class="col-sm-2 thumbnail">
-                                <img class="img-responsive img-rounded" src="http://placehold.it/100x100" alt="A placeholder" />
-                            </div>
-                            <a href="#" title="Username">Username</a>
-                            <small class="pull-right">@day/@month/@year</small>
-                                <div class="stars">
-                                    <p>
-                                        Rating: &nbsp; <i class="glyphicon glyphicon-star"></i>
-                                        <i class="glyphicon glyphicon-star"></i>
-                                        <i class="glyphicon glyphicon-star"></i>
-                                        <i class="glyphicon glyphicon-star"></i>
-                                        <i class="glyphicon glyphicon-star-empty"></i>
-                                    </p>
-                                </div>                                
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis porta justo,
-                                ac tristique purus sagittis vel. Cras a mi metus. Phasellus sodales ligula nisi, vitae sodales justo
-                                sodales quis. Suspendisse faucibus sodales tellus, quis consequat sapien ornare quis. Ut vel nibh purus.
-                                Nam sit amet felis quam. Aenean eget nunc eget mauris rutrum lacinia. Phasellus iaculis turpis erat.
-                                In eget dolor nec ipsum porttitor pulvinar eu ac tellus.
-                            </p>
+                            @foreach (Sozial.Models.ReviewModel review in Model.gameReview) 
+                            {
+                                <div class="col-sm-2 thumbnail">
+                                    <img class="img-responsive img-rounded" src="http://placehold.it/100x100" alt="A placeholder" />
+                                </div>
+                                <a href="#" title="Username">@review.userId</a>
+                                <small class="pull-right">@day/@month/@year</small>
+                                    <div class="stars">
+                                        <p>
+                                            Rating: &nbsp; <i class="glyphicon glyphicon-star"></i>
+                                            <i class="glyphicon glyphicon-star"></i>
+                                            <i class="glyphicon glyphicon-star"></i>
+                                            <i class="glyphicon glyphicon-star"></i>
+                                            <i class="glyphicon glyphicon-star-empty"></i>
+                                        </p>
+                                    </div>                                
+                                <p>
+                                    @review.text
+                                </p>
+                            }
                         </div>
                         <!--OTHER POSTS-->
                     </div>
