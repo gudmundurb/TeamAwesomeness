@@ -439,9 +439,11 @@ namespace Sozial.Controllers
         {
             ApplicationDbContext db = new ApplicationDbContext();
             ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            bool havesteam = user.steamId == null;
             AccountCustomizeViewModel model = new AccountCustomizeViewModel();
             model.profileBanner = user.userBannerPic;
             model.ProfilePicture = user.userProfilePic;
+            model.steam = user.steamId != null;
             return View(model);
         }
         

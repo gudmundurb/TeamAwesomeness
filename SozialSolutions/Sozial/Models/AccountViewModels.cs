@@ -74,6 +74,8 @@ namespace Sozial.Models
         [Display(Name="Your Banner Picture.")]
         public string profileBanner { get; set; }
 
+        public bool steam { get; set; }
+
     }
 
 

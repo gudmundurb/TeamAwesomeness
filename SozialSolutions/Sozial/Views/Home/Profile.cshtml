@@ -19,12 +19,18 @@
         <script src="~/Scripts/showCustomization.js"></script>
             
             <div id="editPartial">
-                @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic})
+                @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic, steam = (Model.profileOwner.steamId != null)})
             </div>
         <script>
                 $("#editPartial").hide();
         </script>
         <button onclick="functio()">Edit Profile</button>
+    }
+    @if (Model.profileOwner.steamId != null)
+    {
+        <script src="~/Scripts/playerSumm.js"></script>
+        <div id="steamProfile">
+        </div>
     }
     <div class="container">
         <div class="well">

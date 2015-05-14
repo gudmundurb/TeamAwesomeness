@@ -27,6 +27,14 @@
                     @Html.ValidationMessageFor(model => model.ProfilePicture)
                 </div>
             </div>
+
+            @if (Model.steam)
+            {
+                <div>
+                    <script src="~/Scripts/getProfilePic.js"></script>
+                    <a class="badge" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
+                </div>
+            }
     
             <div class="form-group">
                 @Html.LabelFor(model => model.profileBanner, new { @class = "control-label col-md-2" })
