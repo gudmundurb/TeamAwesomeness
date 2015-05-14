@@ -45,7 +45,7 @@
         <form>
             <div>
                 @Html.EditorFor(model => model.commentText, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.commentText, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.commentText, "", new { @class = "text-danger" })  
             </div>
             <input type="submit" value="Reply to post" class="btn btn-success pull-right" />
         </form>
