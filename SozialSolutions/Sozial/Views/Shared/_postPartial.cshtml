@@ -1,9 +1,9 @@
 ﻿@model Sozial.Models.PostModel
 
 <div class="posts">
-    <div class="widget-area">
+    <div class="widget-area">        
         <div class="comment-section">
-            <div class="col-md-1 thumbnail">
+            <div class="col-md-1 thumbnail no-margin">
                 @if (String.IsNullOrEmpty(Model.userPicture))
                 {
                     <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
@@ -13,7 +13,7 @@
                     <img src="@Url.Content(Model.userPicture)" class="img-responsive" alt="@Model.userID picture" />
                 }
             </div>
-            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>
+            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>            
             <div class="pull-right">
                 <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
                 <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
@@ -21,6 +21,11 @@
             <p>
                 @Html.DisplayFor(modelItem => Model.text)
             </p>
+            <em>
+                <small>
+                    created on @Model.createdDate.Day/@Model.createdDate.Month/@Model.createdDate.Year
+                </small>
+            </em>
             @if (!String.IsNullOrEmpty(Model.imageUrl))
             {
                 <div class="row">
@@ -29,13 +34,6 @@
                     </div>
                 </div>
             }
-            <div class="row">
-                <em>
-                    <small class="col-md-12 pull-right">
-                        created on @Model.createdDate.Day/@Model.createdDate.Month/@Model.createdDate.Year
-                    </small>
-                </em>
-            </div>
         </div>
         <hr />
         <!-- REPLY HERE -->
