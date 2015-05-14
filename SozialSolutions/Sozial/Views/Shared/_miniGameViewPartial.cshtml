@@ -1,6 +1,6 @@
 ﻿@model Sozial.Models.GameModel
 
-<div class="widget-area comment-section">
+<div>
     <div>
         <dl class="well">
             <dd>
@@ -20,7 +20,7 @@
             </dd>
         </dl>
     </div>
-    <p>
+    <p style="color: red;">
         @Html.ActionLink("Unfavorite", "../Game/removeGameFromFave", new { id = Model.gameID })
     </p>
 </div>

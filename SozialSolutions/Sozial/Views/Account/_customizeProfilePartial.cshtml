@@ -5,17 +5,14 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AccountCustomizeViewModel</h4>
-        <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
             @Html.LabelFor(model => model.ProfilePicture, new { @class = "control-label col-md-2 myclass" })
-            <div class="col-md-10">
+            <div class="col-md-8">
                 @Html.EditorFor(model => model.ProfilePicture)
                 @Html.ValidationMessageFor(model => model.ProfilePicture)
             </div>
         </div>
-
 
         @if (Model.steam)
         {   
@@ -24,15 +21,6 @@
                 <a class="badge" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
             </div>
         }
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.profileBanner, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.profileBanner)
-                @Html.ValidationMessageFor(model => model.profileBanner)
-            </div>
-        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

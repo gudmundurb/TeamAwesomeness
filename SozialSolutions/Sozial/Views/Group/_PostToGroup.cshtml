@@ -1,55 +1,25 @@
 ﻿@model Sozial.Models.GroupPostViewModel
 
-@using (Html.BeginForm("PostToGroup","Group")) 
+@using (Html.BeginForm("PostToGroup", "Group"))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <form>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.HiddenFor(model => model.groupId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.groupId, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
+        <div>
+            @Html.HiddenFor(model => model.groupId, htmlAttributes: new { @class = "control-label col-xs-2" })
+            @Html.EditorFor(model => model.newPost.text, new { htmlAttributes = new { @class = "input-sm" } })
+            @Html.ValidationMessageFor(model => model.newPost.text, "", new { @class = "text-danger" })
         </div>
-        
-
-        <h4 class="title-adjustments">Write a Review</h4>
-        <div class="widget-area pull-left">
-            <form>
-                <div>
-                    @Html.EditorFor(model => model.newPost.text, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.newPost.text, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.newPost.imageUrl, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.newPost.imageUrl, "", new { @class = "text-danger" })
-                </div>
-                <input type="submit" value="Post" class="btn btn-success pull-right"/>
-            </form>
+        <div class="no-margin col-xs-12">
+            @Html.HiddenFor(model => model.groupId, new { htmlAttributes = new { @class = "form-control input-sm" } })
+            <a id="toggleMe" class="btn btn-success btn-sm cursor_change"><span class="glyphicon glyphicon-picture"></span></a>
+            @Html.EditorFor(model => model.newPost.imageUrl, new { htmlAttributes = new { @class = "input-sm", placeholder = "Image URL (optional)", @id = "toToggle" } })
+            @Html.ValidationMessageFor(model => model.newPost.imageUrl, "", new { @class = "text-danger" })
+            <input type="submit" value="Post" class="btn btn-success pull-right" />
         </div>
-
-
-
-
-
-
-
-<!--
-        <div class="form-group">
-            @Html.LabelFor(model => model.newPost.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.newPost.imageUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.newPost.imageUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        -->
-
-    </div>
+    </form>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/toggle.js"></script>
