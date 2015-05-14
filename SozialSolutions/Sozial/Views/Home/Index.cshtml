@@ -7,7 +7,7 @@
 
 <!-- Carousel -->
 <div class="carousel-custom-container">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <div class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -108,7 +108,7 @@
                 }
             </div>
             <!--NEWEST POSTS-->
-            <div class="col-md-6 list-group">
+            <div class="col-md-6">
                 @foreach (Sozial.Models.PostModel item in Model.newestPosts)
                 {
                     <div class="widget-area comment-section container">
@@ -119,6 +119,7 @@
                             }
                             else
                             {
+                                <!--MUST ADD USER PICTURE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
                                 <img class="img-responsive img-rounded" src="@Url.Content(item.imageUrl)" alt="@Html.DisplayFor(modelItem => item.postID)" />
                             }
 
@@ -135,6 +136,7 @@
         <div class="row">
             <div class="col-md-6">
                 <h3>Recruitment Bullentin</h3>
+                <span style="color: red; font-size: 14pt"><p>ADD RECRUITMENT MSG</p></span>
             </div>
             <div class="col-md-6">
                 <h3>Trending Games</h3>
@@ -142,41 +144,72 @@
         </div>
         <!--BULLETIN-->
         <div class="row front-page-item">
-            <div class="col-md-6 list-group">
+            <div class="col-md-6">
                 @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
                 {
-                    <div class="group_item">
-                        <div class="widget-area comment-section container">
-                            <div class="col-sm-1 thumbnail">
-                                @if (String.IsNullOrEmpty(item.groupPicture))
-                                {
-                                    <img class="img-responsive img-rounded" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                                }
-                                else
-                                {
-                                    <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
-                                }
-                            </div>
-                            <h4>
-                                <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
-                            </h4>
-                            <div>
-                                <p class="text_limit">
-                                    @item.groupDescription
-                                </p>
-                                <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
-                            </div>
+                    <div class="widget-area comment-section container">
+                        <div class="col-sm-1 thumbnail">
+                            @if (String.IsNullOrEmpty(item.groupPicture))
+                            {
+                                <img class="img-responsive img-rounded" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@item.groupPicture" alt="@Html.DisplayFor(modelItem => item.groupID)" /></a>
+                            }
                         </div>
-                        <div class="group_cover"></div>
+                        <h4>
+                            <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
+                        </h4>
+                        <div>
+                            <p class="text_limit">
+                                @item.groupDescription
+                            </p>
+                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
+                        </div>
                     </div>
+                    <div class="group_cover image_randomizer"></div>
                 }
             </div>
-        </div>
-        <!--GAMES-->
+            <!--GAMES-->
+            <div class="col-md-6">
+                @*foreach(Sozial.Models.GameModel item in Model.newestGames)
+                {
+
+                }*@
+                <div>                    
+                    <div class="container">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="img-responsive img-rounded" src="http://www.vadejuegos.com/imagenes/2012/05/20/diablo3an820-re.jpg" alt="placehold.it/350x250">
+                                    <div class="carousel-caption">
+                                        <h3>Headline</h3>                                        
+                                    </div>
+                                </div><!-- End Item -->
+                            </div>
+                            <ul class="nav nav-pills nav-justified">                                
+                                <li class="col-md-1" data-target="#myCarousel" data-slide-to="0">
+                                    <a href="#">
+                                        Projects<small>Lorem ipsum dolor sit</small>
+                                        <img class="thumbnail img-rounded" src="http://www.vadejuegos.com/imagenes/2012/05/20/diablo3an820-re.jpg" alt="placehold.it/350x250">
+                                    </a>
+                                </li>
+                                <li data-target="#myCarousel" data-slide-to="1" class="active"><a href="#"></a></li>
+                                <li data-target="#myCarousel" data-slide-to="2"><a href="#">Portfolio<small>Lorem ipsum dolor sit</small></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
     </div>
 </div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <!--<script src="~/Scripts/playerSumm.js"></script>-->
 <script src="~/Scripts/text_delimitator.js"></script>
+<script src="~/Scripts/picture_Randomizer.js"></script>
+<script src="~/Scripts/trending_games_carousel.js"></script>
 <!--<button onclick="experiment()"></button>
 <div id="experiment">WHOT</div>-->

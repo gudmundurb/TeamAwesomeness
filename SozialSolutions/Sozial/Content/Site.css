@@ -172,13 +172,20 @@ a.nav_logo {
 
 .group_cover {
 
-    background-image: url(Images/group_bg_1.png);
     height: 30px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-bottom: 10px;
     border: solid 1px #666;
     border-top: none;
+}
+
+.carousel a {
+     color: #50E5E3;
+}
+
+.image_randomizer {
+
 }
 
 
