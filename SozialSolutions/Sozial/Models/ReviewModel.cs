@@ -10,13 +10,24 @@ namespace Sozial.Models
     {
         [Key]
         public int reviewId { get; set; }
+        public int gameId { get; set; }
+
         public DateTime  dateCreated { get; set; }
+
         public string userId { get; set; }
+
         public string text { get; set; }
 
         //public IEnumerable<PostModel> reviewPost;
-
+        
         public RatingModel gameRating { get; set; }
+
         public int likeCount { get; set; }
+    }
+
+    public class ReviewEnvelope
+    {
+        public int gameId { get; set; }
+        public ReviewModel review { get; set; }
     }
 }

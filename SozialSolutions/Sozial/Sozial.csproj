@@ -172,6 +172,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +238,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\form_def.js" />
     <Content Include="Scripts\gameList.js" />
     <Content Include="Scripts\getProfilePic.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -252,6 +254,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\showCustomization.js" />
+    <Content Include="Scripts\stars_ratings.js" />
     <Content Include="Scripts\text_delimitator.js" />
     <Content Include="Scripts\trending_games_carousel.js" />
     <Content Include="Scripts\_references.js" />
@@ -327,6 +330,8 @@
     <Content Include="Views\Shared\_miniGameViewPartial.cshtml" />
     <Content Include="Views\Account\Customize.cshtml" />
     <Content Include="Views\Account\_customizeProfilePartial.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Review\_reviewGamePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

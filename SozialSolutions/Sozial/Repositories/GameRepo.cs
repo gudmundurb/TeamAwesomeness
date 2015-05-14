@@ -23,7 +23,12 @@ namespace Sozial.Repositories
 
         public GameModel GetGameByID(int? gameID)
         {
-            return db.GameModels.Find(gameID);
+            ReviewRepo rRepo = new ReviewRepo(db);
+
+            GameModel game = db.GameModels.Find(gameID);
+            game.gameReview = rRepo.GetReviewsForGame(game.gameID).ToList();
+
+            return game;
             /* add code here to get reviews. */ 
         }
 
@@ -110,7 +115,7 @@ namespace Sozial.Repositories
 
 
 
-
+    //-----------------------------------------------------------------------
 
 
     public class ReviewRepo : IReviewRepo, IDisposable
@@ -122,20 +127,16 @@ namespace Sozial.Repositories
             this.db = db;
         }
 
-        /*
-         * 
-        IEnumerable<ReviewModel> GetReview();
-        ReviewModel GetReviewyID(int? reviewId);
-        void InsertReview(ReviewModel review);
-        void DeleteReview(int reviewId);
-        void UpdateReview(ReviewModel review);
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-        */
+        public IEnumerable<ReviewModel> GetReviewsForGame(int gameId)
+        {
+
+            return (from Sozial.Models.ReviewModel model in db.ReviewModel
+                    where model.gameId == gameId
+                    select model).ToList();
+
+
+        }
+
         
         
 

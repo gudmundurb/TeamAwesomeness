@@ -216,7 +216,7 @@ namespace Sozial.Controllers
 
 
 
-        // GET: Game/Create
+        // GET: Review/Create
         public ActionResult Create()
         {
             return View();
@@ -227,15 +227,16 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "text")] ReviewModel reviewModel)
+        public ActionResult Create(ReviewEnvelope sunshine)
         {
-            if (ModelState.IsValid)
-            {
-                db.InsertReview(reviewModel);
-                return RedirectToAction("Index");
-            }
+            ReviewModel reviewModel = sunshine.review;
 
-            return View(reviewModel);
+            reviewModel.gameId = sunshine.gameId;
+            reviewModel.dateCreated = DateTime.Now;
+            reviewModel.userId = User.Identity.Name;
+            db.InsertReview(reviewModel);
+
+            return RedirectToAction("../Game/Details/" + sunshine.gameId.ToString());
         }
 
         // GET: Game/Edit/5

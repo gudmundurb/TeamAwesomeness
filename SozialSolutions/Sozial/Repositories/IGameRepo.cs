@@ -19,6 +19,7 @@ namespace Sozial.Repositories
     public interface IReviewRepo : IDisposable
     {
         IEnumerable<ReviewModel> GetReview();
+        IEnumerable<ReviewModel> GetReviewsForGame(int gameId);
         ReviewModel GetReviewById(int? reviewId);
         void InsertReview(ReviewModel review);
         void DeleteReview(int reviewId);
