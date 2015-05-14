@@ -50,8 +50,22 @@
                             <dl>
                                 @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
                                 {
-                                    <dd class="well">
-                                        @Html.ActionLink(item.UserName, "Profile", new { username = item.UserName })
+                                    <dd class="container">
+                                        <div class=" well col-md-3">
+                                            Picture
+                                            @item.userProfilePic
+
+                                            <!--
+
+        NEED TO IMPLEMENT PICTURE ???  SEE VIEWS-> POST-> INDEX
+
+        -->
+
+                                        </div>
+                                        
+                                        <div class="well col-md-9">
+                                            @Html.ActionLink(item.UserName, "Profile", new { username = item.UserName })
+                                        </div>
                                     </dd>
                                 }
                             </dl>
@@ -72,9 +86,10 @@
 
                                         <!--
 
-                    NEED TO IMPLEMENT PICTURE ???  SEE VIEWS-> POST-> INDEX
+    NEED TO IMPLEMENT PICTURE ???  SEE VIEWS-> POST-> INDEX
 
-                    -->
+    -->
+
                                         @item.groupPicture
                                     </dd>
                                 }

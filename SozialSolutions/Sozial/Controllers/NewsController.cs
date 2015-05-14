@@ -11,6 +11,7 @@ using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
+
     public class NewsController : Controller
     {
         private INewsRepo newsRepo = null; //new INewsRepo();
@@ -43,8 +44,8 @@ namespace Sozial.Controllers
             }
             return View(newsModel);
         }
-
         // GET: News/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -53,6 +54,7 @@ namespace Sozial.Controllers
         // POST: News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
@@ -69,6 +71,7 @@ namespace Sozial.Controllers
         }
 
         // GET: News/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,6 +91,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
         {
             if (ModelState.IsValid)
@@ -100,6 +104,7 @@ namespace Sozial.Controllers
         }
 
         // GET: News/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,6 +120,7 @@ namespace Sozial.Controllers
         }
 
         // POST: News/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
