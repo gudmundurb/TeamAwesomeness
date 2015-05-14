@@ -11,6 +11,7 @@ using Sozial.Repositories;
 
 namespace Sozial.Controllers
 {
+    [Authorize]
     public class GroupController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

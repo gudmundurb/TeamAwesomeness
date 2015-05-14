@@ -66,7 +66,7 @@ namespace Sozial.Controllers
             return View();
         }
         /* >>>>>>>>> postToProfilePLS */
-
+        [Authorize]
         public ActionResult postToProfile(PostToProfileViewModel sunshine)
         {
             RelationshipRepo gRepo = new RelationshipRepo(new ApplicationDbContext());
@@ -79,7 +79,7 @@ namespace Sozial.Controllers
         }
 
 
-
+        [Authorize]
         public ActionResult UserList()
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -91,7 +91,7 @@ namespace Sozial.Controllers
             }
             return View(users);
         }
-
+        [Authorize]
         public ActionResult add(string name)
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -101,14 +101,14 @@ namespace Sozial.Controllers
 
             return RedirectToAction("UserList");
         }
-
+        [Authorize]
         public ActionResult myFriends()
         {
             ApplicationDbContext db = new ApplicationDbContext();
             Repositories.RelationshipRepo james_doohan = new Repositories.RelationshipRepo(db);
             return View(james_doohan.getFriends(User.Identity.Name).ToList() );
         }
-
+        [Authorize]
         public ActionResult unFriend(string exname)
         {
             ApplicationDbContext db = new ApplicationDbContext();
@@ -116,14 +116,14 @@ namespace Sozial.Controllers
             relRepo.unFriend(exname);
             return RedirectToAction("myFriends");
         }
-
+        [Authorize]
         public ActionResult Contact()
         {
             //Shows our news
 
             return View();
         }
-
+        [Authorize]
         public ActionResult View1()
         {
             ViewBag.Message = "check";
@@ -136,6 +136,8 @@ namespace Sozial.Controllers
         }
 
         */
+        //need authorization !! 
+        [Authorize]
         public ActionResult profile(string username)
         {
             string userName = username;

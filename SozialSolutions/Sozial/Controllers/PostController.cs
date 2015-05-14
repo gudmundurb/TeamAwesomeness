@@ -54,7 +54,7 @@ namespace Sozial.Controllers
             }
             return View(postModel);
         }
-
+        [Authorize]
         // GET: Post/Create
         public ActionResult Create()
         {
@@ -64,6 +64,7 @@ namespace Sozial.Controllers
         // POST: Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "postID,userID,text,imageUrl")] PostModel postModel)
@@ -78,6 +79,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Post/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,7 +93,7 @@ namespace Sozial.Controllers
             }
             return View(postModel);
         }
-
+        [Authorize]
         public ActionResult Reply(CommentModel comment)
         {
             comment.authorID = User.Identity.Name;
@@ -109,6 +111,7 @@ namespace Sozial.Controllers
         // POST: Post/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "postID,userID,text,imageUrl")] PostModel postModel)
@@ -123,6 +126,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Post/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -138,6 +142,7 @@ namespace Sozial.Controllers
         }
 
         // POST: Post/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
