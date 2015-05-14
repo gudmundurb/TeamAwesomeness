@@ -30,6 +30,8 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+           
             GroupModel groupModel = db.GroupModels.Find(id);
             if (groupModel == null)
             {
@@ -37,6 +39,11 @@ namespace Sozial.Controllers
             }
             groupModel.Members = grpRepo.getMembers(groupModel.groupID).ToList();
             groupModel.Posts = grpRepo.getAllPostsForGroup(groupModel.groupID).ToList();
+
+            if (!grpRepo.inGroup(groupModel.groupID))
+            {
+                return RedirectToAction("../Group/Index");
+            }
 
             return View(groupModel);
         }
