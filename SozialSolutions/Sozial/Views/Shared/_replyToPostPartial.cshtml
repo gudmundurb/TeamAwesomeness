@@ -13,9 +13,9 @@
     
     <div class="form-horizontal">
 
-        <div class="form-group">
+        <div>
             @Html.HiddenFor(model => model.postID, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div>
                 @Html.HiddenFor(model => model.postID)
             </div>
         </div>
@@ -50,10 +50,6 @@
             <input type="submit" value="Reply to post" class="btn btn-success pull-right" />
         </form>
     </div>
-        <div class="col-md-3 text-center">
-            <span class="btn btn-default btn-sm" onclick="location.href='@Url.Action("Edit", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
-            <span class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("Delete", "Post", new { id = Model.postID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
-        </div>
 
     <!--
     <div class="widget-area comment-section">
@@ -69,7 +65,3 @@
         -->
         </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

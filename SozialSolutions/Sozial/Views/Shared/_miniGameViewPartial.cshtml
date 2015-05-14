@@ -4,17 +4,19 @@
     <div>
         <dl class="well">
             <dd>
-                <h2>
-                    @Html.DisplayFor(model => model.nameOfGame)
-                </h2>
-            </dd>
-            <dd>
                 <h4>
-                    @Html.DisplayFor(model => model.genre)
+                    @Html.DisplayFor(model => model.nameOfGame)
                 </h4>
             </dd>
             <dd>
-                @Html.DisplayFor(model => model.imageUrl)
+                <h5>
+                    @Html.DisplayFor(model => model.genre)
+                </h5>
+            </dd>
+            <dd>
+                <h6>
+                    @Html.DisplayFor(model => model.imageUrl)
+                </h6>
             </dd>
         </dl>
     </div>

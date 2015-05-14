@@ -79,21 +79,15 @@
                                 }
                             </dl>
                         </div>
-
-
-
-
-
-
                     </li>
                     <li>
                         <div class="col-md-7">
                             <!--POSTS-->
-                            <h4 class="title-adjustments">Write a Post</h4>
                             @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
                             <!--POSTS-->
+
+
                             <!--REPLY TO POST-->
-                            
                             <div class="widget-area pull-left">
                                 <div>
                                     @foreach (Sozial.Models.PostModel post in Model.profilePosts)
