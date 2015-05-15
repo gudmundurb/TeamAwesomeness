@@ -4,8 +4,8 @@
 @{
     ViewBag.Title = "Home Page";
     var counter = 0;
-} 
-<!-- Carousel 1-->
+}
+<!-- TOP CAROUSEL-->
 <div class="carousel-custom-container title-adjustments">
     <div class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -15,7 +15,7 @@
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
             <li data-target="#carousel-example-generic" data-slide-to="3"></li>
         </ol>-->
-        <!-- Wrapper for slides -->
+        <!-- SLIDES -->
         <div class="carousel-inner">
             <div class="item active">
                 <img src="@Url.Content("~/Content/Images/halfPageBanner1.png")" />
@@ -33,14 +33,17 @@
         <div class="logo_motto_frontpage img-responsive">
             <img src="@Url.Content("~/Content/Images/logo_motto.png")" />
         </div>
-        <div class="register-banner well container">
-            <p class="text-center">Get Your Game On!</p>
-            <p class="text-center"><a href="@Url.Action("Register", "Account")" class="btn btn-sample">Register Today</a></p>
-        </div>
+        @if (!Request.IsAuthenticated)
+        {
+            <div class="register-banner well container">
+                <p class="text-center">Get Your Game On!</p>
+                <p class="text-center"><a href="@Url.Action("Register", "Account")" class="btn btn-sample">Register Today</a></p>
+            </div>
+        }
     </div>
 </div>
-<!-- Carousel -->
-<div class="container front-page-item">    
+<!-- END OF CAROUSEL -->
+<div class="container front-page-item">
     <div class="well">
         <div class="title-adjustments"></div>
         <!--NEWS-->
@@ -79,30 +82,68 @@
                     </a>
                 }
             </div>
-            <!--NEWEST POSTS-->
-            <div class="col-md-6">
-                <h3>Newest Posts</h3>
-                @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                {
-                    <div class="widget-area comment-section container">
-                        <div class="col-sm-1 thumbnail">
-                            @if (String.IsNullOrEmpty(item.imageUrl))
-                            {
-                                <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
-                            }
-                            else
-                            {
-                                <img class="img-responsive img-rounded" src="@Url.Content(item.imageUrl)" alt="@Html.DisplayFor(modelItem => item.postID)" />
-                            }
+            @if (Request.IsAuthenticated)
+            {
+                <!--NEWEST POSTS-->
+                <div class="col-md-6">
+                    <h3>Newest Posts</h3>
+                    @foreach (Sozial.Models.PostModel item in Model.newestPosts)
+                    {
+                        <div class="widget-area comment-section container">
+                            <div class="col-sm-1 thumbnail">
+                                @if (String.IsNullOrEmpty(item.imageUrl))
+                                {
+                                    <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                                }
+                                else
+                                {
+                                    <img class="img-responsive img-rounded" src="@Url.Content(item.imageUrl)" alt="@Html.DisplayFor(modelItem => item.postID)" />
+                                }
 
+                            </div>
+                            <a href="@Url.Action("Profile", "Home", new { username = @item.userID })" title="Username">@item.userID</a>
+                            <em><small class="pull-right">@item.createdDate.Day/@item.createdDate.Month/@item.createdDate.Year</small></em>
+                            <p class="text_limit">@item.text</p>
+                            <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Profile", "Home", new { id = item.userID })'" /></div>
                         </div>
-                        <a href="@Url.Action("Profile", "Home", new { username = @item.userID })" title="Username">@item.userID</a>
-                        <em><small class="pull-right">@item.createdDate.Day/@item.createdDate.Month/@item.createdDate.Year</small></em>
-                        <p class="text_limit">@item.text</p>
-                        <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Profile", "Home", new { id = item.userID })'" /></div>
+                    }
+                </div>
+            }
+            else
+            {
+                <!--GAMES-->
+                <div class="col-md-6">
+                    <h3>Trending Games</h3>
+                    <div class="well">
+                        <div id="slider">
+                            <div id="carousel-bounding-box">
+                                <div id="myCarousel" class="carousel slide">
+                                    <div class="carousel-inner trending_games">
+                                        @foreach (Sozial.Models.GameModel item in Model.hottestGames)
+                                        {
+                                            counter++;
+                                            <div class="item" data-slide-number="@counter">
+                                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })"><h3 class="cursor_change">@item.nameOfGame</h3></a>
+                                                <hr />
+                                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })">
+                                                    @if (String.IsNullOrEmpty(item.imageUrl))
+                                                    {
+                                                        <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive cursor_change img-rounded">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@Url.Content(item.imageUrl)" class="img-responsive cursor_change img-rounded">
+                                                    }
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
         <!--BULLETIN-->
         <div class="row front-page-item trending_games_carousel">
@@ -135,38 +176,41 @@
                 }
             </div>
             <!--GAMES-->
-            <div class="col-md-6">
-                <h3>Trending Games</h3>
-                <div class="well">
-                    <div id="slider">
-                        <div id="carousel-bounding-box">
-                            <div id="myCarousel" class="carousel slide">
-                                <div class="carousel-inner trending_games">
-                                    @foreach (Sozial.Models.GameModel item in Model.hottestGames)
-                                    {
-                                        counter++;
-                                        <div class="item" data-slide-number="@counter">
-                                            <a href="@Url.Action("Details", "Game", new { id = item.gameID })"><h3 class="cursor_change">@item.nameOfGame</h3></a>
-                                            <hr/>
-                                            <a href="@Url.Action("Details", "Game", new { id = item.gameID })">
-                                            @if (String.IsNullOrEmpty(item.imageUrl))
-                                            {
-                                                <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive cursor_change img-rounded">
-                                            }
-                                            else
-                                            {
-                                                <img src="@Url.Content(item.imageUrl)" class="img-responsive cursor_change img-rounded">
-                                            }
-                                            </a>
-                                        </div>
-                                        
-                                    }
+            @if (Request.IsAuthenticated)
+            {
+                <div class="col-md-6">
+                    <h3>Trending Games</h3>
+                    <div class="well">
+                        <div id="slider">
+                            <div id="carousel-bounding-box">
+                                <div id="myCarousel" class="carousel slide">
+                                    <div class="carousel-inner trending_games">
+                                        @foreach (Sozial.Models.GameModel item in Model.hottestGames)
+                                        {
+                                            counter++;
+                                            <div class="item" data-slide-number="@counter">
+                                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })"><h3 class="cursor_change">@item.nameOfGame</h3></a>
+                                                <hr />
+                                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })">
+                                                    @if (String.IsNullOrEmpty(item.imageUrl))
+                                                    {
+                                                        <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive cursor_change img-rounded">
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@Url.Content(item.imageUrl)" class="img-responsive cursor_change img-rounded">
+                                                    }
+                                                </a>
+                                            </div>
+
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>                
-            </div>
+                </div>
+            }
         </div>
     </div>
     <hr />
