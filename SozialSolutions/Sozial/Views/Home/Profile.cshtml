@@ -16,8 +16,7 @@
     @if (Model.profileOwner.steamId != null)
     {
         <script src="~/Scripts/playerSumm.js"></script>
-        <div id="steamProfile">
-        </div>
+        <div id="steamProfile"></div>
     }
     <div class="container">
         <div class="well">
@@ -26,7 +25,7 @@
             <div class="row game-cover">
                 <ul class="thumbails list-unstyled">
                     <li class="col-md-5">
-                        <!--GROUP PICTURE AND POP UP-->
+                        <!--USER PICTURE AND POP UP-->
                         <div class="thumbnail well margin-top">
                             @if (!String.IsNullOrEmpty(Model.profileOwner.userProfilePic))
                             {
@@ -54,10 +53,10 @@
                             }
                             else
                             {
-                                <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                                <img class="media-object img-responsive" src="http://www.decoinencoin.com/wp-content/uploads/2013/07/invader-space.png" alt="placehold.it/350x250">
                             }
                         </div>
-                        <!--GROUP PICTURE AND POP UP-->
+                        <!--USER PICTURE AND POP UP-->
                         <!--CHANGE PROFILE PICTURE-->
                         @if (User.Identity.Name == Model.profileOwner.UserName)
                         {
@@ -80,32 +79,28 @@
                 <ul class="thumbails list-unstyled">
                     <!--FRIENDSLIST-->
                     <li class="col-md-5">
-                        <div class="well item-details">
-                            <h4>Friends</h4>
-                            @foreach (Sozial.Models.ApplicationUser user in Model.myFriends)
-                            {
-                                <p>
-                                    <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
-                                </p>
-                            }
+                        <div class="well item-details container">
+                            <h4>Friends</h4>                            
+                                @foreach (Sozial.Models.ApplicationUser user in Model.myFriends)
+                                {
+                                    <div class="col-sm-2 thumbnail">
+                                        @if (String.IsNullOrEmpty(user.userProfilePic))
+                                        {
+                                        <img class="img-rounded" src="http://avatarbox.net/avatars/img13/space_invaders_get_even_avatar_picture_42139.jpg" />
+                                        }
+                                        else
+                                        {
+                                        <img class="img-rounded" src="@Url.Content(user.userProfilePic)" />
+                                        }
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <p>
+                                            <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
+                                        </p>
+                                    </div>
+                                }   
                         </div>
-                        <!--FRIENDSLIST-->
-                        <!--GROUPS-->
-                        @*<div class="widget-area comment-section">
-        <dl class="well">
-
-            @foreach (Sozial.Models.GroupModel item in Model.myGroups)
-            {
-                <dd style="color: red;">
-                    @item.groupName
-                </dd>
-                <dd>
-                    @item.groupPicture
-                </dd>
-            }
-        </dl>
-    </div>*@
-                        <div class="well item-details">
+                        <div class="well item-details container">
                             <h4>Groups</h4>
                             @foreach (Sozial.Models.GroupModel item in Model.myGroups)
                             {
@@ -126,7 +121,7 @@
                                 </div>
                             }
                         </div>
-                        
+
                         <!--GROUPS-->
                         <div class="well item-details">
                             <h4>Games</h4>
@@ -147,7 +142,6 @@
                             </div>
                         </div>
                         <!--POSTS-->
-
                         <!--REPLY TO POST-->
                         <div class="col-md-7">
                             <h4 class="title-adjustments">All Posts</h4>
@@ -160,6 +154,9 @@
                     </li>
                 </ul>
             </div>
+
+
+
         </div>
     </div>
         

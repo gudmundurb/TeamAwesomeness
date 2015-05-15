@@ -5,9 +5,11 @@
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello, " + User.Identity.GetUserName(), "Index", "Home/Profile", routeValues: null, htmlAttributes: new { title = "Profile" })
-        </li>
+        <li>@Html.ActionLink("Hello, " + User.Identity.GetUserName() + "!", "Index", "Home/Profile", routeValues: null, htmlAttributes: new { title = "Profile" })</li>
+        <li>@Html.ActionLink("Newsfeed", "../Post")</li>   
+        <li>@Html.ActionLink("My Games", "Index", "Game")</li>
+        <li>@Html.ActionLink("Friends", "myFriends", "Home")</li>
+        <li>@Html.ActionLink("Groups", "Index", "Group")</li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
 }
