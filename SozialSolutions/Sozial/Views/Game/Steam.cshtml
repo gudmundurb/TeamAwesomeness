@@ -1,7 +1,7 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    ViewBag.Title = "steaml";
 }
+
 
 <!DOCTYPE html>
 
@@ -13,8 +13,14 @@
     <title>Steam</title>
 </head>
 <body>
-    <div style="color:red;">This is a proof of concept</div>
-    <div id="loadingText">Loading Steam list, give us a few seconds...</div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+    <!-- This is more of a proof-of-concept than a real live feature,
+         It is entirely possible to give users the means to create new 
+         Games from this list with their respective names and steam appIDs. -->
+    <div id="loadingText">
+    <!--Loading Steam list, give us a few seconds...-->
+        <img src="~/Content/Images/ajax-loader.gif" />
+    </div>
     <div>
         <span id="gameCount"></span>
         <div id="steamList">
