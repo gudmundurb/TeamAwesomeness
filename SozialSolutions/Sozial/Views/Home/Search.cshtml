@@ -1,43 +1,71 @@
 ﻿@model IEnumerable<Sozial.Models.ApplicationUser>
 
 @{
-    Layout = null;
+    ViewBag.Title = "All Users";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Search</title>
-</head>
-<body>
-    
-    @using (Html.BeginForm("Search","Home"))
-{
-    @Html.TextBox("username");
-    <input type="submit" value="Sign In">
+@using (Html.BeginForm("Search","Home"))
+{    
+    <div class="container">
+        <div class="row">
+            <div class="well">
+                <h2 class="title-adjustments">Find Users</h2>
+                <hr />
+
+
+                @Html.TextBox("username")
+                <input type="submit" value="Search Users">
+                <table class="table">
+                    <tr></tr>
+                    @foreach (var item in Model) {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
 }
 
-    <table class="table">
-        <tr>
-            
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+@*<div class="col-md-6">
+    <h3>Trending Games</h3>
+    <div class="well">
+        <div id="slider">
+            <div id="carousel-bounding-box">
+                <div id="myCarousel" class="carousel slide">
+                    <div class="carousel-inner trending_games">
+                        @foreach (Sozial.Models.GameModel item in Model.hottestGames)
+                        {
+                            counter++;
+                            <div class="item" data-slide-number="@counter">
+                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })"><h3 class="cursor_change">@item.nameOfGame</h3></a>
+                                <hr />
+                                <a href="@Url.Action("Details", "Game", new { id = item.gameID })">
+                                    @if (String.IsNullOrEmpty(item.imageUrl))
+                                    {
+                                        <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive cursor_change img-rounded">
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content(item.imageUrl)" class="img-responsive cursor_change img-rounded">
+                                    }
+                                </a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
