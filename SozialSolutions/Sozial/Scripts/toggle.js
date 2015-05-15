@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $("toToggle").hide();
+    $("#toToggle").hide();
 
     $("#toggleMe").click(function () {
 

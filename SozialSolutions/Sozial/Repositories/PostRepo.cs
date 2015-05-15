@@ -9,8 +9,15 @@ namespace Sozial.Repositories
 {
     public class PostRepo : IPostRepo, IDisposable
     {
+        
 
         private ApplicationDbContext db = null; //new ApplicationDbContext();
+
+        public PostRepo()
+        {
+            this.db = new ApplicationDbContext();
+        }
+
 
         public PostRepo(ApplicationDbContext db)
         {

@@ -334,6 +334,7 @@
     <Content Include="Views\Account\_customizeProfilePartial.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Review\_reviewGamePartial.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
