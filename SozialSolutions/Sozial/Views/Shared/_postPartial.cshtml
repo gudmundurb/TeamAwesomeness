@@ -67,7 +67,14 @@
                         @if (comm.authorID == Model.userID)
                         {
                             <div class="img_resizer class=" col-md-1"">
-                                <img class="thumbnail" src="@Url.Content(Model.userPicture)" />
+                                @if (Model.userPicture != null) { 
+                                    <img class="thumbnail" src="@Url.Content(Model.userPicture)" />
+                                }
+                                else
+                                {
+                                    <img class="thumbnail" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" />
+                                }
+                                
                             </div>
                         }
                         else
