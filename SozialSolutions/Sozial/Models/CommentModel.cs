@@ -35,16 +35,7 @@ namespace Sozial.Models
 
         public DateTime createdDate { get; set; }
     
-    
-/*
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}")]
-        public DateTime CreatedDate
-        {
-            get { return createdDate ?? DateTime.UtcNow; }
-            set { createdDate = value; }
-        }
-
-*/
+   
         [Required(ErrorMessage = "You cannot leave an empty comment!")]
         [Display(Name = "Comment text")]
         [DataType(DataType.MultilineText)]
