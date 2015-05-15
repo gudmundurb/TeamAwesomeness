@@ -27,6 +27,7 @@ namespace Sozial.Models
         public string userID { get; set; } // the user that made the comment.
 
         [Required(ErrorMessage = "No text? How eloquent!")]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Post Text")]
         public string text { get; set; }
         //[DataType(DataType.MultilineText)]

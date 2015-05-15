@@ -1,167 +1,146 @@
 ﻿@model Sozial.Models.ProfileViewModel
 
 @{
-    ViewBag.Title = "My Profile";
+    ViewBag.Title = "Profile";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Profile</title>
-</head>
-<body>
-    
-    @if (Model.profileOwner.steamId != null)
-    {
-        <script src="~/Scripts/playerSumm.js"></script>
-        <div id="steamProfile">
-        </div>
-    }
-    <div class="container">
-        <div class="well">
-            <h2>@Model.profileOwner.UserName</h2> 
-            <hr />
-            <div class="row game-cover">
-                <ul class="thumbails list-unstyled">
-                    <li class="col-md-5">
-                        <!--GROUP PICTURE AND POP UP-->
-                        <div class="thumbnail well margin-top">
-                            @if (!String.IsNullOrEmpty(Model.profileOwner.userProfilePic))
-                            {
-                                <a href="" data-toggle="modal" data-target="#myModal">
-                                    <img class="img-responsive" src="@Url.Content(Model.profileOwner.userProfilePic)" alt="@Html.DisplayFor(model => model.profileOwner.UserName) thumbnail" data-toggle="modal" data-target="#myModal" />
-                                </a>
-                                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <img src="@Url.Content(Model.profileOwner.userProfilePic)" class="img-responsive" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-body">
-                                                <img src="@Url.Content(Model.profileOwner.userProfilePic)" class="img-responsive">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
-                            }
-                        </div>
-                        <!--GROUP PICTURE AND POP UP-->
-                        <!--CHANGE PROFILE PICTURE-->
-                        @if (User.Identity.Name == Model.profileOwner.UserName)
+@if (Model.profileOwner.steamId != null)
+{
+    <script src="~/Scripts/playerSumm.js"></script>
+    <div id="steamProfile"></div>
+}
+<div class="container">
+    <div class="well">
+        <h2>@Model.profileOwner.UserName</h2> 
+        <hr />
+        <div class="row game-cover">
+            <ul class="thumbails list-unstyled">
+                <li class="col-md-5">
+                    <!--USER PICTURE AND POP UP-->
+                    <div class="thumbnail well margin-top">
+                        @if (!String.IsNullOrEmpty(Model.profileOwner.userProfilePic))
                         {
-
-                            <script src="~/Scripts/showCustomization.js"></script>
-
-                            <div id="editPartial">
-                                @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic, steam = (Model.profileOwner.steamId != null) })
+                            <a href="" data-toggle="modal" data-target="#myModal">
+                                <img class="img-responsive" src="@Url.Content(Model.profileOwner.userProfilePic)" alt="@Html.DisplayFor(model => model.profileOwner.UserName) thumbnail" data-toggle="modal" data-target="#myModal" />
+                            </a>
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="@Url.Content(Model.profileOwner.userProfilePic)" class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <script>
-                                $("#editPartial").hide();
-                            </script>
-                            <button onclick="functio()">Change profile pic</button>
+                            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <img src="@Url.Content(Model.profileOwner.userProfilePic)" class="img-responsive">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         }
-                        <!--CHANGE PROFILE PICTURE-->
-                    </li>
-                </ul>
-            </div>
-            <div class="row">
-                <ul class="thumbails list-unstyled">
-                    <!--FRIENDSLIST-->
-                    <li class="col-md-5">
-                        <div class="well item-details">
-                            <h4>Friends</h4>
-                            @foreach (Sozial.Models.ApplicationUser user in Model.myFriends)
-                            {
+                        else
+                        {
+                            <img class="media-object img-responsive" src="http://placehold.it/350x250" alt="placehold.it/350x250">
+                        }
+                    </div>
+                    <!--USER PICTURE AND POP UP-->
+                    <!--CHANGE PROFILE PICTURE-->
+                    @if (User.Identity.Name == Model.profileOwner.UserName)
+                    {
+
+                        <script src="~/Scripts/showCustomization.js"></script>
+
+                        <div id="editPartial">
+                            @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic, steam = (Model.profileOwner.steamId != null) })
+                        </div>
+                        <script>
+                            $("#editPartial").hide();
+                        </script>
+                        <button onclick="functio()">Change profile pic</button>
+                    }
+                    <!--CHANGE PROFILE PICTURE-->
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <ul class="thumbails list-unstyled">
+                <!--FRIENDSLIST-->
+                <li class="col-md-5">
+                    <div class="well item-details">
+                        <h4>Friends</h4>
+                        @foreach (Sozial.Models.ApplicationUser user in Model.myFriends)
+                        {
+                            <div class="col-sm-2 thumbnail">
+                                @if (String.IsNullOrEmpty(user.userProfilePic))
+                                {
+                                    <img class="img-rounded" src="http://avatarbox.net/avatars/img13/space_invaders_get_even_avatar_picture_42139.jpg" />
+                                }
+                                else
+                                {
+                                    <img class="img-rounded" src="@Url.Content(user.userProfilePic)" />
+                                }
+                            </div>
+                            <div class="col-sm-9">
                                 <p>
                                     <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
                                 </p>
-                            }
-                        </div>
-                        <!--FRIENDSLIST-->
-                        <!--GROUPS-->
-                        @*<div class="widget-area comment-section">
-        <dl class="well">
-
-            @foreach (Sozial.Models.GroupModel item in Model.myGroups)
-            {
-                <dd style="color: red;">
-                    @item.groupName
-                </dd>
-                <dd>
-                    @item.groupPicture
-                </dd>
-            }
-        </dl>
-    </div>*@
-                        <div class="well item-details">
-                            <h4>Groups</h4>
-                            @foreach (Sozial.Models.GroupModel item in Model.myGroups)
-                            {
-                                <div class="widget-area comment-section container">
-                                    <div class="col-sm-2 thumbnail">
-                                        @if (String.IsNullOrEmpty(item.groupPicture))
-                                        {
-                                            <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(item.groupPicture)" alt="@Html.DisplayFor(modelItem => item.groupID) picture" /></a>
-                                        }
-                                    </div>
-                                    <div style="color: #2D7F7E;">
-                                        <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                        
-                        <!--GROUPS-->
-                        <div class="well item-details">
-                            <h4>Games</h4>
-                            @foreach (Sozial.Models.GameModel item in Model.myGames)
-                            {
-                                <div>
-                                    @Html.Partial("../Shared/_miniGameViewPartial", item)
-                                </div>
-                            }
-                        </div>
-                    </li>
-                    <li>
-                        <!--POSTS-->
-                        <div class="col-md-7">
-                            <h4 class="title-adjustments">Write a Post</h4>
-                            <div class="widget-area pull-left">
-                                @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
                             </div>
+                        }
+                        <h4>Groups</h4>
+                        @foreach (Sozial.Models.GroupModel item in Model.myGroups)
+                        {
+                            <div class="widget-area comment-section container">
+                                <div class="col-sm-2 thumbnail">
+                                    @if (String.IsNullOrEmpty(item.groupPicture))
+                                    {
+                                        <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(item.groupPicture)" alt="@Html.DisplayFor(modelItem => item.groupID) picture" /></a>
+                                    }
+                                </div>
+                                <div style="color: #2D7F7E;">
+                                    <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
+                                </div>
+                            </div>
+                        }
+                        <!--GROUPS-->
+                        <h4>Games</h4>
+                        @foreach (Sozial.Models.GameModel item in Model.myGames)
+                        {
+                            <div>
+                                @Html.Partial("../Shared/_miniGameViewPartial", item)
+                            </div>
+                        }
+                </li>
+                <li>
+                    <!--POSTS-->
+                    <div class="col-md-7">
+                        <h4 class="title-adjustments">Write a Post</h4>
+                        <div class="widget-area pull-left">
+                            @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
                         </div>
-                        <!--POSTS-->
-
-                        <!--REPLY TO POST-->
-                        <div class="col-md-7">
-                            <h4 class="title-adjustments">All Posts</h4>
-                            @foreach (Sozial.Models.PostModel post in Model.profilePosts)
-                            {
-                                @Html.Partial("../Shared/_postPartial", post)
-                            }
-                        </div>
-                        <!--REPLY TO POST-->
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                    <!--POSTS-->
+                    <!--REPLY TO POST-->
+                    <div class="col-md-7">
+                        <h4 class="title-adjustments">All Posts</h4>
+                        @foreach (Sozial.Models.PostModel post in Model.profilePosts)
+                        {
+                            @Html.Partial("../Shared/_postPartial", post)
+                        }
+                    </div>
+                    <!--REPLY TO POST-->
+                </li>
+            </ul>
         </div>
     </div>
+</div>
         
     
 
