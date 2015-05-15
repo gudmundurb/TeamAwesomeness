@@ -99,7 +99,15 @@
                                         <div class="col-xs-9">
                                             <p>
                                                 <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
-                                                <a class="cursor_change" href="@Url.Action("unFriend", "Home", new { exName = @user.UserName })" title="Unfriend">Unfriend</a>
+                                                <p></p>
+                                                @if (Model.profileOwner.UserName == User.Identity.Name) 
+                                                { 
+                                                    <a class="cursor_change" href="@Url.Action("unFriend", "Home", new { exName = @user.UserName })" title="Unfriend">Unfriend</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="cursor_change" href="@Url.Action("ADD", "Home", new { Name = @user.UserName })" title="Add friend">Add Friend</a>
+                                                }
                                             </p>
                                         </div>
 
