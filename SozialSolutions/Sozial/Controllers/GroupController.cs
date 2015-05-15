@@ -70,6 +70,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Group/Edit/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int id)
         {
             
@@ -85,6 +86,7 @@ namespace Sozial.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Administrators")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "groupID,likeCount,groupName,groupDescription,groupPicture,groupBanner")] GroupModel groupModel)
         {
