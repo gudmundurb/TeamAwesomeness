@@ -5,8 +5,8 @@
     foreach (Sozial.Models.CommentModel comm in Model.comments)
     {
         counter++;
-    }     
-} 
+    }
+}
 <div class="posts">
     <div class="widget-area">
         <div class="comment-section">
@@ -22,12 +22,13 @@
             </div>
             <a href="@Url.Action("Profile", "Home", new { username = Model.userID })" title="Username">@Model.userID</a>
             <div class="pull-right">
-                @if (Model.userID == User.Identity.Name) 
-                { 
+                @if (Model.userID == User.Identity.Name)
+                {
                     <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
                     <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
                 }
                 
+
             </div>
             <p>
                 @Html.DisplayFor(modelItem => Model.text)
@@ -65,20 +66,21 @@
     <div class="comments toToggleComments">
         <div class="widget-area comment-section">
             @foreach (Sozial.Models.CommentModel comm in Model.comments)
-            {                
+            {
                 <div class="row">
-                    <div class="col-md-1">                       
+                    <div class="col-md-1">
                         @if (comm.authorID == Model.userID)
                         {
                             <div class="img_resizer class=" col-md-1"">
-                                @if (Model.userPicture != null) { 
+                                @if (Model.userPicture != null)
+                                {
                                     <img class="thumbnail" src="@Url.Content(Model.userPicture)" />
                                 }
                                 else
                                 {
                                     <img class="thumbnail" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" />
                                 }
-                                
+
                             </div>
                         }
                         else
