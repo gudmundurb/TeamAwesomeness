@@ -45,7 +45,7 @@ namespace Sozial.Controllers
             return View(newsModel);
         }
         // GET: News/Create
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
             return View();
@@ -54,7 +54,7 @@ namespace Sozial.Controllers
         // POST: News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
@@ -71,7 +71,7 @@ namespace Sozial.Controllers
         }
 
         // GET: News/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,7 +91,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit([Bind(Include = "newsID,userID,title,text,imageUrl")] NewsModel newsModel)
         {
             if (ModelState.IsValid)
@@ -104,7 +104,7 @@ namespace Sozial.Controllers
         }
 
         // GET: News/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,7 +120,7 @@ namespace Sozial.Controllers
         }
 
         // POST: News/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Administrators")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
