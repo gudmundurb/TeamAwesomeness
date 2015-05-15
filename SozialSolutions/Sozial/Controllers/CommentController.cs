@@ -115,8 +115,10 @@ namespace Sozial.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             throw new Exception("Comment/Create is depracated and should by no means be called!",new NotImplementedException());
+            /*
             postRepo.deleteComment(id);
             return View();
+            */
         }
 
         protected override void Dispose(bool disposing)

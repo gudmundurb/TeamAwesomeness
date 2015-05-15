@@ -100,12 +100,14 @@ namespace Sozial.Controllers
         public ActionResult Delete(int id)
         {
             return RedirectToAction("Index");
+            /*
             GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
                 return HttpNotFound();
             }
             return View(groupModel);
+            */
         }
 
 
