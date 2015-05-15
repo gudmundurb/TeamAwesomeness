@@ -1,17 +1,9 @@
 ﻿$(document).ready(function() {
 
+    $('.trending_games').find('.item:first').addClass('active');
+
     $('#myCarousel').carousel({
         interval: 6000
-    });
-
-    // handles the carousel thumbnails
-    $('[id^=carousel-selector-]').click(function () {
-        var id_selector = $(this).attr("id");
-        var id = id_selector.substr(id_selector.length - 1);
-        id = parseInt(id);
-        $('#myCarousel').carousel(id);
-        $('[id^=carousel-selector-]').removeClass('selected');
-        $(this).addClass('selected');
     });
 
     // when the carousel slides, auto update

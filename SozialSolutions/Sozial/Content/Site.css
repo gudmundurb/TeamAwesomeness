@@ -171,6 +171,10 @@ a.nav_logo {
     width: 100%;
 }
 
+.carousel h3 {
+    color: #50E5E3;
+}
+
 .front-page-item
 {
     font-size: 10pt;   
