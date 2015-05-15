@@ -1,6 +1,7 @@
 ﻿using Sozial.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -18,6 +19,40 @@ namespace Sozial.Repositories
         public GroupRepo()
         {
             db = new ApplicationDbContext();
+        }
+
+        public bool createGroup(GroupModel newGroup)
+        {
+            if(newGroup == null)
+            { 
+                return false;
+            }
+            db.GroupModels.Add(newGroup);
+            db.SaveChanges();
+            return true;
+        }
+
+
+        public bool editGroup(GroupModel editedGroup)
+        {
+            if (editedGroup == null)
+            {
+                return false;
+            }
+            db.Entry(editedGroup).State = EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+
+        public bool deleteGroup(GroupModel delGroup)
+        {
+            if (delGroup == null)
+            {
+                return false;
+            }
+            db.GroupModels.Remove(delGroup);
+            db.SaveChanges();
+            return true;
         }
 
         public IEnumerable<ApplicationUser> getMembers(int groupId)
@@ -189,7 +224,8 @@ namespace Sozial.Repositories
             db.SaveChanges();
             return true;
         }
-        GroupModel getGroupById(int id)
+
+        public GroupModel getGroupById(int id)
         {
             return (from GroupModel grp in db.GroupModels
                     where grp.groupID == id
@@ -237,6 +273,18 @@ namespace Sozial.Repositories
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public bool CreatePost(PostModel groupPostCreate)
+        {
+            db.PostModels.Add(groupPostCreate);
+            db.SaveChanges();
+            return true;
+        }
+
+        internal IEnumerable<GroupModel> getAllGroups()
+        {
+            return db.GroupModels.ToList();
         }
     }
 }

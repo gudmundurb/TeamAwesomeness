@@ -12,20 +12,19 @@ namespace Sozial.Controllers
     {
 
         private RelationshipRepo relRepo = new RelationshipRepo();
-
+        private GroupRepo grpRepo = new GroupRepo();
 
         public ActionResult Index()
         {
             //db connection created
-           ApplicationDbContext db = new ApplicationDbContext();
+           //ApplicationDbContext db = new ApplicationDbContext();
             //.......not supposed to be in controller
 
 
             //Repos created 
-            GroupRepo groupRepo = new GroupRepo();
-            PostRepo pRepo = new PostRepo(db);
-            GameRepo gameRepo = new GameRepo(db);
-            NewsRepo newsRepo = new NewsRepo(db);
+            PostRepo pRepo = new PostRepo();
+            GameRepo gameRepo = new GameRepo();
+            NewsRepo newsRepo = new NewsRepo();
             //End of Repos
 
             
@@ -36,7 +35,7 @@ namespace Sozial.Controllers
             //-------
 
             //Get 5 most recent groups created
-            fp.newestGroups = groupRepo.getRecentGroups(5).ToList();
+            fp.newestGroups = grpRepo.getRecentGroups(5).ToList();
             //end of get most recent groups created
 
 
@@ -54,11 +53,10 @@ namespace Sozial.Controllers
             }
             fp.newestPosts = Posts.OrderByDescending(Poste => Poste.createdDate).Take(5).ToList();
             //End of Get 5 new posts from friends
-            GameRepo gRepo = new GameRepo(db);
+            GameRepo gRepo = new GameRepo();
             fp.hottestGames = gRepo.getHottestGames(3).ToList();
-            //fp.newGroupPosts = db.GroupModels ..
+            
 
-            //fp.newestGames = db.GameModels .. 
             return View(fp);
         }
 
@@ -72,10 +70,9 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult postToProfile(PostToProfileViewModel sunshine)
         {
-            RelationshipRepo gRepo = new RelationshipRepo(new ApplicationDbContext());
 
             sunshine.newPost.userID = User.Identity.Name;
-            gRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
+            relRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
 
 
             return RedirectToAction("Profile", new { username = sunshine.profileOwner});
@@ -84,7 +81,6 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult search()
         {
-            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
             return View(relRepo.getAllUsers());
         }
 
@@ -92,7 +88,6 @@ namespace Sozial.Controllers
         [HttpPost]
         public ActionResult search(string username)
         {
-            RelationshipRepo relRepo = new RelationshipRepo();
             return View(relRepo.searchFor(username));
         }
 
@@ -101,7 +96,6 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult UserList()
         {
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
             IEnumerable<ApplicationUser> users = relRepo.getAllUsers();
             foreach (ApplicationUser user in users)
             {
@@ -109,28 +103,33 @@ namespace Sozial.Controllers
             }
             return View(users);
         }
+
+
         [Authorize]
         public ActionResult add(string name)
         {
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
             if (name == null) { return RedirectToAction("UserList"); }
             relRepo.addFriend(name);
 
             return RedirectToAction("UserList");
         }
+
+
         [Authorize]
         public ActionResult myFriends()
         {
-            Repositories.RelationshipRepo james_doohan = new Repositories.RelationshipRepo();
-            return View(james_doohan.getFriends(User.Identity.Name).ToList() );
+            return View( relRepo.getFriends(User.Identity.Name).ToList() );
         }
+
+
         [Authorize]
         public ActionResult unFriend(string exname)
         {
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
             relRepo.unFriend(exname);
             return RedirectToAction("myFriends");
         }
+
+
         [Authorize]
         public ActionResult Contact()
         {
@@ -138,6 +137,8 @@ namespace Sozial.Controllers
 
             return View();
         }
+
+
         [Authorize]
         public ActionResult View1()
         {
@@ -152,9 +153,6 @@ namespace Sozial.Controllers
         public ActionResult profile(string userName)
         {
             //not allowed to be in controller!!!!! 
-            RelationshipRepo relRepo = new RelationshipRepo();
-
-            
             //If username is not passed. or if the user is not real redirect to own profile.
             if (userName == null || !relRepo.realUser(userName))
             {
@@ -174,8 +172,8 @@ namespace Sozial.Controllers
             profileModel.myFriends = relRepo.getFriends(userName).ToList();
 
             //this is to get all my groups for profile page
-            GroupRepo gRepo = new GroupRepo();
-            profileModel.myGroups = gRepo.getUserGroup(userName).ToList();
+            
+            profileModel.myGroups = grpRepo.getUserGroup(userName).ToList();
             
             //this is to get all my posts AND my friends posts then I will take 10 new posts
             List<PostModel> posts = new List<PostModel>();

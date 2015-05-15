@@ -110,8 +110,6 @@ namespace Sozial.Repositories
         }
 
 
-        
-
         public void UpdatePost(Sozial.Models.PostModel post)
         {
             db.Entry(post).State = EntityState.Modified;

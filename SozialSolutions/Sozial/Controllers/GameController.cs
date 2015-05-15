@@ -15,14 +15,14 @@ namespace Sozial.Controllers
     [Authorize]
     public class GameController : Controller
     {
-        private IGameRepo db =  null; //new IGameRepo();
-        
+        private IGameRepo gameRepo =  null; //new IGameRepo();
+        private RelationshipRepo relRepo = new RelationshipRepo();
         //private ApplicationDbContext db = new ApplicationDbContext();
         //private IGameRepo db;
         
         public GameController()
         {
-            this.db = new GameRepo(new ApplicationDbContext());
+            this.gameRepo = new GameRepo();
         }
        
         // GET: Game
@@ -32,7 +32,7 @@ namespace Sozial.Controllers
             {
                 return Redirect("Account/Login");
             }
-            return View(db.GetGame());
+            return View(gameRepo.GetGame());
         }
 
         // GET: Game/Details/5
@@ -43,7 +43,7 @@ namespace Sozial.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //GameModel gameModel = db.GameModels.Find(id);
-            GameModel gameModel = db.GetGameByID(id);
+            GameModel gameModel = gameRepo.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -54,15 +54,14 @@ namespace Sozial.Controllers
 
         public ActionResult addGameToFave(int id)
         {
-            RelationshipRepo relrepo = new RelationshipRepo(new ApplicationDbContext());
-            relrepo.addGameToFavourites(id);
+            
+            relRepo.addGameToFavourites(id);
             return RedirectToAction("Index");
         }
 
 
         public ActionResult removeGameFromFave(int id)
         {
-            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
             relRepo.removeFromFavourites(id);
             return RedirectToAction("../Home/Profile");
         }
@@ -84,7 +83,7 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.InsertGame(gameModel);
+                gameRepo.InsertGame(gameModel);
                 return RedirectToAction("Index");
             }
 
@@ -98,7 +97,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
+            GameModel gameModel = gameRepo.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -116,7 +115,7 @@ namespace Sozial.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(gameModel).State = EntityState.Modified;
-                db.UpdateGame(gameModel);
+                gameRepo.UpdateGame(gameModel);
                 return RedirectToAction("Index");
             }
             return View(gameModel);
@@ -129,7 +128,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GameModel gameModel = db.GetGameByID(id);
+            GameModel gameModel = gameRepo.GetGameByID(id);
             if (gameModel == null)
             {
                 return HttpNotFound();
@@ -142,7 +141,7 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.DeleteGame(id);
+            gameRepo.DeleteGame(id);
             return RedirectToAction("Index");
         }
 
@@ -150,7 +149,7 @@ namespace Sozial.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                gameRepo.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -162,14 +161,14 @@ namespace Sozial.Controllers
 
     public class ReviewController : Controller
     {
-        private IReviewRepo db = null; //new IGameRepo();
-
+        private IReviewRepo revRepo = null; //new IGameRepo();
+        RelationshipRepo relRepo = new RelationshipRepo();
         //private ApplicationDbContext db = new ApplicationDbContext();
         //private IGameRepo db;
 
         public ReviewController()
         {
-            this.db = new ReviewRepo(new ApplicationDbContext());
+            this.revRepo = new ReviewRepo();
         }
 
 
@@ -180,7 +179,7 @@ namespace Sozial.Controllers
             {
                 return Redirect("Account/Login");
             }
-            return View(db.GetReview());
+            return View(revRepo.GetReview());
         }
 
 
@@ -192,7 +191,7 @@ namespace Sozial.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //GameModel gameModel = db.GameModels.Find(id);
-            ReviewModel reviewModel = db.GetReviewById(id);
+            ReviewModel reviewModel = revRepo.GetReviewById(id);
             if (reviewModel == null)
             {
                 return HttpNotFound();
@@ -203,15 +202,14 @@ namespace Sozial.Controllers
 
         public ActionResult addGameToFave(int id)
         {
-            RelationshipRepo relrepo = new RelationshipRepo(new ApplicationDbContext());
-            relrepo.addGameToFavourites(id);
+            
+            relRepo.addGameToFavourites(id);
             return RedirectToAction("Index");
         }
 
 
         public ActionResult removeGameFromFave(int id)
         {
-            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
             relRepo.removeFromFavourites(id);
             return RedirectToAction("../Home/Profile");
         }
@@ -237,7 +235,7 @@ namespace Sozial.Controllers
             reviewModel.gameId = sunshine.gameId;
             reviewModel.dateCreated = DateTime.Now;
             reviewModel.userId = User.Identity.Name;
-            db.InsertReview(reviewModel);
+            revRepo.InsertReview(reviewModel);
 
             return RedirectToAction("../Game/Details/" + sunshine.gameId.ToString());
         }
@@ -250,7 +248,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReviewModel reviewModel = db.GetReviewById(id);
+            ReviewModel reviewModel = revRepo.GetReviewById(id);
             if (reviewModel == null)
             {
                 return HttpNotFound();
@@ -269,7 +267,7 @@ namespace Sozial.Controllers
             if (ModelState.IsValid)
             {
                 //db.Entry(gameModel).State = EntityState.Modified;
-                db.UpdateReview(reviewModel);
+                revRepo.UpdateReview(reviewModel);
                 return RedirectToAction("Index");
             }
             return View(reviewModel);
@@ -283,7 +281,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReviewModel reviewModel = db.GetReviewById(id);
+            ReviewModel reviewModel = revRepo.GetReviewById(id);
             if (reviewModel == null)
             {
                 return HttpNotFound();
@@ -296,7 +294,7 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            db.DeleteReview(id);
+            revRepo.DeleteReview(id);
             return RedirectToAction("Index");
         }
     }

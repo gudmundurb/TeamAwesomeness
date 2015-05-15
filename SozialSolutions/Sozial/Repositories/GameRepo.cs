@@ -16,6 +16,12 @@ namespace Sozial.Repositories
         {
             this.db = db;
         }
+
+        public GameRepo()
+        {
+            this.db = new ApplicationDbContext();
+        }
+
         public IEnumerable<GameModel> GetGame()
         {
             return db.GameModels.ToList();
@@ -126,6 +132,12 @@ namespace Sozial.Repositories
         {
             this.db = db;
         }
+
+        public ReviewRepo()
+        {
+            this.db = new ApplicationDbContext();
+        }
+
 
         public IEnumerable<ReviewModel> GetReviewsForGame(int gameId)
         {

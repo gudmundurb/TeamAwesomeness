@@ -18,8 +18,8 @@ namespace Sozial.Controllers
         
         public PostController()
         {
-            this.postRepo = new PostRepo(new ApplicationDbContext());
-            this.commentRepo = new CommentRepo(new ApplicationDbContext());
+            this.postRepo = new PostRepo();
+            this.commentRepo = new CommentRepo();
         }
 
         //private ApplicationDbContext db = new ApplicationDbContext();
@@ -106,9 +106,6 @@ namespace Sozial.Controllers
 
             return Redirect(path);
         }
-
-
-        
 
 
 
