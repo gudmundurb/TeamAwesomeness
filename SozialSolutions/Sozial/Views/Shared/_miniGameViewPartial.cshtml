@@ -14,5 +14,5 @@
     <div class="col-xs-9">
         <a class="profile-nameOfGame" href="@Url.Action("Details", "Game", new { id = Model.gameID })">@Model.nameOfGame</a>
     </div>
+    <span class="pull-right change-post">@Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = " fav btn btn-success btn-xs change-post" })</span>
 </div>
-<i class=" btn btn-default glyphicon glyphicon-heart-empty"><span class="pull-right">@Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-xs change-post" })</span></i>

@@ -3,29 +3,29 @@
 @using (Html.BeginForm("Customize", "Account"))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <form>
         @Html.ValidationSummary(true)
-        <div class="form-group">
-            @Html.LabelFor(model => model.ProfilePicture, new { @class = "control-label col-md-2 myclass" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.ProfilePicture)
-                @Html.ValidationMessageFor(model => model.ProfilePicture)
+        <div class="well container">
+            <div class="row">
+                @Html.LabelFor(model => model.ProfilePicture, "New Image: ",new { @class = "control-label col-sm-4 myclass" })
+                <div class="col-sm-7 pull-left">
+                    @Html.EditorFor(model => model.ProfilePicture, new { @class = "form-group input-sm", placeholder = "Image URL" })
+                    @Html.ValidationMessageFor(model => model.ProfilePicture)
+                </div>
+                @if (Model.steam)
+                {
+                    <div>
+                        <script src="~/Scripts/getProfilePic.js"></script>
+                        <a class="badge" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-sm-3 pull-right">
+                        <input type="submit" value="Save" class="btn btn-default pull-left" />
+                    </div>
+                </div>
             </div>
         </div>
-
-        @if (Model.steam)
-        {   
-            <div>
-                <script src="~/Scripts/getProfilePic.js"></script>
-                <a class="badge" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
-            </div>
-        }
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+    </form>
 }
