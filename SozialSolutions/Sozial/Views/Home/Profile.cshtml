@@ -101,13 +101,17 @@
                                             <p>
                                                 <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
                                                 <p></p>
-                                                @if (Model.profileOwner.UserName == User.Identity.Name) 
-                                                { 
-                                                    <a class="cursor_change" href="@Url.Action("unFriend", "Home", new { exName = @user.UserName })" title="Unfriend">Unfriend</a>
+                                                @if (Model.profileOwner.UserName == User.Identity.Name)
+                                                {
+                                                    <div class="user-details pull-right change-post">
+                                                        <a href="@Url.Action("unFriend", "Home", new { exName = @user.UserName })" class=" unfriend btn btn-default btn-xs " title="Unfriend"><span class="glyphicon glyphicon-remove"></span></a>
+                                                    </div>
                                                 }
                                                 else
                                                 {
-                                                    <small><a href="@Url.Action("ADD", "Home", new { Name = @user.UserName })" title="Add friend">Add Friend</a></small>
+                                                    <div class="user-details pull-right">
+                                                        <a href="@Url.Action("add", "Home", new { name = @user.UserName })" class="btn btn-default btn-xs change-post" title="Add Friend"><span class="glyphicon glyphicon-user add"></span></a>
+                                                    </div>
                                                 }
                                             </p>
                                         </div>
