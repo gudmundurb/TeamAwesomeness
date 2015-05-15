@@ -16,11 +16,11 @@ namespace Sozial.Controllers
     public class CommentController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        private Repositories.PostRepo postRepo = new Repositories.PostRepo();
         // GET: Comment
         public ActionResult Index()
         {
-            return View(db.CommentModels.ToList());
+            return View(postRepo.getCommentList());
         }
 
         // GET: Comment/Details/5
@@ -30,7 +30,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentModel commentModel = db.CommentModels.Find(id);
+            CommentModel commentModel = postRepo.getComment(id);
             if (commentModel == null)
             {
                 return HttpNotFound();
@@ -70,7 +70,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentModel commentModel = db.CommentModels.Find(id);
+            CommentModel commentModel = postRepo.getComment(id);
             if (commentModel == null)
             {
                 return HttpNotFound();

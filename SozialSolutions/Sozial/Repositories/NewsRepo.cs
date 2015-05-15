@@ -16,6 +16,13 @@ namespace Sozial.Repositories
         {
             this.db = db;
         }
+
+        public NewsRepo()
+        {
+            this.db = new ApplicationDbContext();
+        }
+
+
         public IEnumerable<NewsModel> GetNews()
         {
             return db.NewsModels.ToList();

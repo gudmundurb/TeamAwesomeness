@@ -25,8 +25,12 @@ namespace Sozial.Repositories
 
         /* posts */
 
+        bool createGroup(GroupModel newGroup);
+        bool editGroup(GroupModel editedGroup);
+        bool deleteGroup(GroupModel delGroup);
+        bool CreatePost(PostModel groupPostCreate);
         IEnumerable<PostModel> getAllPostsForGroup(int groupId);
-
+        GroupModel getGroupById(int id);
         bool addPostToGroup(PostModel post, int groupId);
         bool removePostFromGroup(int postid);
 

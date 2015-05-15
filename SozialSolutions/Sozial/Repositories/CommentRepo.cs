@@ -16,6 +16,12 @@ namespace Sozial.Repositories
             db = database;
         }
 
+        public CommentRepo()
+        {
+            db = new ApplicationDbContext();
+        }
+
+
         public IEnumerable<CommentModel> getComments(){
             return db.CommentModels.ToList();
         }

@@ -18,7 +18,7 @@ namespace Sozial.Controllers
 
         public NewsController()
         {
-            this.newsRepo = new NewsRepo(new ApplicationDbContext());
+            this.newsRepo = new NewsRepo();
         }
 
         // GET: News

@@ -14,25 +14,21 @@ namespace Sozial.Controllers
     [Authorize]
     public class GroupController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        //private ApplicationDbContext db = new ApplicationDbContext();
         public Repositories.GroupRepo grpRepo = new Repositories.GroupRepo(new ApplicationDbContext());
 
         // GET: Group
         public ActionResult Index()
         {
-            return View(db.GroupModels.ToList());
+            return View(grpRepo.getAllGroups());
         }
 
         // GET: Group/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            
 
-           
-            GroupModel groupModel = db.GroupModels.Find(id);
+            GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
                 return HttpNotFound();
@@ -66,8 +62,7 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.GroupModels.Add(groupModel);
-                db.SaveChanges();
+                grpRepo.createGroup(groupModel);
                 return RedirectToAction("Index");
             }
 
@@ -75,13 +70,10 @@ namespace Sozial.Controllers
         }
 
         // GET: Group/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            GroupModel groupModel = db.GroupModels.Find(id);
+            
+            GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
                 return HttpNotFound();
@@ -98,21 +90,17 @@ namespace Sozial.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(groupModel).State = EntityState.Modified;
-                db.SaveChanges();
+                grpRepo.editGroup(groupModel);
                 return RedirectToAction("Index");
             }
             return View(groupModel);
         }
 
         // GET: Group/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            GroupModel groupModel = db.GroupModels.Find(id);
+            
+            GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
                 return HttpNotFound();
@@ -125,9 +113,8 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GroupModel groupModel = db.GroupModels.Find(id);
-            db.GroupModels.Remove(groupModel);
-            db.SaveChanges();
+            GroupModel groupModel = grpRepo.getGroupById(id);
+            grpRepo.deleteGroup(groupModel);
             return RedirectToAction("Index");
         }
 
@@ -147,43 +134,6 @@ namespace Sozial.Controllers
             
             return RedirectToAction("Details", new {id = sunShine.groupId });
         }
-
-
-
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public ActionResult CreatePost(int? groupID)
-        {
-            int i = 1;
-            groupID = i;
-            return View();
-        }
-
-       [HttpPost]
-       [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(int groupID, [Bind(Include = "postID,userID,text,imageUrl")] PostModel groupPostCreate)
-        {
-            groupID = 1;
-            if (ModelState.IsValid)
-            {
-                 
-
-                db.PostModels.Add(groupPostCreate);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(groupPostCreate);
-        }
-
     }
 }
 

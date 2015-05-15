@@ -15,11 +15,9 @@ namespace Sozial.Controllers
 
         public string currUserSteamID()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            string id = (from ApplicationUser n in db.Users
-                        where n.UserName == User.Identity.Name
-                        select n.steamId).Single();
-            return id;
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
+            
+            return relRepo.getSteamId();
         }
 
 

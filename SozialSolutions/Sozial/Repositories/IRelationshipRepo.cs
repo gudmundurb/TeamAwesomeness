@@ -25,10 +25,13 @@ namespace Sozial.Repositories
         /* profilepost stuff */
         IEnumerable<PostModel> getAllPostsForUser(string user);
 
+        string getSteamId();
+
+
         bool postToProfile(PostModel post, string profileOwner);
         bool removePostFromProfile(int postID);
         ApplicationUser getUser(string name);
-
+        bool updateUser(ApplicationUser user);
         IEnumerable<ApplicationUser> getAllUsers();
         IEnumerable<ApplicationUser> searchFor(string username);
         /*gameFAVES */ 
