@@ -19,7 +19,7 @@ namespace Sozial.Repositories
         void UpdatePost(PostModel post);
         //gets all comments for post
         IEnumerable<CommentModel> getAllComments(int postId);
-
+        void deleteComment(int commentId);
         void Reply(CommentModel comment);
     }
 }
