@@ -16,8 +16,9 @@
                 @if (Model.steam)
                 {
                     <div>
+                        <img class="hidden" id="loader" src="~/Content/Images/ajax-loader.gif" />
                         <script src="~/Scripts/getProfilePic.js"></script>
-                        <a class="badge" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
+                        <a class="badge" id="hideWhenClicked" onclick="insertProfile()">Use your Steam Profile Picture instead</a>
                     </div>
                 }
                 <div class="row">

@@ -8,8 +8,10 @@
         <div class="well">
             <h2 class="title-adjustments">Games</h2>
             <hr />            
-            <p>
-                @Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" })                        
+            <p> 
+                @*Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" }) *@
+                @Html.ActionLink("List of games From steam", "Steam", null , new { @class = "btn btn-success" })
+                
             </p>
             <div class="list-group">
                 @foreach (var item in Model)

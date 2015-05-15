@@ -72,8 +72,9 @@ namespace Sozial.Controllers
         {
 
             sunshine.newPost.userID = User.Identity.Name;
-            relRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
-
+            if (sunshine.newPost.text != null) { 
+                relRepo.postToProfile(sunshine.newPost, sunshine.profileOwner);
+            }
 
             return RedirectToAction("Profile", new { username = sunshine.profileOwner});
         }

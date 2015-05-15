@@ -80,54 +80,35 @@
                     </div>
                 </li>
                 <li>
-                <!--DETAILS-->
+                    <!--DETAILS-->
                     <div class="col-md-7" id="ajaxTest">
                         <!--POST REVIEW-->
-                        <!--
-                        <h4 class="title-adjustments">Write a Review</h4>
-                        <div class="widget-area pull-left">
-                            <form>
-                                <textarea placeholder="NEEEEEEEEEEEEEDS CONNECTION WITH THE DATABASE"></textarea>
-                                <div class="review-box stars pull-left">
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                    <i class="glyphicon glyphicon-star-empty"></i>
-                                </div>
-                                <button type="submit" class="btn btn-success pull-right">Review</button>
-                            </form>
-                        </div>
-                            -->
                         @Html.Partial("../Review/_reviewGamePartial", new Sozial.Models.ReviewEnvelope() { gameId = Model.gameID, review = new Sozial.Models.ReviewModel() })
                         <!--POST REVIEW-->
-                        <!--OTHER POSTS-->
-                        <h4 class="title-adjustments">Review List</h4>                        
-                        <div class="comment-section" id="reviewsUpdate">
-                            @foreach (Sozial.Models.ReviewModel review in Model.gameReview) 
-                            {
-                                <div class="col-sm-2">
-                                    <img class="img-responsive img-rounded" src="http://placehold.it/100x100" alt="A placeholder" />
-                                </div>
-                                <div class="col-sm-10">
-                                    <a href="#" title="Username">@review.userId</a>
-                                    <small class="pull-right">@day/@month/@year</small>
-                                    <div class="stars">
-                                        <p>
-                                            Rating: &nbsp; <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star"></i>
-                                            <i class="glyphicon glyphicon-star-empty"></i>
-                                        </p>
+                        <!--REVIEWS-->
+                        <h4 class="title-adjustments">Review List</h4>
+                        <div class="well">
+                            <div class="comment-section" id="reviewsUpdate">
+                                @foreach (Sozial.Models.ReviewModel review in Model.gameReview)
+                                {
+                                    <div class="widget-area well">
+                                        <div class="container">
+                                            <div class="col-sm-2 img_resizer no-margin">
+                                                <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <a href="#" title="Username">@review.userId</a>
+                                                <small class="pull-right">@day/@month/@year</small>
+                                                <p>
+                                                    @review.text
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p>
-                                        @review.text
-                                    </p>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
-                        <!--OTHER POSTS-->
+                        <!--REVIEWS-->
                     </div>
                 </li>
             </ul>

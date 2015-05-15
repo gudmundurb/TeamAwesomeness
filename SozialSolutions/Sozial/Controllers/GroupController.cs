@@ -99,7 +99,7 @@ namespace Sozial.Controllers
         // GET: Group/Delete/5
         public ActionResult Delete(int id)
         {
-            
+            return RedirectToAction("Details", new { id = id });
             GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
@@ -107,6 +107,7 @@ namespace Sozial.Controllers
             }
             return View(groupModel);
         }
+
 
         // POST: Group/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -117,6 +118,7 @@ namespace Sozial.Controllers
             grpRepo.deleteGroup(groupModel);
             return RedirectToAction("Index");
         }
+
 
         public ActionResult joinGroup(int id)
         {
@@ -129,9 +131,11 @@ namespace Sozial.Controllers
         public ActionResult PostToGroup(GroupPostViewModel sunShine)
         {
             sunShine.newPost.userID = User.Identity.Name;
-            
-            grpRepo.addPostToGroup(sunShine.newPost, sunShine.groupId);
-            
+
+            if (sunShine.newPost.text != null) { 
+                grpRepo.addPostToGroup(sunShine.newPost, sunShine.groupId);
+            }
+
             return RedirectToAction("Details", new {id = sunShine.groupId });
         }
     }

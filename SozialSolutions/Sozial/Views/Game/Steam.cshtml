@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "steaml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/gameList.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Steam</title>
+</head>
+<body>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+    <!-- This is more of a proof-of-concept than a real live feature,
+         It is entirely possible to give users the means to create new 
+         Games from this list with their respective names and steam appIDs. -->
+    <div id="loadingText">
+    <!--Loading Steam list, give us a few seconds...-->
+        <img src="~/Content/Images/ajax-loader.gif" />
+    </div>
+    <div>
+        <span id="gameCount"></span>
+        <div id="steamList">
+
+        </div>
+    </div>
+</body>
+</html>
