@@ -67,7 +67,8 @@
                         }
                         else
                         {
-                            <a class="cursor_change" href="@Url.Action("unFriend", "Home", new { exName = @Model.profileOwner.UserName })" title="Unfriend">Unfriend</a>
+                            
+                            <span class="change-post"><a class="unfriend btn btn-success pull-left" href="@Url.Action("unFriend", "Home", new { exName = @Model.profileOwner.UserName })" title="Unfriend">Unfriend</a></span>
                         }
                         <!--CHANGE PROFILE PICTURE-->
                     </li>
@@ -106,7 +107,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <a class="cursor_change" href="@Url.Action("ADD", "Home", new { Name = @user.UserName })" title="Add friend">Add Friend</a>
+                                                    <small><a href="@Url.Action("ADD", "Home", new { Name = @user.UserName })" title="Add friend">Add Friend</a></small>
                                                 }
                                             </p>
                                         </div>

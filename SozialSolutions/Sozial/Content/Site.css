@@ -146,6 +146,24 @@ textarea {
     background-color: #ffb25e;
 }
 
+.change-post .unfriend {
+
+    color: black;
+    font-size: 9pt;
+    border-radius: 5px;
+    background-color: #ffb25e;
+    border-color: #bbb;
+}
+
+.change-post .unfriend:hover, .change-post .unfriend:active, .change-post .unfriend:focus {
+
+    color: black;
+    font-size: 9pt;
+    border-radius: 5px;
+    background-color: #ff855e;
+    border-color: #bbb;
+}
+
 .change-post .fav:hover, .change-post .fav:active, .change-post .fav:focus {
 
     background-color: #ffc07a;
