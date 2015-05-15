@@ -9,7 +9,10 @@
             <h2>Games</h2>
             <hr />            
             <p> 
+                @if (Request.IsAuthenticated && User.Identity.Name == "admin")
+                { 
                 @Html.ActionLink("Add New Game", "Create", null, new { @class = "btn btn-success" }) 
+                }
                 @Html.ActionLink("See Steam Games", "Steam", null , new { @class = "btn btn-success text-center" })                
             </p>
             <hr class="title-adjustments" />
@@ -50,8 +53,11 @@
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Game", new { id = item.gameID })'" /></div>
                         </div>
                             <div class="col-md-2 pull-left">
+                                @if (Request.IsAuthenticated && User.Identity.Name == "admin")
+                                {
                                 <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
                                 <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Edit", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                                }
                             <!--CHANGES DONE-->
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("addGameToFave", "Game", new { id = item.gameID })'"><i class="glyphicon glyphicon-star"></i> Favorite this game</span>
                         </div>

@@ -42,7 +42,10 @@
                             <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="...Read more" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'" /></div>
                         </div>
                         <div class="col-md-3 text-center">
+                            @if (Request.IsAuthenticated && User.Identity.Name == "admin") 
+                            { 
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("../Group/Edit", "Edit", new { id = item.groupID })'"><i class="glyphicon glyphicon-pencil"></i> Edit</span>
+                            }
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("../Group/joinGroup", "joinGroup", new { id = item.groupID })'"><i class="glyphicon glyphicon-remove"></i> Join</span>
                             <span class="btn btn-default btn-sm pull-right" onclick="location.href='@Url.Action("Details", "Group", new { id = item.groupID })'"><i class="glyphicon glyphicon-info-sign"></i> Details</span>                            
                         </div>

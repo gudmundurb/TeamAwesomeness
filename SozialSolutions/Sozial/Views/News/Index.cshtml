@@ -9,9 +9,10 @@
             <h2 class="title-adjustments">News</h2>
             <hr />
             <p>
-                @if (Request.IsAuthenticated) {
+                @if (Request.IsAuthenticated && User.Identity.Name == "admin") {
                     @Html.ActionLink("Add News", "Create", null, new { @class = "btn btn-success" })
                 }
+                
             </p>
             <div class="list-group">
                 @foreach (var item in Model)
@@ -44,7 +45,7 @@
                                 </p>
                             </div>
                         }                        
-                        @if (Request.IsAuthenticated)
+                        @if (Request.IsAuthenticated && User.Identity.Name == "admin")
                         {
                             <div class="col-md-3">
                                 <span class="btn btn-danger btn-sm pull-right" onclick="location.href='@Url.Action("Delete", "News", new { id = item.newsID })'"><i class="glyphicon glyphicon-remove"></i> Delete</span>
