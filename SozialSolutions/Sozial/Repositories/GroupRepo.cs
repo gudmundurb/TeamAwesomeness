@@ -15,6 +15,10 @@ namespace Sozial.Repositories
             db = databaseContext;
         }
 
+        public GroupRepo()
+        {
+            db = new ApplicationDbContext();
+        }
 
         public IEnumerable<ApplicationUser> getMembers(int groupId)
         {

@@ -28,6 +28,15 @@ namespace Sozial.Repositories
             return db.PostModels.ToList();
         }
 
+        public IEnumerable<CommentModel> getCommentList()
+        {
+            return db.CommentModels.ToList();
+        }
+
+        public CommentModel getComment(int? id)
+        {
+            return db.CommentModels.Find(id);
+        }
 
         public PostModel GetPostByID(int? postID)
         {

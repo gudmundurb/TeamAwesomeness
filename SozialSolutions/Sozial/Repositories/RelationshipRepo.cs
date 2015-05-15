@@ -18,6 +18,25 @@ namespace Sozial.Repositories
             db = database;
         }
 
+        public RelationshipRepo()
+        {
+            db = new ApplicationDbContext();
+        }
+
+        public string getSteamId()
+        {
+            return (from ApplicationUser n in db.Users
+                    where n.UserName == System.Web.HttpContext.Current.User.Identity.Name
+                    select n.steamId).SingleOrDefault();
+        }
+
+        public bool updateUser(ApplicationUser user)
+        {
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+            return true;
+        }
+
 
         public bool realUser(string username)
         {

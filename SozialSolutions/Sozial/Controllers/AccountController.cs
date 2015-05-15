@@ -437,13 +437,14 @@ namespace Sozial.Controllers
         //GET: /Account/Customize
         public ActionResult Customize()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
-            bool havesteam = user.steamId == null;
+
+
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
+            ApplicationUser user = relRepo.getUser(User.Identity.Name);
             AccountCustomizeViewModel model = new AccountCustomizeViewModel();
             model.profileBanner = user.userBannerPic;
             model.ProfilePicture = user.userProfilePic;
-            model.steam = user.steamId != null;
+            model.steam = (user.steamId != null);
             return View(model);
         }
         
@@ -453,12 +454,11 @@ namespace Sozial.Controllers
         [HttpPost]
         public ActionResult Customize(AccountCustomizeViewModel model)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            ApplicationUser user = db.Users.Find(User.Identity.GetUserId());
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
+            ApplicationUser user = relRepo.getUser(User.Identity.Name);
             user.userProfilePic = model.ProfilePicture;
             user.userBannerPic = model.profileBanner;
-            db.Entry(user).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            relRepo.updateUser(user);
             return RedirectToAction("../Home/Profile");
         }
 

@@ -8,6 +8,8 @@ namespace Sozial.Repositories
 {
     public interface IPostRepo : IDisposable
     {
+        IEnumerable<CommentModel> getCommentList();
+        CommentModel getComment(int? id);
 
         IEnumerable<PostModel> GetPost();
         PostModel GetPostByID(int? postID);

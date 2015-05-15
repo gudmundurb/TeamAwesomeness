@@ -10,6 +10,10 @@ namespace Sozial.Controllers
 {
     public class HomeController : Controller
     {
+
+        private RelationshipRepo relRepo = new RelationshipRepo();
+
+
         public ActionResult Index()
         {
             //db connection created
@@ -18,8 +22,7 @@ namespace Sozial.Controllers
 
 
             //Repos created 
-            GroupRepo groupRepo = new GroupRepo(db);
-            RelationshipRepo relRepo = new RelationshipRepo(db);
+            GroupRepo groupRepo = new GroupRepo();
             PostRepo pRepo = new PostRepo(db);
             GameRepo gameRepo = new GameRepo(db);
             NewsRepo newsRepo = new NewsRepo(db);
@@ -89,7 +92,7 @@ namespace Sozial.Controllers
         [HttpPost]
         public ActionResult search(string username)
         {
-            RelationshipRepo relRepo = new RelationshipRepo(new ApplicationDbContext());
+            RelationshipRepo relRepo = new RelationshipRepo();
             return View(relRepo.searchFor(username));
         }
 
@@ -98,9 +101,8 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult UserList()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo(db);
-            IEnumerable<ApplicationUser> users = db.Users.ToList();
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
+            IEnumerable<ApplicationUser> users = relRepo.getAllUsers();
             foreach (ApplicationUser user in users)
             {
                 user.friends = relRepo.getFriends(user.UserName).ToList();
@@ -110,8 +112,7 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult add(string name)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo(db);
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
             if (name == null) { return RedirectToAction("UserList"); }
             relRepo.addFriend(name);
 
@@ -120,15 +121,13 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult myFriends()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Repositories.RelationshipRepo james_doohan = new Repositories.RelationshipRepo(db);
+            Repositories.RelationshipRepo james_doohan = new Repositories.RelationshipRepo();
             return View(james_doohan.getFriends(User.Identity.Name).ToList() );
         }
         [Authorize]
         public ActionResult unFriend(string exname)
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo(db);
+            Repositories.RelationshipRepo relRepo = new Repositories.RelationshipRepo();
             relRepo.unFriend(exname);
             return RedirectToAction("myFriends");
         }
@@ -146,19 +145,14 @@ namespace Sozial.Controllers
             return View();
         }
 
-      /*  public ActionResult profile()
-        {
-            return View(profile(User.Identity.Name));
-        }
 
-        */
+
         //need authorization !! 
         [Authorize]
         public ActionResult profile(string userName)
         {
             //not allowed to be in controller!!!!! 
-            ApplicationDbContext db = new ApplicationDbContext();
-            RelationshipRepo relRepo = new RelationshipRepo(db);
+            RelationshipRepo relRepo = new RelationshipRepo();
 
             
             //If username is not passed. or if the user is not real redirect to own profile.
@@ -180,7 +174,7 @@ namespace Sozial.Controllers
             profileModel.myFriends = relRepo.getFriends(userName).ToList();
 
             //this is to get all my groups for profile page
-            GroupRepo gRepo = new GroupRepo(db);
+            GroupRepo gRepo = new GroupRepo();
             profileModel.myGroups = gRepo.getUserGroup(userName).ToList();
             
             //this is to get all my posts AND my friends posts then I will take 10 new posts
