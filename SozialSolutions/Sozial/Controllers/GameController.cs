@@ -90,6 +90,7 @@ namespace Sozial.Controllers
 
 
         // GET: Game/Create
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
             return View();
@@ -100,6 +101,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre, imageUrl")] GameModel gameModel)
         {
             if (ModelState.IsValid)
@@ -112,6 +114,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Game/Edit/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -131,6 +134,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit([Bind(Include = "GameID,nameOfGame,aboutGame,gameCompany,isTopTen,genre,imageUrl")] GameModel gameModel)
         {
             if (ModelState.IsValid)
@@ -143,6 +147,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Game/Delete/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -160,6 +165,7 @@ namespace Sozial.Controllers
         // POST: Game/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult DeleteConfirmed(int id)
         {
             gameRepo.DeleteGame(id);
@@ -179,7 +185,7 @@ namespace Sozial.Controllers
 
     //-------------------------------------------------------------------------
 
-
+    [Authorize]
     public class ReviewController : Controller
     {
         private IReviewRepo revRepo = null; //new IGameRepo();
@@ -238,17 +244,19 @@ namespace Sozial.Controllers
 
 
         // GET: Review/Create
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create()
         {
             return View();
         }
 
 
-        // POST: Game/Create
+        // POST: Review/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Create(ReviewEnvelope sunshine)
         {
             ReviewModel reviewModel = sunshine.review;
@@ -263,6 +271,7 @@ namespace Sozial.Controllers
 
 
         // GET: Game/Edit/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -283,6 +292,7 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult Edit([Bind(Include = "text")] ReviewModel reviewModel)
         {
             if (ModelState.IsValid)
@@ -295,7 +305,8 @@ namespace Sozial.Controllers
         }
 
 
-        // GET: Game/Delete/5
+        // GET: Game/Review/5
+        [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -313,6 +324,7 @@ namespace Sozial.Controllers
         // POST: Game/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrators")]
         public ActionResult DeleteConfirmed(int id)
         {
             revRepo.DeleteReview(id);
