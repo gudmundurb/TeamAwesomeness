@@ -8,7 +8,6 @@
 
 <html>
 <head>
-    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Profile</title>
 </head>
@@ -132,23 +131,24 @@
                         </div>
                     </li>
                     <li>
+                        <!--POSTS-->
                         <div class="col-md-7">
-                            <!--POSTS-->
-                            @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
-                            <!--POSTS-->
-
-
-                            <!--REPLY TO POST-->
+                            <h4 class="title-adjustments">Write a Post</h4>
                             <div class="widget-area pull-left">
-                                <div>
-                                    @foreach (Sozial.Models.PostModel post in Model.profilePosts)
-                                    {
-                                        @Html.Partial("../Shared/_postPartial", post)
-                                    }
-                                </div>
+                                @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName, newPost = new Sozial.Models.PostModel() })
                             </div>
-                            <!--REPLY TO POST-->
                         </div>
+                        <!--POSTS-->
+
+                        <!--REPLY TO POST-->
+                        <div class="col-md-7">
+                            <h4 class="title-adjustments">All Posts</h4>
+                            @foreach (Sozial.Models.PostModel post in Model.profilePosts)
+                            {
+                                @Html.Partial("../Shared/_postPartial", post)
+                            }
+                        </div>
+                        <!--REPLY TO POST-->
                     </li>
                 </ul>
             </div>
