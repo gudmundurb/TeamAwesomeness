@@ -1,5 +1,12 @@
 ﻿@model Sozial.Models.PostModel
 
+@{
+    var counter = 0;
+    foreach (Sozial.Models.CommentModel comm in Model.comments)
+    {
+        counter++;
+    }     
+} 
 <div class="posts">
     <div class="widget-area">
         <div class="comment-section">
@@ -45,13 +52,12 @@
 </div>
 @if (Model.comments != null)
 {
-    <a id="toggleMeComments" class="btn btn-success btn-sm toggleMeComments pull-right">See All Comments</a>
+    <a id="toggleMeComments" class="btn btn-success btn-sm toggleMeComments pull-right">See All @counter Comments</a>
     <div class="title-adjustments"></div>
     <div class="comments toToggleComments">
         <div class="widget-area comment-section">
             @foreach (Sozial.Models.CommentModel comm in Model.comments)
-            {
-
+            {                
                 <div class="row">
                     <div class="col-md-1">                       
                         @if (comm.authorID == Model.userID)
