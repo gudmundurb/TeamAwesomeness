@@ -87,27 +87,26 @@
                         <!--POST REVIEW-->
                         <!--REVIEWS-->
                         <h4 class="title-adjustments">Review List</h4>
-                        <div class="well">
                             <div class="comment-section" id="reviewsUpdate">
-                                @foreach (Sozial.Models.ReviewModel review in Model.gameReview)
-                                {
-                                    <div class="widget-area well">
+                                <div class="widget-area well">
+                                    @foreach (Sozial.Models.ReviewModel review in Model.gameReview)
+                                    {
                                         <div class="container">
                                             <div class="col-sm-2 img_resizer no-margin">
                                                 <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
                                             </div>
                                             <div class="col-sm-10">
-                                                <a href="#" title="Username">@review.userId</a>
+                                                <a href="@Url.Action("Profile", "Home", new { username = @review.userId })" title="Username">@review.userId</a>
                                                 <small class="pull-right">@day/@month/@year</small>
                                                 <p>
                                                     @review.text
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
-                                }
+                                        <hr/>
+                                    }
+                                </div>
                             </div>
-                        </div>
                         <!--REVIEWS-->
                     </div>
                 </li>
