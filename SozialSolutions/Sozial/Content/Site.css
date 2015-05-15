@@ -126,6 +126,21 @@ textarea {
     color: #393939;
 }
 
+.change-post .fav {
+
+    color: #393939;
+    font-size: 9pt;
+    border-radius: 5px;
+    background-color: #ffb25e;
+}
+
+.change-post .fav:hover, .change-post .fav:active, .change-post .fav:focus {
+
+    background-color: #ffc07a;
+    color: #393939;
+    font-size: 9pt;
+}
+
 .change-post .delete {
 
     color: red;
