@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sozial.Controllers.AccountController" Collapsed="true">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAACAFgEgAABAABMKIAAAMRAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.ApiController" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Controllers\ApiController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.CommentController" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\CommentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.GameController" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAABCABAACAAAAAAAAAAAEAAEACABEAAEAAAAA=</HashCode>
+      <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.ReviewController" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAABAABAACAAAAAAAAAAAEAAEACAAEAAEAAAAA=</HashCode>
+      <FileName>Controllers\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.GroupController" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAABAACAAAAABAAAAAEAAEACAAEAAIAAAAA=</HashCode>
+      <FileName>Controllers\GroupController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.HomeController" Collapsed="true">
+    <Position X="16" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CACAAAAAAAAAAAEACAAgAAAAgAAAEEAAACEgAIACAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.ManageController" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABACAQiAAgAAAAEFhAAAAAAEAIMIAAEEEgAAkAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.NewsController" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCBAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\NewsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.PostController" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACABAQCAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PostController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Controllers.RoleController" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\RoleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.LoginViewModel" Collapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.RegisterViewModel" Collapsed="true">
+    <Position X="11" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAEAAAAAAEAAACAAAAAAEAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.CommentModel" Collapsed="true">
+    <Position X="10.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAQAAAABAAAAACAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\CommentModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.FavouriteRelationModel" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FavouriteRelationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.FriendshipModel" Collapsed="true">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAQAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\FriendshipModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.FrontPageViewModel" Collapsed="true">
+    <Position X="6" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAoBAAACAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FrontPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.GameModel" Collapsed="true">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABABAAAAAAAAAgAAHAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\GameModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.GroupModel" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAYAAAAAAAAAABAQAAgAAAEAEAAAEAAAEAAKAAAA=</HashCode>
+      <FileName>Models\GroupModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.GroupPostRelationModel" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAARAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GroupPostRelationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.GroupPostViewModel" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GroupPostViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.GroupRelationshipModel" Collapsed="true">
+    <Position X="0.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GroupRelationshipModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.ApplicationUser" Collapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAACAAAAAAEAAIAAAAAAEAAAAAQAgAAAAGQAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.NewsModel" Collapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAKAAAAAAAAAAAAAAIAAAAAAIAAEA=</HashCode>
+      <FileName>Models\NewsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.PostModel" Collapsed="true">
+    <Position X="10.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAACAABAAAAAAAEAAAIAAAABAIAAEA=</HashCode>
+      <FileName>Models\PostModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.postReplyViewModel" Collapsed="true">
+    <Position X="9.25" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\postReplyViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.PostToProfileViewModel" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PostToProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.ProfilePostRelationModel" Collapsed="true">
+    <Position X="15.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAABAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProfilePostRelation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.ProfileViewModel" Collapsed="true">
+    <Position X="16" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAEAAIAABAAAAAAAAAAAAAgAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.RatingModel" Collapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAABAQAIAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\RatingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Models.ReviewModel" Collapsed="true">
+    <Position X="3" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAACAAAAAABAAAEAAYIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ReviewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sozial.Repositories.GameRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIKCQAAACAQAAAAAAAAAAAAAgAAAAAACAAAAAAAEAA=</HashCode>
+      <FileName>Repositories\GameRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sozial.Repositories.ReviewRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAICABAAACAQAAAAAAAAAAACAAAAgAACAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\GameRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sozial.Repositories.GroupRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAEAAAGAQAEAEAICABAAABNAAAAAABQgAABAAAgA=</HashCode>
+      <FileName>Repositories\GroupRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sozial.Repositories.NewsRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAKAQAAAAAAAAACFABAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>Repositories\NewsRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sozial.Repositories.PostRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAIAAAAAACAQAQAAABAAAAAABAgAAEAAIAACAiAAAEA=</HashCode>
+      <FileName>Repositories\PostRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Sozial.Repositories.RelationshipRepo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAIWCRAAAAAAAIAAAAAoAEAEBoBAAgABABAAA=</HashCode>
+      <FileName>Repositories\RelationshipRepo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Sozial.Repositories.IGameRepo" Collapsed="true">
+    <Position X="3.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKCAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAEAA=</HashCode>
+      <FileName>Repositories\IGameRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sozial.Repositories.IReviewRepo" Collapsed="true">
+    <Position X="12" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAACABAAAAAAAAAAAAAAAAACAAAAgAACAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\IGameRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sozial.Repositories.IGroupRepo" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAEAAAEAAAEAEAIAABAAAANAAAAAABQgAAAAAAgA=</HashCode>
+      <FileName>Repositories\IGroupRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sozial.Repositories.INewsRepo" Collapsed="true">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAACFABAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>Repositories\INewsRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sozial.Repositories.IPostRepo" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAQAAAAAAAAAABAgAAEAAIAACAiAAAEA=</HashCode>
+      <FileName>Repositories\IPostRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Sozial.Repositories.IRelationshipRepo" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIUCBAAAAAAAAAAAAAoAEAEBoAAAgABABAAA=</HashCode>
+      <FileName>Repositories\IRelationshipRepo.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
