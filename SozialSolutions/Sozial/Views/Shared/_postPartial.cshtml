@@ -2,19 +2,19 @@
 
 <script src="~/Scripts/jquery.validate.js"></script>
 <div class="posts">
-    <div class="widget-area">        
+    <div class="widget-area">
         <div class="comment-section">
-            <div class="col-md-1 thumbnail no-margin">
+            <div class="col-md-2  img_resizer no-margin">
                 @if (String.IsNullOrEmpty(Model.userPicture))
                 {
-                    <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                    <img class="img-rounded thumbnail" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
                 }
                 else
                 {
-                    <img src="@Url.Content(Model.userPicture)" class="img-responsive" alt="@Model.userID picture" />
+                    <img src="@Url.Content(Model.userPicture)" class="thumbnail" alt="@Model.userID picture" />
                 }
             </div>
-            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>            
+            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>
             <div class="pull-right">
                 <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
                 <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
@@ -30,7 +30,7 @@
             @if (!String.IsNullOrEmpty(Model.imageUrl))
             {
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9 col-md-offset-1">
                         <img src="@Url.Content(Model.imageUrl)" class="img-responsive" alt="@Model.userID picture" />
                     </div>
                 </div>
@@ -44,19 +44,29 @@
         <!-- REPLY HERE -->
     </div>
 </div>
-<a id="toggleMe" class="btn btn-success btn-sm  pull-right">See All Comments</a>
-<div class="comments" id="toToggle">
-    <div class="widget-area comment-section">
-        @if (Model.comments != null)
-        {
-            foreach (Sozial.Models.CommentModel comm in Model.comments)
+@if (Model.comments != null)
+{
+    <a id="toggleMeComments" class="btn btn-success btn-sm toggleMeComments pull-right">See All Comments</a>
+    <div class="title-adjustments"></div>
+    <div class="comments toToggleComments">
+        <div class="widget-area comment-section">
+            @foreach (Sozial.Models.CommentModel comm in Model.comments)
             {
 
                 <div class="row">
-                    <div class="col-md-1">
-                        <div class="img_resizer thumbnail">                            
-                            <img src="@Url.Content(Model.userPicture)" />
-                        </div>                        
+                    <div class="col-md-1">                       
+                        @if (comm.authorID == Model.userID)
+                        {
+                            <div class="img_resizer class=" col-md-1"">
+                                <img class="thumbnail" src="@Url.Content(Model.userPicture)" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="img_resizer class=" col-md-1"">
+                                <img class="thumbnail" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" />
+                            </div>
+                        }
                     </div>
                     <div class="col-md-2">
                         <a href="@Url.Action("Profile", "Home", new { comm.authorID })" title="Username">@comm.authorID</a>
@@ -67,12 +77,14 @@
                         </p>
                     </div>
                 </div>
-                <hr class="row" />
+                <hr />
             }
-        }
+        </div>
     </div>
-</div>
+}
 
+
+<<<<<<< HEAD
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
@@ -82,3 +94,8 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/toggle.js"></script>
+=======
+<script src="~/Scripts/toggleComments.js"></script>
+<script src="~/Scripts/toggle.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+>>>>>>> 0f335362876018a9991a8ba3fe3be5c888da855d
