@@ -102,10 +102,10 @@
                                                 <a class="cursor_change" href="@Url.Action("unFriend", "Home", new { exName = @user.UserName })" title="Unfriend">Unfriend</a>
                                             </p>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="row">
-                                        <hr/>
+                                        <hr />
                                     </div>
                                 }
                             </div>
@@ -137,7 +137,7 @@
                             <h4>Games</h4>
                             @foreach (Sozial.Models.GameModel item in Model.myGames)
                             {
-                               @Html.Partial("../Shared/_miniGameViewPartial", item)
+                                @Html.Partial("../Shared/_miniGameViewPartial", item)
                             }
                         </div>
                     </li>
@@ -161,6 +161,7 @@
                         <!--REPLY TO POST-->
                     </li>
                 </ul>
+
             </div>
         </div>
     </div>

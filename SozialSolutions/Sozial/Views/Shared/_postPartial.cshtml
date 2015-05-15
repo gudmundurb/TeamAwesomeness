@@ -27,8 +27,12 @@
                     <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
                     <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
                 }
-                
-
+                else if (Request.RawUrl != "/Home/Profile" || Request.RawUrl != "/Home/Profile/?username=" + Model.userID)
+                {
+                    <div class="user-details">
+                        <a href="@Url.Action("add", "Home", new { name = @Model.userID })" class="btn btn-default btn-xs change-post" title="Add User"><span class="glyphicon glyphicon-user add"></span></a>
+                    </div>
+                }
             </div>
             <p>
                 @Html.DisplayFor(modelItem => Model.text)
