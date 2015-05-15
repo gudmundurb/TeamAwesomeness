@@ -134,6 +134,7 @@ namespace Sozial.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             PostModel postModel = postRepo.GetPostByID(id);
             if (postModel == null)
             {
@@ -148,7 +149,6 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PostModel postModel = postRepo.GetPostByID(id);
             postRepo.DeletePost(id);
             return RedirectToAction("Index");
         }
