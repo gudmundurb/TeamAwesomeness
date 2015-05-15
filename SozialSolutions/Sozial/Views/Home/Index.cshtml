@@ -3,8 +3,10 @@
 
 @{
     ViewBag.Title = "Home Page";
-}
 
+    var counter = 0;
+    var counter2 = 0;
+} 
 <!-- Carousel 1-->
 <div class="carousel-custom-container title-adjustments">
     <div class="carousel slide" data-ride="carousel">
@@ -100,7 +102,7 @@
                             }
 
                         </div>
-                        <a href="@Url.Action("Profile", "Home", new { @item.userID })" title="Username">@item.userID</a>
+                        <a href="@Url.Action("Profile", "Home", new { username = @item.userID })" title="Username">@item.userID</a>
                         <em><small class="pull-right">@item.createdDate.Day/@item.createdDate.Month/@item.createdDate.Year</small></em>
                         <p class="text_limit">@item.text</p>
                         <div class="title-adjustments"><input id="readMore" type="button" title="Read More" value="see full post" onclick="location.href='@Url.Action("Profile", "Home", new { id = item.userID })'" /></div>
@@ -109,12 +111,9 @@
             </div>
         </div>
         <!--BULLETIN-->
-        <div class="row front-page-item">
+        <div class="row front-page-item trending_games_carousel">
             <div class="col-md-6 title-adjustments">
                 <h3>Recruitment Bullentin</h3>
-                <ul class="list-inline list-unstyled">
-                    <li style="color: #ff6a00; font-weight: bold;">NEEDS RECRUITMENT MESSAGE</li>
-                </ul>
                 @foreach (Sozial.Models.GroupModel item in Model.newestGroups)
                 {
                     <div class="widget-area comment-section container">
@@ -142,93 +141,38 @@
                 }
             </div>
             <!--GAMES-->
+            <!--GAMES-->
             <div class="col-md-6">
                 <h3>Trending Games</h3>
-                 <ul class="list-inline list-unstyled">
-                    <li style="color: red; font-weight: bold;">NEEDS NEWEST GAME CONNECTION</li>
-                </ul>
-                @*foreach(Sozial.Models.GameModel item in Model.newestGames)
-                    {
-
-                    }*@
-                <!-- main slider carousel -->
-                <div id="slider">
-                    <div id="carousel-bounding-box">
-                        <div id="myCarousel" class="carousel slide">
-                            <!-- main slider carousel items -->
-
-
-                            <div class="carousel-inner">
-                               
-                                @for (int index = 0; index < Model.hottestGames.Count(); index++)
-                                {
-                                    <div class="active item" data-slide-number="@index">
-                                        @if (Model.hottestGames[index].imageUrl == null)
-                                        {
-                                            <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
-                                        }
-                                        else
-                                        {
-                                            <img src="@Model.hottestGames[index].imageUrl" class="img-responsive img-rounded cursor_change">
-                                        }   
-                                    </div> 
-                                }
-                                
-                                @*
-    <div class="item" data-slide-to="1">
-        <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive">
-    </div>
-
-    <div class="item" data-slide-number="2">
-        <img src="http://placehold.it/1200x480&amp;text=three" class="img-responsive">
-    </div>
-*@
-
+                <div class="well">
+                    <div id="slider">
+                        <div id="carousel-bounding-box">
+                            <div id="myCarousel" class="carousel slide">
+                                <div class="carousel-inner trending_games">
+                                    @foreach (Sozial.Models.GameModel item in Model.hottestGames)
+                                    {
+                                        counter++;
+                                        <div class="item" data-slide-number="@counter">
+                                            <a href="@Url.Action("Details", "Game", new { id = item.gameID })"><h3 class="cursor_change">@item.nameOfGame</h3></a>
+                                            <a href="@Url.Action("Details", "Game", new { id = item.gameID })">
+                                            @if (String.IsNullOrEmpty(item.imageUrl))
+                                            {
+                                                <img src="http://placehold.it/1200x480/888/FFF" class="img-responsive cursor_change img-rounded">
+                                            }
+                                            else
+                                            {
+                                                <img src="@Url.Content(item.imageUrl)" class="img-responsive cursor_change img-rounded">
+                                            }
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--/main slider carousel-->
-                <!-- thumb navigation carousel -->
-                <div class="well">
-                    <div class="col-md-12" id="slider-thumbs">
-                        <!-- thumb navigation carousel items -->
-                        <ul class="list-inline text-center">
-
-                            @for (int index = 0; index < Model.hottestGames.Count(); index++)
-                            {
-                                <li>
-                                    <a id="carousel-selector-@index" class="selected">
-                                        @if (Model.hottestGames[index].imageUrl == null) 
-                                        { 
-                                            <img src="http://placehold.it/80x60&amp;text=one" class="img-responsive cursor_change img-rounded">
-                                        }
-                                        else
-                                        {
-                                            <img src="@Model.hottestGames[index].imageUrl" class="img-responsive cursor_change img-rounded">
-                                        }
-                                        
-                                    </a>
-                                </li>
-                            }
-                            @*
-    <li>
-        <a id="carousel-selector-1">
-            <img src="http://placehold.it/80x60&amp;text=two" class="img-responsive cursor_change">
-        </a>
-    </li>
-    <li>
-        <a id="carousel-selector-2">
-            <img src="http://placehold.it/80x60&amp;text=three" class="img-responsive cursor_change">
-        </a>
-    </li>*@
-
-                        </ul>
-                    </div>
-                </div>
-
-
             </div>
+
         </div>
         <div class="navbar text-center">
             <ul class="list-inline list-unstyled">
