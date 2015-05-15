@@ -109,16 +109,24 @@
                             <h4>Groups</h4>
                             @foreach (Sozial.Models.GroupModel item in Model.myGroups)
                             {
-                                <div class="well">
-                                    <div style="color: #2D7F7E;">
-                                        <b>@item.groupName</b>
+                                <div class="widget-area comment-section container">
+                                    <div class="col-sm-2 thumbnail">
+                                        @if (String.IsNullOrEmpty(item.groupPicture))
+                                        {
+                                            <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(item.groupPicture)" alt="@Html.DisplayFor(modelItem => item.groupID) picture" /></a>
+                                        }
                                     </div>
-                                    <div>
-                                        @item.groupPicture
+                                    <div style="color: #2D7F7E;">
+                                        <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
                                     </div>
                                 </div>
                             }
                         </div>
+                        
                         <!--GROUPS-->
                         <div class="well item-details">
                             <h4>Games</h4>

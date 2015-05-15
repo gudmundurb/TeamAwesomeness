@@ -1,26 +1,20 @@
 ﻿@model Sozial.Models.GameModel
 
-<div>
-    <div>
-        <dl class="well">
-            <dd>
-                <h4>
-                    @Html.DisplayFor(model => model.nameOfGame)
-                </h4>
-            </dd>
-            <dd>
-                <h5>
-                    @Html.DisplayFor(model => model.genre)
-                </h5>
-            </dd>
-            <dd>
-                <h6>
-                    @Html.DisplayFor(model => model.imageUrl)
-                </h6>
-            </dd>
-        </dl>
+<div class="widget-area comment-section container">
+    <div class="col-sm-2 thumbnail">
+        @if (String.IsNullOrEmpty(Model.imageUrl))
+        {
+            <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
+        }
+        else
+        {
+            <a href="@Url.Action("Details", "Group", new { id = Model.gameID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(Model.imageUrl)" alt="@Html.DisplayFor(modelItem => Model.gameID) picture" /></a>
+        }
     </div>
-    <p style="color: red;">
-        @Html.ActionLink("Unfavorite", "../Game/removeGameFromFave", new { id = Model.gameID })
-    </p>
+    <div>
+        <a class="profile-nameOfGame" href="@Url.Action("Details", "Game", new { id = Model.gameID })">@Model.nameOfGame</a>
+    </div>
+    <div class="unfavorite-game">
+        @Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-danger" })
+    </div>
 </div>
