@@ -144,7 +144,7 @@ namespace Sozial.Repositories
 
             return (from Sozial.Models.ReviewModel model in db.ReviewModel
                     where model.gameId == gameId
-                    select model).ToList();
+                    select model).OrderByDescending(x => x.dateCreated).ToList();
 
 
         }

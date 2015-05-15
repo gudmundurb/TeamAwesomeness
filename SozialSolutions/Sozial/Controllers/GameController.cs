@@ -256,7 +256,6 @@ namespace Sozial.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators")]
         public ActionResult Create(ReviewEnvelope sunshine)
         {
             ReviewModel reviewModel = sunshine.review;
@@ -270,8 +269,7 @@ namespace Sozial.Controllers
         }
 
 
-        // GET: Game/Edit/5
-        [Authorize(Roles = "Administrators")]
+        // GET: Review/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -287,12 +285,11 @@ namespace Sozial.Controllers
         }
 
 
-        // POST: Game/Edit/5
+        // POST: Review/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrators")]
         public ActionResult Edit([Bind(Include = "text")] ReviewModel reviewModel)
         {
             if (ModelState.IsValid)
@@ -305,7 +302,7 @@ namespace Sozial.Controllers
         }
 
 
-        // GET: Game/Review/5
+        // GET: Review/Delete/5
         [Authorize(Roles = "Administrators")]
         public ActionResult Delete(int? id)
         {

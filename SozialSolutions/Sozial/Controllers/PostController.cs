@@ -23,6 +23,7 @@ namespace Sozial.Controllers
         //private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Post
+        [Authorize]
         public ActionResult Index()
         {
             
@@ -39,6 +40,7 @@ namespace Sozial.Controllers
         }
 
         // GET: Post/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
