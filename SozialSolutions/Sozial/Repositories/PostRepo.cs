@@ -23,6 +23,7 @@ namespace Sozial.Repositories
         {
             this.db = db;
         }
+
         public IEnumerable<PostModel> GetPost()
         {
             return db.PostModels.ToList();
@@ -33,10 +34,12 @@ namespace Sozial.Repositories
             return db.CommentModels.ToList();
         }
 
+
         public CommentModel getComment(int? id)
         {
             return db.CommentModels.Find(id);
         }
+
 
         public PostModel GetPostByID(int? postID)
         {
@@ -84,10 +87,9 @@ namespace Sozial.Repositories
 
 
             IEnumerable<CommentModel> delComments = getAllComments(postID);
-            CommentRepo commrepo = new CommentRepo(db);
             foreach (CommentModel model in delComments)
             {
-                commrepo.deleteComment(model.commentID);
+                deleteComment(model.commentID);
             }
 
             db.PostModels.Remove(post);
@@ -140,6 +142,20 @@ namespace Sozial.Repositories
         }
 
 
+        /************************** / *** \ ************* */
+
+        public void deleteComment(int commentId)
+        {
+            CommentModel comment = db.CommentModels.Find(commentId);
+            db.CommentModels.Remove(comment);
+            db.SaveChanges();
+        }
+
+        public void Reply(CommentModel comment)
+        {
+            db.CommentModels.Add(comment);
+            db.SaveChanges();
+        }
         
     }
 }
