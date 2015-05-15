@@ -18,6 +18,8 @@ namespace Sozial.Models
 
 
         [Required(ErrorMessage="Your review must have text.")]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Review")]
         public string text { get; set; }
 
         //public IEnumerable<PostModel> reviewPost;
@@ -30,6 +32,10 @@ namespace Sozial.Models
     public class ReviewEnvelope
     {
         public int gameId { get; set; }
+
+        [Required(ErrorMessage = "Your review must have text.")]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Review")]
         public ReviewModel review { get; set; }
     }
 }
