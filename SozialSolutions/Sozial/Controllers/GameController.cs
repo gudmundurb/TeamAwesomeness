@@ -24,7 +24,28 @@ namespace Sozial.Controllers
         {
             this.gameRepo = new GameRepo();
         }
-       
+
+
+        public ActionResult Steam()
+        {
+            return View();
+        }
+
+        
+        public ActionResult steamCreate(string name, int appId)
+        {
+            GameModel game = new GameModel();
+            game.nameOfGame = name;
+            //game.steamId = appId;
+            return RedirectToAction("stmCreate", game);
+        }
+
+
+
+
+
+
+
         // GET: Game
         public ActionResult Index()
         {
