@@ -78,7 +78,7 @@ namespace Sozial.Repositories
             {
                 posts.Add(pRepo.GetPostByID(i));
             }
-            return posts.ToList();
+            return posts.OrderByDescending(x=>x.createdDate).ToList();
         }
 
 

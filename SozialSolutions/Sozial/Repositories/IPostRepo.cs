@@ -17,6 +17,9 @@ namespace Sozial.Repositories
         void InsertPost(PostModel post);
         void DeletePost(int postID);
         void UpdatePost(PostModel post);
-        IEnumerable<CommentModel> getAllComments(int id);
+        //gets all comments for post
+        IEnumerable<CommentModel> getAllComments(int postId);
+
+        void Reply(CommentModel comment);
     }
 }
