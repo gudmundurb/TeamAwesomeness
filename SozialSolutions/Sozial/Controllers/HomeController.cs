@@ -123,7 +123,7 @@ namespace Sozial.Controllers
         [Authorize]
         public ActionResult add(string name)
         {
-            if (name == null) { return RedirectToAction("UserList"); }
+            if (name == null) { return RedirectToAction("Search"); }
             relRepo.addFriend(name);
 
             return RedirectToAction("UserList");
@@ -141,7 +141,7 @@ namespace Sozial.Controllers
         public ActionResult unFriend(string exname)
         {
             relRepo.unFriend(exname);
-            return RedirectToAction("myFriends");
+            return RedirectToAction("Profile");
         }
 
 
