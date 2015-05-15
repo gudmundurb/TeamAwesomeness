@@ -31,7 +31,7 @@ namespace Sozial.Models
 
         public int likeCount { get; set; }
 
-        [Required(ErrorMessage = "The group with no name already exists.")]
+        [Required(ErrorMessage = "You have not filled out the name of the group!")]
         [Display(Name = "Group Name")]
         public string groupName { get; set; }
 
