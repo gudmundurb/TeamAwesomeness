@@ -22,8 +22,12 @@
             </div>
             <a href="@Url.Action("Profile", "Home", new { username = Model.userID })" title="Username">@Model.userID</a>
             <div class="pull-right">
-                <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
-                <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
+                @if (Model.userID == User.Identity.Name) 
+                { 
+                    <a href="@Url.Action("Delete", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-remove delete"></span></a>
+                    <a href="@Url.Action("Edit", "Post", new { id = Model.postID })" class="btn btn-default btn-xs change-post"><span class="glyphicon glyphicon-pencil edit"></span></a>
+                }
+                
             </div>
             <p>
                 @Html.DisplayFor(modelItem => Model.text)

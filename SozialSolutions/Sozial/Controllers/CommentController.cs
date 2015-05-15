@@ -114,10 +114,11 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CommentModel commentModel = db.CommentModels.Find(id);
-            db.CommentModels.Remove(commentModel);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            throw new Exception("Comment/Create is depracated and should by no means be called!",new NotImplementedException());
+            /*
+            postRepo.deleteComment(id);
+            return View();
+            */
         }
 
         protected override void Dispose(bool disposing)

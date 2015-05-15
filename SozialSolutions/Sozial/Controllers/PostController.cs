@@ -128,6 +128,13 @@ namespace Sozial.Controllers
             return View(postModel);
         }
 
+        public void deleteComment(int commentId)
+        {
+            //dont call this please.
+            postRepo.deleteComment(commentId);
+        }
+
+
         // GET: Post/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
@@ -151,7 +158,11 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            postRepo.DeletePost(id);
+            if (User.Identity.Name == postRepo.GetPostByID(id).userID)
+            {
+                postRepo.DeletePost(id);
+            }
+            
             return RedirectToAction("Index");
         }
 

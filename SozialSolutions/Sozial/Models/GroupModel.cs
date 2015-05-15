@@ -36,6 +36,7 @@ namespace Sozial.Models
         public string groupName { get; set; }
 
         [Required(ErrorMessage = "What is your group all about?")]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Group Description")]
         public string groupDescription { get; set; }
 

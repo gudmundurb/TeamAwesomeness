@@ -99,13 +99,15 @@ namespace Sozial.Controllers
         // GET: Group/Delete/5
         public ActionResult Delete(int id)
         {
-            return RedirectToAction("Details", new { id = id });
+            return RedirectToAction("Index");
+            /*
             GroupModel groupModel = grpRepo.getGroupById(id);
             if (groupModel == null)
             {
                 return HttpNotFound();
             }
             return View(groupModel);
+            */
         }
 
 
