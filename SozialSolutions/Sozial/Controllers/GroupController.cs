@@ -134,29 +134,6 @@ namespace Sozial.Controllers
             
             return RedirectToAction("Details", new {id = sunShine.groupId });
         }
-
-
-        
-        public ActionResult CreatePost(int? groupID)
-        {
-            int i = 1;
-            groupID = i;
-            return View();
-        }
-
-       [HttpPost]
-       [ValidateAntiForgeryToken]
-        public ActionResult CreatePost(int groupID, [Bind(Include = "postID,userID,text,imageUrl")] PostModel groupPostCreate)
-        {
-            groupID = 1;
-            if (ModelState.IsValid)
-            {
-                grpRepo.CreatePost(groupPostCreate);
-                return RedirectToAction("Index");
-            }
-            return View(groupPostCreate);
-        }
-
     }
 }
 
