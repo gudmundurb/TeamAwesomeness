@@ -126,7 +126,7 @@ namespace Sozial.Controllers
             if (name == null) { return RedirectToAction("Search"); }
             relRepo.addFriend(name);
 
-            return RedirectToAction("UserList");
+            return RedirectToAction("Profile", new { username = name });
         }
 
 
