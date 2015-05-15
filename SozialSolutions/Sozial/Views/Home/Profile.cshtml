@@ -60,16 +60,10 @@
                         <!--CHANGE PROFILE PICTURE-->
                         @if (User.Identity.Name == Model.profileOwner.UserName)
                         {
-
-                            <script src="~/Scripts/showCustomization.js"></script>
-
                             <div id="editPartial">
                                 @Html.Partial("../Account/_customizeProfilePartial", new Sozial.Models.AccountCustomizeViewModel() { profileBanner = Model.profileOwner.userBannerPic, ProfilePicture = Model.profileOwner.userProfilePic, steam = (Model.profileOwner.steamId != null) })
                             </div>
-                            <script>
-                                $("#editPartial").hide();
-                            </script>
-                            <button onclick="functio()">Change profile pic</button>
+                            <button class="btn btn-success" onclick="functio()">Change profile pic</button>
                         }
                         <!--CHANGE PROFILE PICTURE-->
                     </li>
@@ -79,33 +73,45 @@
                 <ul class="thumbails list-unstyled">
                     <!--FRIENDSLIST-->
                     <li class="col-md-5">
-                        <div class="well item-details container">
-                            <h4>Friends</h4>                            
+                        <div class="well item-details ">
+                            <div class="container">
+                                <h4>Friends</h4>
+                                <div class="row">
+                                    <hr />
+                                </div>
                                 @foreach (Sozial.Models.ApplicationUser user in Model.myFriends)
                                 {
-                                    <div class="col-sm-2 thumbnail">
-                                        @if (String.IsNullOrEmpty(user.userProfilePic))
-                                        {
-                                        <img class="img-rounded" src="http://avatarbox.net/avatars/img13/space_invaders_get_even_avatar_picture_42139.jpg" />
-                                        }
-                                        else
-                                        {
-                                        <img class="img-rounded" src="@Url.Content(user.userProfilePic)" />
-                                        }
+                                    <div class="row">
+                                        <div class="col-xs-1 img_resizer pull-left">
+                                            @if (String.IsNullOrEmpty(user.userProfilePic))
+                                            {
+                                                <img class="img-rounded" src="http://avatarbox.net/avatars/img13/space_invaders_get_even_avatar_picture_42139.jpg" />
+                                            }
+                                            else
+                                            {
+                                                <img class="img-rounded" src="@Url.Content(user.userProfilePic)" />
+                                            }
+                                        </div>
+                                        <div class="col-xs-9">
+                                            <p>
+                                                <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
+                                            </p>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="col-sm-5">
-                                        <p>
-                                            <a class="cursor_change" href="@Url.Action("Profile", "Home", new { @user.UserName })" title="Username">@user.UserName</a>
-                                        </p>
+                                    <div class="row">
+                                        <hr/>
                                     </div>
-                                }   
+                                }
+                            </div>
                         </div>
+                        <!--GROUPS-->
                         <div class="well item-details container">
                             <h4>Groups</h4>
                             @foreach (Sozial.Models.GroupModel item in Model.myGroups)
                             {
-                                <div class="widget-area comment-section container">
-                                    <div class="col-sm-2 thumbnail">
+                                <div class="row widget-area comment-section">
+                                    <div class="col-xs-1 img_resizer pull-left">
                                         @if (String.IsNullOrEmpty(item.groupPicture))
                                         {
                                             <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
@@ -115,21 +121,18 @@
                                             <a href="@Url.Action("Details", "Group", new { id = item.groupID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(item.groupPicture)" alt="@Html.DisplayFor(modelItem => item.groupID) picture" /></a>
                                         }
                                     </div>
-                                    <div style="color: #2D7F7E;">
+                                    <div class="col-xs-9">
                                         <a href="@Url.Action("Details", "Group", new { id = item.groupID })">@item.groupName</a>
                                     </div>
                                 </div>
+                                <div class="image_randomizer"></div>
                             }
                         </div>
-
-                        <!--GROUPS-->
                         <div class="well item-details">
                             <h4>Games</h4>
                             @foreach (Sozial.Models.GameModel item in Model.myGames)
                             {
-                                <div>
-                                    @Html.Partial("../Shared/_miniGameViewPartial", item)
-                                </div>
+                               @Html.Partial("../Shared/_miniGameViewPartial", item)
                             }
                         </div>
                     </li>
@@ -154,84 +157,10 @@
                     </li>
                 </ul>
             </div>
-
-
-
         </div>
     </div>
-        
-    
-
-@*
-    <!--
-        <div>
-            <h1>@Model.profileOwner.UserName </h1>
-            @Model.profileOwner.userProfilePic
-
-        </div>
-
-        <h2> profile posts</h2>
-        <div>
-            @foreach (Sozial.Models.PostModel post in Model.profilePosts)
-            {
-                @Html.Partial("../Shared/_postPartial", post)
-            }
-        </div>
-        <h2> profile posts</h2>
-
-        
-
-
-
-        <div>
-            <h4>ProfileViewModel</h4>
-            <hr />
-
-            <h3>My Friends: </h3>
-            <dl class="dl-horizontal">
-
-                @foreach (Sozial.Models.ApplicationUser item in Model.myFriends)
-                {
-                <dd style ="color: red;">
-                     @Html.ActionLink(item.UserName, "Profile", new {username = item.UserName})
-                </dd>
-                }
-
-            </dl>
-            <h3>My Groups: </h3>
-                <dl class="dl-horizontal">
-
-                    @foreach (Sozial.Models.GroupModel item in Model.myGroups)
-                    {
-                        <dd style="color: red;">
-                            @item.groupName
-                        </dd>
-                        <dd>
-                            @item.groupPicture
-                        </dd>
-                    }
-                </dl>
-            <h3>My newsFeed: </h3>
-
-                <dl class="dl-horizontal">
-                    @foreach (Sozial.Models.PostModel item in Model.newestPosts)
-                    {
-
-                        @Html.Partial("../Shared/_postPartial", item)
-                    }
-
-                </dl>
-
-
-
-       </div>
-        @Html.Partial("_PostToProfilePartial", new Sozial.Models.PostToProfileViewModel() { profileOwner = Model.profileOwner.UserName , newPost = new Sozial.Models.PostModel() })
-        <p>
-            @Html.ActionLink("Back to List", "Index")
-        </p>
-        -->
-*@
 </body>
 </html>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/showCustomization.js"></script>

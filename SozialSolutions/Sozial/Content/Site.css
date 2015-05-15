@@ -40,6 +40,10 @@ hr {
 {
     border-right: thin solid #666;
 }
+.image-randomizer {
+
+    background-color: red;
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
@@ -238,19 +242,16 @@ a.nav_logo {
 }
 
 
-.group_cover {
-
+.image_randomizer {
     height: 30px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     margin-bottom: 10px;
     border: solid 1px #666;
     border-top: none;
+    
 }
 
-.image_randomizer {
-
-}
 
 .register-banner  {
 
@@ -570,6 +571,23 @@ a.list-group-item.active .margin-top {
     
     font-size: 20pt;    
 }
+
+.item-details .img_resizer
+{     
+    padding-right: 20%;
+}
+
+.item-details .img_resizer img {
+
+    max-height: 50px;
+    max-width: 80px;
+}
+
+.item-details a {
+
+   color: #50E5E3
+}
+
 .modal-dialog { 
 
     width: 60%;

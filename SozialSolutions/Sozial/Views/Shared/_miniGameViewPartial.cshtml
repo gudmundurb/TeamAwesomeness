@@ -1,7 +1,7 @@
 ﻿@model Sozial.Models.GameModel
 
-<div class="widget-area comment-section container">
-    <div class="col-sm-2 thumbnail">
+<div class="row widget-area comment-section">
+    <div class="col-xs-1 img_resizer pull-left">
         @if (String.IsNullOrEmpty(Model.imageUrl))
         {
             <img class="img-responsive img-rounded" src="http://avatarbox.net/avatars/img7/blue_invader_avatar_picture_70258.jpg" alt="No profile picture" />
@@ -11,8 +11,8 @@
             <a href="@Url.Action("Details", "Group", new { id = Model.gameID })"><img class="media-object img-rounded img-responsive thumbnails" src="@Url.Content(Model.imageUrl)" alt="@Html.DisplayFor(modelItem => Model.gameID) picture" /></a>
         }
     </div>
-    <div>
+    <div class="col-xs-9">
         <a class="profile-nameOfGame" href="@Url.Action("Details", "Game", new { id = Model.gameID })">@Model.nameOfGame</a>
     </div>
-    <small class="pull-right">@Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-danger" })</small>
 </div>
+<i class=" btn btn-default glyphicon glyphicon-heart-empty"><span class="pull-right">@Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-xs change-post" })</span></i>
