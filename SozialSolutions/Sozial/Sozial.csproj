@@ -309,11 +309,11 @@
     <Content Include="Views\Comment\Details.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
-    <Content Include="Views\News\Create.cshtml" />
-    <Content Include="Views\News\Delete.cshtml" />
-    <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Post\News\Create.cshtml" />
+    <Content Include="Views\Post\News\Delete.cshtml" />
+    <Content Include="Views\Post\News\Details.cshtml" />
+    <Content Include="Views\Post\News\Edit.cshtml" />
+    <Content Include="Views\Post\News\Index.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\Delete.cshtml" />
     <Content Include="Views\Group\Details.cshtml" />
