@@ -20,7 +20,7 @@
                     <img src="@Url.Content(Model.userPicture)" class="thumbnail" alt="@Model.userID picture" />
                 }
             </div>
-            <a href="@Url.Action("Profile", "Home", new { @Model.userID })" title="Username">@Model.userID</a>
+            <a href="@Url.Action("Profile", "Home", new { username = Model.userID })" title="Username">@Model.userID</a>
             <div class="pull-right">
                 @if (Model.userID == User.Identity.Name) 
                 { 
@@ -89,7 +89,7 @@
                         }
                     </div>
                     <div class="col-md-2">
-                        <a href="@Url.Action("Profile", "Home", new { comm.authorID })" title="Username">@comm.authorID</a>
+                        <a href="@Url.Action("Profile", "Home", new { username = comm.authorID })" title="Username">@comm.authorID</a>
                     </div>
                     <div class="col-md-10">
                         <p>
