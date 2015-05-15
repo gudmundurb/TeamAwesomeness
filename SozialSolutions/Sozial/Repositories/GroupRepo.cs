@@ -206,6 +206,7 @@ namespace Sozial.Repositories
         }
         */
 
+
         public bool addPostToGroup(PostModel post, int groupId)
         {
             db.PostModels.Add(post);
@@ -224,6 +225,7 @@ namespace Sozial.Repositories
             db.SaveChanges();
             return true;
         }
+
 
         public GroupModel getGroupById(int id)
         {

@@ -67,6 +67,10 @@ namespace Sozial.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "postID,userID,text,imageUrl")] PostModel postModel)
         {
+            if (postModel.text == null)
+            {
+                return RedirectToAction("yay");
+            }
             if (ModelState.IsValid)
             {
                 postModel.userID = User.Identity.Name;
