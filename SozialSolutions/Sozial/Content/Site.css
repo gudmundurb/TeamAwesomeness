@@ -96,6 +96,11 @@ textarea {
     padding: 0;
 }
 
+.user-details .add
+{     
+    color: #2D7F7E;
+}
+
 .user-details .img_resizer img {
 
     max-height: 50px;

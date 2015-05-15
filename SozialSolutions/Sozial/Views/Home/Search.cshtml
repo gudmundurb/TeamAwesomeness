@@ -5,19 +5,19 @@
 }
 
 
-@using (Html.BeginForm("Search","Home"))
-{    
+@using (Html.BeginForm("Search", "Home"))
+{
     <div class="container">
         <div class="row">
             <div class="well user-details">
-                <h2 >Find Users</h2>
+                <h2>Find Users</h2>
                 <hr />
                 <div class="title-adjustments">
                     <input type="submit" value="Search Users" class="btn btn-success btn-sm pull-right">
-                    @Html.TextBox("username", null, new { @class = "form-group input-sm pull-right" })                    
+                    @Html.TextBox("username", null, new { @class = "form-group input-sm pull-right" })
                 </div>
                 @foreach (var item in Model)
-                {
+                {                    
                     <div class="widget-area comment-section container">
                         <div class="col-sm-1 img_resizer pull-left">
                             <a href="@Url.Action("Profile", "Home", new { username = @item.UserName })" title="Profile Picture">
@@ -32,9 +32,13 @@
                             </a>
                         </div>
                         <div class="col-sm-9 pull-left">
-                            <a href="@Url.Action("Profile", "Home", new { username = @item.UserName })" title="Username">@item.UserName</a>
+                            <a href="@Url.Action("Profile", "Home", new { username = @item.UserName })" title="Username">@item.UserName</a> 
+                        </div>
+                        <div class="col-sm-1 img_resizer pull-right">
+                            <a href="@Url.Action("add", "Home", new { name = @item.UserName })" class="btn btn-default btn-xs change-post" title="Add User"><span class="glyphicon glyphicon-user add"></span></a>
                         </div>
                     </div>
+                
                 }
             </div>
         </div>
