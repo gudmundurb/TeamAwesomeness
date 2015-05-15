@@ -65,8 +65,6 @@
                         <div class="widget-area pull-left">
                             @Html.Partial("_PostToGroup", new Sozial.Models.GroupPostViewModel() { groupId = Model.groupID, newPost = new Sozial.Models.PostModel() })
                         </div>
-                    </div>
-                    <div class="col-md-7">
                         <h4 class="title-adjustments">All Posts</h4>
                         @foreach (Sozial.Models.PostModel post in Model.Posts)
                         {
