@@ -94,11 +94,11 @@ namespace Sozial.Models
         public string Email { get; set; }
 
         [Url]
-        [Display(Name = "Your Profile Picture")]
+        [Display(Name = "Profile Banner")]
         public string profileBanner { get; set; }
 
         [Url]
-        [Display(Name = "Profile Banner")]
+        [Display(Name = "Profile Picture")]
         public string profilePicture { get; set; }
 
         [Required]
