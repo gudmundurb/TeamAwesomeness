@@ -14,7 +14,5 @@
     <div>
         <a class="profile-nameOfGame" href="@Url.Action("Details", "Game", new { id = Model.gameID })">@Model.nameOfGame</a>
     </div>
-    <div class="unfavorite-game">
-        @Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-danger" })
-    </div>
+    <small class="pull-right">@Html.ActionLink("Unfavorite game", "../Game/removeGameFromFave", new { id = Model.gameID }, new { @class = "btn-danger" })</small>
 </div>
